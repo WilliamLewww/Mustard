@@ -4,8 +4,24 @@
 		"selected_items":
 		[
 			[
+				"pus",
+				"pushTimer"
+			],
+			[
+				"sli",
+				"slideTimer"
+			],
+			[
 				"slide",
-				"slideRight"
+				"slideTimer"
+			],
+			[
+				"slideTi",
+				"slideTimer"
+			],
+			[
+				"break",
+				"breakLines"
 			],
 			[
 				"st",
@@ -15,24 +31,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "main.cpp",
-			"settings":
-			{
-				"buffer_size": 1479,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/board.cpp",
-			"settings":
-			{
-				"buffer_size": 3658,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "SDL Project",
 	"build_system_choices":
@@ -121,13 +119,25 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 708.0,
+		"height": 621.0,
 		"last_filter": "git push",
 		"selected_items":
 		[
 			[
 				"git push",
 				"Git: Push"
+			],
+			[
+				"git commi",
+				"Git: Commit"
+			],
+			[
+				"git add all",
+				"Git: Add All"
+			],
+			[
+				"git commit",
+				"Git: Commit"
 			],
 			[
 				"git co",
@@ -142,10 +152,6 @@
 				"Git: Commit history"
 			],
 			[
-				"git commit",
-				"Git: Commit"
-			],
-			[
 				"git",
 				"Git: Quick Commit (repo)"
 			],
@@ -156,10 +162,6 @@
 			[
 				"git commit me",
 				"Set Syntax: Git Commit Message"
-			],
-			[
-				"git commi",
-				"Git: Commit"
 			],
 			[
 				"git Co",
@@ -240,14 +242,14 @@
 	],
 	"file_history":
 	[
+		"/C/Projects/Mustard/src/board.h",
+		"/C/Projects/Mustard/main.cpp",
+		"/C/Projects/Mustard/src/board.cpp",
 		"/C/Projects/Mustard/project.sublime-project",
 		"/C/Projects/Mustard/src/vector2.h",
 		"/C/Projects/Mustard/src/input.h",
 		"/C/Projects/Mustard/src/geometry.h",
 		"/C/Projects/Mustard/main.h",
-		"/C/Projects/Mustard/src/board.cpp",
-		"/C/Projects/Mustard/src/board.h",
-		"/C/Projects/Mustard/main.cpp",
 		"/C/Projects/Mustard/src/joiner.h",
 		"/C/Projects/Mustard/src/main.h",
 		"/C/Projects/Mustard/src/main.cpp",
@@ -286,6 +288,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"slideSpeed",
+			"slideTime",
+			"board.velocity",
 			"\\",
 			"create",
 			"init"
@@ -306,69 +311,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "main.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1479,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1252,
-								1252
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1588.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/board.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3658,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2739,
-								2692
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 844.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],

@@ -18,6 +18,13 @@
 
 		    "variants":
 		    [
+		    	 {
+		            "name": "Main",
+		            "cmd": ["g++", "C:/Projects/Mustard/main.cpp", "-o", "C:/Projects/Mustard/main", "C:/Projects/Mustard/src/*.cpp", "-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include",
+		            	"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib", "-lmingw32", "-lSDL2main", "-lSDL2", "-lopengl32", "&&", "C:/Projects/Mustard/main"],
+		            "shell": true
+		        },
+
 		        {
 		            "name": "Compile",
 		            "cmd": ["g++", "${file}", "-o", "${file_base_name}.exe", "src/*.cpp", "-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include", 
