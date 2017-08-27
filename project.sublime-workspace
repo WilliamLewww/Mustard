@@ -7,33 +7,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "main.cpp",
-			"settings":
-			{
-				"buffer_size": 1340,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "main.h",
-			"settings":
-			{
-				"buffer_size": 213,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "project.sublime-project",
-			"settings":
-			{
-				"buffer_size": 921,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "SDL Project",
 	"build_system_choices":
@@ -98,10 +71,50 @@
 	"build_varint": "Run",
 	"command_palette":
 	{
-		"height": 445.0,
-		"last_filter": "packet rem",
+		"height": 708.0,
+		"last_filter": "git his",
 		"selected_items":
 		[
+			[
+				"git his",
+				"Git: Commit history"
+			],
+			[
+				"git push",
+				"Git: Push"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add All"
+			],
+			[
+				"git",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"git commit ",
+				"Git: Commit"
+			],
+			[
+				"git commit me",
+				"Set Syntax: Git Commit Message"
+			],
+			[
+				"git commi",
+				"Git: Commit"
+			],
+			[
+				"git Co",
+				"Git: Commit"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
 			[
 				"packet rem",
 				"Package Control: Remove Package"
@@ -120,10 +133,6 @@
 			],
 			[
 				"g",
-				"GitGutter: Support Info"
-			],
-			[
-				"git",
 				"GitGutter: Support Info"
 			],
 			[
@@ -151,13 +160,14 @@
 				"Install Package Control"
 			]
 		],
-		"width": 764.0
+		"width": 780.0
 	},
 	"console":
 	{
-		"height": 0.0,
+		"height": 364.0,
 		"history":
 		[
+			"git"
 		]
 	},
 	"distraction_free":
@@ -171,13 +181,29 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Projects/Mustard"
+		"/C/Projects/Mustard",
+		"/C/Projects/Mustard/src"
 	],
 	"file_history":
 	[
-		"/C/Program Files/Sublime Text 3/Packages/C++.sublime-package",
-		"/C/Projects/Mustard/project.sublime-project",
+		"/C/Projects/Mustard/src/vector2.h",
+		"/C/Projects/Mustard/src/geometry.h",
+		"/C/Projects/Mustard/main.h",
+		"/C/Projects/Mustard/src/board.cpp",
+		"/C/Projects/Mustard/src/board.h",
 		"/C/Projects/Mustard/main.cpp",
+		"/C/Projects/Mustard/src/input.h",
+		"/C/Projects/Mustard/src/joiner.h",
+		"/C/Projects/Mustard/src/main.h",
+		"/C/Projects/Mustard/src/main.cpp",
+		"/C/Projects/Mustard/project.sublime-project",
+		"/C/Projects/Mustard/joiner.cpp",
+		"/C/Projects/Mustard/joiner.h",
+		"/C/Projects/Mustard/vector2.h",
+		"/C/Projects/Mustard/input.h",
+		"/C/Projects/Mustard/geometry.h",
+		"/C/Projects/Mustard/geometry.cpp",
+		"/C/Program Files/Sublime Text 3/Packages/C++.sublime-package",
 		"/C/Projects/ML-Perceptron/demo.py",
 		"/C/Users/WilliamLew/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
 		"/C/Users/WilliamLew/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
@@ -226,99 +252,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "main.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1340,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								681,
-								681
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "main.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 213,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								213,
-								213
-							]
-						],
-						"settings":
-						{
-							"_anf_new": "",
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "project.sublime-project",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 921,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								823,
-								823
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/zzz A File Icon zzz/aliases/JSON (Sublime).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -361,6 +296,10 @@
 	{
 		"height": 0.0
 	},
+	"output.git":
+	{
+		"height": 268.0
+	},
 	"pinned_build_system": "",
 	"project": "project.sublime-project",
 	"replace":
@@ -374,6 +313,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"main",
+				"main.cpp"
+			]
 		],
 		"width": 0.0
 	},
