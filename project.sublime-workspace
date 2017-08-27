@@ -11,7 +11,16 @@
 			"file": "main.cpp",
 			"settings":
 			{
-				"buffer_size": 1261,
+				"buffer_size": 1340,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "main.h",
+			"settings":
+			{
+				"buffer_size": 213,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -20,7 +29,7 @@
 			"file": "project.sublime-project",
 			"settings":
 			{
-				"buffer_size": 844,
+				"buffer_size": 921,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -226,20 +235,20 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1261,
+						"buffer_size": 1340,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1132,
-								1132
+								681,
+								681
 							]
 						],
 						"settings":
 						{
-							"git_gutter_is_enabled": false,
+							"git_gutter_is_enabled": true,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -253,27 +262,57 @@
 				},
 				{
 					"buffer": 1,
-					"file": "project.sublime-project",
+					"file": "main.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 844,
+						"buffer_size": 213,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								746,
-								746
+								213,
+								213
 							]
 						],
 						"settings":
 						{
-							"git_gutter_is_enabled": false,
+							"_anf_new": "",
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "project.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 921,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								823,
+								823
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
 							"syntax": "Packages/zzz A File Icon zzz/aliases/JSON (Sublime).sublime-syntax"
 						},
-						"translation.x": 346.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},

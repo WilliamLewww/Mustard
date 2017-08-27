@@ -1,5 +1,4 @@
 #include "main.h"
-#undef main
 
 void update(int elapsedTime);
 void render(SDL_Window* window, SDL_GLContext context);
