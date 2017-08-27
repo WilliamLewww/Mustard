@@ -1,8 +1,8 @@
 #pragma once
+#include "vector2.h"
 #include <SDL2\SDL.h>
 #include <vector>
 #include <algorithm>
-#include "vector2.h"
 
 void getKeys(SDL_Event event);
 void removeInitialPress();

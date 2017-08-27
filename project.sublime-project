@@ -9,8 +9,8 @@
     [
         {
         	"name": "SDL Project",
-		    "cmd": ["g++", "${file}", "-o", "${file_base_name}.exe", "src/*.cpp", "-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include", 
-		    	"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib", "-lmingw32", "-lSDL2main", "-lSDL2", "-lopengl32"],
+        	"cmd": ["g++", "$file", "-o", "$file_base_name", "src/*.cpp", "-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include",
+		            	"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib", "-lmingw32", "-lSDL2main", "-lSDL2", "-lopengl32", "&&", "$file_path/$file_base_name"],
 		    "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
 		    "working_dir": "${file_path}",
 		    "selector": "source.c, source.c++",
@@ -19,9 +19,9 @@
 		    "variants":
 		    [
 		        {
-		            "name": "Run",
-		            "cmd": ["g++", "$file", "-o", "$file_base_name", "src/*.cpp", "-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include",
-		            	"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib", "-lmingw32", "-lSDL2main", "-lSDL2", "-lopengl32", "&&", "$file_path/$file_base_name"],
+		            "name": "Compile",
+		            "cmd": ["g++", "${file}", "-o", "${file_base_name}.exe", "src/*.cpp", "-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include", 
+		    				"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib", "-lmingw32", "-lSDL2main", "-lSDL2", "-lopengl32"],
 		            "shell": true
 		        }
 		    ]

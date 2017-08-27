@@ -1,7 +1,7 @@
 #pragma once
-#include <SDL2\SDL_opengl.h>
 #include "vector2.h"
 #include "..\main.h"
+#include <SDL2\SDL_opengl.h>
 
 double convertColor(int rgbValue);
 void drawPoint(Vector2 position, int color[3]);

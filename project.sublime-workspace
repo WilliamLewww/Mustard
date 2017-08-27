@@ -3,10 +3,36 @@
 	{
 		"selected_items":
 		[
+			[
+				"slide",
+				"slideRight"
+			],
+			[
+				"st",
+				"startSlideAngle"
+			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "main.cpp",
+			"settings":
+			{
+				"buffer_size": 1479,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/board.cpp",
+			"settings":
+			{
+				"buffer_size": 3658,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "SDL Project",
 	"build_system_choices":
@@ -51,6 +77,30 @@
 				],
 				[
 					"SDL Project",
+					"Compile"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"SDL Project",
+				""
+			]
+		],
+		[
+			[
+				[
+					"SDL Project",
+					""
+				],
+				[
+					"SDL Project",
 					"Run"
 				],
 				[
@@ -68,28 +118,32 @@
 			]
 		]
 	],
-	"build_varint": "Run",
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 708.0,
-		"last_filter": "git his",
+		"last_filter": "git push",
 		"selected_items":
 		[
-			[
-				"git his",
-				"Git: Commit history"
-			],
 			[
 				"git push",
 				"Git: Push"
 			],
 			[
-				"git commit",
+				"git co",
 				"Git: Commit"
 			],
 			[
 				"git add",
 				"Git: Add All"
+			],
+			[
+				"git his",
+				"Git: Commit history"
+			],
+			[
+				"git commit",
+				"Git: Commit"
 			],
 			[
 				"git",
@@ -186,17 +240,17 @@
 	],
 	"file_history":
 	[
+		"/C/Projects/Mustard/project.sublime-project",
 		"/C/Projects/Mustard/src/vector2.h",
+		"/C/Projects/Mustard/src/input.h",
 		"/C/Projects/Mustard/src/geometry.h",
 		"/C/Projects/Mustard/main.h",
 		"/C/Projects/Mustard/src/board.cpp",
 		"/C/Projects/Mustard/src/board.h",
 		"/C/Projects/Mustard/main.cpp",
-		"/C/Projects/Mustard/src/input.h",
 		"/C/Projects/Mustard/src/joiner.h",
 		"/C/Projects/Mustard/src/main.h",
 		"/C/Projects/Mustard/src/main.cpp",
-		"/C/Projects/Mustard/project.sublime-project",
 		"/C/Projects/Mustard/joiner.cpp",
 		"/C/Projects/Mustard/joiner.h",
 		"/C/Projects/Mustard/vector2.h",
@@ -252,8 +306,69 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1479,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1252,
+								1252
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1588.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/board.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3658,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2739,
+								2692
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 844.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -314,6 +429,10 @@
 		"selected_items":
 		[
 			[
+				"mai",
+				"main.cpp"
+			],
+			[
 				"main",
 				"main.cpp"
 			]
@@ -346,7 +465,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 300.0,
+	"side_bar_width": 290.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
