@@ -11,7 +11,8 @@ struct Board {
 	float velocity = 0;
 	double rotation = 0;
 
-	int turnSpeed = 75, slideSpeed = 50, pushSpeed = 75, breakSpeed = 100;
+	double pushInterval = 1.0;
+	int turnSpeed = 75, pushSpeed = 50, breakSpeed = 100;
 
 	inline Vector2 topLeft() { return Vector2(position.x + length, position.y); }
 	inline Vector2 topRight() { return Vector2(position.x + length, position.y + width); }
