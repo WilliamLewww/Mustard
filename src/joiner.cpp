@@ -2,16 +2,16 @@
 
 void Joiner::initialize() {
 	board.position = Vector2(25, 120);
-	std::vector<Vector2> tempTrack = generateTrackRand(0, 5, 20, Vector2(0, 100));
+	std::vector<Vector2> tempTrack = generateTrackRand(2, 5, 20, Vector2(0, 100));
 	track.insert(track.end(), tempTrack.begin(), tempTrack.end());
 
 	tempTrack = duplicateTrack(track, 50);
 	trackCompliment.insert(trackCompliment.end(), tempTrack.begin(), tempTrack.end());
 
-	tempTrack = generateTrackUp(10, 5, 25, Vector2(track[track.size() - 1].x, track[track.size() - 1].y));
+	tempTrack = generateTrackUp(10, 5, 30, Vector2(track[track.size() - 1].x, track[track.size() - 1].y));
 	track.insert(track.end(), tempTrack.begin(), tempTrack.end());
 
-	tempTrack = generateTrackDown(5, 5, 25, Vector2(trackCompliment[trackCompliment.size() - 1].x, trackCompliment[trackCompliment.size() - 1].y));
+	tempTrack = generateTrackComp(tempTrack, Vector2(trackCompliment[trackCompliment.size() - 1].x, trackCompliment[trackCompliment.size() - 1].y), 50, -10, 10);
 	trackCompliment.insert(trackCompliment.end(), tempTrack.begin(), tempTrack.end());
 }
 

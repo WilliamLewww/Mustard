@@ -24,6 +24,17 @@ std::vector<Vector2> generateTrackRand(int difficulty, int count, int spacing, V
 	return tempTrack;
 }
 
+std::vector<Vector2> generateTrackComp(std::vector<Vector2> track, Vector2 startPoint, int offsetY, int limitTop, int limitBottom) {
+	std::vector<Vector2> tempTrack;
+	tempTrack.push_back(startPoint);
+	track.erase(track.begin());
+	for (Vector2 point : track) { 
+		tempTrack.push_back(Vector2(point.x, point.y + offsetY + (rand() % (limitBottom - limitTop + 1) - limitTop))); 
+	}
+
+	return tempTrack;
+}
+
 std::vector<Vector2> duplicateTrack(std::vector<Vector2> track, int offsetY) {
 	std::vector<Vector2> tempTrack;
 	for (int x = 0; x < track.size(); x++) { tempTrack.push_back(Vector2(track[x].x, track[x].y + offsetY)); }
