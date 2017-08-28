@@ -1,37 +1,96 @@
 {
+	"build_systems":
+	[
+		{
+			"cmd":
+			[
+				"g++",
+				"C:/Projects/Mustard/main.cpp",
+				"-o",
+				"C:/Projects/Mustard/main",
+				"C:/Projects/Mustard/src/*.cpp",
+				"-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include",
+				"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib",
+				"-lmingw32",
+				"-lSDL2main",
+				"-lSDL2",
+				"-lopengl32",
+				"&&",
+				"C:/Projects/Mustard/main"
+			],
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+			"name": "SDL Project",
+			"selector": "source.c, source.c++",
+			"shell": true,
+			"variants":
+			[
+				{
+					"cmd":
+					[
+						"g++",
+						"${file}",
+						"-o",
+						"${file_base_name}.exe",
+						"src/*.cpp",
+						"-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include",
+						"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib",
+						"-lmingw32",
+						"-lSDL2main",
+						"-lSDL2",
+						"-lopengl32"
+					],
+					"name": "Compile",
+					"shell": true
+				}
+				,
+				{
+					"cmd":
+					[
+						"g++",
+						"$file",
+						"-o",
+						"$file_base_name",
+						"src/*.cpp",
+						"-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include",
+						"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib",
+						"-lmingw32",
+						"-lSDL2main",
+						"-lSDL2",
+						"-lopengl32",
+						"&&",
+						"$file_path/$file_base_name"
+					],
+					"name": "Run",
+					"shell": true
+				}
+				,
+				{
+					"cmd":
+					[
+						"g++",
+						"$file",
+						"-o",
+						"$file_base_name",
+						"-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include",
+						"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib",
+						"-lmingw32",
+						"-lSDL2main",
+						"-lSDL2",
+						"-lopengl32",
+						"&&",
+						"$file_path/$file_base_name"
+					],
+					"name": "Single File",
+					"shell": true
+				}
+			],
+			"working_dir": "${file_path}"
+		}
+	],
 	"folders":
 	[
 		{
 			"path": "."
 		}
-	],
-	"build_systems":
-    [
-        {
-        	"name": "SDL Project",
-        	"cmd": ["g++", "$file", "-o", "$file_base_name", "src/*.cpp", "-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include",
-		            	"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib", "-lmingw32", "-lSDL2main", "-lSDL2", "-lopengl32", "&&", "$file_path/$file_base_name"],
-		    "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
-		    "working_dir": "${file_path}",
-		    "selector": "source.c, source.c++",
-		    "shell": true,
-
-		    "variants":
-		    [
-		    	 {
-		            "name": "Main",
-		            "cmd": ["g++", "C:/Projects/Mustard/main.cpp", "-o", "C:/Projects/Mustard/main", "C:/Projects/Mustard/src/*.cpp", "-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include",
-		            	"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib", "-lmingw32", "-lSDL2main", "-lSDL2", "-lopengl32", "&&", "C:/Projects/Mustard/main"],
-		            "shell": true
-		        },
-
-		        {
-		            "name": "Compile",
-		            "cmd": ["g++", "${file}", "-o", "${file_base_name}.exe", "src/*.cpp", "-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include", 
-		    				"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib", "-lmingw32", "-lSDL2main", "-lSDL2", "-lopengl32"],
-		            "shell": true
-		        }
-		    ]
-		}
-    ]
+	]
 }

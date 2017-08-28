@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
 		update(deltaTime);
 		render(displayWindow, context);
 		frameEnd = SDL_GetTicks();
-		deltaTime = frameEnd - frameStart;
+		deltaTime = frameEnd - frameStart; 
 	}
 
 	return 0;

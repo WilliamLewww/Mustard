@@ -123,6 +123,14 @@ void drawLine(Vector2 a, Vector2 b, int color[3]) {
 	glEnd();
 }
 
+void drawLineStrip(std::vector<Vector2> points, int color[3]) {
+	glBegin(GL_LINE_STRIP);
+	//glEnable(GL_LINE_SMOOTH);
+	glColor4f(convertColor(color[0]), convertColor(color[1]), convertColor(color[2]), 1);
+	for (int x = 0; x < points.size(); x++) { glVertex2f(points[x].x - (SCREENWIDTH / 2), points[x].y - (SCREENHEIGHT / 2)); }
+	glEnd();
+}
+
 void drawCircle(Vector2 position, float radius) {
 	glBegin(GL_LINE_LOOP);
 	glColor4f(1, 1, 1, 1);
