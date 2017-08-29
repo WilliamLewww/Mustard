@@ -57,9 +57,11 @@ void update(int elapsedTime) {
 void render(SDL_Window* window, SDL_GLContext context) {
 	SDL_GL_MakeCurrent(window, context);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glMatrixMode(GL_PROJECTION);
+	glMatrixMode(GL_MODELVIEW);
 
+	glPushMatrix();
 	joiner.draw();
+	glPopMatrix();
 
 	SDL_GL_SwapWindow(window);
 }

@@ -2,6 +2,7 @@
 #include "vector2.h"
 #include "geometry.h"
 #include "input.h"
+#include "camera.h"
 #include <cmath>
 
 struct Board {

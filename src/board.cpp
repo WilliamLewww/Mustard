@@ -72,6 +72,9 @@ void updateBoard(int elapsedTime) {
 		direction.Normalize();
 		board.position += (direction * deltaTimeS) * board.velocity;
 	}
+
+	cameraPosition.x = board.position.x;
+	cameraPosition.y = board.position.y;
 }
 
 void drawBoard() {

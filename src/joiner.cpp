@@ -1,8 +1,10 @@
 #include "joiner.h"
 
 void Joiner::initialize() {
-	board.position = Vector2(25, 120);
-	std::vector<Vector2> tempTrack = generateTrackRand(2, 5, 20, Vector2(0, 100));
+	initialPosition = Vector2((SCREENWIDTH / 2) - (board.length / 2), SCREENHEIGHT / 2);
+	board.position = initialPosition;
+
+	std::vector<Vector2> tempTrack = generateTrackRand(2, 5, 20, Vector2((SCREENWIDTH / 2) - 30, (SCREENHEIGHT / 2) - 20));
 	track.insert(track.end(), tempTrack.begin(), tempTrack.end());
 
 	tempTrack = duplicateTrack(track, 50);
@@ -20,6 +22,7 @@ void Joiner::update(int elapsedTime) {
 }
 
 void Joiner::draw() {
+	glTranslatef(-cameraPosition.x + initialPosition.x, -cameraPosition.y + initialPosition.y, 0);
 	drawBoard();
 	drawLineStrip(track, trackColor);
 	drawLineStrip(trackCompliment, trackColor);
