@@ -71,7 +71,7 @@
 			"file": "Separate Axis Theorem/main.cpp",
 			"settings":
 			{
-				"buffer_size": 2061,
+				"buffer_size": 2238,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -80,7 +80,7 @@
 			"file": "Separate Axis Theorem/src/vrectangle.cpp",
 			"settings":
 			{
-				"buffer_size": 1404,
+				"buffer_size": 1564,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -262,7 +262,7 @@
 			]
 		]
 	],
-	"build_varint": "Single File",
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 621.0,
@@ -274,12 +274,16 @@
 				"Git: Push"
 			],
 			[
-				"git comm",
+				"git co",
 				"Git: Commit"
 			],
 			[
 				"git add",
 				"Git: Add All"
+			],
+			[
+				"git comm",
+				"Git: Commit"
 			],
 			[
 				"git commi",
@@ -292,10 +296,6 @@
 			[
 				"install",
 				"Package Control: Install Package"
-			],
-			[
-				"git co",
-				"Git: Commit"
 			],
 			[
 				"git commit",
@@ -530,15 +530,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2061,
+						"buffer_size": 2238,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1576,
-								1576
+								1326,
+								1326
 							]
 						],
 						"settings":
@@ -548,7 +548,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2723.0,
+						"translation.y": 1885.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -560,15 +560,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1404,
+						"buffer_size": 1564,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								633,
-								633
+								1454,
+								1454
 							]
 						],
 						"settings":
@@ -578,7 +578,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 522.0,
+						"translation.y": 758.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,

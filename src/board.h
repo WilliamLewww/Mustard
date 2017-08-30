@@ -6,19 +6,11 @@
 #include <cmath>
 
 struct Board {
-	Vector2 position;
-	float length = 40, width = 10;
-
+	VRectangle rectangle;
 	float velocity = 0;
-	double rotation = 0;
 
 	double pushInterval = 1.0;
 	int turnSpeed = 75, pushSpeed = 50, breakSpeed = 100;
-
-	inline Vector2 topLeft() { return Vector2(position.x + length, position.y); }
-	inline Vector2 topRight() { return Vector2(position.x + length, position.y + width); }
-	inline Vector2 bottomLeft() { return Vector2(position.x, position.y); }
-	inline Vector2 bottomRight() { return Vector2(position.x, position.y + width); }
 };
 extern Board board;
 

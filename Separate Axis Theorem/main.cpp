@@ -57,13 +57,12 @@ void initialize() {
 }
 
 void update(int elapsedTime) {
-	if (std::find(keyList.begin(), keyList.end(), SDLK_LEFT) != keyList.end()) {
-		objectA.angle += 0.1;
-	}
-
-	if (std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) != keyList.end()) {
-		objectA.angle -= 0.1;
-	}
+	if (std::find(keyList.begin(), keyList.end(), SDLK_LEFT) != keyList.end()) { objectA.position.x -= 0.05; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) != keyList.end()) { objectA.position.x += 0.05; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_UP) != keyList.end()) { objectA.position.y -= 0.05; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_DOWN) != keyList.end()) { objectA.position.y += 0.05; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_z) != keyList.end()) { objectA.angle += 0.05; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_x) != keyList.end()) { objectA.angle -= 0.05; }
 }
 
 void render(SDL_Window* window, SDL_GLContext context) {
