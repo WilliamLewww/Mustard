@@ -7,11 +7,11 @@ public:
 
 	Vector2();
 	Vector2(double xArgs, double yArgs);
-	double Max();
-	double Min();
-	Vector2 Get();
-	Vector2 Normalize();
-	Vector2 Abs();
+	double max();
+	double min();
+	Vector2 get();
+	Vector2 normalize();
+	Vector2 vectorAbs();
 	Vector2 operator*(Vector2 vector);
 	Vector2 operator/(Vector2 vector);
 	Vector2 operator*(double value);

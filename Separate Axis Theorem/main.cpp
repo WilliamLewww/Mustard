@@ -47,18 +47,23 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-Vector2 position;
-int width, height;
-double angle;
-
+VRectangle objectA;
+int color[3];
 void initialize() {
-	position = Vector2(500, 500);
-	width = 40;
-	height = 10;
+	objectA = VRectangle(Vector2(250, 250), 50.0, 50.0, 0.0);
+	color[0] = 255;
+	color[1] = 0;
+	color[2] = 0;
 }
 
 void update(int elapsedTime) {
+	if (std::find(keyList.begin(), keyList.end(), SDLK_LEFT) != keyList.end()) {
+		objectA.angle += 0.1;
+	}
 
+	if (std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) != keyList.end()) {
+		objectA.angle -= 0.1;
+	}
 }
 
 void render(SDL_Window* window, SDL_GLContext context) {
@@ -66,7 +71,7 @@ void render(SDL_Window* window, SDL_GLContext context) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 
-	drawRect(position, width, height, angle);
+	drawRect(objectA);
 
 	SDL_GL_SwapWindow(window);
 }

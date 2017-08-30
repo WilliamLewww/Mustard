@@ -71,24 +71,16 @@
 			"file": "Separate Axis Theorem/main.cpp",
 			"settings":
 			{
-				"buffer_size": 1213,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Separate Axis Theorem/src/geometry.h",
-			"settings":
-			{
-				"buffer_size": 869,
+				"buffer_size": 2061,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Separate Axis Theorem/main.h",
+			"file": "Separate Axis Theorem/src/vrectangle.cpp",
 			"settings":
 			{
-				"buffer_size": 264,
+				"buffer_size": 1404,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -270,7 +262,7 @@
 			]
 		]
 	],
-	"build_varint": "",
+	"build_varint": "Single File",
 	"command_palette":
 	{
 		"height": 621.0,
@@ -412,29 +404,38 @@
 	[
 		"/C/Projects/Mustard",
 		"/C/Projects/Mustard/Separate Axis Theorem",
-		"/C/Projects/Mustard/Separate Axis Theorem/src",
-		"/C/Projects/Mustard/src"
+		"/C/Projects/Mustard/Separate Axis Theorem/src"
 	],
 	"file_history":
 	[
-		"/C/Projects/Mustard/project.sublime-project",
-		"/C/Projects/Mustard/Separate Axis Theorem/main.cpp",
+		"/C/Projects/Mustard/Separate Axis Theorem/src/vector2.cpp",
 		"/C/Projects/Mustard/Separate Axis Theorem/main.h",
+		"/C/Projects/Mustard/Separate Axis Theorem/src/geometry.cpp",
+		"/C/Projects/Mustard/Separate Axis Theorem/src/geometry.h",
+		"/C/Projects/Mustard/Separate Axis Theorem/src/vrectangle.h",
+		"/C/Projects/Mustard/Separate Axis Theorem/src/vrectangle.cpp",
+		"/C/Projects/Mustard/Separate Axis Theorem/main.cpp",
+		"/C/Projects/Mustard/Separate Axis Theorem/src/rectangle.cpp",
+		"/C/Projects/Mustard/Separate Axis Theorem/src/rectangle.h",
+		"/C/Projects/Mustard/src/vector2.h",
+		"/C/Projects/Mustard/src/vector2.cpp",
+		"/C/Projects/Mustard/Separate Axis Theorem/src/vector2.h",
+		"/C/Projects/Mustard/src/board.cpp",
+		"/C/Users/WilliamLew/Desktop/cmu.py",
+		"/C/Projects/Mustard/main.cpp",
+		"/C/Projects/Mustard/main.h",
+		"/C/Projects/Mustard/project.sublime-project",
 		"/C/Users/WilliamLew/Downloads/cs112_f17_linter.py",
 		"/C/Projects/Mustard/Separate Axis Theorem/geometry.h",
 		"/C/Projects/Mustard/Separate Axis Theorem/geometry.cpp",
-		"/C/Projects/Mustard/src/vector2.h",
 		"/C/Projects/Mustard/Separate Axis Theorem/vector2.h",
 		"/C/Projects/Mustard/src/joiner.cpp",
 		"/C/Projects/Mustard/src/joiner.h",
-		"/C/Projects/Mustard/main.h",
 		"/C/Projects/Mustard/src/environment.cpp",
 		"/C/Projects/Mustard/src/environment.h",
-		"/C/Projects/Mustard/src/board.cpp",
 		"/C/Users/WilliamLew/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
 		"/C/Projects/Mustard/src/input.h",
 		"/C/Projects/Mustard/src/geometry.cpp",
-		"/C/Projects/Mustard/main.cpp",
 		"/C/Projects/Mustard/src/camera.cpp",
 		"/C/Projects/Mustard/src/board.h",
 		"/C/Projects/Mustard/src/camera.h",
@@ -479,6 +480,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"angle",
+			"((",
+			"angle",
+			"degrees",
+			"angle",
+			"Rectangle",
+			"y",
+			"x",
 			"spacing",
 			"count",
 			"spacing",
@@ -521,15 +530,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1213,
+						"buffer_size": 2061,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								302,
-								302
+								1576,
+								1576
 							]
 						],
 						"settings":
@@ -539,7 +548,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2723.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -547,60 +556,32 @@
 				},
 				{
 					"buffer": 1,
-					"file": "Separate Axis Theorem/src/geometry.h",
+					"file": "Separate Axis Theorem/src/vrectangle.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 869,
+						"buffer_size": 1404,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								101,
-								101
+								633,
+								633
 							]
 						],
 						"settings":
 						{
 							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 522.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Separate Axis Theorem/main.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 264,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								264,
-								264
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
 					"type": "text"
 				}
 			]

@@ -10,18 +10,18 @@ Vector2::Vector2(double xArgs, double yArgs) {
 	y = yArgs;
 }
 
-Vector2 Vector2::Get() {
+Vector2 Vector2::get() {
 	return Vector2(x, y);
 }
 
-Vector2 Vector2::Abs() {
+Vector2 Vector2::vectorAbs() {
 	x = abs(x);
 	y = abs(y);
 
 	return *this;
 }
 
-double Vector2::Max() {
+double Vector2::max() {
 	if (x > y) {
 		return x;
 	}
@@ -29,7 +29,7 @@ double Vector2::Max() {
 	return y;
 }
 
-double Vector2::Min() {
+double Vector2::min() {
 	if (x < y) {
 		return x;
 	}
@@ -37,7 +37,7 @@ double Vector2::Min() {
 	return y;
 }
 
-Vector2 Vector2::Normalize() {
+Vector2 Vector2::normalize() {
 	// | a | = sqrt((ax * ax) + (ay * ay) + (az * az))
 	// x = ax / | a |
 	// y = ay / | a |

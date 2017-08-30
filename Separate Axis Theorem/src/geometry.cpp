@@ -1,4 +1,5 @@
 #include "geometry.h"
+static const double pi = 3.14159265359;
 
 double convertColor(int rgbValue) {
 	return (double)rgbValue / 255;
@@ -30,6 +31,33 @@ void drawEdgesOfRect(Vector2 position, int width, int height, double angle, int 
 		vectors[x].x *= width;
 		vectors[x].y *= height;
 		vectors[x] += Vector2(position.x, position.y);
+		vectors[x] -= Vector2(SCREENWIDTH / 2, SCREENHEIGHT / 2);
+
+		glVertex2d(vectors[x].x, vectors[x].y);
+	}
+	glEnd();
+	glPopMatrix();
+}
+
+void drawRect(VRectangle rectangle) {
+	Vector2 vectors[4]{
+		Vector2(0, 0),
+		Vector2(1, 0),
+		Vector2(1, 1),
+		Vector2(0, 1)
+	};
+
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glTranslatef(rectangle.position.x + (rectangle.width / 2) - (SCREENWIDTH / 2), rectangle.position.y + (rectangle.height / 2) - (SCREENHEIGHT / 2), 0);
+	glRotatef(-rectangle.angle, 0, 0, 1);
+	glTranslatef(-(rectangle.position.x + (rectangle.width / 2) - (SCREENWIDTH / 2)), -(rectangle.position.y + (rectangle.height / 2) - (SCREENHEIGHT / 2)), 0);
+	glBegin(GL_QUADS);
+	glColor4f(1, 1, 1, 1);
+	for (int x = 0; x < 4; x++) {
+		vectors[x].x *= rectangle.width;
+		vectors[x].y *= rectangle.height;
+		vectors[x] += Vector2(rectangle.position.x, rectangle.position.y);
 		vectors[x] -= Vector2(SCREENWIDTH / 2, SCREENHEIGHT / 2);
 
 		glVertex2d(vectors[x].x, vectors[x].y);

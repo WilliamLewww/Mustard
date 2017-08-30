@@ -59,7 +59,7 @@ void updateBoard(int elapsedTime) {
 		slideTimer += deltaTimeS;
 		Vector2 direction = Vector2((float)cos(((-board.rotation + ((board.rotation - startSlideAngle) / slideDistance)) * M_PI) / 180), 
 										   sin(((-board.rotation + ((board.rotation - startSlideAngle) / slideDistance)) * M_PI) / 180));
-		direction.Normalize();
+		direction.normalize();
 		if (slideTimer > 0.3) {
 			if (startSlideAngle > board.rotation) { board.rotation += 0.1 * (slideDistance * slideTimer / 2); startSlideAngle -= 0.1 * (slideDistance * slideTimer / 2); }
 			if (startSlideAngle < board.rotation) { board.rotation -= 0.1 * (slideDistance * slideTimer / 2); startSlideAngle += 0.1 * (slideDistance * slideTimer / 2); }
