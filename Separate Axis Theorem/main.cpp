@@ -1,5 +1,6 @@
 #include "main.h"
 
+void initialize();
 void update(int elapsedTime);
 void render(SDL_Window* window, SDL_GLContext context);
 
@@ -12,11 +13,22 @@ int main(int argc, char *argv[]) {
 	displayWindow = SDL_CreateWindow("Separate Axis Theorem", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREENWIDTH, SCREENHEIGHT, SDL_WINDOW_OPENGL);
 	context = SDL_GL_CreateContext(displayWindow);
 	glOrtho(-SCREENWIDTH / 2, SCREENWIDTH / 2, SCREENHEIGHT / 2, -SCREENHEIGHT / 2, 0, 1);
+	initialize();
+
+	SDL_Init(SDL_INIT_GAMECONTROLLER);
+	getController();
 
 	while (isRunning) {
+		removeInitialPress();
+		leftButtonPress = false;
+		middleMousePress = false;
+
 		while (SDL_PollEvent(&event)) {
 			if (event.type == SDL_QUIT)
 				isRunning = false;
+
+			getKeys(event);
+			getButtons(event);
 		}
 
 		if (deltaTime < 1 / 60) {
@@ -35,6 +47,16 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
+Vector2 position;
+int width, height;
+double angle;
+
+void initialize() {
+	position = Vector2(500, 500);
+	width = 40;
+	height = 10;
+}
+
 void update(int elapsedTime) {
 
 }
@@ -43,6 +65,8 @@ void render(SDL_Window* window, SDL_GLContext context) {
 	SDL_GL_MakeCurrent(window, context);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
+
+	drawRect(position, width, height, angle);
 
 	SDL_GL_SwapWindow(window);
 }

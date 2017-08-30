@@ -1,6 +1,7 @@
 #pragma once
 #include "src\vector2.h"
 #include "src\geometry.h"
+#include "src\input.h"
 #include <SDL2\SDL.h>
 #include <SDL2\SDL_opengl.h>
 #include <ctime>
