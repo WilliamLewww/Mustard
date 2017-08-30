@@ -71,6 +71,7 @@
 						"$file",
 						"-o",
 						"$file_base_name",
+						"src/*.cpp",
 						"-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include",
 						"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib",
 						"-lmingw32",

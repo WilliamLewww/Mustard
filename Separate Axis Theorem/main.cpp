@@ -1,15 +1,10 @@
-#include <SDL2\SDL.h>
-#include <SDL2\SDL_opengl.h>
+#include "main.h"
 
 void update(int elapsedTime);
 void render(SDL_Window* window, SDL_GLContext context);
 
-static const int SCREENWIDTH = 1600, SCREENHEIGHT = 900;
-static const double pi = 3.14159265359;
-
 SDL_Event event;
 SDL_GLContext context;
-SDL_Window* displayWindow;
 
 bool isRunning = true;
 int frameStart, frameEnd, deltaTime = 0;
@@ -41,6 +36,7 @@ int main(int argc, char *argv[]) {
 }
 
 void update(int elapsedTime) {
+
 }
 
 void render(SDL_Window* window, SDL_GLContext context) {
