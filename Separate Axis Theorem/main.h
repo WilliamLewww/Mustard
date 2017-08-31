@@ -7,5 +7,4 @@
 #include <ctime>
 
 static const int SCREENWIDTH = 1600, SCREENHEIGHT = 900;
-
 static SDL_Window* displayWindow;

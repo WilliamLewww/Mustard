@@ -1,5 +1,4 @@
 #include "vrectangle.h"
-static const double pi = 3.14159265359;
 
 VRectangle::VRectangle() {
 	position = Vector2(0,0);
@@ -22,22 +21,6 @@ VRectangle::VRectangle(Vector2 posArgs, double wArgs, double hArgs, double aArgs
 	angle = aArgs;
 }
 
-Vector2 VRectangle::topLeft() {
-	return Vector2((-width / 2) * cos((angle * pi) / 180) - (height / 2) * sin((angle * pi) / 180) + position.x + (width / 2),
-				   (width / 2) * sin((angle * pi) / 180) - (height / 2) * cos((angle * pi) / 180) + position.y + (height / 2));
-}
+bool VRectangle::checkCollision(VRectangle rectangle) {
 
-Vector2 VRectangle::topRight() {
-	return Vector2((width / 2) * cos((angle * pi) / 180) - (height / 2) * sin((angle * pi) / 180) + position.x + (width / 2),
-				   (-width / 2) * sin((angle * pi) / 180) - (height / 2) * cos((angle * pi) / 180) + position.y + (height / 2));
-}
-
-Vector2 VRectangle::bottomLeft() {
-	return Vector2((-width / 2) * cos((angle * pi) / 180) - (-height / 2) * sin((angle * pi) / 180) + position.x + (width / 2),
-				   (width / 2) * sin((angle * pi) / 180) - (-height / 2) * cos((angle * pi) / 180) + position.y + (height / 2));
-}
-
-Vector2 VRectangle::bottomRight() {
-	return Vector2((width / 2) * cos((angle * pi) / 180) - (-height / 2) * sin((angle * pi) / 180) + position.x + (width / 2),
-				   (-width / 2) * sin((angle * pi) / 180) - (-height / 2) * cos((angle * pi) / 180) + position.y + (height / 2));
 }
