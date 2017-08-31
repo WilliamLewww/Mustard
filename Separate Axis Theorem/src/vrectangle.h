@@ -41,5 +41,9 @@ public:
 		(pow(axisArgs.x, 2) + pow(axisArgs.y, 2))) * axisArgs.y);
 	};
 
+	inline double dotProduct(Vector2 projection, Vector2 axis) {
+		return (projection.x * axis.x) + (projection.y * axis.y);
+	};
+
 	bool checkCollision(VRectangle rectangle);
 };

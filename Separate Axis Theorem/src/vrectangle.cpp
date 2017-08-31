@@ -22,5 +22,8 @@ VRectangle::VRectangle(Vector2 posArgs, double wArgs, double hArgs, double aArgs
 }
 
 bool VRectangle::checkCollision(VRectangle rectangle) {
-
+	dotProduct(project(axisA(), topRight()), axisA());
+	dotProduct(project(axisA(), topLeft()), axisA());
+	dotProduct(project(axisA(), bottomRight()), axisA());
+	dotProduct(project(axisA(), bottomLeft()), axisA());
 }

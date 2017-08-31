@@ -68,8 +68,8 @@ void update(int elapsedTime) {
 	if (std::find(keyList.begin(), keyList.end(), SDLK_x) != keyList.end()) { objectA.angle -= 0.05; }
 
 	if (std::find(keyList.begin(), keyList.end(), SDLK_a) != keyList.end()) { 
-		std::cout << objectA.project(objectA.axisA(), objectA.topRight()) << std::endl;
-		std::cout << objectA.project(objectA.axisA(), objectB.topLeft()) << std::endl;
+		std::cout << objectA.dotProduct(objectA.project(objectA.axisA(), objectA.topRight()), objectA.axisA()) << std::endl;
+		std::cout << objectA.dotProduct(objectA.project(objectA.axisA(), objectB.topRight()), objectA.axisA()) << std::endl;
 	}
 }
 
