@@ -60,16 +60,15 @@ void initialize() {
 }
 
 void update(int elapsedTime) {
-	if (std::find(keyList.begin(), keyList.end(), SDLK_LEFT) != keyList.end()) { objectA.position.x -= 0.05; }
-	if (std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) != keyList.end()) { objectA.position.x += 0.05; }
-	if (std::find(keyList.begin(), keyList.end(), SDLK_UP) != keyList.end()) { objectA.position.y -= 0.05; }
-	if (std::find(keyList.begin(), keyList.end(), SDLK_DOWN) != keyList.end()) { objectA.position.y += 0.05; }
-	if (std::find(keyList.begin(), keyList.end(), SDLK_z) != keyList.end()) { objectA.angle += 0.05; }
-	if (std::find(keyList.begin(), keyList.end(), SDLK_x) != keyList.end()) { objectA.angle -= 0.05; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_LEFT) != keyList.end()) { objectA.position.x -= 0.1; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) != keyList.end()) { objectA.position.x += 0.1; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_UP) != keyList.end()) { objectA.position.y -= 0.1; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_DOWN) != keyList.end()) { objectA.position.y += 0.1; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_z) != keyList.end()) { objectA.angle += 0.1; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_x) != keyList.end()) { objectA.angle -= 0.1; }
 
 	if (std::find(keyList.begin(), keyList.end(), SDLK_a) != keyList.end()) { 
-		std::cout << objectA.dotProduct(objectA.project(objectA.axisA(), objectA.topRight()), objectA.axisA()) << std::endl;
-		std::cout << objectA.dotProduct(objectA.project(objectA.axisA(), objectB.topRight()), objectA.axisA()) << std::endl;
+		objectA.checkCollision(objectB);
 	}
 }
 

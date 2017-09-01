@@ -1,5 +1,7 @@
 #pragma once
 #include "vector2.h"
+#include <vector>
+#include <algorithm>  
 
 class VRectangle {
 public:
