@@ -3,10 +3,11 @@
 #include "vrectangle.h"
 #include "..\main.h"
 #include <SDL2\SDL_opengl.h>
+#include <vector>
 
 double convertColor(int rgbValue);
-void drawRect(VRectangle rectangle);
 void drawPoint(Vector2 position, int color[3]);
+void drawRect(VRectangle rectangle);
 void drawRect(Vector2 position, int width, int height);
 void drawRect(Vector2 position, int width, int height, double angle);
 void drawRect(Vector2 position, int width, int height, int color[3]);

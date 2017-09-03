@@ -2,7 +2,9 @@
 
 void Joiner::initialize() {
 	initialPosition = Vector2((SCREENWIDTH / 2) - (board.rectangle.width / 2), SCREENHEIGHT / 2);
+	board.initialPosition = initialPosition;
 	board.rectangle = VRectangle(initialPosition, 40, 10, 0);
+	cameraPosition.x = initialPosition.x;
 
 	std::vector<Vector2> tempTrack = generateTrackRand(2, 5, 20, Vector2((SCREENWIDTH / 2) - 30, (SCREENHEIGHT / 2) - 100));
 	track.insert(track.end(), tempTrack.begin(), tempTrack.end());
@@ -18,6 +20,15 @@ void Joiner::initialize() {
 
 void Joiner::update(int elapsedTime) {
 	updateBoard(elapsedTime);
+
+	for (int x = 0; x < track.size(); x++) {
+		if (board.rectangle.position.x + 100 > track[x].x) {
+			if (board.rectangle.position.x < track[x].x + 100) {
+				handleCollision(track[x], track[x + 1]);
+				handleCollision(trackCompliment[x], trackCompliment[x + 1]);
+			}
+		}
+	}
 }
 
 void Joiner::draw() {

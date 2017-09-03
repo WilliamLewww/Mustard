@@ -87,6 +87,34 @@ void updateBoard(int elapsedTime) {
 	cameraPosition.y = board.rectangle.position.y;
 }
 
+void resetBoard() {
+	board.rectangle.position = board.initialPosition;
+	cameraPosition = board.rectangle.position;
+	board.rectangle.angle = 0;
+	board.velocity = 0;
+
+	slideLeft = false;
+	slideRight = false;
+	recover = false;
+	startSlideAngle = 0;
+	slideDistance = 1;
+	pushTimer = board.pushInterval;
+	slideTimer = 0;
+}
+
+void handleCollision(Vector2* wall) {
+	if (board.rectangle.checkCollision(wall) == true) {
+		resetBoard();
+	}
+}
+
+void handleCollision(Vector2 pointA, Vector2 pointB) {
+	Vector2 tempVector[] = { pointA, pointB };
+	if (board.rectangle.checkCollision(tempVector) == true) {
+		resetBoard();
+	}
+}
+
 void drawBoard() {
 	int thaneColor[3] = { 255, 0, 0 };
 	int breakColor[3] = { 0, 255, 0 };

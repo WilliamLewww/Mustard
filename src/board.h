@@ -7,6 +7,7 @@
 
 struct Board {
 	VRectangle rectangle;
+	Vector2 initialPosition;
 	float velocity = 0;
 
 	double pushInterval = 1.0;
@@ -16,3 +17,6 @@ extern Board board;
 
 void updateBoard(int elapsedTime);
 void drawBoard();
+
+void handleCollision(Vector2* wall);
+void handleCollision(Vector2 pointA, Vector2 pointB);

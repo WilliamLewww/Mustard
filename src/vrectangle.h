@@ -35,17 +35,11 @@ public:
 	inline Vector2 axisA() { return topRight() - topLeft(); };
 	inline Vector2 axisB() { return topRight() - bottomRight(); };
 
-	inline Vector2 project(Vector2 axisArgs, Vector2 vertex) {
-		return Vector2(
-		(((vertex.x * axisArgs.x) + (vertex.y * axisArgs.y)) /
-		(pow(axisArgs.x, 2) + pow(axisArgs.y, 2))) * axisArgs.x, 
-		(((vertex.x * axisArgs.x) + (vertex.y * axisArgs.y)) /
-		(pow(axisArgs.x, 2) + pow(axisArgs.y, 2))) * axisArgs.y);
-	};
-
-	inline double dotProduct(Vector2 projection, Vector2 axis) {
-		return (projection.x * axis.x) + (projection.y * axis.y);
-	};
-
 	bool checkCollision(VRectangle rectangle);
+	bool checkCollision(Vector2* line);
 };
+
+Vector2 project(Vector2 axisArgs, Vector2 vertex);
+double dotProduct(Vector2 projection, Vector2 axis);
+std::vector<double> getProducts(VRectangle rectangle, Vector2 axis);
+std::vector<double> getProducts(Vector2* line, Vector2 axis);
