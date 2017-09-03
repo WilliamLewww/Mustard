@@ -49,6 +49,7 @@ int main(int argc, char *argv[]) {
 
 VRectangle objectA;
 VRectangle objectB;
+Vector2 objectC[] = { Vector2(600, 400), Vector2(700, 550) };
 
 int color[3];
 void initialize() {
@@ -59,6 +60,7 @@ void initialize() {
 	color[2] = 0;
 }
 
+Vector2 positionA, positionB;
 void update(int elapsedTime) {
 	if (std::find(keyList.begin(), keyList.end(), SDLK_LEFT) != keyList.end()) { objectA.position.x -= 0.1; }
 	if (std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) != keyList.end()) { objectA.position.x += 0.1; }
@@ -68,7 +70,7 @@ void update(int elapsedTime) {
 	if (std::find(keyList.begin(), keyList.end(), SDLK_x) != keyList.end()) { objectA.angle -= 0.1; }
 
 	if (std::find(keyList.begin(), keyList.end(), SDLK_a) != keyList.end()) { 
-		objectA.checkCollision(objectB);
+		std::cout << objectA.checkCollision(objectC) << std::endl;
 	}
 }
 
@@ -79,6 +81,7 @@ void render(SDL_Window* window, SDL_GLContext context) {
 
 	drawRect(objectA);
 	drawRect(objectB);
+	drawLine(objectC[0], objectC[1], color);
 
 	SDL_GL_SwapWindow(window);
 }

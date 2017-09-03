@@ -1,5 +1,4 @@
 #include "vrectangle.h"
-static const double pi = 3.14159265359;
 
 VRectangle::VRectangle() {
 	position = Vector2(0,0);
@@ -22,22 +21,43 @@ VRectangle::VRectangle(Vector2 posArgs, double wArgs, double hArgs, double aArgs
 	angle = aArgs;
 }
 
-Vector2 VRectangle::topLeft() {
-	return Vector2((-width / 2) * cos((angle * pi) / 180) - (height / 2) * sin((angle * pi) / 180) + position.x + (width / 2),
-				   (width / 2) * sin((angle * pi) / 180) - (height / 2) * cos((angle * pi) / 180) + position.y + (height / 2));
+// a_left <= b_right
+// a_right >= b_left
+// a_top <= b_bottom
+// a_bottom >= b_top
+std::vector<double> getProducts(VRectangle rectangle, Vector2 axis);
+bool VRectangle::checkCollision(VRectangle rectangle) {
+	std::vector<double> productsA, productsB;
+
+	productsA = getProducts(*this, axisA());
+	productsB = getProducts(rectangle, axisA());
+	if (productsB[0] > productsA[1] || productsB[1] < productsA[0]) return false;
+
+	productsA = getProducts(*this, axisB());
+	productsB = getProducts(rectangle, axisB());
+	if (productsB[0] > productsA[1] || productsB[1] < productsA[0]) return false;
+
+	productsA = getProducts(*this, rectangle.axisA());
+	productsB = getProducts(rectangle, rectangle.axisA());
+	if (productsB[0] > productsA[1] || productsB[1] < productsA[0]) return false;
+
+	productsA = getProducts(*this, rectangle.axisB());
+	productsB = getProducts(rectangle, rectangle.axisB());
+	if (productsB[0] > productsA[1] || productsB[1] < productsA[0]) return false;
+	
+	return true;
 }
 
-Vector2 VRectangle::topRight() {
-	return Vector2((width / 2) * cos((angle * pi) / 180) - (height / 2) * sin((angle * pi) / 180) + position.x + (width / 2),
-				   (-width / 2) * sin((angle * pi) / 180) - (height / 2) * cos((angle * pi) / 180) + position.y + (height / 2));
-}
+std::vector<double> getProducts(VRectangle rectangle, Vector2 axis) {
+	std::vector<double> products;
+	std::vector<double> minMax;
 
-Vector2 VRectangle::bottomLeft() {
-	return Vector2((-width / 2) * cos((angle * pi) / 180) - (-height / 2) * sin((angle * pi) / 180) + position.x + (width / 2),
-				   (width / 2) * sin((angle * pi) / 180) - (-height / 2) * cos((angle * pi) / 180) + position.y + (height / 2));
-}
+	products.push_back(rectangle.dotProduct(rectangle.project(axis, rectangle.topRight()), axis));
+	products.push_back(rectangle.dotProduct(rectangle.project(axis, rectangle.topLeft()), axis));
+	products.push_back(rectangle.dotProduct(rectangle.project(axis, rectangle.bottomRight()), axis));
+	products.push_back(rectangle.dotProduct(rectangle.project(axis, rectangle.bottomLeft()), axis));
 
-Vector2 VRectangle::bottomRight() {
-	return Vector2((width / 2) * cos((angle * pi) / 180) - (-height / 2) * sin((angle * pi) / 180) + position.x + (width / 2),
-				   (-width / 2) * sin((angle * pi) / 180) - (-height / 2) * cos((angle * pi) / 180) + position.y + (height / 2));
+	minMax.push_back(*std::min_element(products.begin(), products.end()));
+	minMax.push_back(*std::max_element(products.begin(), products.end()));
+	return minMax;
 }
