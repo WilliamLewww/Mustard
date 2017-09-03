@@ -53,6 +53,9 @@ void updateBoard(int elapsedTime) {
 	if (pushTimer <= board.pushInterval) { pushTimer += deltaTimeS; }
 	if (std::find(keyList.begin(), keyList.end(), SDLK_SPACE) != keyList.end() && std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) == keyList.end()) {
 		if (pushTimer >= board.pushInterval && board.velocity < 200 && slideLeft == false && slideRight == false && recover == false) { board.velocity += board.pushSpeed; pushTimer = 0; }
+		if (board.velocity > 200 && slideLeft == false && slideRight == false && recover == false) { 
+			board.velocity += 10 * deltaTimeS;
+		}
 	}
 	else { board.velocity += 30 * deltaTimeS; }
 	if (slideLeft == true || slideRight == true || recover == true) {
