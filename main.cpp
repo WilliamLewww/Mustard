@@ -1,5 +1,6 @@
 #include "main.h"
 
+void initialize();
 void update(int elapsedTime);
 void render(SDL_Window* window, SDL_GLContext context);
 
@@ -15,11 +16,7 @@ int main(int argc, char *argv[]) {
 	context = SDL_GL_CreateContext(displayWindow);
 	glOrtho(-SCREENWIDTH / 2, SCREENWIDTH / 2, SCREENHEIGHT / 2, -SCREENHEIGHT / 2, 0, 1);
 
-	SDL_Init(SDL_INIT_GAMECONTROLLER);
-	getController();
-
-	srand(time(NULL));
-	joiner.initialize();
+	initialize();
 
 	while (isRunning) {
 		removeInitialPress();
@@ -46,8 +43,18 @@ int main(int argc, char *argv[]) {
 		frameEnd = SDL_GetTicks();
 		deltaTime = frameEnd - frameStart; 
 	}
+	
+	SDL_Quit();
 
 	return 0;
+}
+
+void initialize() {
+	SDL_Init(SDL_INIT_GAMECONTROLLER);
+	getController();
+
+	srand(time(NULL));
+	joiner.initialize();
 }
 
 void update(int elapsedTime) {

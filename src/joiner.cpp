@@ -32,6 +32,7 @@ void Joiner::update(int elapsedTime) {
 }
 
 void Joiner::draw() {
+	gui.draw();
 	glTranslatef(-cameraPosition.x + initialPosition.x, -cameraPosition.y + initialPosition.y, 0);
 	drawLine(startLine[0], startLine[1], trackColor);
 	drawBoard();

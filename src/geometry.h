@@ -1,7 +1,7 @@
 #pragma once
 #include "vector2.h"
 #include "vrectangle.h"
-#include "..\main.h"
+#include "..\constants.h"
 #include <SDL2\SDL_opengl.h>
 #include <vector>
 

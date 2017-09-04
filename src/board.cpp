@@ -12,7 +12,7 @@ void updateBoard(int elapsedTime) {
 
 	if (std::find(keyList.begin(), keyList.end(), SDLK_LEFT) != keyList.end() && std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) == keyList.end()) {
 		if (board.velocity > board.turnSpeed) { 
-			board.velocity -= (board.breakSpeed / 5) * deltaTimeS;
+			board.velocity -= (board.breakSpeed / 4) * deltaTimeS;
 			board.rectangle.angle += (board.velocity * deltaTimeS) / 4;
 			board.rectangle.angle += (board.turnSpeed * deltaTimeS) + ((slideDistance - 1) / 250); 
 		}
@@ -22,7 +22,7 @@ void updateBoard(int elapsedTime) {
 	else { slideLeft = false; }
 	if (std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) != keyList.end() && std::find(keyList.begin(), keyList.end(), SDLK_LEFT) == keyList.end()) {
 		if (board.velocity > board.turnSpeed) { 
-			board.velocity -= (board.breakSpeed / 5) * deltaTimeS;
+			board.velocity -= (board.breakSpeed / 4) * deltaTimeS;
 			board.rectangle.angle -= (board.velocity * deltaTimeS) / 4;
 			board.rectangle.angle -= (board.turnSpeed * deltaTimeS) + ((slideDistance - 1) / 250); 
 		}
