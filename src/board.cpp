@@ -10,7 +10,9 @@ double pushTimer = board.pushInterval, slideTimer = 0;
 void updateBoard(int elapsedTime) {
 	float deltaTimeS = (float)(elapsedTime) / 1000;
 
-	if (std::find(keyList.begin(), keyList.end(), SDLK_LEFT) != keyList.end() && std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) == keyList.end()) {
+	if ((std::find(keyList.begin(), keyList.end(), SDLK_LEFT) != keyList.end() && 
+		std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) == keyList.end()) ||
+		controllerPad == 6 || controllerPad == 7 || controllerPad == 8) {
 		if (board.velocity > board.turnSpeed) { 
 			board.velocity -= (board.breakSpeed / 4) * deltaTimeS;
 			board.rectangle.angle += (board.velocity * deltaTimeS) / 4;
@@ -20,7 +22,9 @@ void updateBoard(int elapsedTime) {
 		if (slideLeft == true) { board.rectangle.angle += (board.velocity * deltaTimeS) / 5; }
 	}
 	else { slideLeft = false; }
-	if (std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) != keyList.end() && std::find(keyList.begin(), keyList.end(), SDLK_LEFT) == keyList.end()) {
+	if ((std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) != keyList.end() && 
+		std::find(keyList.begin(), keyList.end(), SDLK_LEFT) == keyList.end()) ||
+		controllerPad == 2 || controllerPad == 3 || controllerPad == 4) {
 		if (board.velocity > board.turnSpeed) { 
 			board.velocity -= (board.breakSpeed / 4) * deltaTimeS;
 			board.rectangle.angle -= (board.velocity * deltaTimeS) / 4;
@@ -30,14 +34,17 @@ void updateBoard(int elapsedTime) {
 		if (slideRight == true) { board.rectangle.angle -= (board.velocity * deltaTimeS) / 5;  }
 	}
 	else { slideRight = false; }
-	if (std::find(keyList.begin(), keyList.end(), SDLK_LALT) != keyList.end()) { slideLeft = true; slideRight = true; recover = true; }
-	if (std::find(keyList.begin(), keyList.end(), SDLK_LALT) == keyList.end()) { 
+	if (std::find(keyList.begin(), keyList.end(), SDLK_LALT) != keyList.end() ||
+		std::find(controllerList.begin(), controllerList.end(), SDL_CONTROLLER_BUTTON_B) != controllerList.end()) { slideLeft = true; slideRight = true; recover = true; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_LALT) == keyList.end() &&
+		std::find(controllerList.begin(), controllerList.end(), SDL_CONTROLLER_BUTTON_B) == controllerList.end()) { 
 		if (recover == false) {
 			startSlideAngle = board.rectangle.angle; slideDistance = 1; slideTimer = 0; 
 		}
 		slideLeft = false; slideRight = false; 
 	}
-	if (std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) != keyList.end()) {
+	if (std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) != keyList.end() ||
+		std::find(controllerList.begin(), controllerList.end(), SDL_CONTROLLER_BUTTON_X) != controllerList.end()) {
 		if (board.velocity - board.breakSpeed * deltaTimeS <= 0) { board.velocity = 0; }
 		else { board.velocity -= board.breakSpeed * deltaTimeS; }
 		if (recover == true) {
@@ -51,7 +58,8 @@ void updateBoard(int elapsedTime) {
 	}
 
 	if (pushTimer <= board.pushInterval) { pushTimer += deltaTimeS; }
-	if (std::find(keyList.begin(), keyList.end(), SDLK_SPACE) != keyList.end() && std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) == keyList.end()) {
+	if ((std::find(keyList.begin(), keyList.end(), SDLK_SPACE) != keyList.end() && std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) == keyList.end()) ||
+		(std::find(controllerList.begin(), controllerList.end(), SDL_CONTROLLER_BUTTON_A) != controllerList.end()) && std::find(controllerList.begin(), controllerList.end(), SDL_CONTROLLER_BUTTON_X) == controllerList.end()) {
 		if (pushTimer >= board.pushInterval && board.velocity < 200 && slideLeft == false && slideRight == false && recover == false) { board.velocity += board.pushSpeed; pushTimer = 0; }
 		if (board.velocity > 200 && slideLeft == false && slideRight == false && recover == false) {  board.velocity += 15 * deltaTimeS; }
 	}
