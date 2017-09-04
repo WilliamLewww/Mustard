@@ -11,12 +11,9 @@ public:
 
 	inline void updateSpeedometer(int velocity, int style) { 
 		switch (style) {
-			case 0:
-			speedometer.updateStyleA(velocity);
-			break;
-			case 1:
-			speedometer.updateStyleB(velocity);
-			break;
+			case 0: break;
+			case 1: speedometer.updateStyleA(velocity); break;
+			case 2: speedometer.updateStyleB(velocity); break;
 		}
 	};
 

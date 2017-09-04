@@ -19,7 +19,7 @@ void Joiner::initialize() {
 }
 
 void Joiner::update(int elapsedTime) {
-	gui.updateSpeedometer((int)board.velocity, 1);
+	gui.updateSpeedometer((int)board.velocity, 2);
 	updateBoard(elapsedTime);
 
 	for (int x = 0; x < track.size(); x++) {
