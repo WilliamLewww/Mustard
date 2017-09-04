@@ -69,10 +69,8 @@ void updateBoard(int elapsedTime) {
 		Vector2 direction = Vector2((float)cos(((-board.rectangle.angle + ((board.rectangle.angle - startSlideAngle) / slideDistance)) * M_PI) / 180), 
 										   sin(((-board.rectangle.angle + ((board.rectangle.angle - startSlideAngle) / slideDistance)) * M_PI) / 180));
 		direction.normalize();
-		if (slideTimer > 0.3) {
-			if (startSlideAngle > board.rectangle.angle) { board.rectangle.angle += 0.1 * (slideDistance * slideTimer / 2); startSlideAngle -= 0.1 * (slideDistance * slideTimer / 2); }
-			if (startSlideAngle < board.rectangle.angle) { board.rectangle.angle -= 0.1 * (slideDistance * slideTimer / 2); startSlideAngle += 0.1 * (slideDistance * slideTimer / 2); }
-		}
+		if (startSlideAngle > board.rectangle.angle) { board.rectangle.angle += board.recoverRate * (slideDistance * slideTimer / 2); startSlideAngle -= board.recoverRate * (slideDistance * slideTimer / 2); }
+		if (startSlideAngle < board.rectangle.angle) { board.rectangle.angle -= board.recoverRate * (slideDistance * slideTimer / 2); startSlideAngle += board.recoverRate * (slideDistance * slideTimer / 2); }
 
 		if (abs(board.rectangle.angle - startSlideAngle) < 45) { recover = false; }
 		board.rectangle.position += (direction * deltaTimeS) * board.velocity;
