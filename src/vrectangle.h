@@ -1,4 +1,5 @@
 #pragma once
+#include "../constants.h"
 #include "vector2.h"
 #include <vector>
 #include <algorithm>  
@@ -12,8 +13,6 @@ public:
 	VRectangle();
 	VRectangle(Vector2 posArgs, double wArgs, double hArgs);
 	VRectangle(Vector2 posArgs, double wArgs, double hArgs, double aArgs);
-
-	double pi = 3.14159265359;
 
 	inline Vector2 topLeft() {
 		return Vector2((-width / 2) * cos((angle * pi) / 180) - (height / 2) * sin((angle * pi) / 180) + position.x + (width / 2),

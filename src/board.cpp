@@ -53,11 +53,9 @@ void updateBoard(int elapsedTime) {
 	if (pushTimer <= board.pushInterval) { pushTimer += deltaTimeS; }
 	if (std::find(keyList.begin(), keyList.end(), SDLK_SPACE) != keyList.end() && std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) == keyList.end()) {
 		if (pushTimer >= board.pushInterval && board.velocity < 200 && slideLeft == false && slideRight == false && recover == false) { board.velocity += board.pushSpeed; pushTimer = 0; }
-		if (board.velocity > 200 && slideLeft == false && slideRight == false && recover == false) { 
-			board.velocity += 15 * deltaTimeS;
-		}
+		if (board.velocity > 200 && slideLeft == false && slideRight == false && recover == false) {  board.velocity += 15 * deltaTimeS; }
 	}
-	else { board.velocity += 30 * deltaTimeS; }
+	board.velocity += 15 * deltaTimeS;
 	if (slideLeft == true || slideRight == true || recover == true) {
 		slideTimer += deltaTimeS;
 		Vector2 direction = Vector2((float)cos(((-board.rectangle.angle + ((board.rectangle.angle - startSlideAngle) / slideDistance)) * M_PI) / 180), 
@@ -68,13 +66,11 @@ void updateBoard(int elapsedTime) {
 			if (startSlideAngle < board.rectangle.angle) { board.rectangle.angle -= 0.1 * (slideDistance * slideTimer / 2); startSlideAngle += 0.1 * (slideDistance * slideTimer / 2); }
 		}
 
-		if (abs(board.rectangle.angle - startSlideAngle) < 30) {
-			recover = false;
-		}
+		if (abs(board.rectangle.angle - startSlideAngle) < 45) { recover = false; }
 		board.rectangle.position += (direction * deltaTimeS) * board.velocity;
 		slideDistance += board.velocity * deltaTimeS / 100;
-		if (board.velocity - (board.breakSpeed / 2) * deltaTimeS <= 0) { board.velocity = 0; }
-		else { board.velocity -= (board.breakSpeed / 2) * deltaTimeS; }
+		if (board.velocity - (board.breakSpeed / 3) * deltaTimeS <= 0) { board.velocity = 0; }
+		else { board.velocity -= (board.breakSpeed / 3) * deltaTimeS; }
 
 		thaneLines.push_back(board.rectangle.topLeft());
 		thaneLines.push_back(board.rectangle.topRight());

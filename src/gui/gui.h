@@ -8,6 +8,9 @@ class GUI {
 	std::vector<GButton> buttonList;
 public:
 	void draw();
+
+	inline void updateSpeedometer(int velocity) { speedometer.update(velocity); };
+
 	inline void addButton(GButton button) { buttonList.push_back(button); };
 	inline void addButtonArrayX(Vector2 initialPosition, int width, int height, int spacingX, int count) { 
 		for (int x = 0; x < count; x++) {
