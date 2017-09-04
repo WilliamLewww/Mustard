@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"co",
+				"controllerPad"
+			],
+			[
 				"rec",
 				"rectangleList"
 			],
@@ -176,19 +180,11 @@
 	"buffers":
 	[
 		{
-			"file": "src/gui/gui.h",
+			"file": "src/board.h",
 			"settings":
 			{
-				"buffer_size": 993,
+				"buffer_size": 450,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/joiner.cpp",
-			"settings":
-			{
-				"buffer_size": 1594,
 				"line_ending": "Windows"
 			}
 		}
@@ -381,7 +377,7 @@
 				"Git: Push"
 			],
 			[
-				"git co",
+				"git comm",
 				"Git: Commit"
 			],
 			[
@@ -389,12 +385,12 @@
 				"Git: Add All"
 			],
 			[
-				"git a",
-				"Git: Add All"
+				"git co",
+				"Git: Commit"
 			],
 			[
-				"git comm",
-				"Git: Commit"
+				"git a",
+				"Git: Add All"
 			],
 			[
 				"git commi",
@@ -515,11 +511,11 @@
 	],
 	"file_history":
 	[
-		"/C/Projects/Mustard/src/vrectangle.h",
 		"/C/Projects/Mustard/src/joiner.cpp",
 		"/C/Projects/Mustard/src/gui/gui.h",
-		"/C/Projects/Mustard/src/gui/speedometer.h",
 		"/C/Projects/Mustard/src/board.cpp",
+		"/C/Projects/Mustard/src/vrectangle.h",
+		"/C/Projects/Mustard/src/gui/speedometer.h",
 		"/C/Projects/Mustard/src/gui/gbutton.h",
 		"/C/Projects/Mustard/src/gui/gui.cpp",
 		"/C/Projects/Mustard/project.sublime-project",
@@ -669,61 +665,30 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/gui/gui.h",
+					"file": "src/board.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 993,
+						"buffer_size": 450,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								332,
-								332
+								284,
+								284
 							]
 						],
 						"settings":
 						{
 							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 4.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/joiner.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1594,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1254,
-								1254
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

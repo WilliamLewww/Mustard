@@ -12,6 +12,7 @@ struct Board {
 
 	double pushInterval = 1.0;
 	int turnSpeed = 75, pushSpeed = 50, breakSpeed = 100;
+	int rollSpeed = 15, tuckSpeed = 15;
 };
 extern Board board;
 

@@ -61,9 +61,9 @@ void updateBoard(int elapsedTime) {
 	if ((std::find(keyList.begin(), keyList.end(), SDLK_SPACE) != keyList.end() && std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) == keyList.end()) ||
 		(std::find(controllerList.begin(), controllerList.end(), SDL_CONTROLLER_BUTTON_A) != controllerList.end()) && std::find(controllerList.begin(), controllerList.end(), SDL_CONTROLLER_BUTTON_X) == controllerList.end()) {
 		if (pushTimer >= board.pushInterval && board.velocity < 200 && slideLeft == false && slideRight == false && recover == false) { board.velocity += board.pushSpeed; pushTimer = 0; }
-		if (board.velocity > 200 && slideLeft == false && slideRight == false && recover == false) {  board.velocity += 15 * deltaTimeS; }
+		if (board.velocity > 200 && slideLeft == false && slideRight == false && recover == false) {  board.velocity += board.tuckSpeed * deltaTimeS; }
 	}
-	board.velocity += 15 * deltaTimeS;
+	board.velocity += board.rollSpeed * deltaTimeS;
 	if (slideLeft == true || slideRight == true || recover == true) {
 		slideTimer += deltaTimeS;
 		Vector2 direction = Vector2((float)cos(((-board.rectangle.angle + ((board.rectangle.angle - startSlideAngle) / slideDistance)) * M_PI) / 180), 
