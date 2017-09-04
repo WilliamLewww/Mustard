@@ -9,7 +9,16 @@ class GUI {
 public:
 	void draw();
 
-	inline void updateSpeedometer(int velocity) { speedometer.update(velocity); };
+	inline void updateSpeedometer(int velocity, int style) { 
+		switch (style) {
+			case 0:
+			speedometer.updateStyleA(velocity);
+			break;
+			case 1:
+			speedometer.updateStyleB(velocity);
+			break;
+		}
+	};
 
 	inline void addButton(GButton button) { buttonList.push_back(button); };
 	inline void addButtonArrayX(Vector2 initialPosition, int width, int height, int spacingX, int count) { 
