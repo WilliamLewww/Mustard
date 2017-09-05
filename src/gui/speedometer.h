@@ -2,7 +2,6 @@
 #include "..\vector2.h"
 #include "..\geometry.h"
 #include <vector>
-#include <iostream>
 
 class Speedometer {
 	int counter = 0;

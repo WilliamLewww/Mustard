@@ -1,10 +1,12 @@
 #pragma once
 #include "gbutton.h"
+#include "shoeometer.h"
 #include "speedometer.h"
 #include <vector>
 
 class GUI {
 	Speedometer speedometer;
+	Shoeometer shoeometer;
 	std::vector<GButton> buttonList;
 public:
 	void draw();
@@ -14,6 +16,13 @@ public:
 			case 0: break;
 			case 1: speedometer.updateStyleA(velocity); break;
 			case 2: speedometer.updateStyleB(velocity); break;
+		}
+	};
+
+	inline void updateShoeometer(int shoeLeft, int style) { 
+		switch (style) {
+			case 0: break;
+			case 1: shoeometer.updateStyleA(shoeLeft); break;
 		}
 	};
 

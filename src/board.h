@@ -14,6 +14,8 @@ struct Board {
 	double recoverRate = 0.1;
 	int turnSpeed = 75, pushSpeed = 50, breakSpeed = 100;
 	int rollSpeed = 15, tuckSpeed = 15;
+
+	double shoeLeft = 100;
 };
 extern Board board;
 

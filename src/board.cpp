@@ -48,13 +48,10 @@ void updateBoard(int elapsedTime) {
 		if (board.velocity - board.breakSpeed * deltaTimeS <= 0) { board.velocity = 0; }
 		else { board.velocity -= board.breakSpeed * deltaTimeS; }
 		if (recover == true) {
-			if (startSlideAngle > board.rectangle.angle) { board.rectangle.angle += 0.3 * (slideDistance * slideTimer / 2); startSlideAngle -= 0.3 * (slideDistance * slideTimer / 2); }
-			if (startSlideAngle < board.rectangle.angle) { board.rectangle.angle -= 0.3 * (slideDistance * slideTimer / 2); startSlideAngle += 0.3 * (slideDistance * slideTimer / 2); }
+			if (startSlideAngle > board.rectangle.angle) { board.rectangle.angle += board.recoverRate * 3 * (slideDistance * slideTimer / 2); startSlideAngle -= board.recoverRate * 3 * (slideDistance * slideTimer / 2); }
+			if (startSlideAngle < board.rectangle.angle) { board.rectangle.angle -= board.recoverRate * 3 * (slideDistance * slideTimer / 2); startSlideAngle += board.recoverRate * 3 * (slideDistance * slideTimer / 2); }
 		}
-		breakLines.push_back(board.rectangle.topLeft());
-		breakLines.push_back(board.rectangle.topRight());
 		breakLines.push_back(board.rectangle.bottomLeft());
-		breakLines.push_back(board.rectangle.bottomRight());
 	}
 
 	if (pushTimer <= board.pushInterval) { pushTimer += deltaTimeS; }
@@ -87,6 +84,11 @@ void updateBoard(int elapsedTime) {
 		Vector2 direction = Vector2((float)cos((-board.rectangle.angle * M_PI) / 180), sin((-board.rectangle.angle * M_PI) / 180));
 		direction.normalize();
 		board.rectangle.position += (direction * deltaTimeS) * board.velocity;
+	}
+
+	if (std::find(keyList.begin(), keyList.end(), SDLK_r) != keyList.end() || std::find(controllerList.begin(), controllerList.end(), SDL_CONTROLLER_BUTTON_Y) != controllerList.end()) {
+		thaneLines.clear();
+		breakLines.clear();
 	}
 
 	cameraPosition.x = board.rectangle.position.x;
