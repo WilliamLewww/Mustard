@@ -52,17 +52,19 @@ void updateBoard(int elapsedTime) {
 	}
 	if (std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) != keyList.end() ||
 		std::find(controllerList.begin(), controllerList.end(), SDL_CONTROLLER_BUTTON_X) != controllerList.end()) {
-		if (board.velocity - board.breakSpeed * deltaTimeS <= 0) { board.velocity = 0; }
-		else { board.velocity -= board.breakSpeed * deltaTimeS; }
-		if (recover == true) {
-			if (startSlideAngle > board.rectangle.angle) { board.rectangle.angle += board.recoverRate * 3 * (slideDistance * slideTimer / 2); startSlideAngle -= board.recoverRate * 3 * (slideDistance * slideTimer / 2); }
-			if (startSlideAngle < board.rectangle.angle) { board.rectangle.angle -= board.recoverRate * 3 * (slideDistance * slideTimer / 2); startSlideAngle += board.recoverRate * 3 * (slideDistance * slideTimer / 2); }
-		}
+		if (board.shoeLeft - (board.velocity * deltaTimeS) / board.shoeStrength < 0) { board.shoeLeft = 0; }
+		else { board.shoeLeft -= (board.velocity * deltaTimeS) / board.shoeStrength; }
+			
 		if (board.shoeLeft > 0) {
-			if (board.shoeLeft - (board.velocity * deltaTimeS) / board.shoeStrength < 0) { board.shoeLeft = 0; }
-			else { board.shoeLeft -= (board.velocity * deltaTimeS) / board.shoeStrength; }
+			if (board.velocity - board.breakSpeed * deltaTimeS <= 0) { board.velocity = 0; }
+			else { board.velocity -= board.breakSpeed * deltaTimeS; }
+			if (recover == true) {
+				if (startSlideAngle > board.rectangle.angle) { board.rectangle.angle += board.recoverRate * 3 * (slideDistance * slideTimer / 2); startSlideAngle -= board.recoverRate * 3 * (slideDistance * slideTimer / 2); }
+				if (startSlideAngle < board.rectangle.angle) { board.rectangle.angle -= board.recoverRate * 3 * (slideDistance * slideTimer / 2); startSlideAngle += board.recoverRate * 3 * (slideDistance * slideTimer / 2); }
+			}
+
+			breakLines.push_back(board.rectangle.bottomLeft());
 		}
-		breakLines.push_back(board.rectangle.bottomLeft());
 	}
 
 	if (pushTimer <= board.pushInterval) { pushTimer += deltaTimeS; }
@@ -82,8 +84,8 @@ void updateBoard(int elapsedTime) {
 		if (startSlideAngle > board.rectangle.angle) { board.rectangle.angle += board.recoverRate * (slideDistance * slideTimer / 2); startSlideAngle -= board.recoverRate * (slideDistance * slideTimer / 2); }
 		if (startSlideAngle < board.rectangle.angle) { board.rectangle.angle -= board.recoverRate * (slideDistance * slideTimer / 2); startSlideAngle += board.recoverRate * (slideDistance * slideTimer / 2); }
 
-		if (slideTimer > 0.15) {
-			if (abs(board.rectangle.angle - startSlideAngle) < 10) { recover = false; }
+		if (slideTimer > 0.2) {
+			if (abs(board.rectangle.angle - startSlideAngle) < 30) { recover = false; }
 		}
 		board.rectangle.position += (direction * deltaTimeS) * board.velocity;
 		slideDistance += board.velocity * deltaTimeS / 100;
