@@ -35,9 +35,9 @@ public:
 	inline void draw() {
 		drawLineStrip(top, color);
 		drawLineStrip(bottom, color);
-		for (int x = 0; x < top.size(); x += 2) {
-			drawLine(top[x], bottom[x], speedZoneColor(speedZone));
-		}
+		// for (int x = 0; x < top.size(); x += 5) {
+		// 	drawLine(top[x], bottom[x], speedZoneColor(speedZone));
+		// }
 	};
 
 	inline addVertex(Vector2 position, int spacing) {
@@ -45,8 +45,13 @@ public:
 		bottom.push_back(Vector2(position.x, position.y + spacing));
 	}
 
-	inline addVertexRelative(int offsetY, int spacingX, int spacingY) {
-		top.push_back(Vector2(top[top.size() - 1].x + spacingX, top[top.size() - 1].y + offsetY));
-		bottom.push_back(Vector2(top[top.size() - 2].x + spacingX, top[top.size() - 2].y + offsetY + spacingY));
+	inline addVertexRelative(int topY, int spacingX, int bottomY) {
+		top.push_back(Vector2(top[top.size() - 1].x + spacingX, top[top.size() - 1].y + topY));
+		bottom.push_back(Vector2(bottom[bottom.size() - 1].x + spacingX, bottom[bottom.size() - 1].y + bottomY));
+	}
+
+	inline addVertexComp(int topY, int spacingX) {
+		top.push_back(Vector2(top[top.size() - 1].x + spacingX, top[top.size() - 1].y + topY));
+		bottom.push_back(Vector2(bottom[bottom.size() - 1].x + spacingX, bottom[bottom.size() - 1].y + topY));
 	}
 };
