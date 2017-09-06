@@ -58,19 +58,19 @@ void randomLongTrack(Track& track, int difficulty, int count, int points, int po
 
 void randomUp(Track& track, int difficulty, int points, int pointSpacing) {
 	for (int x = 0; x < points; x++) { 
-		track.addVertexComp(-(rand() % (difficulty + 1)), pointSpacing);
+		track.addVertexComp(-(rand() % (difficulty + 1)), pointSpacing, 200, -20, 20);
 	}
 }
 
 void randomDown(Track& track, int difficulty, int points, int pointSpacing) {
 	for (int x = 0; x < points; x++) { 
-		track.addVertexComp(rand() % (difficulty + 1), pointSpacing);
+		track.addVertexComp(rand() % (difficulty + 1), pointSpacing, 200, -20, 20);
 	}
 }
 
 void random(Track& track, int difficulty, int points, int pointSpacing) {
 	for (int x = 0; x < points; x++) { 
-		track.addVertexComp((rand() % (difficulty + 1) - (difficulty / 2)), pointSpacing);
+		track.addVertexComp((rand() % (difficulty + 1) - (difficulty / 2)), pointSpacing, 200, -20, 20);
 	}
 }
 

@@ -54,4 +54,9 @@ public:
 		top.push_back(Vector2(top[top.size() - 1].x + spacingX, top[top.size() - 1].y + topY));
 		bottom.push_back(Vector2(bottom[bottom.size() - 1].x + spacingX, bottom[bottom.size() - 1].y + topY));
 	}
+
+	inline addVertexComp(int topY, int spacingX, int offsetY, int limitTop, int limitBottom) {
+		top.push_back(Vector2(top[top.size() - 1].x + spacingX, top[top.size() - 1].y + topY));
+		bottom.push_back(Vector2(bottom[bottom.size() - 1].x + spacingX, top[top.size() - 1].y + offsetY + (rand() % (limitBottom - limitTop + 1) - limitTop)));
+	}
 };
