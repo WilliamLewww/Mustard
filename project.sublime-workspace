@@ -207,33 +207,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/environment.cpp",
-			"settings":
-			{
-				"buffer_size": 1511,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/environment.h",
-			"settings":
-			{
-				"buffer_size": 134,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/track.h",
-			"settings":
-			{
-				"buffer_size": 1285,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "SDL Project",
 	"build_system_choices":
@@ -558,10 +531,10 @@
 	"file_history":
 	[
 		"/C/Projects/Mustard/src/track.h",
-		"/C/Projects/Mustard/src/joiner.h",
-		"/C/Projects/Mustard/src/environment.h",
-		"/C/Projects/Mustard/src/joiner.cpp",
 		"/C/Projects/Mustard/src/environment.cpp",
+		"/C/Projects/Mustard/src/environment.h",
+		"/C/Projects/Mustard/src/joiner.h",
+		"/C/Projects/Mustard/src/joiner.cpp",
 		"/C/Projects/Mustard/src/input.cpp",
 		"/C/Projects/Mustard/src/board.h",
 		"/C/Projects/Mustard/src/board.cpp",
@@ -648,6 +621,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"6",
 			");\n",
 			"25",
 			"100",
@@ -723,97 +697,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/environment.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1511,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								797,
-								797
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/environment.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 134,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								134,
-								134
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/track.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1285,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								781,
-								781
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1042.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		}
 	],

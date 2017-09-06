@@ -3,8 +3,8 @@
 #include "track.h"
 
 class World {
-	Track track;
 public:
+	Track track;
 	void generateTrack();
 	void draw();
 };

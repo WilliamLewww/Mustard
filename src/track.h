@@ -4,9 +4,6 @@
 #include <vector>
 
 class Track {
-	std::vector<Vector2> top;
-	std::vector<Vector2> bottom;
-
 	double speedZone = 15;
 	int color[3] = { 0, 0, 255 };
 
@@ -32,6 +29,9 @@ class Track {
 		}
 	}
 public:
+	std::vector<Vector2> top;
+	std::vector<Vector2> bottom;
+	
 	inline void draw() {
 		drawLineStrip(top, color);
 		drawLineStrip(bottom, color);

@@ -10,7 +10,8 @@ void genPresetC(Track& track);
 void genPresetD(Track& track);
 void randomLongTrack(Track& track, int difficulty, int count, int points, int pointSpacing);
 void World::generateTrack() {
-	track.addVertex(Vector2(SCREENWIDTH / 2, SCREENHEIGHT / 2 - 20), 45);
+	track.addVertex(Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 0);
+	track.addVertex(Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 45);
 	track.addVertexRelative(-25, 100, 25);
 	track.addVertexRelative(0, 150, 0);
 	track.addVertexRelative(-25, 50, 25);
