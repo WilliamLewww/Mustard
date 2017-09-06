@@ -4,6 +4,8 @@
 #include <vector>
 
 class Track {
+	std::vector<Vector2> speedZones;
+	
 	double speedZone = 15;
 	int color[3] = { 0, 0, 255 };
 

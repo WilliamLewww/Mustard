@@ -85,6 +85,16 @@ Vector2 Vector2::operator-=(Vector2 vector) {
 	return newVector;
 }
 
+Vector2 Vector2::operator*=(Vector2 vector) {
+	Vector2 newVector(x *= vector.x, y *= vector.y);
+	return newVector;
+}
+
+Vector2 Vector2::operator/=(Vector2 vector) {
+	Vector2 newVector(x /= vector.x, y /= vector.y);
+	return newVector;
+}
+
 bool Vector2::operator==(Vector2 vector) {
 	if (x == vector.x && y == vector.y) return true;
 	return false;
