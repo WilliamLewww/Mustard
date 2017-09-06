@@ -6,10 +6,9 @@
 #include "environment.h"
 
 class Joiner {
+	World world;
 	GUI gui;
 	Vector2 startLine[2];
-	std::vector<Vector2> track;
-	std::vector<Vector2> trackCompliment;
 	int trackColor[3] = { 0, 0, 255 };
 
 	Vector2 initialPosition;

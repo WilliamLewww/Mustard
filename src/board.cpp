@@ -80,7 +80,6 @@ void updateBoard(int elapsedTime) {
 										   sin(((-board.rectangle.angle + ((board.rectangle.angle - startSlideAngle) / slideDistance)) * M_PI) / 180));
 		direction.normalize();
 
-		//if (slideTimer > 0.15) { if (startSlideAngle < board.rectangle.angle + 15 && startSlideAngle > board.rectangle.angle - 15) { releaseSlide = true; } }
 		if (startSlideAngle > board.rectangle.angle) { board.rectangle.angle += board.recoverRate * (slideDistance * slideTimer / 2); startSlideAngle -= board.recoverRate * (slideDistance * slideTimer / 2); }
 		if (startSlideAngle < board.rectangle.angle) { board.rectangle.angle -= board.recoverRate * (slideDistance * slideTimer / 2); startSlideAngle += board.recoverRate * (slideDistance * slideTimer / 2); }
 
