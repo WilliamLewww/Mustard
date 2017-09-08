@@ -14,11 +14,13 @@ void Joiner::update(int elapsedTime) {
 	gui.updateShoeometer((int)board.shoeLeft, 1);
 	updateBoard(elapsedTime);
 
-	for (int x = 0; x < world.track.top.size(); x++) {
-		if (board.rectangle.position.x + 100 > world.track.top[x].x) {
-			if (board.rectangle.position.x < world.track.top[x].x + 100) {
-				handleCollision(world.track.top[x], world.track.top[x + 1]);
-				handleCollision(world.track.bottom[x], world.track.bottom[x + 1]);
+	for (std::vector<Vector2> rail : world.track.railList) {
+		for (int x = 0; x < rail.size(); x++) {
+			if (board.rectangle.position.x + 100 > rail[x].x) {
+				if (board.rectangle.position.x < rail[x].x + 100) {
+					handleCollision(rail[x], rail[x + 1]);
+					handleCollision(rail[x], rail[x + 1]);
+				}
 			}
 		}
 	}

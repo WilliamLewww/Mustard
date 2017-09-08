@@ -31,34 +31,40 @@ class Track {
 		}
 	}
 public:
-	std::vector<Vector2> top;
-	std::vector<Vector2> bottom;
+	std::vector<std::vector<Vector2>> railList;
 	
 	inline void draw() {
-		drawLineStrip(top, color);
-		drawLineStrip(bottom, color);
+		for (std::vector<Vector2> segment : railList) {
+			drawLineStrip(segment, color);
+		}
 		// for (int x = 0; x < top.size(); x += 5) {
 		// 	drawLine(top[x], bottom[x], speedZoneColor(speedZone));
 		// }
 	};
 
-	inline addVertex(Vector2 position, int spacing) {
-		top.push_back(Vector2(position.x, position.y));
-		bottom.push_back(Vector2(position.x, position.y + spacing));
-	}
+	inline addRail(int count) {
+		for (int x = 0; x < count; x++) {
+			railList.push_back(std::vector<Vector2>());
+		}
+	};
 
-	inline addVertexRelative(int topY, int spacingX, int bottomY) {
-		top.push_back(Vector2(top[top.size() - 1].x + spacingX, top[top.size() - 1].y + topY));
-		bottom.push_back(Vector2(bottom[bottom.size() - 1].x + spacingX, bottom[bottom.size() - 1].y + bottomY));
-	}
+	inline addVertex(int indexTop, int indexBottom, Vector2 position, int spacing) {
+		railList[indexTop].push_back(Vector2(position.x, position.y));
+		railList[indexBottom].push_back(Vector2(position.x, position.y + spacing));
+	};
 
-	inline addVertexComp(int topY, int spacingX) {
-		top.push_back(Vector2(top[top.size() - 1].x + spacingX, top[top.size() - 1].y + topY));
-		bottom.push_back(Vector2(bottom[bottom.size() - 1].x + spacingX, bottom[bottom.size() - 1].y + topY));
-	}
+	inline addVertexRelative(int indexTop, int indexBottom, int topY, int spacingX, int bottomY) {
+		railList[indexTop].push_back(Vector2(railList[indexTop][railList[indexTop].size() - 1].x + spacingX, railList[indexTop][railList[indexTop].size() - 1].y + topY));
+		railList[indexBottom].push_back(Vector2(railList[indexBottom][railList[indexBottom].size() - 1].x + spacingX, railList[indexBottom][railList[indexBottom].size() - 1].y + bottomY));
+	};
 
-	inline addVertexComp(int topY, int spacingX, int offsetY, int limitTop, int limitBottom) {
-		top.push_back(Vector2(top[top.size() - 1].x + spacingX, top[top.size() - 1].y + topY));
-		bottom.push_back(Vector2(bottom[bottom.size() - 1].x + spacingX, top[top.size() - 1].y + offsetY + (rand() % (limitBottom - limitTop + 1) - limitTop)));
-	}
+	inline addVertexComp(int indexTop, int indexBottom, int topY, int spacingX) {
+		railList[indexTop].push_back(Vector2(railList[indexTop][railList[indexTop].size() - 1].x + spacingX, railList[indexTop][railList[indexTop].size() - 1].y + topY));
+		railList[indexBottom].push_back(Vector2(railList[indexBottom][railList[indexBottom].size() - 1].x + spacingX, railList[indexBottom][railList[indexBottom].size() - 1].y + topY));
+	};
+
+	inline addVertexComp(int indexTop, int indexBottom, int topY, int spacingX, int offsetY, int limitTop, int limitBottom) {
+		railList[indexTop].push_back(Vector2(railList[indexTop][railList[indexTop].size() - 1].x + spacingX, railList[indexTop][railList[indexTop].size() - 1].y + topY));
+		railList[indexBottom].push_back(Vector2(railList[indexBottom][railList[indexBottom].size() - 1].x + spacingX, railList[indexTop][railList[indexTop].size() - 1].y + offsetY + (rand() % (limitBottom - limitTop + 1) - limitTop)));
+	};
 };

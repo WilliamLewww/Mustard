@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"var",
+				"var_B"
+			],
+			[
+				"cou",
+				"counter〔variable〕"
+			],
+			[
+				"coun",
+				"counter_prime"
+			],
+			[
+				"iter",
+				"iterator〔variable〕"
+			],
+			[
 				"gen",
 				"genPresetA"
 			],
@@ -208,11 +224,19 @@
 	"buffers":
 	[
 		{
-			"file": "src/track.h",
+			"file": "/C/Users/WilliamLew/Desktop/cmu/b.py",
 			"settings":
 			{
-				"buffer_size": 1902,
+				"buffer_size": 1777,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/WilliamLew/Desktop/cmu/a.py",
+			"settings":
+			{
+				"buffer_size": 3818,
 				"line_ending": "Windows"
 			}
 		}
@@ -405,12 +429,16 @@
 				"Git: Push"
 			],
 			[
-				"git co",
+				"git commi",
 				"Git: Commit"
 			],
 			[
 				"git add",
 				"Git: Add All"
+			],
+			[
+				"git co",
+				"Git: Commit"
 			],
 			[
 				"git comm",
@@ -419,10 +447,6 @@
 			[
 				"git a",
 				"Git: Add All"
-			],
-			[
-				"git commi",
-				"Git: Commit"
 			],
 			[
 				"insta",
@@ -534,15 +558,20 @@
 	"expanded_folders":
 	[
 		"/C/Projects/Mustard",
-		"/C/Projects/Mustard/src",
-		"/C/Projects/Mustard/src/gui"
+		"/C/Projects/Mustard/src"
 	],
 	"file_history":
 	[
-		"/C/Projects/Mustard/src/track.h",
-		"/C/Projects/Mustard/src/joiner.cpp",
+		"/C/Users/WilliamLew/Downloads/cs112_f17_week2_linter.py",
+		"/C/Users/WilliamLew/Downloads/lab2.py",
 		"/C/Projects/Mustard/src/environment.h",
 		"/C/Projects/Mustard/src/environment.cpp",
+		"/C/Projects/Mustard/src/vector2.cpp",
+		"/C/Projects/Mustard/src/vector2.h",
+		"/C/Projects/Mustard/src/vector3.h",
+		"/C/Projects/Mustard/src/vector3.cpp",
+		"/C/Projects/Mustard/src/track.h",
+		"/C/Projects/Mustard/src/joiner.cpp",
 		"/C/Projects/Mustard/src/joiner.h",
 		"/C/Projects/Mustard/src/input.cpp",
 		"/C/Projects/Mustard/src/board.h",
@@ -580,8 +609,6 @@
 		"/C/Projects/Mustard/Separate Axis Theorem/src/geometry.h",
 		"/C/Projects/Mustard/Separate Axis Theorem/src/rectangle.cpp",
 		"/C/Projects/Mustard/Separate Axis Theorem/src/rectangle.h",
-		"/C/Projects/Mustard/src/vector2.h",
-		"/C/Projects/Mustard/src/vector2.cpp",
 		"/C/Projects/Mustard/Separate Axis Theorem/src/vector2.h",
 		"/C/Users/WilliamLew/Downloads/cs112_f17_linter.py",
 		"/C/Projects/Mustard/Separate Axis Theorem/geometry.h",
@@ -630,6 +657,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Vector2",
 			"6",
 			");\n",
 			"25",
@@ -711,32 +739,62 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/track.h",
+					"file": "/C/Users/WilliamLew/Desktop/cmu/b.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1902,
+						"buffer_size": 1777,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								88,
-								88
+								420,
+								385
 							]
 						],
 						"settings":
 						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"auto_complete": false,
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 769.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/WilliamLew/Desktop/cmu/a.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3818,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1831,
+								1831
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2384.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
