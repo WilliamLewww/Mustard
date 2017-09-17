@@ -5,6 +5,7 @@
 class World {
 public:
 	Track track;
+	void generateSpeedZones();
 	void generateTrack();
 	void draw();
 };

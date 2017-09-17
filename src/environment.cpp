@@ -4,6 +4,13 @@ void World::draw() {
 	track.draw();
 }
 
+void World::generateSpeedZones() {
+	track.addSpeedZone(0, 0);
+	track.addSpeedZone(2, 10);
+	track.addSpeedZone(10, 25);
+	track.addSpeedZone(50, 50);
+}
+
 void genPresetA(Track& track);
 void genPresetB(Track& track);
 void genPresetC(Track& track);

@@ -7,12 +7,19 @@ void Joiner::initialize() {
 	cameraPosition.x = initialPosition.x;
 
 	world.generateTrack();
+	world.generateSpeedZones();
 }
 
 void Joiner::update(int elapsedTime) {
 	gui.updateSpeedometer((int)board.velocity, 2);
 	gui.updateShoeometer((int)board.shoeLeft, 1);
-	updateBoard(elapsedTime);
+	updateBoard(elapsedTime, speedZone);
+
+	for (Vector2 speed : world.track.speedZones) {
+		if (board.rectangle.position.x > world.track.railList[0][speed.x].x) {
+			speedZone = speed.y;
+		}
+	}
 
 	for (std::vector<Vector2> rail : world.track.railList) {
 		for (int x = 0; x < rail.size(); x++) {

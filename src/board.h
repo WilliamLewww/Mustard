@@ -13,7 +13,7 @@ struct Board {
 	double pushInterval = 1.0;
 	double recoverRate = 0.1;
 	int turnSpeed = 75, pushSpeed = 50, breakSpeed = 100;
-	int rollSpeed = 15, tuckSpeed = 15;
+	int rollSpeed = 10, tuckSpeed = 15;
 
 	double shoeLeftInitial = 100;
 	double shoeLeft = shoeLeftInitial;
@@ -21,7 +21,7 @@ struct Board {
 };
 extern Board board;
 
-void updateBoard(int elapsedTime);
+void updateBoard(int elapsedTime, int speedZone);
 void drawBoard();
 
 void handleCollision(Vector2* wall);

@@ -4,48 +4,40 @@
 #include <vector>
 
 class Track {
-	std::vector<Vector2> speedZones;
-	
-	double speedZone = 15;
 	int color[3] = { 0, 0, 255 };
 
 	inline int* speedZoneColor(int speed) {
 		int* tempColor = (int*)malloc(3 * sizeof(int));
-		if (speed < 10) {
-			tempColor[0] = 0;
-			tempColor[1] = 255;
-			tempColor[2] = 0;
-			return tempColor;
-		}
-		if (speed < 20) {
-			tempColor[0] = 255;
-			tempColor[1] = 153;
-			tempColor[2] = 0;
-			return tempColor;
-		}
-		if (speed < 30) {
-			tempColor[0] = 255;
-			tempColor[1] = 0;
-			tempColor[2] = 0;
-			return tempColor;
-		}
+		tempColor[0] = ((double)speed / 50) * 255;
+		tempColor[1] = ((50 - (double)speed) / 50) * 255;
+		tempColor[2] = 0;
+
+		return tempColor;
 	}
 public:
 	std::vector<std::vector<Vector2>> railList;
+	std::vector<Vector2> speedZones;
 	
 	inline void draw() {
 		for (std::vector<Vector2> segment : railList) {
 			drawLineStrip(segment, color);
 		}
-		// for (int x = 0; x < top.size(); x += 5) {
-		// 	drawLine(top[x], bottom[x], speedZoneColor(speedZone));
-		// }
+
+		for (Vector2 speedZone : speedZones) {
+			drawLine(Vector2(railList[0][speedZone.x].x, railList[0][speedZone.x].y),
+					 Vector2(railList[1][speedZone.x].x, railList[1][speedZone.x].y),
+					 speedZoneColor(speedZone.y));
+		}
 	};
 
 	inline addRail(int count) {
 		for (int x = 0; x < count; x++) {
 			railList.push_back(std::vector<Vector2>());
 		}
+	};
+
+	inline addSpeedZone(int node, int speed) {
+		speedZones.push_back(Vector2(node, speed));
 	};
 
 	inline addVertex(int indexTop, int indexBottom, Vector2 position, int spacing) {

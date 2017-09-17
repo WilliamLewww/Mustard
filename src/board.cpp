@@ -8,7 +8,7 @@ bool turnRight = false, turnLeft = false;
 bool slideLeft = false, slideRight = false, recover = false, releaseSlide = false;
 double startSlideAngle = 0, slideDistance = 1;
 double pushTimer = board.pushInterval, slideTimer = 0;
-void updateBoard(int elapsedTime) {
+void updateBoard(int elapsedTime, int speedZone) {
 	float deltaTimeS = (float)(elapsedTime) / 1000;
 
 	if ((std::find(keyList.begin(), keyList.end(), SDLK_LEFT) != keyList.end() && 
@@ -16,7 +16,7 @@ void updateBoard(int elapsedTime) {
 		controllerPad == 6 || controllerPad == 7 || controllerPad == 8) {
 		turnLeft = true;
 		if (board.velocity > board.turnSpeed) { 
-			board.velocity -= (board.breakSpeed / 4) * deltaTimeS;
+			board.velocity -= (board.breakSpeed / 6) * deltaTimeS;
 			board.rectangle.angle += (board.velocity * deltaTimeS) / 4;
 			board.rectangle.angle += (board.turnSpeed * deltaTimeS) + ((slideDistance - 1) / 250); 
 		}
@@ -29,7 +29,7 @@ void updateBoard(int elapsedTime) {
 		controllerPad == 2 || controllerPad == 3 || controllerPad == 4) {
 		turnRight = true;
 		if (board.velocity > board.turnSpeed) { 
-			board.velocity -= (board.breakSpeed / 4) * deltaTimeS;
+			board.velocity -= (board.breakSpeed / 6) * deltaTimeS;
 			board.rectangle.angle -= (board.velocity * deltaTimeS) / 4;
 			board.rectangle.angle -= (board.turnSpeed * deltaTimeS) + ((slideDistance - 1) / 250); 
 		}
@@ -73,7 +73,7 @@ void updateBoard(int elapsedTime) {
 		if (pushTimer >= board.pushInterval && board.velocity < 200 && slideLeft == false && slideRight == false && recover == false) { board.velocity += board.pushSpeed; pushTimer = 0; }
 		if (board.velocity > 200 && slideLeft == false && slideRight == false && recover == false) {  board.velocity += board.tuckSpeed * deltaTimeS; }
 	}
-	board.velocity += board.rollSpeed * deltaTimeS;
+	board.velocity += (board.rollSpeed + speedZone) * deltaTimeS;
 	if (slideLeft == true || slideRight == true || recover == true) {
 		slideTimer += deltaTimeS;
 		Vector2 direction = Vector2((float)cos(((-board.rectangle.angle + ((board.rectangle.angle - startSlideAngle) / slideDistance)) * M_PI) / 180), 

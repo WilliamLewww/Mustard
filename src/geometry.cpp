@@ -144,7 +144,7 @@ void drawLine(Vector2 a, Vector2 b) {
 
 void drawLine(Vector2 a, Vector2 b, int color[3]) {
 	glBegin(GL_LINES);
-	glColor4f(color[0], color[1], color[2], 1);
+	glColor4f(convertColor(color[0]), convertColor(color[1]), convertColor(color[2]), 1);
 	glVertex2f(a.x - (SCREENWIDTH / 2), a.y - (SCREENHEIGHT / 2));
 	glVertex2f(b.x - (SCREENWIDTH / 2), b.y - (SCREENHEIGHT / 2));
 	glEnd();
@@ -172,7 +172,7 @@ void drawCircle(Vector2 position, float radius) {
 
 void drawCircle(Vector2 position, float radius, int color[3]) {
 	glBegin(GL_LINE_LOOP);
-	glColor4f(color[0], color[1], color[2], 1);
+	glColor4f(convertColor(color[0]), convertColor(color[1]), convertColor(color[2]), 1);
 
 	double radians = pi / 180;
 	for (int i = 0; i < 360; i++) {

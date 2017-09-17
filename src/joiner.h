@@ -13,6 +13,8 @@ class Joiner {
 
 	Vector2 initialPosition;
 
+	int speedZone = 0;
+
 public:
 	void initialize();
 	void draw();
