@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"ini",
+				"initialSpeed"
+			],
+			[
+				"break",
+				"breakSpeed"
+			],
+			[
 				"speed",
 				"speedZone"
 			],
@@ -184,10 +192,6 @@
 				"objectB"
 			],
 			[
-				"break",
-				"breakLines"
-			],
-			[
 				"than",
 				"thaneLines"
 			],
@@ -243,7 +247,7 @@
 			"file": "src/environment.cpp",
 			"settings":
 			{
-				"buffer_size": 3128,
+				"buffer_size": 3350,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -253,7 +257,6 @@
 			"settings":
 			{
 				"buffer_size": 2635,
-				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -446,7 +449,7 @@
 				"Git: Push"
 			],
 			[
-				"git comm",
+				"git co",
 				"Git: Commit"
 			],
 			[
@@ -454,7 +457,7 @@
 				"Git: Add All"
 			],
 			[
-				"git co",
+				"git comm",
 				"Git: Commit"
 			],
 			[
@@ -579,14 +582,14 @@
 	],
 	"file_history":
 	[
+		"/C/Projects/Mustard/src/environment.cpp",
+		"/C/Projects/Mustard/src/track.h",
+		"/C/Projects/Mustard/src/board.h",
+		"/C/Projects/Mustard/src/board.cpp",
 		"/C/Projects/Mustard/src/joiner.h",
 		"/C/Projects/Mustard/src/environment.h",
 		"/C/Projects/Mustard/src/geometry.cpp",
 		"/C/Projects/Mustard/src/joiner.cpp",
-		"/C/Projects/Mustard/src/track.h",
-		"/C/Projects/Mustard/src/environment.cpp",
-		"/C/Projects/Mustard/src/board.cpp",
-		"/C/Projects/Mustard/src/board.h",
 		"/C/Users/WilliamLew/Desktop/cmu/a.py",
 		"/C/Users/WilliamLew/Desktop/cmu/b.py",
 		"/C/Users/WilliamLew/Downloads/cs112_f17_week2_linter.py",
@@ -769,25 +772,25 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3128,
+						"buffer_size": 3350,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1362,
-								1362
+								1396,
+								1396
 							]
 						],
 						"settings":
 						{
-							"git_gutter_is_enabled": true,
+							"git_gutter_is_enabled": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 561.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -806,26 +809,18 @@
 						"selection":
 						[
 							[
-								246,
-								248
-							],
-							[
-								276,
-								278
-							],
-							[
-								298,
-								300
+								396,
+								404
 							]
 						],
 						"settings":
 						{
-							"git_gutter_is_enabled": true,
+							"git_gutter_is_enabled": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 125.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,

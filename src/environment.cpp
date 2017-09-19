@@ -1,21 +1,22 @@
 #include "environment.h"
 
+void random(Track& track, int topIndex, int bottomIndex, int difficulty, int points, int pointSpacing);
+void randomUp(Track& track, int topIndex, int bottomIndex, int difficulty, int points, int pointSpacing);
+void randomDown(Track& track, int topIndex, int bottomIndex, int difficulty, int points, int pointSpacing);
+void randomLongTrack(Track& track, int topIndex, int bottomIndex, int difficulty, int count, int points, int pointSpacing);
+
+void randomSpeedZone(Track& track, int difficulty, int initialSpeed, int initialNode, int spacing);
+void randomGradualSpeedZone(Track& track, int difficulty, int min, int max, int initialSpeed, int initialNode, int spacing);
+
 void World::draw() {
 	track.draw();
 }
 
 void World::generateSpeedZones() {
 	track.addSpeedZone(0, 0);
-	track.addSpeedZone(2, 10);
-	track.addSpeedZone(10, 25);
-	track.addSpeedZone(50, 50);
+	randomGradualSpeedZone(track, 5, 0, 50, 5, 2, 1);
 }
 
-void genPresetA(Track& track);
-void genPresetB(Track& track);
-void genPresetC(Track& track);
-void genPresetD(Track& track);
-void randomLongTrack(Track& track, int topIndex, int bottomIndex, int difficulty, int count, int points, int pointSpacing);
 void World::generateTrack() {
 	track.addRail(2);
 	track.addVertex(0, 1, Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 0);
@@ -26,9 +27,34 @@ void World::generateTrack() {
 	randomLongTrack(track, 0, 1, 50, 100, 20, 20);
 }
 
-void random(Track& track, int topIndex, int bottomIndex, int difficulty, int points, int pointSpacing);
-void randomUp(Track& track, int topIndex, int bottomIndex, int difficulty, int points, int pointSpacing);
-void randomDown(Track& track, int topIndex, int bottomIndex, int difficulty, int points, int pointSpacing);
+void randomGradualSpeedZone(Track& track, int difficulty, int min, int max, int initialSpeed, int initialNode, int spacing) {
+	bool end = false;
+	int currentSpeed = initialSpeed;
+
+	for (int x = initialNode; x < track.railList[0].size(); x += spacing) {
+		if (currentSpeed + difficulty > max) {
+			currentSpeed += rand() % (max - currentSpeed + difficulty + 1) - difficulty;
+			end = true;
+		}
+		if (currentSpeed - difficulty < min && end == false) {
+			currentSpeed += rand() % (difficulty + min - currentSpeed + 1) - (min - currentSpeed);
+			end = true;
+		}
+		if (end == false) {
+			currentSpeed += rand() % (difficulty + difficulty + 1) - difficulty;
+		}
+
+		track.addSpeedZone(x, currentSpeed);
+		end = false;
+	}
+}
+
+void randomSpeedZone(Track& track, int difficulty, int initialSpeed, int initialNode, int spacing) {
+	for (int x = initialNode; x < track.railList[0].size(); x += spacing) {
+		track.addSpeedZone(x, (rand() % (difficulty + difficulty + 1) - difficulty) + initialSpeed);
+	}
+}
+
 void randomLongTrack(Track& track, int topIndex, int bottomIndex, int difficulty, int count, int points, int pointSpacing) {
 	for (int x = 0; x < count; x++) {
 		switch (rand() % 3) {
