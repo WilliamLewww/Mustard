@@ -4,16 +4,16 @@
 		"selected_items":
 		[
 			[
-				"ra",
-				"railList"
-			],
-			[
-				"spee",
+				"speed",
 				"speedZone"
 			],
 			[
-				"speed",
-				"speedZones"
+				"spee",
+				"speed"
+			],
+			[
+				"ra",
+				"railList"
 			],
 			[
 				"index",
@@ -240,35 +240,19 @@
 	"buffers":
 	[
 		{
-			"file": "src/track.h",
+			"file": "src/environment.cpp",
 			"settings":
 			{
-				"buffer_size": 2735,
+				"buffer_size": 3128,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/board.h",
+			"file": "src/track.h",
 			"settings":
 			{
-				"buffer_size": 605,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/environment.cpp",
-			"settings":
-			{
-				"buffer_size": 2977,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/board.cpp",
-			"settings":
-			{
-				"buffer_size": 7440,
+				"buffer_size": 2635,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -453,7 +437,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 784.0,
+		"height": 445.0,
 		"last_filter": "git push",
 		"selected_items":
 		[
@@ -462,7 +446,7 @@
 				"Git: Push"
 			],
 			[
-				"git co",
+				"git comm",
 				"Git: Commit"
 			],
 			[
@@ -470,11 +454,11 @@
 				"Git: Add All"
 			],
 			[
-				"git commi",
+				"git co",
 				"Git: Commit"
 			],
 			[
-				"git comm",
+				"git commi",
 				"Git: Commit"
 			],
 			[
@@ -566,7 +550,7 @@
 				"Install Package Control"
 			]
 		],
-		"width": 840.0
+		"width": 992.0
 	},
 	"console":
 	{
@@ -596,21 +580,22 @@
 	"file_history":
 	[
 		"/C/Projects/Mustard/src/joiner.h",
+		"/C/Projects/Mustard/src/environment.h",
+		"/C/Projects/Mustard/src/geometry.cpp",
+		"/C/Projects/Mustard/src/joiner.cpp",
 		"/C/Projects/Mustard/src/track.h",
 		"/C/Projects/Mustard/src/environment.cpp",
-		"/C/Projects/Mustard/src/joiner.cpp",
+		"/C/Projects/Mustard/src/board.cpp",
+		"/C/Projects/Mustard/src/board.h",
 		"/C/Users/WilliamLew/Desktop/cmu/a.py",
 		"/C/Users/WilliamLew/Desktop/cmu/b.py",
 		"/C/Users/WilliamLew/Downloads/cs112_f17_week2_linter.py",
 		"/C/Users/WilliamLew/Downloads/lab2.py",
-		"/C/Projects/Mustard/src/environment.h",
 		"/C/Projects/Mustard/src/vector2.cpp",
 		"/C/Projects/Mustard/src/vector2.h",
 		"/C/Projects/Mustard/src/vector3.h",
 		"/C/Projects/Mustard/src/vector3.cpp",
 		"/C/Projects/Mustard/src/input.cpp",
-		"/C/Projects/Mustard/src/board.h",
-		"/C/Projects/Mustard/src/board.cpp",
 		"/C/Projects/Mustard/constants.h",
 		"/C/Projects/Mustard/src/gui/gui.cpp",
 		"/C/Projects/Mustard/src/gui/gui.h",
@@ -621,7 +606,6 @@
 		"/C/Projects/Mustard/src/gui/gbutton.h",
 		"/C/Projects/Mustard/project.sublime-project",
 		"/C/Projects/Mustard/src/geometry.h",
-		"/C/Projects/Mustard/src/geometry.cpp",
 		"/C/Projects/Mustard/main.h",
 		"/C/Projects/Mustard/src/constants.h",
 		"/C/Projects/Mustard/src/gbutton.h",
@@ -692,6 +676,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"50",
 			"top",
 			"bottom",
 			"top",
@@ -780,49 +765,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/track.h",
+					"file": "src/environment.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2735,
+						"buffer_size": 3128,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								658,
-								658
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 601.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/board.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 605,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								439,
-								439
+								1362,
+								1362
 							]
 						],
 						"settings":
@@ -835,24 +790,32 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/environment.cpp",
-					"semi_transient": true,
+					"buffer": 1,
+					"file": "src/track.h",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2977,
+						"buffer_size": 2635,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								475,
-								475
+								246,
+								248
+							],
+							[
+								276,
+								278
+							],
+							[
+								298,
+								300
 							]
 						],
 						"settings":
@@ -866,36 +829,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/board.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7440,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1364,
-								1364
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
 					"type": "text"
 				}
 			]

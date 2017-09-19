@@ -88,8 +88,10 @@ void updateBoard(int elapsedTime, int speedZone) {
 		}
 		board.rectangle.position += (direction * deltaTimeS) * board.velocity;
 		slideDistance += board.velocity * deltaTimeS / 100;
-		if (board.velocity - (board.breakSpeed / 3) * deltaTimeS <= 0) { board.velocity = 0; }
-		else { board.velocity -= (board.breakSpeed / 3) * deltaTimeS; }
+		
+		double difference = abs(board.rectangle.angle - startSlideAngle) + (board.breakSpeed / 5);
+		if (board.velocity - difference * deltaTimeS <= 0) { board.velocity = 0; }
+		else { board.velocity -= difference * deltaTimeS; }
 
 		thaneLines.push_back(board.rectangle.topLeft());
 		thaneLines.push_back(board.rectangle.topRight());
