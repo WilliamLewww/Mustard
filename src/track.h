@@ -26,7 +26,7 @@ public:
 		for (Vector2 speedZone : speedZones) {
 			drawLine(Vector2(railList[0][speedZone.x].x, railList[0][speedZone.x].y),
 					 Vector2(railList[1][speedZone.x].x, railList[1][speedZone.x].y),
-					 speedZoneColor(speedZone.y));
+					 speedZoneColor(speedZone.y), 100);
 		}
 	};
 

@@ -150,6 +150,14 @@ void drawLine(Vector2 a, Vector2 b, int color[3]) {
 	glEnd();
 }
 
+void drawLine(Vector2 a, Vector2 b, int color[3], int alpha) {
+	glBegin(GL_LINES);
+	glColor4f(convertColor(color[0]), convertColor(color[1]), convertColor(color[2]), convertColor(alpha));
+	glVertex2f(a.x - (SCREENWIDTH / 2), a.y - (SCREENHEIGHT / 2));
+	glVertex2f(b.x - (SCREENWIDTH / 2), b.y - (SCREENHEIGHT / 2));
+	glEnd();
+}
+
 void drawLineStrip(std::vector<Vector2> points, int color[3]) {
 	glBegin(GL_LINE_STRIP);
 	//glEnable(GL_LINE_SMOOTH);

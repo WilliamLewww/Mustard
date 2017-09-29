@@ -244,19 +244,10 @@
 	"buffers":
 	[
 		{
-			"file": "src/environment.cpp",
+			"file": "src/board.h",
 			"settings":
 			{
-				"buffer_size": 3350,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/track.h",
-			"settings":
-			{
-				"buffer_size": 2635,
+				"buffer_size": 620,
 				"line_ending": "Windows"
 			}
 		}
@@ -582,12 +573,12 @@
 	],
 	"file_history":
 	[
-		"/C/Projects/Mustard/src/environment.cpp",
 		"/C/Projects/Mustard/src/track.h",
+		"/C/Projects/Mustard/src/environment.h",
+		"/C/Projects/Mustard/src/environment.cpp",
 		"/C/Projects/Mustard/src/board.h",
 		"/C/Projects/Mustard/src/board.cpp",
 		"/C/Projects/Mustard/src/joiner.h",
-		"/C/Projects/Mustard/src/environment.h",
 		"/C/Projects/Mustard/src/geometry.cpp",
 		"/C/Projects/Mustard/src/joiner.cpp",
 		"/C/Users/WilliamLew/Desktop/cmu/a.py",
@@ -665,7 +656,7 @@
 	],
 	"find":
 	{
-		"height": 54.0
+		"height": 56.0
 	},
 	"find_in_files":
 	{
@@ -679,6 +670,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"[0]",
+			"[1]",
+			"min",
 			"50",
 			"top",
 			"bottom",
@@ -768,62 +762,32 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/environment.cpp",
-					"semi_transient": false,
+					"file": "src/board.h",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 3350,
+						"buffer_size": 620,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1396,
-								1396
+								226,
+								226
 							]
 						],
 						"settings":
 						{
-							"git_gutter_is_enabled": false,
+							"git_gutter_is_enabled": true,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 561.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/track.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2635,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								396,
-								404
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": false,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 125.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -831,7 +795,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 54.0
+		"height": 56.0
 	},
 	"input":
 	{
@@ -876,7 +840,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 100.0
+		"height": 104.0
 	},
 	"save_all_on_build": true,
 	"select_file":

@@ -53,6 +53,9 @@ void initialize() {
 	SDL_Init(SDL_INIT_GAMECONTROLLER);
 	getController();
 
+	glEnable(GL_BLEND); 
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	srand(time(NULL));
 	joiner.initialize();
 }
