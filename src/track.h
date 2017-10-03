@@ -1,6 +1,7 @@
 #pragma once
 #include "vector2.h"
 #include "geometry.h"
+#include "camera.h"
 #include <vector>
 
 class Track {
@@ -17,16 +18,32 @@ class Track {
 public:
 	std::vector<std::vector<Vector2>> railList;
 	std::vector<Vector2> speedZones;
+
+	Vector2 visibleRange = Vector2(0,0);
+
+	inline resetVisibleRange() { visibleRange = Vector2(0,0); }
+
+	inline setVisibleRange() {
+		for (int x = visibleRange.x; x < railList[0].size(); x++) {
+			if (railList[0][x].x < visibleFrame.sLeft()) {  visibleRange.x += 1; }
+			if (railList[0][x].x < visibleFrame.sRight()) { visibleRange.y = x; }
+			else { break; }
+		}
+	};
 	
 	inline void draw() {
+		setVisibleRange();
+
 		for (std::vector<Vector2> segment : railList) {
-			drawLineStrip(segment, color);
+			drawLineStrip(std::vector<Vector2>(segment.begin() + visibleRange.x, segment.begin() + visibleRange.y), color);
 		}
 
 		for (Vector2 speedZone : speedZones) {
-			drawLine(Vector2(railList[0][speedZone.x].x, railList[0][speedZone.x].y),
-					 Vector2(railList[1][speedZone.x].x, railList[1][speedZone.x].y),
-					 speedZoneColor(speedZone.y), 100);
+			if (railList[0][speedZone.x].x < visibleFrame.sRight() && railList[0][speedZone.x].x > visibleFrame.sLeft()) {
+				drawLine(Vector2(railList[0][speedZone.x].x, railList[0][speedZone.x].y),
+						 Vector2(railList[1][speedZone.x].x, railList[1][speedZone.x].y),
+						 speedZoneColor(speedZone.y), 100);
+			}
 		}
 	};
 

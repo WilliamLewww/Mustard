@@ -11,6 +11,8 @@ void Joiner::initialize() {
 }
 
 void Joiner::update(int elapsedTime) {
+	visibleFrame.position.x = cameraPosition.x - (SCREENWIDTH / 2);
+
 	gui.updateSpeedometer((int)board.velocity, 2);
 	gui.updateShoeometer((int)board.shoeLeft, 1);
 	updateBoard(elapsedTime, speedZone);
@@ -25,6 +27,7 @@ void Joiner::update(int elapsedTime) {
 		for (int x = 0; x < rail.size(); x++) {
 			if (board.rectangle.position.x + 100 > rail[x].x) {
 				if (board.rectangle.position.x < rail[x].x + 100) {
+					world.track.resetVisibleRange();
 					handleCollision(rail[x], rail[x + 1]);
 					handleCollision(rail[x], rail[x + 1]);
 				}

@@ -243,14 +243,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/board.h",
-			"settings":
-			{
-				"buffer_size": 620,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "SDL Project",
 	"build_system_choices":
@@ -568,20 +560,21 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Projects/Mustard",
-		"/C/Projects/Mustard/src"
+		"/C/Projects/Mustard"
 	],
 	"file_history":
 	[
+		"/C/Users/WilliamLew/Desktop/cmu/a.py",
+		"/C/Projects/Mustard/src/geometry.h",
+		"/C/Projects/Mustard/src/geometry.cpp",
+		"/C/Projects/Mustard/main.cpp",
 		"/C/Projects/Mustard/src/track.h",
 		"/C/Projects/Mustard/src/environment.h",
 		"/C/Projects/Mustard/src/environment.cpp",
 		"/C/Projects/Mustard/src/board.h",
 		"/C/Projects/Mustard/src/board.cpp",
 		"/C/Projects/Mustard/src/joiner.h",
-		"/C/Projects/Mustard/src/geometry.cpp",
 		"/C/Projects/Mustard/src/joiner.cpp",
-		"/C/Users/WilliamLew/Desktop/cmu/a.py",
 		"/C/Users/WilliamLew/Desktop/cmu/b.py",
 		"/C/Users/WilliamLew/Downloads/cs112_f17_week2_linter.py",
 		"/C/Users/WilliamLew/Downloads/lab2.py",
@@ -595,11 +588,9 @@
 		"/C/Projects/Mustard/src/gui/gui.h",
 		"/C/Projects/Mustard/src/gui/speedometer.h",
 		"/C/Projects/Mustard/src/gui/shoeometer.h",
-		"/C/Projects/Mustard/main.cpp",
 		"/C/Projects/Mustard/src/vrectangle.h",
 		"/C/Projects/Mustard/src/gui/gbutton.h",
 		"/C/Projects/Mustard/project.sublime-project",
-		"/C/Projects/Mustard/src/geometry.h",
 		"/C/Projects/Mustard/main.h",
 		"/C/Projects/Mustard/src/constants.h",
 		"/C/Projects/Mustard/src/gbutton.h",
@@ -757,39 +748,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/board.h",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 620,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								226,
-								226
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],

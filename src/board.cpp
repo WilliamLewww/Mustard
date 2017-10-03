@@ -148,6 +148,6 @@ void drawBoard() {
 	
 	drawRect(board.rectangle.position, board.rectangle.width, board.rectangle.height, board.rectangle.angle);
 
-	for (Vector2 line : thaneLines) { drawPoint(line, thaneColor); }
-	for (Vector2 line : breakLines) { drawPoint(line, breakColor); }
+	for (Vector2 line : thaneLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawPoint(line, thaneColor); }}
+	for (Vector2 line : breakLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawPoint(line, breakColor); }}
 }

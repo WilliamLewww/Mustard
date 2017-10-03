@@ -14,6 +14,11 @@ public:
 	VRectangle(Vector2 posArgs, double wArgs, double hArgs);
 	VRectangle(Vector2 posArgs, double wArgs, double hArgs, double aArgs);
 
+	inline double sLeft() { return position.x; };
+	inline double sRight() { return position.x + width; };
+	inline double sTop() { return position.y; };
+	inline double sBottom() { return position.y + height; };
+
 	inline Vector2 topLeft() {
 		return Vector2((-width / 2) * cos((angle * pi) / 180) - (height / 2) * sin((angle * pi) / 180) + position.x + (width / 2),
 				   (width / 2) * sin((angle * pi) / 180) - (height / 2) * cos((angle * pi) / 180) + position.y + (height / 2));
