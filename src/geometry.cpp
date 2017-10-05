@@ -166,6 +166,14 @@ void drawLineStrip(std::vector<Vector2> points, int color[3]) {
 	glEnd();
 }
 
+void drawPolygon(std::vector<Vector2> points, int color[3], int alpha) {
+	glBegin(GL_POLYGON);
+	//glEnable(GL_LINE_SMOOTH);
+	glColor4f(convertColor(color[0]), convertColor(color[1]), convertColor(color[2]), convertColor(alpha));
+	for (int x = 0; x < points.size(); x++) { glVertex2f(points[x].x - (SCREENWIDTH / 2), points[x].y - (SCREENHEIGHT / 2)); }
+	glEnd();
+}
+
 void drawCircle(Vector2 position, float radius) {
 	glBegin(GL_LINE_LOOP);
 	glColor4f(1, 1, 1, 1);

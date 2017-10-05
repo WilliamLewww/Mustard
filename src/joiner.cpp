@@ -11,7 +11,7 @@ void Joiner::initialize() {
 }
 
 void Joiner::update(int elapsedTime) {
-	visibleFrame.position.x = cameraPosition.x - (SCREENWIDTH / 2);
+	visibleFrame.position.x = cameraPosition.x - (SCREENWIDTH2 / 2);
 
 	gui.updateSpeedometer((int)board.velocity, 2);
 	gui.updateShoeometer((int)board.shoeLeft, 1);

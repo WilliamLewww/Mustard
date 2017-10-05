@@ -19,13 +19,37 @@ public:
 	std::vector<std::vector<Vector2>> railList;
 	std::vector<Vector2> speedZones;
 
+	std::vector<std::vector<Vector2>> roadPolygonList;
+
 	Vector2 visibleRange = Vector2(0,0);
 
-	inline resetVisibleRange() { visibleRange = Vector2(0,0); }
+	inline resetVisibleRange() { visibleRange = Vector2(0,0); roadPolygonList.clear(); }
+
+	inline void generateGroundPolygons() {
+		for (int x = visibleRange.x; x < visibleRange.y; x++) {
+			std::vector<Vector2> tempPolygon;
+			if (x > 0 && (roadPolygonList.size() == 0 || roadPolygonList[roadPolygonList.size() - 1][0].x < railList[0][x].x)) {
+				tempPolygon.emplace_back(railList[0][x]);
+				tempPolygon.emplace_back(railList[0][x - 1]);
+				tempPolygon.emplace_back(railList[1][x - 1]);
+				tempPolygon.emplace_back(railList[1][x]);
+
+				roadPolygonList.push_back(tempPolygon);
+			}
+		}
+
+		for (int x = 0; x < roadPolygonList.size(); x++) {
+			if (roadPolygonList[x][0].x < visibleFrame.sLeft()) {
+				roadPolygonList.erase(roadPolygonList.begin());
+				x -= 1;
+			}
+			else { break; }
+		}
+	}
 
 	inline setVisibleRange() {
 		for (int x = visibleRange.x; x < railList[0].size(); x++) {
-			if (railList[0][x].x < visibleFrame.sLeft()) {  visibleRange.x += 1; }
+			if (railList[0][x].x < visibleFrame.sLeft()) { visibleRange.x += 1; }
 			if (railList[0][x].x < visibleFrame.sRight()) { visibleRange.y = x; }
 			else { break; }
 		}
@@ -33,6 +57,11 @@ public:
 	
 	inline void draw() {
 		setVisibleRange();
+		generateGroundPolygons();
+
+		for (std::vector<Vector2> polygon : roadPolygonList) {
+			drawPolygon(polygon, color, 50);
+		}
 
 		for (std::vector<Vector2> segment : railList) {
 			drawLineStrip(std::vector<Vector2>(segment.begin() + visibleRange.x, segment.begin() + visibleRange.y), color);
