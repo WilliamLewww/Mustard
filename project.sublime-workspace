@@ -5,7 +5,11 @@
 		[
 			[
 				"vis",
-				"visibleFrame"
+				"visibleRange"
+			],
+			[
+				"Sc",
+				"SCREENHEIGHT"
 			],
 			[
 				"tem",
@@ -259,6 +263,15 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/joiner.cpp",
+			"settings":
+			{
+				"buffer_size": 1270,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "SDL Project",
 	"build_system_choices":
@@ -439,7 +452,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 445.0,
+		"height": 708.0,
 		"last_filter": "git push",
 		"selected_items":
 		[
@@ -448,16 +461,16 @@
 				"Git: Push"
 			],
 			[
-				"git p",
-				"Git: Pull"
-			],
-			[
 				"git co",
 				"Git: Commit"
 			],
 			[
 				"git add",
 				"Git: Add All"
+			],
+			[
+				"git p",
+				"Git: Pull"
 			],
 			[
 				"git comm",
@@ -556,7 +569,7 @@
 				"Install Package Control"
 			]
 		],
-		"width": 992.0
+		"width": 944.0
 	},
 	"console":
 	{
@@ -585,21 +598,21 @@
 	],
 	"file_history":
 	[
+		"/C/Projects/Mustard/src/board.h",
+		"/C/Projects/Mustard/src/environment.h",
+		"/C/Projects/Mustard/src/joiner.cpp",
+		"/C/Projects/Mustard/src/track.h",
+		"/C/Projects/Mustard/src/environment.cpp",
+		"/C/Projects/Mustard/src/geometry.cpp",
+		"/C/Projects/Mustard/src/geometry.h",
+		"/C/Projects/Mustard/src/board.cpp",
 		"/C/Projects/Mustard/constants.h",
 		"/C/Projects/Mustard/src/camera.cpp",
-		"/C/Projects/Mustard/src/joiner.cpp",
-		"/C/Projects/Mustard/src/geometry.h",
-		"/C/Projects/Mustard/src/geometry.cpp",
-		"/C/Projects/Mustard/src/track.h",
 		"/C/Projects/Mustard/src/vector2.h",
 		"/C/Projects/Mustard/src/camera.h",
 		"/C/Projects/Mustard/src/vrectangle.h",
-		"/C/Projects/Mustard/src/board.cpp",
 		"/C/Users/WilliamLew/Desktop/cmu/a.py",
 		"/C/Projects/Mustard/main.cpp",
-		"/C/Projects/Mustard/src/environment.h",
-		"/C/Projects/Mustard/src/environment.cpp",
-		"/C/Projects/Mustard/src/board.h",
 		"/C/Projects/Mustard/src/joiner.h",
 		"/C/Users/WilliamLew/Desktop/cmu/b.py",
 		"/C/Users/WilliamLew/Downloads/cs112_f17_week2_linter.py",
@@ -668,7 +681,7 @@
 	],
 	"find":
 	{
-		"height": 54.0
+		"height": 56.0
 	},
 	"find_in_files":
 	{
@@ -682,6 +695,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"resetVisibleRange",
 			"tempPolygon.emplace_back(railList[0][x]);",
 			"[0]",
 			"[1]",
@@ -770,14 +784,45 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/joiner.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1270,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								604,
+								604
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 54.0
+		"height": 56.0
 	},
 	"input":
 	{
@@ -822,7 +867,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 100.0
+		"height": 104.0
 	},
 	"save_all_on_build": true,
 	"select_file":
