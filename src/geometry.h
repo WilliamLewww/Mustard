@@ -10,6 +10,7 @@ void drawPoint(Vector2 position, int color[3]);
 void drawRect(VRectangle rectangle);
 void drawRect(Vector2 position, int width, int height);
 void drawRect(Vector2 position, int width, int height, double angle);
+void drawRect(Vector2 position, int width, int height, double angle, int color[3]);
 void drawRect(Vector2 position, int width, int height, int color[3]);
 void drawEdgesOfRect(Vector2 position, int width, int height, double angle, int color[3]);
 void drawLine(Vector2 a, Vector2 b);

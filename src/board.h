@@ -18,6 +18,11 @@ struct Board {
 	double shoeLeftInitial = 100;
 	double shoeLeft = shoeLeftInitial;
 	int shoeStrength = 7;
+
+	int color[3] = { 83, 136, 172 };
+	int outlineColor[3] = { 58, 38, 19 };
+	int thaneColor[3] = { 255, 0, 0 };
+	int breakColor[3] = { 0, 255, 0 };
 };
 extern Board board;
 

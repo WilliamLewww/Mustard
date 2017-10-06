@@ -6,6 +6,7 @@
 
 class Track {
 	int color[3] = { 0, 0, 255 };
+	int roadColor[3] = { 50, 50, 50 };
 
 	inline int* speedZoneColor(int speed) {
 		int* tempColor = (int*)malloc(3 * sizeof(int));
@@ -56,11 +57,10 @@ public:
 	};
 	
 	inline void draw() {
-		setVisibleRange();
 		generateGroundPolygons();
 
 		for (std::vector<Vector2> polygon : roadPolygonList) {
-			drawPolygon(polygon, color, 50);
+			drawPolygon(polygon, roadColor, 255);
 		}
 
 		for (std::vector<Vector2> segment : railList) {

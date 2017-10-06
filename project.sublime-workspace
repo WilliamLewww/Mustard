@@ -4,20 +4,24 @@
 		"selected_items":
 		[
 			[
+				"vis",
+				"visibleFrame"
+			],
+			[
+				"tem",
+				"tempPolygon"
+			],
+			[
+				"visi",
+				"visibleRange"
+			],
+			[
 				"vi",
 				"visibleFrame"
 			],
 			[
 				"spee",
 				"speedZone"
-			],
-			[
-				"vis",
-				"visibleRange"
-			],
-			[
-				"visi",
-				"visibleFrame"
 			],
 			[
 				"ini",
@@ -255,42 +259,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/track.h",
-			"settings":
-			{
-				"buffer_size": 3250,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/joiner.cpp",
-			"settings":
-			{
-				"buffer_size": 1253,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/camera.cpp",
-			"settings":
-			{
-				"buffer_size": 143,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "constants.h",
-			"settings":
-			{
-				"buffer_size": 169,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "SDL Project",
 	"build_system_choices":
@@ -480,6 +448,10 @@
 				"Git: Push"
 			],
 			[
+				"git p",
+				"Git: Pull"
+			],
+			[
 				"git co",
 				"Git: Commit"
 			],
@@ -613,16 +585,17 @@
 	],
 	"file_history":
 	[
-		"/C/Projects/Mustard/src/vector2.h",
-		"/C/Projects/Mustard/src/joiner.cpp",
+		"/C/Projects/Mustard/constants.h",
 		"/C/Projects/Mustard/src/camera.cpp",
-		"/C/Projects/Mustard/src/camera.h",
-		"/C/Projects/Mustard/src/vrectangle.h",
-		"/C/Projects/Mustard/src/track.h",
-		"/C/Projects/Mustard/src/board.cpp",
-		"/C/Users/WilliamLew/Desktop/cmu/a.py",
+		"/C/Projects/Mustard/src/joiner.cpp",
 		"/C/Projects/Mustard/src/geometry.h",
 		"/C/Projects/Mustard/src/geometry.cpp",
+		"/C/Projects/Mustard/src/track.h",
+		"/C/Projects/Mustard/src/vector2.h",
+		"/C/Projects/Mustard/src/camera.h",
+		"/C/Projects/Mustard/src/vrectangle.h",
+		"/C/Projects/Mustard/src/board.cpp",
+		"/C/Users/WilliamLew/Desktop/cmu/a.py",
 		"/C/Projects/Mustard/main.cpp",
 		"/C/Projects/Mustard/src/environment.h",
 		"/C/Projects/Mustard/src/environment.cpp",
@@ -635,7 +608,6 @@
 		"/C/Projects/Mustard/src/vector3.h",
 		"/C/Projects/Mustard/src/vector3.cpp",
 		"/C/Projects/Mustard/src/input.cpp",
-		"/C/Projects/Mustard/constants.h",
 		"/C/Projects/Mustard/src/gui/gui.cpp",
 		"/C/Projects/Mustard/src/gui/gui.h",
 		"/C/Projects/Mustard/src/gui/speedometer.h",
@@ -710,6 +682,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"tempPolygon.emplace_back(railList[0][x]);",
 			"[0]",
 			"[1]",
 			"min",
@@ -797,127 +770,8 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/track.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3250,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								702,
-								702
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 457.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/joiner.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1253,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								439,
-								439
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/camera.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 143,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								143,
-								143
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "constants.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 169,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								122,
-								122
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				}
 			]
 		}
 	],

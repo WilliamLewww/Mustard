@@ -8,13 +8,54 @@ void randomLongTrack(Track& track, int topIndex, int bottomIndex, int difficulty
 void randomSpeedZone(Track& track, int difficulty, int initialSpeed, int initialNode, int spacing);
 void randomGradualSpeedZone(Track& track, int difficulty, int min, int max, int initialSpeed, int initialNode, int spacing);
 
+void World::reset() {
+	track.resetVisibleRange();
+	mountainPolygons.clear();
+}
+
 void World::draw() {
+	track.setVisibleRange();
+	generateMountainPolygons();
+
+	for (std::vector<Vector2> polygon : mountainPolygons) {
+		drawPolygon(polygon, mountainColor, 255);
+	}
 	track.draw();
+}
+
+void World::generateMountainPolygons() {
+	for (int x = track.visibleRange.x; x < track.visibleRange.y; x++) {
+		std::vector<Vector2> tempPolygon;
+		std::vector<Vector2> tempPolygonTop;
+		if (x > 0 && (mountainPolygons.size() == 0 || mountainPolygons[mountainPolygons.size() - 1][0].x < track.railList[0][x].x)) {
+			tempPolygon.emplace_back(track.railList[1][x]);
+			tempPolygon.emplace_back(track.railList[1][x - 1]);
+			tempPolygon.emplace_back(track.railList[1][x - 1].x, track.railList[1][x - 1].y + SCREENHEIGHT);
+			tempPolygon.emplace_back(track.railList[1][x].x, track.railList[1][x].y + SCREENHEIGHT);
+
+			mountainPolygons.push_back(tempPolygon);
+
+			tempPolygonTop.emplace_back(track.railList[0][x]);
+			tempPolygonTop.emplace_back(track.railList[0][x - 1]);
+			tempPolygonTop.emplace_back(track.railList[0][x - 1].x, track.railList[0][x - 1].y - 50);
+			tempPolygonTop.emplace_back(track.railList[0][x].x, track.railList[0][x].y - 50);
+
+			mountainPolygons.push_back(tempPolygonTop);
+		}
+	}
+
+	for (int x = 0; x < mountainPolygons.size(); x++) {
+		if (mountainPolygons[x][0].x < visibleFrame.sLeft()) {
+			mountainPolygons.erase(mountainPolygons.begin());
+			x -= 1;
+		}
+		else { break; }
+	}
 }
 
 void World::generateSpeedZones() {
 	track.addSpeedZone(0, 0);
-	randomGradualSpeedZone(track, 5, 0, 50, 5, 2, 1);
+	randomGradualSpeedZone(track, 5, 0, 50, 5, 2, 15);
 }
 
 void World::generateTrack() {

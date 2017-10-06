@@ -143,11 +143,12 @@ void handleCollision(Vector2 pointA, Vector2 pointB) {
 }
 
 void drawBoard() {
-	int thaneColor[3] = { 255, 0, 0 };
-	int breakColor[3] = { 0, 255, 0 };
-	
-	drawRect(board.rectangle.position, board.rectangle.width, board.rectangle.height, board.rectangle.angle);
+	drawRect(board.rectangle.position, board.rectangle.width, board.rectangle.height, board.rectangle.angle, board.color);
+	drawLine(board.rectangle.topLeft(), board.rectangle.topRight(), board.outlineColor);
+	drawLine(board.rectangle.topRight(), board.rectangle.bottomRight(), board.outlineColor);
+	drawLine(board.rectangle.bottomLeft(), board.rectangle.topLeft(), board.outlineColor);
+	drawLine(board.rectangle.bottomLeft(), board.rectangle.bottomRight(), board.outlineColor);
 
-	for (Vector2 line : thaneLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawPoint(line, thaneColor); }}
-	for (Vector2 line : breakLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawPoint(line, breakColor); }}
+	for (Vector2 line : thaneLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawPoint(line, board.thaneColor); }}
+	for (Vector2 line : breakLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawPoint(line, board.breakColor); }}
 }

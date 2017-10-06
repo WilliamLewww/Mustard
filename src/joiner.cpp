@@ -27,7 +27,7 @@ void Joiner::update(int elapsedTime) {
 		for (int x = 0; x < rail.size(); x++) {
 			if (board.rectangle.position.x + 100 > rail[x].x) {
 				if (board.rectangle.position.x < rail[x].x + 100) {
-					world.track.resetVisibleRange();
+					world.reset();
 					handleCollision(rail[x], rail[x + 1]);
 					handleCollision(rail[x], rail[x + 1]);
 				}
@@ -37,8 +37,11 @@ void Joiner::update(int elapsedTime) {
 }
 
 void Joiner::draw() {
-	gui.draw();
+	glPushMatrix();
 	glTranslatef(-cameraPosition.x + initialPosition.x, -cameraPosition.y + initialPosition.y, 0);
-	drawBoard();
 	world.draw();
+	drawBoard();
+	glPopMatrix();
+	
+	gui.draw();
 }
