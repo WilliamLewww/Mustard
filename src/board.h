@@ -15,12 +15,14 @@ struct Board {
 	double recoverRate = 0.1;
 	int turnSpeed = 75, pushSpeed = 50, breakSpeed = 100;
 	int rollSpeed = 10, tuckSpeed = 15;
+	int stability = 75;
 
 	double shoeLeftInitial = 100;
 	double shoeLeft = shoeLeftInitial;
 	int shoeStrength = 7;
 
-	int color[3] = { 83, 136, 172 };
+	int color[3] = { 103, 156, 192 };
+	int tuckColor[3] = { 103, 126, 162 };
 	int outlineColor[3] = { 58, 38, 19 };
 	int thaneColor[3] = { 255, 0, 0 };
 	int breakColor[3] = { 0, 255, 0 };

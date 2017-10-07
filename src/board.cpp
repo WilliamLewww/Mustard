@@ -4,6 +4,7 @@ Board board;
 std::vector<Vector3> thaneLines;
 std::vector<Vector2> breakLines;
 
+bool isTuck = false;
 bool turnRight = false, turnLeft = false;
 bool slideLeft = false, slideRight = false, recover = false, releaseSlide = false;
 double startSlideAngle = 0, slideDistance = 1;
@@ -17,11 +18,14 @@ void updateBoard(int elapsedTime, int speedZone) {
 		turnLeft = true;
 		if (board.velocity > board.turnSpeed) { 
 			board.velocity -= (board.breakSpeed / 6) * deltaTimeS;
-			board.rectangle.angle += (board.velocity * deltaTimeS) / 4;
+			board.rectangle.angle += (board.velocity * deltaTimeS) / 6;
 			board.rectangle.angle += (board.turnSpeed * deltaTimeS) + ((slideDistance - 1) / 250); 
 		}
 		else { board.rectangle.angle += board.velocity * deltaTimeS; }
-		if (slideLeft == true) { board.rectangle.angle += (board.velocity * deltaTimeS) / 5; }
+		if (slideLeft == true) { 
+			board.rectangle.angle += (board.velocity * deltaTimeS) / 15;
+			board.rectangle.angle += (board.velocity * deltaTimeS) / 4; 
+		}
 	}
 	else { slideLeft = false; turnLeft = false; }
 	if ((std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) != keyList.end() && 
@@ -30,11 +34,14 @@ void updateBoard(int elapsedTime, int speedZone) {
 		turnRight = true;
 		if (board.velocity > board.turnSpeed) { 
 			board.velocity -= (board.breakSpeed / 6) * deltaTimeS;
-			board.rectangle.angle -= (board.velocity * deltaTimeS) / 4;
+			board.rectangle.angle -= (board.velocity * deltaTimeS) / 6;
 			board.rectangle.angle -= (board.turnSpeed * deltaTimeS) + ((slideDistance - 1) / 250); 
 		}
 		else { board.rectangle.angle -= board.velocity * deltaTimeS; }
-		if (slideRight == true) { board.rectangle.angle -= (board.velocity * deltaTimeS) / 5;  }
+		if (slideRight == true) {
+			board.rectangle.angle -= (board.velocity * deltaTimeS) / 15;
+		 	board.rectangle.angle -= (board.velocity * deltaTimeS) / 4;  
+		}
 	}
 	else { slideRight = false; turnRight = false; }
 	if ((std::find(keyList.begin(), keyList.end(), SDLK_LALT) != keyList.end() ||
@@ -70,9 +77,11 @@ void updateBoard(int elapsedTime, int speedZone) {
 	if (pushTimer <= board.pushInterval) { pushTimer += deltaTimeS; }
 	if ((std::find(keyList.begin(), keyList.end(), SDLK_SPACE) != keyList.end() && std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) == keyList.end()) ||
 		(std::find(controllerList.begin(), controllerList.end(), SDL_CONTROLLER_BUTTON_A) != controllerList.end()) && std::find(controllerList.begin(), controllerList.end(), SDL_CONTROLLER_BUTTON_X) == controllerList.end()) {
+		isTuck = true;
 		if (pushTimer >= board.pushInterval && board.velocity < 200 && slideLeft == false && slideRight == false && recover == false) { board.velocity += board.pushSpeed; pushTimer = 0; }
 		if (board.velocity > 200 && slideLeft == false && slideRight == false && recover == false) {  board.velocity += board.tuckSpeed * deltaTimeS; }
 	}
+	else { isTuck = false; }
 	board.velocity += (board.rollSpeed + speedZone) * deltaTimeS;
 	if (slideLeft == true || slideRight == true || recover == true) {
 		slideTimer += deltaTimeS;
@@ -89,7 +98,7 @@ void updateBoard(int elapsedTime, int speedZone) {
 		board.rectangle.position += (direction * deltaTimeS) * board.velocity;
 		slideDistance += board.velocity * deltaTimeS / 100;
 		
-		double difference = abs(board.rectangle.angle - startSlideAngle) + (board.breakSpeed / 5);
+		double difference = abs(board.rectangle.angle - startSlideAngle) + (board.breakSpeed / 4);
 		if (board.velocity - difference * deltaTimeS <= 0) { board.velocity = 0; }
 		else { board.velocity -= difference * deltaTimeS; }
 
@@ -147,7 +156,12 @@ void drawBoard() {
 	for (Vector3 line : thaneLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawPoint(Vector2(line.x, line.y), board.thaneColor, line.z); }}
 	for (Vector2 line : breakLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawPoint(line, board.breakColor); }}
 		
-	drawRect(board.rectangle.position, board.rectangle.width, board.rectangle.height, board.rectangle.angle, board.color);
+	if (isTuck == true) {
+		drawRect(board.rectangle.position, board.rectangle.width, board.rectangle.height, board.rectangle.angle, board.tuckColor);
+	}
+	else {
+		drawRect(board.rectangle.position, board.rectangle.width, board.rectangle.height, board.rectangle.angle, board.color);
+	}
 	drawLine(board.rectangle.topLeft(), board.rectangle.topRight(), board.outlineColor);
 	drawLine(board.rectangle.topRight(), board.rectangle.bottomRight(), board.outlineColor);
 	drawLine(board.rectangle.bottomLeft(), board.rectangle.topLeft(), board.outlineColor);
