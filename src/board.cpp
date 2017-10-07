@@ -1,7 +1,7 @@
 #include "board.h"
 
 Board board;
-std::vector<Vector2> thaneLines;
+std::vector<Vector3> thaneLines;
 std::vector<Vector2> breakLines;
 
 bool turnRight = false, turnLeft = false;
@@ -93,10 +93,11 @@ void updateBoard(int elapsedTime, int speedZone) {
 		if (board.velocity - difference * deltaTimeS <= 0) { board.velocity = 0; }
 		else { board.velocity -= difference * deltaTimeS; }
 
-		thaneLines.push_back(board.rectangle.topLeft());
-		thaneLines.push_back(board.rectangle.topRight());
-		thaneLines.push_back(board.rectangle.bottomLeft());
-		thaneLines.push_back(board.rectangle.bottomRight());
+		double thaneAlpha = pow(board.velocity / 600, 2) * 255;
+		thaneLines.push_back(Vector3(board.rectangle.topLeft(), thaneAlpha));
+		thaneLines.push_back(Vector3(board.rectangle.topRight(), thaneAlpha));
+		thaneLines.push_back(Vector3(board.rectangle.bottomLeft(), thaneAlpha));
+		thaneLines.push_back(Vector3(board.rectangle.bottomRight(), thaneAlpha));
 	}
 	else {
 		Vector2 direction = Vector2((float)cos((-board.rectangle.angle * M_PI) / 180), sin((-board.rectangle.angle * M_PI) / 180));
@@ -143,12 +144,12 @@ void handleCollision(Vector2 pointA, Vector2 pointB) {
 }
 
 void drawBoard() {
+	for (Vector3 line : thaneLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawPoint(Vector2(line.x, line.y), board.thaneColor, line.z); }}
+	for (Vector2 line : breakLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawPoint(line, board.breakColor); }}
+		
 	drawRect(board.rectangle.position, board.rectangle.width, board.rectangle.height, board.rectangle.angle, board.color);
 	drawLine(board.rectangle.topLeft(), board.rectangle.topRight(), board.outlineColor);
 	drawLine(board.rectangle.topRight(), board.rectangle.bottomRight(), board.outlineColor);
 	drawLine(board.rectangle.bottomLeft(), board.rectangle.topLeft(), board.outlineColor);
 	drawLine(board.rectangle.bottomLeft(), board.rectangle.bottomRight(), board.outlineColor);
-
-	for (Vector2 line : thaneLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawPoint(line, board.thaneColor); }}
-	for (Vector2 line : breakLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawPoint(line, board.breakColor); }}
 }

@@ -6,7 +6,7 @@
 
 class Track {
 	int color[3] = { 0, 0, 255 };
-	int roadColor[3] = { 50, 50, 50 };
+	int roadColor[3] = { 60, 60, 60 };
 
 	inline int* speedZoneColor(int speed) {
 		int* tempColor = (int*)malloc(3 * sizeof(int));

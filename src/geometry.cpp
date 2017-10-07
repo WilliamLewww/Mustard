@@ -11,6 +11,13 @@ void drawPoint(Vector2 position, int color[3]) {
 	glEnd();
 }
 
+void drawPoint(Vector2 position, int color[3], int alpha) {
+	glBegin(GL_POINTS);
+	glColor4f(convertColor(color[0]), convertColor(color[1]), convertColor(color[2]), convertColor(alpha));
+	glVertex2d(position.x - (SCREENWIDTH / 2), position.y - (SCREENHEIGHT / 2));
+	glEnd();
+}
+
 void drawEdgesOfRect(Vector2 position, int width, int height, double angle, int color[3]) {
 	Vector2 vectors[4]{
 		Vector2(0, 0),

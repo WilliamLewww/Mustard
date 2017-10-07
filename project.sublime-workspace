@@ -264,10 +264,10 @@
 	"buffers":
 	[
 		{
-			"file": "src/joiner.cpp",
+			"file": "src/input.cpp",
 			"settings":
 			{
-				"buffer_size": 1270,
+				"buffer_size": 2790,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -452,10 +452,18 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 708.0,
-		"last_filter": "git push",
+		"height": 784.0,
+		"last_filter": "git ad",
 		"selected_items":
 		[
+			[
+				"git ad",
+				"Git: Add All"
+			],
+			[
+				"git add",
+				"Git: Add All"
+			],
 			[
 				"git push",
 				"Git: Push"
@@ -463,10 +471,6 @@
 			[
 				"git co",
 				"Git: Commit"
-			],
-			[
-				"git add",
-				"Git: Add All"
 			],
 			[
 				"git p",
@@ -569,7 +573,7 @@
 				"Install Package Control"
 			]
 		],
-		"width": 944.0
+		"width": 888.0
 	},
 	"console":
 	{
@@ -598,16 +602,17 @@
 	],
 	"file_history":
 	[
-		"/C/Projects/Mustard/src/board.h",
-		"/C/Projects/Mustard/src/environment.h",
 		"/C/Projects/Mustard/src/joiner.cpp",
-		"/C/Projects/Mustard/src/track.h",
-		"/C/Projects/Mustard/src/environment.cpp",
-		"/C/Projects/Mustard/src/geometry.cpp",
-		"/C/Projects/Mustard/src/geometry.h",
-		"/C/Projects/Mustard/src/board.cpp",
 		"/C/Projects/Mustard/constants.h",
 		"/C/Projects/Mustard/src/camera.cpp",
+		"/C/Projects/Mustard/src/environment.cpp",
+		"/C/Projects/Mustard/src/track.h",
+		"/C/Projects/Mustard/src/board.cpp",
+		"/C/Projects/Mustard/src/vector3.cpp",
+		"/C/Projects/Mustard/src/board.h",
+		"/C/Projects/Mustard/src/environment.h",
+		"/C/Projects/Mustard/src/geometry.cpp",
+		"/C/Projects/Mustard/src/geometry.h",
 		"/C/Projects/Mustard/src/vector2.h",
 		"/C/Projects/Mustard/src/camera.h",
 		"/C/Projects/Mustard/src/vrectangle.h",
@@ -619,7 +624,6 @@
 		"/C/Users/WilliamLew/Downloads/lab2.py",
 		"/C/Projects/Mustard/src/vector2.cpp",
 		"/C/Projects/Mustard/src/vector3.h",
-		"/C/Projects/Mustard/src/vector3.cpp",
 		"/C/Projects/Mustard/src/input.cpp",
 		"/C/Projects/Mustard/src/gui/gui.cpp",
 		"/C/Projects/Mustard/src/gui/gui.h",
@@ -681,7 +685,7 @@
 	],
 	"find":
 	{
-		"height": 56.0
+		"height": 47.0
 	},
 	"find_in_files":
 	{
@@ -789,24 +793,26 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/joiner.cpp",
+					"file": "src/input.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1270,
+						"buffer_size": 2790,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								604,
-								604
+								950,
+								950
 							]
 						],
 						"settings":
 						{
-							"git_gutter_is_enabled": true,
+							"rulers":
+							[
+							],
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -822,7 +828,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 56.0
+		"height": 47.0
 	},
 	"input":
 	{
@@ -867,7 +873,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 104.0
+		"height": 86.0
 	},
 	"save_all_on_build": true,
 	"select_file":

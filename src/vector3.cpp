@@ -6,6 +6,12 @@ Vector3::Vector3() {
 	z = 0;
 }
 
+Vector3::Vector3(Vector2 vector, double zArgs) {
+	 x = vector.x;
+	 y = vector.y;
+	 z = zArgs;
+}
+
 Vector3::Vector3(double xArgs, double yArgs, double zArgs) {
 	x = xArgs;
 	y = yArgs;

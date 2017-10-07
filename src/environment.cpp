@@ -30,8 +30,8 @@ void World::generateMountainPolygons() {
 		if (x > 0 && (mountainPolygons.size() == 0 || mountainPolygons[mountainPolygons.size() - 1][0].x < track.railList[0][x].x)) {
 			tempPolygon.emplace_back(track.railList[1][x]);
 			tempPolygon.emplace_back(track.railList[1][x - 1]);
-			tempPolygon.emplace_back(track.railList[1][x - 1].x, track.railList[1][x - 1].y + SCREENHEIGHT);
-			tempPolygon.emplace_back(track.railList[1][x].x, track.railList[1][x].y + SCREENHEIGHT);
+			tempPolygon.emplace_back(track.railList[1][x - 1].x, track.railList[1][x - 1].y + (SCREENHEIGHT * 2));
+			tempPolygon.emplace_back(track.railList[1][x].x, track.railList[1][x].y + (SCREENHEIGHT * 2));
 
 			mountainPolygons.push_back(tempPolygon);
 

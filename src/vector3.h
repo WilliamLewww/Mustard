@@ -1,11 +1,13 @@
 #pragma once
 #include <iostream>
 #include <cmath>
+#include "vector2.h"
 class Vector3 {
 public:
 	double x, y, z;
 
 	Vector3();
+	Vector3(Vector2 vector, double zArgs);
 	Vector3(double xArgs, double yArgs, double zArgs);
 	double max();
 	double min();
