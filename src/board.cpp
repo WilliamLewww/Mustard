@@ -18,12 +18,12 @@ void updateBoard(int elapsedTime, int speedZone) {
 		turnLeft = true;
 		if (board.velocity > board.turnSpeed) { 
 			board.velocity -= (board.breakSpeed / 6) * deltaTimeS;
-			board.rectangle.angle += (board.velocity * deltaTimeS) / 6;
+			board.rectangle.angle += (board.velocity * deltaTimeS) / 10;
 			board.rectangle.angle += (board.turnSpeed * deltaTimeS) + ((slideDistance - 1) / 250); 
 		}
 		else { board.rectangle.angle += board.velocity * deltaTimeS; }
 		if (slideLeft == true) { 
-			board.rectangle.angle += (board.velocity * deltaTimeS) / 15;
+			board.rectangle.angle += (board.velocity * deltaTimeS) / 10;
 			board.rectangle.angle += (board.velocity * deltaTimeS) / 4; 
 		}
 	}
@@ -34,7 +34,7 @@ void updateBoard(int elapsedTime, int speedZone) {
 		turnRight = true;
 		if (board.velocity > board.turnSpeed) { 
 			board.velocity -= (board.breakSpeed / 6) * deltaTimeS;
-			board.rectangle.angle -= (board.velocity * deltaTimeS) / 6;
+			board.rectangle.angle -= (board.velocity * deltaTimeS) / 15;
 			board.rectangle.angle -= (board.turnSpeed * deltaTimeS) + ((slideDistance - 1) / 250); 
 		}
 		else { board.rectangle.angle -= board.velocity * deltaTimeS; }

@@ -1,9 +1,13 @@
 #include "environment.h"
 
 void random(Track& track, int topIndex, int bottomIndex, int difficulty, int points, int pointSpacing);
+void randomPar(Track& track, int topIndex, int bottomIndex, int difficulty, int points, int pointSpacing);
 void randomUp(Track& track, int topIndex, int bottomIndex, int difficulty, int points, int pointSpacing);
+void randomUpPar(Track& track, int topIndex, int bottomIndex, int difficulty, int points, int pointSpacing);
 void randomDown(Track& track, int topIndex, int bottomIndex, int difficulty, int points, int pointSpacing);
+void randomDownPar(Track& track, int topIndex, int bottomIndex, int difficulty, int points, int pointSpacing);
 void randomLongTrack(Track& track, int topIndex, int bottomIndex, int difficulty, int count, int points, int pointSpacing);
+void randomLongTrackPar(Track& track, int topIndex, int bottomIndex, int difficulty, int count, int points, int pointSpacing);
 
 void randomSpeedZone(Track& track, int difficulty, int initialSpeed, int initialNode, int spacing);
 void randomGradualSpeedZone(Track& track, int difficulty, int min, int max, int initialSpeed, int initialNode, int spacing);
@@ -64,8 +68,8 @@ void World::generateTrack() {
 	track.addVertex(0, 1, Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 45);
 	track.addVertexRelative(0, 1, -25, 100, 25);
 	track.addVertexRelative(0, 1, 0, 150, 0);
-	track.addVertexRelative(0, 1, -25, 50, 25);
-	randomLongTrack(track, 0, 1, 50, 100, 20, 20);
+	track.addVertexRelative(0, 1, -75, 50, 75);
+	randomLongTrackPar(track, 0, 1, 5 , 25, 20, 20);
 }
 
 void randomGradualSpeedZone(Track& track, int difficulty, int min, int max, int initialSpeed, int initialNode, int spacing) {
@@ -96,6 +100,22 @@ void randomSpeedZone(Track& track, int difficulty, int initialSpeed, int initial
 	}
 }
 
+void randomLongTrackPar(Track& track, int topIndex, int bottomIndex, int difficulty, int count, int points, int pointSpacing) {
+	for (int x = 0; x < count; x++) {
+		switch (rand() % 3) {
+			case 0:
+				randomPar(track, topIndex, bottomIndex, difficulty, points, pointSpacing);
+				break;
+			case 1:
+				randomDownPar(track, topIndex, bottomIndex, difficulty, points, pointSpacing);
+				break;
+			case 2:
+				randomUpPar(track, topIndex, bottomIndex, difficulty, points, pointSpacing);
+				break;
+		}
+	}
+}
+
 void randomLongTrack(Track& track, int topIndex, int bottomIndex, int difficulty, int count, int points, int pointSpacing) {
 	for (int x = 0; x < count; x++) {
 		switch (rand() % 3) {
@@ -109,6 +129,24 @@ void randomLongTrack(Track& track, int topIndex, int bottomIndex, int difficulty
 				randomUp(track, topIndex, bottomIndex, difficulty, points, pointSpacing);
 				break;
 		}
+	}
+}
+
+void randomUpPar(Track& track, int topIndex, int bottomIndex, int difficulty, int points, int pointSpacing) {
+	for (int x = 0; x < points; x++) { 
+		track.addVertexComp(topIndex, bottomIndex, -(rand() % (difficulty + 1)), pointSpacing);
+	}
+}
+
+void randomDownPar(Track& track, int topIndex, int bottomIndex, int difficulty, int points, int pointSpacing) {
+	for (int x = 0; x < points; x++) { 
+		track.addVertexComp(topIndex, bottomIndex, rand() % (difficulty + 1), pointSpacing);
+	}
+}
+
+void randomPar(Track& track, int topIndex, int bottomIndex, int difficulty, int points, int pointSpacing) {
+	for (int x = 0; x < points; x++) { 
+		track.addVertexComp(topIndex, bottomIndex, (rand() % (difficulty + 1) - (difficulty / 2)), pointSpacing);
 	}
 }
 
