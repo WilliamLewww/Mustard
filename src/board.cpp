@@ -96,7 +96,9 @@ void updateBoard(int elapsedTime, int speedZone) {
 			if (abs(board.rectangle.angle - startSlideAngle) < 30) { recover = false; }
 		}
 		board.rectangle.position += (direction * deltaTimeS) * board.velocity;
-		slideDistance += board.velocity * deltaTimeS / 100;
+		
+		//slideDistance += board.velocity * deltaTimeS / 200;
+		slideDistance += 100 * deltaTimeS / 100;
 		
 		double difference = abs(board.rectangle.angle - startSlideAngle) + (board.breakSpeed / 4);
 		if (board.velocity - difference * deltaTimeS <= 0) { board.velocity = 0; }
