@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"slide",
+				"slideDistance"
+			],
+			[
+				"Vect",
+				"Vector3"
+			],
+			[
+				"tha",
+				"thaneColor"
+			],
+			[
 				"vis",
 				"visibleRange"
 			],
@@ -90,10 +102,6 @@
 			[
 				"tur",
 				"turnLeft"
-			],
-			[
-				"slide",
-				"slideRelease"
 			],
 			[
 				"sli",
@@ -264,11 +272,19 @@
 	"buffers":
 	[
 		{
-			"file": "src/input.cpp",
+			"file": "project.sublime-project",
 			"settings":
 			{
-				"buffer_size": 2790,
+				"buffer_size": 1919,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/geometry.cpp",
+			"settings":
+			{
+				"buffer_size": 8427,
 				"line_ending": "Windows"
 			}
 		}
@@ -452,17 +468,17 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 784.0,
-		"last_filter": "git ad",
+		"height": 651.0,
+		"last_filter": "hex",
 		"selected_items":
 		[
 			[
-				"git ad",
-				"Git: Add All"
+				"hex",
+				"HexViewer: Toggle Hex View"
 			],
 			[
-				"git add",
-				"Git: Add All"
+				"install",
+				"Package Control: Install Package"
 			],
 			[
 				"git push",
@@ -473,12 +489,20 @@
 				"Git: Commit"
 			],
 			[
-				"git p",
-				"Git: Pull"
+				"git ad",
+				"Git: Add All"
+			],
+			[
+				"git add",
+				"Git: Add All"
 			],
 			[
 				"git comm",
 				"Git: Commit"
+			],
+			[
+				"git p",
+				"Git: Pull"
 			],
 			[
 				"git commi",
@@ -490,10 +514,6 @@
 			],
 			[
 				"insta",
-				"Package Control: Install Package"
-			],
-			[
-				"install",
 				"Package Control: Install Package"
 			],
 			[
@@ -573,7 +593,7 @@
 				"Install Package Control"
 			]
 		],
-		"width": 888.0
+		"width": 840.0
 	},
 	"console":
 	{
@@ -602,35 +622,45 @@
 	],
 	"file_history":
 	[
-		"/C/Projects/Mustard/src/joiner.cpp",
-		"/C/Projects/Mustard/constants.h",
-		"/C/Projects/Mustard/src/camera.cpp",
-		"/C/Projects/Mustard/src/environment.cpp",
-		"/C/Projects/Mustard/src/track.h",
-		"/C/Projects/Mustard/src/board.cpp",
-		"/C/Projects/Mustard/src/vector3.cpp",
-		"/C/Projects/Mustard/src/board.h",
-		"/C/Projects/Mustard/src/environment.h",
-		"/C/Projects/Mustard/src/geometry.cpp",
 		"/C/Projects/Mustard/src/geometry.h",
+		"/C/Projects/Mustard/src/geometry.cpp",
+		"/C/Projects/Mustard/main.cpp",
+		"/C/Projects/Mustard/src/input.h",
+		"/C/Projects/Mustard/src/input.cpp",
 		"/C/Projects/Mustard/src/vector2.h",
+		"/C/Projects/Mustard/src/vector2.cpp",
+		"/C/Projects/Mustard/src/joiner.cpp",
+		"/C/Projects/Mustard/src/camera.cpp",
+		"/C/Projects/Mustard/constants.h",
+		"/C/Projects/Mustard/project.sublime-project",
+		"/C/Projects/Mustard/Separate Axis Theorem/src/vrectangle.cpp",
+		"/C/Users/WilliamLew/Desktop/test.bmp",
+		"/C/Users/WilliamLew/Desktop/cmu/b.py",
+		"/C/Users/WilliamLew/Desktop/cmu/a.py",
+		"/C/Users/WilliamLew/Desktop/cmu/lab2.py",
+		"/C/Users/WilliamLew/Desktop/Website/Pixel-Noise/Pixel Noise/Pixel Noise/Main.cpp",
+		"/C/Projects/ML-Perceptron/network_min.py",
+		"/C/Projects/ML-Perceptron/demo.py",
+		"/C/Users/WilliamLew/Desktop/Toucan/Kiwi/connection.h",
+		"/C/Projects/Mustard/src/board.cpp",
+		"/C/Projects/Mustard/src/track.h",
+		"/C/Projects/Mustard/src/environment.cpp",
+		"/C/Projects/Example_Site/src/lobjects.js",
+		"/C/Projects/Example_Site/src/main.js",
+		"/C/Projects/Mustard/src/board.h",
+		"/C/Projects/Mustard/src/vector3.h",
+		"/C/Projects/Mustard/src/vector3.cpp",
+		"/C/Projects/Mustard/src/environment.h",
 		"/C/Projects/Mustard/src/camera.h",
 		"/C/Projects/Mustard/src/vrectangle.h",
-		"/C/Users/WilliamLew/Desktop/cmu/a.py",
-		"/C/Projects/Mustard/main.cpp",
 		"/C/Projects/Mustard/src/joiner.h",
-		"/C/Users/WilliamLew/Desktop/cmu/b.py",
 		"/C/Users/WilliamLew/Downloads/cs112_f17_week2_linter.py",
 		"/C/Users/WilliamLew/Downloads/lab2.py",
-		"/C/Projects/Mustard/src/vector2.cpp",
-		"/C/Projects/Mustard/src/vector3.h",
-		"/C/Projects/Mustard/src/input.cpp",
 		"/C/Projects/Mustard/src/gui/gui.cpp",
 		"/C/Projects/Mustard/src/gui/gui.h",
 		"/C/Projects/Mustard/src/gui/speedometer.h",
 		"/C/Projects/Mustard/src/gui/shoeometer.h",
 		"/C/Projects/Mustard/src/gui/gbutton.h",
-		"/C/Projects/Mustard/project.sublime-project",
 		"/C/Projects/Mustard/main.h",
 		"/C/Projects/Mustard/src/constants.h",
 		"/C/Projects/Mustard/src/gbutton.h",
@@ -643,12 +673,10 @@
 		"/C/Libraries/SDL2_ttf-2.0.14/i686-w64-mingw32/include/SDL2/SDL_ttf.h",
 		"/C/Projects/Mustard/Separate Axis Theorem/main.cpp",
 		"/C/Projects/Mustard/Separate Axis Theorem/src/vrectangle.h",
-		"/C/Projects/Mustard/Separate Axis Theorem/src/vrectangle.cpp",
 		"/C/Users/WilliamLew/Downloads/hw1.py",
 		"/C/Users/WilliamLew/Desktop/cmu.py",
 		"/C/Projects/Mustard/Separate Axis Theorem/src/vector2.cpp",
 		"/C/Projects/Mustard/Separate Axis Theorem/main.h",
-		"/C/Projects/ML-Perceptron/demo.py",
 		"/C/Projects/Mustard/Separate Axis Theorem/src/geometry.cpp",
 		"/C/Projects/Mustard/Separate Axis Theorem/src/geometry.h",
 		"/C/Projects/Mustard/Separate Axis Theorem/src/rectangle.cpp",
@@ -659,7 +687,6 @@
 		"/C/Projects/Mustard/Separate Axis Theorem/geometry.cpp",
 		"/C/Projects/Mustard/Separate Axis Theorem/vector2.h",
 		"/C/Users/WilliamLew/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
-		"/C/Projects/Mustard/src/input.h",
 		"/C/Projects/Mustard/camera.cpp",
 		"/C/Projects/Mustard/Bézier Curve/main.cpp",
 		"/C/Projects/Bézier Curve/main.cpp",
@@ -680,8 +707,7 @@
 		"/C/Projects/Hotdog/Hotdog.sln",
 		"/C/Users/WilliamLew/AppData/Roaming/Sublime Text 3/Packages/AdvancedNewFile/README.md",
 		"/C/Users/WilliamLew/AppData/Roaming/Sublime Text 3/Packages/User/AdvancedNewFile.sublime-settings",
-		"/C/Users/WilliamLew/AppData/Roaming/Sublime Text 3/Packages/AdvancedNewFile/AdvancedNewFile.sublime-settings",
-		"/C/Projects/Example_Site/src/lobjects.js"
+		"/C/Users/WilliamLew/AppData/Roaming/Sublime Text 3/Packages/AdvancedNewFile/AdvancedNewFile.sublime-settings"
 	],
 	"find":
 	{
@@ -788,36 +814,62 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/input.cpp",
+					"file": "project.sublime-project",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2790,
+						"buffer_size": 1919,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								950,
-								950
+								41,
+								41
 							]
 						],
 						"settings":
 						{
-							"rulers":
-							[
-							],
-							"syntax": "Packages/C++/C++.sublime-syntax",
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/geometry.cpp",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 8427,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6276,
+								6251
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5978.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -869,6 +921,10 @@
 	{
 		"height": 268.0
 	},
+	"output.hex_viewer_inspector":
+	{
+		"height": 212.0
+	},
 	"pinned_build_system": "",
 	"project": "project.sublime-project",
 	"replace":
@@ -895,12 +951,16 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 1000.0,
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"",
+				"C:\\Projects\\Bitmap\\project.sublime-project"
+			]
 		],
-		"width": 0.0
+		"width": 760.0
 	},
 	"select_symbol":
 	{
@@ -919,7 +979,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 257.0,
+	"side_bar_width": 335.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

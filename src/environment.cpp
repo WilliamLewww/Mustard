@@ -69,7 +69,7 @@ void World::generateTrack() {
 	track.addVertexRelative(0, 1, -25, 100, 25);
 	track.addVertexRelative(0, 1, 0, 150, 0);
 	track.addVertexRelative(0, 1, -75, 50, 75);
-	randomLongTrackPar(track, 0, 1, 5 , 25, 20, 20);
+	randomLongTrackPar(track, 0, 1, 50 , 100, 20, 20);
 }
 
 void randomGradualSpeedZone(Track& track, int difficulty, int min, int max, int initialSpeed, int initialNode, int spacing) {

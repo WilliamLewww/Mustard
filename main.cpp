@@ -9,7 +9,7 @@ Joiner joiner;
 SDL_Event event;
 SDL_GLContext context;
 
-bool isRunning = true;
+bool isRunning = true; 
 int frameStart, frameEnd, deltaTime = 0;
 int main(int argc, char *argv[]) {
 	displayWindow = SDL_CreateWindow("Hotdog", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREENWIDTH, SCREENHEIGHT, SDL_WINDOW_OPENGL);
@@ -66,6 +66,7 @@ void update(int elapsedTime) {
 
 void render(SDL_Window* window, SDL_GLContext context) {
 	SDL_GL_MakeCurrent(window, context);
+	glClearColor(convertColor(28), convertColor(107), convertColor(160), 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 

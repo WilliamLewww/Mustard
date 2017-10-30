@@ -19,6 +19,7 @@ void drawLine(Vector2 a, Vector2 b, int color[3]);
 void drawLine(Vector2 a, Vector2 b, int color[3], int alpha);
 void drawLineStrip(std::vector<Vector2> points, int color[3]);
 void drawPolygon(std::vector<Vector2> points, int color[3], int alpha);
+void drawPolygon(Vector2 position, std::vector<Vector2> vertices, int color[3], int alpha);
 void drawCircle(Vector2 position, float radius);
 void drawCircle(Vector2 position, float radius, int color[3]);
 void drawTriangle(Vector2 position, int width, int height);
