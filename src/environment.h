@@ -4,7 +4,7 @@
 #include "track.h"
 
 class World {
-	int mountainColor[3] = { 128, 102, 77 };
+	int mountainColor[3] = { 118, 92, 67 };
 
 	std::vector<std::vector<Vector2>> mountainPolygons;
 public:

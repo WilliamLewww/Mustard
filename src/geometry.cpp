@@ -200,10 +200,10 @@ void drawLineStrip(std::vector<Vector2> points, int color[3]) {
 	glEnd();
 }
 
-void drawLineStrip(std::vector<Vector2> points, int offset, int color[3]) {
+void drawLineStrip(std::vector<Vector2> points, int offset, int color[3], int alpha) {
 	glBegin(GL_LINE_STRIP);
 	//glEnable(GL_LINE_SMOOTH);
-	glColor4f(convertColor(color[0]), convertColor(color[1]), convertColor(color[2]), 1);
+	glColor4f(convertColor(color[0]), convertColor(color[1]), convertColor(color[2]), convertColor(alpha));
 	for (int x = 0; x < points.size(); x++) { glVertex2f(points[x].x - (SCREENWIDTH / 2), offset + points[x].y - (SCREENHEIGHT / 2)); }
 	glEnd();
 }
@@ -213,6 +213,14 @@ void drawLineStrip(std::vector<Vector2> points, std::vector<Vector2> pointsB, in
 	//glEnable(GL_LINE_SMOOTH);
 	glColor4f(convertColor(color[0]), convertColor(color[1]), convertColor(color[2]), 1);
 	for (int x = 0; x < points.size(); x++) { glVertex2f(((points[x].x + pointsB[x].x) / 2) - (SCREENWIDTH / 2), ((points[x].y + pointsB[x].y) / 2) - (SCREENHEIGHT / 2)); }
+	glEnd();
+}
+
+void drawLineStrip(std::vector<Vector2> points, std::vector<Vector2> pointsB, int offset, int color[3], int alpha) {
+	glBegin(GL_LINE_STRIP);
+	//glEnable(GL_LINE_SMOOTH);
+	glColor4f(convertColor(color[0]), convertColor(color[1]), convertColor(color[2]), convertColor(alpha));
+	for (int x = 0; x < points.size(); x++) { glVertex2f(((points[x].x + pointsB[x].x) / 2) - (SCREENWIDTH / 2), offset + ((points[x].y + pointsB[x].y) / 2) - (SCREENHEIGHT / 2)); }
 	glEnd();
 }
 
