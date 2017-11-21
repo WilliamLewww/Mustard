@@ -4,6 +4,7 @@
 #include "geometry.h"
 #include "input.h"
 #include "camera.h"
+#include "polylist.h"
 #include <cmath>
 
 struct Board {
@@ -21,14 +22,15 @@ struct Board {
 	double shoeLeft = shoeLeftInitial;
 	int shoeStrength = 7;
 
-	int color[3] = { 103, 156, 192 };
-	int tuckColor[3] = { 103, 126, 162 };
-	int outlineColor[3] = { 58, 38, 19 };
-	int thaneColor[3] = { 255, 0, 0 };
-	int breakColor[3] = { 0, 255, 0 };
+	int boardColor[3] = { 103, 156, 192 };
+	int thaneColor[3] = { 255, 255, 255 };
+	int breakColor[3] = { 0, 0, 0 };
+
+	Polylist polylist;
 };
 extern Board board;
 
+void linkBoard(const char* path, Vector2 initialPosition, double width, double height);
 void updateBoard(int elapsedTime, int speedZone);
 void drawBoard();
 

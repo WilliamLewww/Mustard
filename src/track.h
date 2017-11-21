@@ -5,7 +5,8 @@
 #include <vector>
 
 class Track {
-	int color[3] = { 0, 0, 255 };
+	int sideColor[3] = { 225, 225, 225 };
+	int centerColor[3] = { 255, 153, 51 };
 	int roadColor[3] = { 60, 60, 60 };
 
 	inline int* speedZoneColor(int speed) {
@@ -55,6 +56,10 @@ public:
 			else { break; }
 		}
 	};
+
+	inline std::vector<Vector2> getVisibleRail(int side) {
+		return std::vector<Vector2>(railList[side].begin() + visibleRange.x, railList[side].begin() + visibleRange.y);
+	};
 	
 	inline void draw() {
 		generateGroundPolygons();
@@ -63,9 +68,9 @@ public:
 			drawPolygon(polygon, roadColor, 255);
 		}
 
-		for (std::vector<Vector2> segment : railList) {
-			drawLineStrip(std::vector<Vector2>(segment.begin() + visibleRange.x, segment.begin() + visibleRange.y), color);
-		}
+		drawLineStrip(getVisibleRail(0), 10, sideColor);
+		drawLineStrip(getVisibleRail(1), -10, sideColor);
+		drawLineStrip(getVisibleRail(0), getVisibleRail(1), centerColor);
 
 		for (Vector2 speedZone : speedZones) {
 			if (railList[0][speedZone.x].x < visibleFrame.sRight() && railList[0][speedZone.x].x > visibleFrame.sLeft()) {

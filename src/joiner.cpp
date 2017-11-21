@@ -2,8 +2,7 @@
 
 void Joiner::initialize() {
 	initialPosition = Vector2((SCREENWIDTH / 2) - (board.rectangle.width / 2), SCREENHEIGHT / 2);
-	board.initialPosition = initialPosition;
-	board.rectangle = VRectangle(initialPosition, 40, 10, 0);
+	linkBoard("board_1.txt", initialPosition, 40, 10);
 	cameraPosition.x = initialPosition.x;
 
 	world.generateTrack();

@@ -1,17 +1,18 @@
 #pragma once
 #include "vector2.h"
 #include "geometry.h"
-#include <iostream>
 #include <fstream>
 #include <vector>
 
 class Polylist {
 public:
-	Vector2 position = Vector2(25, 100);
-	std::vector<Vector2> vertices;
+	double width, height;
+	int color[3];
+	int alpha;
 
-	int color[3] = { 255, 255, 255 };
-	int alpha = 255;
+	Vector2 position;
+	std::vector<Vector2> vertices;
+	double angle;
 
 	inline void setVertices(const char* filename) {
 		std::ifstream fin(filename);
@@ -30,6 +31,10 @@ public:
 	};
 
 	inline void draw() {
-		drawPolygon(position, vertices, color, alpha);
+		drawPolygon(position, width, height, vertices, angle, color, alpha);
+	};
+
+	inline void drawOutline() {
+		drawLineStrip(position, width, height, vertices, angle, color);
 	};
 };

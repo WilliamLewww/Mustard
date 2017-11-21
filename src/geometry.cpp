@@ -200,6 +200,39 @@ void drawLineStrip(std::vector<Vector2> points, int color[3]) {
 	glEnd();
 }
 
+void drawLineStrip(std::vector<Vector2> points, int offset, int color[3]) {
+	glBegin(GL_LINE_STRIP);
+	//glEnable(GL_LINE_SMOOTH);
+	glColor4f(convertColor(color[0]), convertColor(color[1]), convertColor(color[2]), 1);
+	for (int x = 0; x < points.size(); x++) { glVertex2f(points[x].x - (SCREENWIDTH / 2), offset + points[x].y - (SCREENHEIGHT / 2)); }
+	glEnd();
+}
+
+void drawLineStrip(std::vector<Vector2> points, std::vector<Vector2> pointsB, int color[3]) {
+	glBegin(GL_LINE_STRIP);
+	//glEnable(GL_LINE_SMOOTH);
+	glColor4f(convertColor(color[0]), convertColor(color[1]), convertColor(color[2]), 1);
+	for (int x = 0; x < points.size(); x++) { glVertex2f(((points[x].x + pointsB[x].x) / 2) - (SCREENWIDTH / 2), ((points[x].y + pointsB[x].y) / 2) - (SCREENHEIGHT / 2)); }
+	glEnd();
+}
+
+void drawLineStrip(Vector2 position, double width, double height, std::vector<Vector2> vertices, double angle, int color[3]) {
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glTranslatef(position.x + (width / 2) - (SCREENWIDTH / 2), position.y + (height / 2) - (SCREENHEIGHT / 2), 0);
+	glRotatef(-angle, 0, 0, 1);
+	glTranslatef(-(position.x + (width / 2) - (SCREENWIDTH / 2)), -(position.y + (height / 2) - (SCREENHEIGHT / 2)), 0);
+	glBegin(GL_LINE_STRIP);
+	//glEnable(GL_LINE_SMOOTH);
+	glColor4f(convertColor(color[0]), convertColor(color[1]), convertColor(color[2]), 1);
+	for (int x = 0; x < vertices.size(); x++) { 
+		glVertex2f(position.x + vertices[x].x - (SCREENWIDTH / 2), position.y + vertices[x].y - (SCREENHEIGHT / 2)); 
+	}
+	glVertex2f(position.x + vertices[0].x - (SCREENWIDTH / 2), position.y + vertices[0].y - (SCREENHEIGHT / 2));
+	glEnd();
+	glPopMatrix();
+}
+
 void drawPolygon(std::vector<Vector2> points, int color[3], int alpha) {
 	glBegin(GL_POLYGON);
 	//glEnable(GL_LINE_SMOOTH);
@@ -215,6 +248,21 @@ void drawPolygon(Vector2 position, std::vector<Vector2> vertices, int color[3], 
 	for (int x = 0; x < vertices.size(); x++) { 
 		glVertex2f(position.x + vertices[x].x - (SCREENWIDTH / 2), position.y + vertices[x].y - (SCREENHEIGHT / 2)); }
 	glEnd();
+}
+
+void drawPolygon(Vector2 position, double width, double height, std::vector<Vector2> vertices, double angle, int color[3], int alpha) {
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glTranslatef(position.x + (width / 2) - (SCREENWIDTH / 2), position.y + (height / 2) - (SCREENHEIGHT / 2), 0);
+	glRotatef(-angle, 0, 0, 1);
+	glTranslatef(-(position.x + (width / 2) - (SCREENWIDTH / 2)), -(position.y + (height / 2) - (SCREENHEIGHT / 2)), 0);
+	glBegin(GL_POLYGON);
+	//glEnable(GL_LINE_SMOOTH);
+	glColor4f(convertColor(color[0]), convertColor(color[1]), convertColor(color[2]), convertColor(alpha));
+	for (int x = 0; x < vertices.size(); x++) { 
+		glVertex2f(position.x + vertices[x].x - (SCREENWIDTH / 2), position.y + vertices[x].y - (SCREENHEIGHT / 2)); }
+	glEnd();
+	glPopMatrix();
 }
 
 void drawCircle(Vector2 position, float radius) {

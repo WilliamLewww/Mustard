@@ -11,6 +11,8 @@ double startSlideAngle = 0, slideDistance = 1;
 double pushTimer = board.pushInterval, slideTimer = 0;
 void updateBoard(int elapsedTime, int speedZone) {
 	float deltaTimeS = (float)(elapsedTime) / 1000;
+	board.polylist.position = board.rectangle.position;
+	board.polylist.angle = board.rectangle.angle;
 
 	if ((std::find(keyList.begin(), keyList.end(), SDLK_LEFT) != keyList.end() && 
 		std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) == keyList.end()) ||
@@ -101,8 +103,8 @@ void updateBoard(int elapsedTime, int speedZone) {
 		//slideDistance += 100 * deltaTimeS / 100;
 		
 		double difference = abs(board.rectangle.angle - startSlideAngle) + (board.breakSpeed / 4);
-		if (board.velocity - difference * deltaTimeS <= 0) { board.velocity = 0; }
-		else { board.velocity -= difference * deltaTimeS; }
+		if (board.velocity - (difference / 3) * deltaTimeS <= 0) { board.velocity = 0; }
+		else { board.velocity -= (difference / 3) * deltaTimeS; }
 
 		double thaneAlpha = pow(board.velocity / 600, 2) * 255;
 		thaneLines.push_back(Vector3(board.rectangle.topLeft(), thaneAlpha));
@@ -158,14 +160,25 @@ void drawBoard() {
 	for (Vector3 line : thaneLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawPoint(Vector2(line.x, line.y), board.thaneColor, line.z); }}
 	for (Vector2 line : breakLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawPoint(line, board.breakColor); }}
 		
-	if (isTuck == true) {
-		drawRect(board.rectangle.position, board.rectangle.width, board.rectangle.height, board.rectangle.angle, board.tuckColor);
-	}
-	else {
-		drawRect(board.rectangle.position, board.rectangle.width, board.rectangle.height, board.rectangle.angle, board.color);
-	}
-	drawLine(board.rectangle.topLeft(), board.rectangle.topRight(), board.outlineColor);
-	drawLine(board.rectangle.topRight(), board.rectangle.bottomRight(), board.outlineColor);
-	drawLine(board.rectangle.bottomLeft(), board.rectangle.topLeft(), board.outlineColor);
-	drawLine(board.rectangle.bottomLeft(), board.rectangle.bottomRight(), board.outlineColor);
+	// if (isTuck == true) {
+	// 	drawRect(board.rectangle.position, board.rectangle.width, board.rectangle.height, board.rectangle.angle, board.tuckColor);
+	// }
+	// else {
+	// 	drawRect(board.rectangle.position, board.rectangle.width, board.rectangle.height, board.rectangle.angle, board.color);
+	// }
+	// drawLine(board.rectangle.topLeft(), board.rectangle.topRight(), board.outlineColor);
+	// drawLine(board.rectangle.topRight(), board.rectangle.bottomRight(), board.outlineColor);
+	// drawLine(board.rectangle.bottomLeft(), board.rectangle.topLeft(), board.outlineColor);
+	// drawLine(board.rectangle.bottomLeft(), board.rectangle.bottomRight(), board.outlineColor);
+
+	//board.polylist.draw();
+	board.polylist.drawOutline();
+}
+
+void linkBoard(const char* path, Vector2 initialPosition, double width, double height) {
+	board.polylist = { width, height, {board.boardColor[0], board.boardColor[1], board.boardColor[2]}};
+
+	board.initialPosition = initialPosition;
+	board.rectangle = VRectangle(initialPosition, width, height, 0);
+	board.polylist.setVertices("board_1.txt");
 }
