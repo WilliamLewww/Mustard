@@ -7,26 +7,26 @@
 #include "polylist.h"
 #include <cmath>
 
-struct Wheel {
-	int thaneColor[3] = { 255, 255, 255 };
-};
-
-struct Shoe {
-	double initial = 100;
-	double left = initial;
-	int breakColor[3] = { 0, 0, 0 };
-};
-
 struct Board {
-	Shoe shoe;
-	Wheel wheel;
-
-	Polylist polylist;
 	VRectangle rectangle;
 	Vector2 initialPosition;
-
 	float velocity = 0;
+
+	double pushInterval = 1.0;
+	double recoverRate = 0.1;
+	int turnSpeed = 75, pushSpeed = 50, breakSpeed = 100;
+	int rollSpeed = 10, tuckSpeed = 15;
+	int stability = 75;
+
+	double shoeLeftInitial = 100;
+	double shoeLeft = shoeLeftInitial;
+	int shoeStrength = 7;
+
 	int boardColor[3] = { 103, 156, 192 };
+	int thaneColor[3] = { 255, 255, 255 };
+	int breakColor[3] = { 0, 0, 0 };
+
+	Polylist polylist;
 };
 extern Board board;
 

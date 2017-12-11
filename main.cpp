@@ -61,6 +61,10 @@ void initialize() {
 }
 
 void update(int elapsedTime) {
+	if (std::find(keyList.begin(), keyList.end(), SDLK_ESCAPE) != keyList.end()) {
+		isRunning = false;
+	}
+	
 	joiner.update(elapsedTime);
 }
 

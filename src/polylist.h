@@ -10,9 +10,9 @@ public:
 	int color[3];
 	int alpha;
 
-	Vector2 position;
+	Vector2* position;
 	std::vector<Vector2> vertices;
-	double angle;
+	double* angle;
 
 	inline void setVertices(const char* filename) {
 		std::ifstream fin(filename);
@@ -31,10 +31,10 @@ public:
 	};
 
 	inline void draw() {
-		drawPolygon(position, width, height, vertices, angle, color, alpha);
+		drawPolygon(*position, width, height, vertices, *angle, color, alpha);
 	};
 
 	inline void drawOutline() {
-		drawLineStrip(position, width, height, vertices, angle, color);
+		drawLineStrip(*position, width, height, vertices, *angle, color);
 	};
 };

@@ -71,10 +71,10 @@ public:
 			drawPolygon(polygon, roadColor, 255);
 		}
 
-		drawLineStrip(getVisibleRail(0), 10, sideColor, 150);
-		drawLineStrip(getVisibleRail(1), -10, sideColor, 150);
-		drawLineStrip(getVisibleRail(0), getVisibleRail(1), -2, centerColor, 150);
-		drawLineStrip(getVisibleRail(0), getVisibleRail(1), 2, centerColor, 150);
+		drawLineStrip(getVisibleRail(0), 10, sideColor, 100);
+		drawLineStrip(getVisibleRail(1), -10, sideColor, 100);
+		drawLineStrip(getVisibleRail(0), getVisibleRail(1), -2, centerColor, 75);
+		drawLineStrip(getVisibleRail(0), getVisibleRail(1), 2, centerColor, 75);
 
 		for (Vector2 speedZone : speedZones) {
 			if (railList[0][speedZone.x].x < visibleFrame.sRight() && railList[0][speedZone.x].x > visibleFrame.sLeft()) {

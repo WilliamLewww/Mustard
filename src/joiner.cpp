@@ -3,17 +3,19 @@
 void Joiner::initialize() {
 	initialPosition = Vector2((SCREENWIDTH / 2) - (board.rectangle.width / 2), SCREENHEIGHT / 2);
 	linkBoard("board_1.txt", initialPosition, 40, 10);
-	cameraPosition.x = initialPosition.x;
+	board.polylist.position = &board.rectangle.position;
+	board.polylist.angle = &board.rectangle.angle;
+	cameraPosition = &board.rectangle.position;
 
 	world.generateTrack();
 	world.generateSpeedZones();
 }
 
 void Joiner::update(int elapsedTime) {
-	visibleFrame.position.x = cameraPosition.x - (SCREENWIDTH / 2);
+	visibleFrame.position.x = cameraPosition->x - (SCREENWIDTH / 2);
 
 	gui.updateSpeedometer((int)board.velocity, 2);
-	gui.updateShoeometer((int)board.shoeLeft, 1);
+	gui.updateShoeometer((int)board.shoe.left, 1);
 	updateBoard(elapsedTime, speedZone);
 
 	for (Vector2 speed : world.track.speedZones) {
@@ -37,7 +39,7 @@ void Joiner::update(int elapsedTime) {
 
 void Joiner::draw() {
 	glPushMatrix();
-	glTranslatef(-cameraPosition.x + initialPosition.x, -cameraPosition.y + initialPosition.y, 0);
+	glTranslatef(-cameraPosition->x + initialPosition.x, -cameraPosition->y + initialPosition.y, 0);
 	world.draw();
 	drawBoard();
 	glPopMatrix();
