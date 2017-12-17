@@ -17,14 +17,14 @@ void World::reset() {
 	mountainPolygons.clear();
 }
 
-void World::draw() {
+void World::draw(bool drawTrackDetails = true) {
 	track.setVisibleRange();
 	generateMountainPolygons();
 
 	for (std::vector<Vector2> polygon : mountainPolygons) {
 		drawPolygon(polygon, mountainColor, 255);
 	}
-	track.draw();
+	track.draw(drawTrackDetails);
 }
 
 void World::generateMountainPolygons() {

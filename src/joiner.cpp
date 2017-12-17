@@ -1,5 +1,7 @@
 #include "joiner.h"
 
+bool drawDetails = true, drawGUI = true;
+
 void Joiner::initialize() {
 	initialPosition = Vector2((SCREENWIDTH / 2) - (board.rectangle.width / 2), SCREENHEIGHT / 2);
 	linkBoard("board_1.txt", initialPosition, 40, 10);
@@ -35,14 +37,30 @@ void Joiner::update(int elapsedTime) {
 			}
 		}
 	}
+
+	if (std::find(keyList.begin(), keyList.end(), SDLK_p) != keyList.end()) {
+		drawDetails = true;
+	}
+	if (std::find(keyList.begin(), keyList.end(), SDLK_o) != keyList.end()) {
+		drawDetails = false;
+	}
+
+	if (std::find(keyList.begin(), keyList.end(), SDLK_l) != keyList.end()) {
+		drawGUI = true;
+	}
+	if (std::find(keyList.begin(), keyList.end(), SDLK_k) != keyList.end()) {
+		drawGUI = false;
+	}
 }
 
 void Joiner::draw() {
 	glPushMatrix();
 	glTranslatef(-cameraPosition->x + initialPosition.x, -cameraPosition->y + initialPosition.y, 0);
-	world.draw();
+	world.draw(drawDetails);
 	drawBoard();
 	glPopMatrix();
 	
-	gui.draw();
+	if (drawGUI == true) {
+		gui.draw();
+	}
 }

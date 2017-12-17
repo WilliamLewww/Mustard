@@ -64,23 +64,25 @@ public:
 		return std::vector<Vector2>(railList[side].begin() + visibleRange.x, railList[side].begin() + visibleRange.y);
 	};
 	
-	inline void draw() {
+	inline void draw(bool drawDetails = true) {
 		generateGroundPolygons();
 
 		for (std::vector<Vector2> polygon : roadPolygonList) {
 			drawPolygon(polygon, roadColor, 255);
 		}
 
-		drawLineStrip(getVisibleRail(0), 10, sideColor, 100);
-		drawLineStrip(getVisibleRail(1), -10, sideColor, 100);
-		drawLineStrip(getVisibleRail(0), getVisibleRail(1), -2, centerColor, 75);
-		drawLineStrip(getVisibleRail(0), getVisibleRail(1), 2, centerColor, 75);
+		if (drawDetails == true) {
+			drawLineStrip(getVisibleRail(0), 10, sideColor, 100);
+			drawLineStrip(getVisibleRail(1), -10, sideColor, 100);
+			drawLineStrip(getVisibleRail(0), getVisibleRail(1), -2, centerColor, 75);
+			drawLineStrip(getVisibleRail(0), getVisibleRail(1), 2, centerColor, 75);
 
-		for (Vector2 speedZone : speedZones) {
-			if (railList[0][speedZone.x].x < visibleFrame.sRight() && railList[0][speedZone.x].x > visibleFrame.sLeft()) {
-				drawLine(Vector2(railList[0][speedZone.x].x, railList[0][speedZone.x].y),
-						 Vector2(railList[1][speedZone.x].x, railList[1][speedZone.x].y),
-						 speedZoneColor(speedZone.y), 100);
+			for (Vector2 speedZone : speedZones) {
+				if (railList[0][speedZone.x].x < visibleFrame.sRight() && railList[0][speedZone.x].x > visibleFrame.sLeft()) {
+					drawLine(Vector2(railList[0][speedZone.x].x, railList[0][speedZone.x].y),
+							 Vector2(railList[1][speedZone.x].x, railList[1][speedZone.x].y),
+							 speedZoneColor(speedZone.y), 100);
+				}
 			}
 		}
 	};

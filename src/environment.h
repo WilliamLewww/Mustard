@@ -11,7 +11,7 @@ public:
 	Track track;
 	void generateSpeedZones();
 	void generateTrack();
-	void draw();
+	void draw(bool drawTrackDetails);
 
 	void reset();
 
