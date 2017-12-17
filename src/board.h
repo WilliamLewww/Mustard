@@ -28,7 +28,7 @@ struct Board {
 	VRectangle rectangle;
 	Vector2 initialPosition;
 
-	double pushInterval = 0.5, pushSpeed = 50, pushTimer = 0, pushMax = 150;
+	double pushInterval = 0.7, pushSpeed = 50, pushTimer = 0, pushMax = 200;
 	
 	double tuckSpeed = 8;
 	double turnSpeed = 50;

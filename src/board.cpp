@@ -110,7 +110,7 @@ void updateBoard(int elapsedTime, int speedZone) {
 
 	if (slide == true) {
 		if (std::find(keyList.begin(), keyList.end(), SDLK_w) != keyList.end()) {
-			board.slidePower += 0.03;
+			board.slidePower += 0.1;
 		}
 	}
 
