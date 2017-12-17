@@ -488,7 +488,7 @@
 				"Git: Push"
 			],
 			[
-				"git com",
+				"git co",
 				"Git: Commit"
 			],
 			[
@@ -496,7 +496,7 @@
 				"Git: Add All"
 			],
 			[
-				"git co",
+				"git com",
 				"Git: Commit"
 			],
 			[
@@ -637,14 +637,14 @@
 	],
 	"file_history":
 	[
-		"/C/Projects/Mustard/src/environment.h",
 		"/C/Projects/Mustard/src/environment.cpp",
+		"/C/Projects/Mustard/src/board.cpp",
+		"/C/Projects/Mustard/src/board.h",
+		"/C/Projects/Mustard/src/environment.h",
 		"/C/Projects/Mustard/constants.h",
 		"/C/Projects/Mustard/src/joiner.cpp",
 		"/C/Projects/Mustard/main.cpp",
 		"/C/Projects/Mustard/src/track.h",
-		"/C/Projects/Mustard/src/board.h",
-		"/C/Projects/Mustard/src/board.cpp",
 		"/C/Projects/Mustard/src/board_old_cpp.txt",
 		"/C/Projects/Mustard/src/board_old_h.txt",
 		"/D/Projects/###/###/Python/Bots/Facebook/Initial Sign-Up.py",
@@ -735,7 +735,7 @@
 	],
 	"find":
 	{
-		"height": 89.0
+		"height": 47.0
 	},
 	"find_in_files":
 	{
@@ -854,7 +854,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 63.0
+		"height": 47.0
 	},
 	"input":
 	{
@@ -903,7 +903,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 118.0
+		"height": 86.0
 	},
 	"save_all_on_build": true,
 	"select_file":

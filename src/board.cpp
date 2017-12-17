@@ -177,14 +177,15 @@ void updateBoard(int elapsedTime, int speedZone) {
 		board.slidePower = 0;
 	}
 
+	if (std::find(keyList.begin(), keyList.end(), SDLK_i) != keyList.end()) {
+		thaneLines.clear();
+		breakLines.clear();
+	}
+
 	Vector2 direction = Vector2((float)cos((-movementAngle * M_PI) / 180), sin((-movementAngle * M_PI) / 180));
 	direction.normalize();
-	if (flipped) {
-		board.rectangle.position -= (direction * deltaTimeS) * board.velocity;
-	}
-	else {
-		board.rectangle.position += (direction * deltaTimeS) * board.velocity;
-	}
+	if (flipped) { board.rectangle.position -= (direction * deltaTimeS) * board.velocity; }
+	else { board.rectangle.position += (direction * deltaTimeS) * board.velocity; }
 
 	slide = false;
 	coleman = false;
