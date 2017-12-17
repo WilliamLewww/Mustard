@@ -4,66 +4,198 @@ Board board;
 std::vector<Vector3> thaneLines;
 std::vector<Vector2> breakLines;
 
-bool slide = false;
+bool slide = false, coleman = false;
+bool turnLeft = false, turnRight = false;
+
 double movementAngle = 0;
+bool flipped = false;
 void updateBoard(int elapsedTime, int speedZone) {
 	float deltaTimeS = (float)(elapsedTime) / 1000;
 
-	if (std::find(keyList.begin(), keyList.end(), SDLK_SPACE) != keyList.end()) {
-		board.velocity += 0.5;
+	board.velocity += (board.wheel.rollSpeed + speedZone) * deltaTimeS;
+
+	if (std::find(keyList.begin(), keyList.end(), SDLK_SPACE) != keyList.end() && slide == false) {
+		if (board.velocity > board.pushMax) {
+			board.velocity += board.tuckSpeed * deltaTimeS;
+		}
+		else {
+			if (board.pushTimer >= board.pushInterval) {
+				board.velocity += board.pushSpeed;
+				board.pushTimer = 0;
+			}
+		}
 	}
 
-	if (std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) != keyList.end() && board.velocity > 0) {
-		board.velocity -= 0.5;
+	if (board.pushTimer < board.pushInterval) {
+		board.pushTimer += deltaTimeS;
+	}
+
+	if (std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) != keyList.end() && slide == false) {
+		if (board.shoe.left - (board.velocity * deltaTimeS) / board.shoe.strength < 0) { board.shoe.left = 0; }
+		else { board.shoe.left -= (board.velocity * deltaTimeS) / board.shoe.strength; }
+
+		if (board.shoe.left > 0) {
+			if (board.velocity - (board.shoe.strength * 15) * deltaTimeS <= 0) { board.velocity = 0; }
+			else { board.velocity -= (board.shoe.strength * 15) * deltaTimeS; }
+
+			breakLines.push_back(board.rectangle.bottomLeft());
+		}
 	}
 
 	if ((std::find(keyList.begin(), keyList.end(), SDLK_LEFT) != keyList.end() && 
 		std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) == keyList.end())) {
-		if (std::find(keyList.begin(), keyList.end(), SDLK_a) != keyList.end()) {
-			board.rectangle.angle += (board.velocity * deltaTimeS) / 2;
-			movementAngle += (board.velocity * deltaTimeS) / 3;
+		turnLeft = true;
 
+		if (std::find(keyList.begin(), keyList.end(), SDLK_a) != keyList.end()) {
 			slide = true;
+
+			if (std::find(keyList.begin(), keyList.end(), SDLK_e) != keyList.end()) {
+				board.rectangle.angle += ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 6;
+				movementAngle += (board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS) / 2;
+			}
+			else {
+				if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) {
+					coleman = true;
+
+					board.rectangle.angle += ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 3;
+					movementAngle += (board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS);
+				}
+				else {
+					board.rectangle.angle += ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 3;
+					movementAngle += ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 2;
+				}
+			}
 		}
 		else {
-			board.rectangle.angle += (board.velocity * deltaTimeS) / 4;
-			movementAngle += (board.velocity * deltaTimeS) / 4;
+			board.rectangle.angle += board.turnSpeed * deltaTimeS;
+			movementAngle += board.turnSpeed * deltaTimeS;
 		}
+	}
+	else {
+		turnLeft = false;
 	}
 
 	if ((std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) != keyList.end() && 
 		std::find(keyList.begin(), keyList.end(), SDLK_LEFT) == keyList.end())) {
-		if (std::find(keyList.begin(), keyList.end(), SDLK_d) != keyList.end()) {
-			board.rectangle.angle -= (board.velocity * deltaTimeS) / 2;
-			movementAngle -= (board.velocity * deltaTimeS) / 3;
+		turnRight = true;
 
+		if (std::find(keyList.begin(), keyList.end(), SDLK_d) != keyList.end()) {
 			slide = true;
+
+			if (std::find(keyList.begin(), keyList.end(), SDLK_e) != keyList.end()) {
+				board.rectangle.angle -= ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 6;
+				movementAngle -= (board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS) / 3;
+			}
+			else {
+				if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) {
+					coleman = true;
+
+					board.rectangle.angle -= ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 3;
+					movementAngle -= (board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS);
+				}
+				else {
+					board.rectangle.angle -= ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 3;
+					movementAngle -= ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 2;
+				}
+			}
 		}
 		else {
-			board.rectangle.angle -= (board.velocity * deltaTimeS) / 4;
-			movementAngle -= (board.velocity * deltaTimeS) / 4;
+			board.rectangle.angle -= board.turnSpeed * deltaTimeS;
+			movementAngle -= board.turnSpeed * deltaTimeS;
 		}
 	}
+	else {
+		turnRight = false;
+	}
+
+	if (slide == true) {
+		if (std::find(keyList.begin(), keyList.end(), SDLK_w) != keyList.end()) {
+			board.slidePower += 0.03;
+		}
+	}
+
+	double difference;
+	if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) { difference = abs(board.rectangle.angle - movementAngle) / 75; }
+	else { difference = abs(board.rectangle.angle - movementAngle) / 150; }
 
 	if (movementAngle > board.rectangle.angle) { 
-		if (slide == false) {
-			board.rectangle.angle += 0.5; 
+		if ((slide == false && turnRight == false) || turnLeft == true) {
+			if (turnLeft == true) {
+				board.rectangle.angle += 0.2; 
+			}
+			board.rectangle.angle += 1; 
+		}
+
+		if (movementAngle - board.rectangle.angle > 5) {
+			if (board.velocity - difference < 0) {
+				board.velocity = 0;
+			}
+			else {
+				board.velocity -= difference;
+			}
+
+			if (coleman) { generateThane(255); }
+			else { generateThane(100); }
 		}
 
 		board.rectangle.angle += 0.01; 
+
+		if (movementAngle - board.rectangle.angle > 90) {
+			movementAngle -= 180;
+			flipped = !flipped;
+		}
 	}
+
 	if (movementAngle < board.rectangle.angle) { 
-		if (slide == false) {
-			board.rectangle.angle -= 0.5; 
+		if ((slide == false && turnLeft == false) || turnRight == true) {
+			if (turnRight == true) {
+				board.rectangle.angle -= 0.2; 
+			}
+			board.rectangle.angle -= 1; 
+		}
+		if (board.rectangle.angle - movementAngle > 5) {
+			if (board.velocity - difference < 0) {
+				board.velocity = 0;
+			}
+			else {
+				board.velocity -= difference;
+			}
+
+			if (coleman) { generateThane(255); }
+			else { generateThane(100); }
 		}
 
-		board.rectangle.angle += 0.01; 
+		board.rectangle.angle -= 0.01;
+
+		if (board.rectangle.angle - movementAngle > 90) {
+			movementAngle += 180;
+			flipped = !flipped;
+		}
+	}
+
+	if (slide == false) {
+		board.slidePower = 0;
 	}
 
 	Vector2 direction = Vector2((float)cos((-movementAngle * M_PI) / 180), sin((-movementAngle * M_PI) / 180));
 	direction.normalize();
-	board.rectangle.position += (direction * deltaTimeS) * board.velocity;
+	if (flipped) {
+		board.rectangle.position -= (direction * deltaTimeS) * board.velocity;
+	}
+	else {
+		board.rectangle.position += (direction * deltaTimeS) * board.velocity;
+	}
+
 	slide = false;
+	coleman = false;
+}
+
+void generateThane(int multiplier) {
+	double thaneAlpha = pow(board.velocity / 600, 2) * multiplier;
+	thaneLines.push_back(Vector3(board.rectangle.topLeft(), thaneAlpha));
+	thaneLines.push_back(Vector3(board.rectangle.topRight(), thaneAlpha));
+	thaneLines.push_back(Vector3(board.rectangle.bottomLeft(), thaneAlpha));
+	thaneLines.push_back(Vector3(board.rectangle.bottomRight(), thaneAlpha));
 }
 
 void resetBoard() {
@@ -71,6 +203,7 @@ void resetBoard() {
 	board.rectangle.angle = 0;
 	movementAngle = 0;
 	board.velocity = 0;
+	flipped = false;
 
 	board.shoe.left = board.shoe.initial;
 }

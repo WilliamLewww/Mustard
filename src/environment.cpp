@@ -69,6 +69,7 @@ void World::generateTrack() {
 	track.addVertexRelative(0, 1, -25, 100, 25);
 	track.addVertexRelative(0, 1, 0, 150, 0);
 	track.addVertexRelative(0, 1, -75, 50, 75);
+	track.addVertexRelative(0, 1, -80, 50, 80);
 	randomLongTrackPar(track, 0, 1, 50 , 100, 20, 20);
 }
 
