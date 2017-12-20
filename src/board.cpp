@@ -115,7 +115,7 @@ void updateBoard(int elapsedTime, int speedZone) {
 	}
 
 	double difference;
-	if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) { difference = abs(board.rectangle.angle - movementAngle) / 75; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) { difference = abs(board.rectangle.angle - movementAngle) / 65; }
 	else { difference = abs(board.rectangle.angle - movementAngle) / 150; }
 
 	if (movementAngle > board.rectangle.angle) { 
