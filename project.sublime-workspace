@@ -300,10 +300,19 @@
 	"buffers":
 	[
 		{
+			"file": "main.cpp",
+			"settings":
+			{
+				"buffer_size": 1840,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "src/board.cpp",
 			"settings":
 			{
-				"buffer_size": 8227,
+				"buffer_size": 8266,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -646,12 +655,13 @@
 	],
 	"file_history":
 	[
-		"/C/Projects/Mustard/main.cpp",
+		"/C/Projects/Mustard/main.h",
 		"/C/Projects/Mustard/src/board.cpp",
+		"/C/Projects/Mustard/constants.h",
+		"/C/Projects/Mustard/main.cpp",
 		"/C/Projects/Mustard/src/environment.cpp",
 		"/C/Projects/Mustard/src/board.h",
 		"/C/Projects/Mustard/src/environment.h",
-		"/C/Projects/Mustard/constants.h",
 		"/C/Projects/Mustard/src/joiner.cpp",
 		"/C/Projects/Mustard/src/track.h",
 		"/C/Projects/Mustard/src/board_old_cpp.txt",
@@ -694,7 +704,6 @@
 		"/C/Projects/Mustard/src/gui/speedometer.h",
 		"/C/Projects/Mustard/src/gui/shoeometer.h",
 		"/C/Projects/Mustard/src/gui/gbutton.h",
-		"/C/Projects/Mustard/main.h",
 		"/C/Projects/Mustard/src/constants.h",
 		"/C/Projects/Mustard/src/gbutton.h",
 		"/C/Projects/Mustard/src/gui.cpp",
@@ -861,19 +870,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/board.cpp",
+					"file": "main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8227,
+						"buffer_size": 1840,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4178,
-								4178
+								739,
+								739
 							]
 						],
 						"settings":
@@ -882,10 +891,39 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3137.0,
+						"translation.y": 164.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/board.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8266,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								367,
+								367
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

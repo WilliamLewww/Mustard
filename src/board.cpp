@@ -110,20 +110,20 @@ void updateBoard(int elapsedTime, int speedZone) {
 
 	if (slide == true) {
 		if (std::find(keyList.begin(), keyList.end(), SDLK_w) != keyList.end()) {
-			board.slidePower += 0.1;
+			board.slidePower += 10 * deltaTimeS;
 		}
 	}
 
 	double difference;
-	if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) { difference = abs(board.rectangle.angle - movementAngle) / 65; }
-	else { difference = abs(board.rectangle.angle - movementAngle) / 150; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) { difference = abs(board.rectangle.angle - movementAngle) * 3 * deltaTimeS; }
+	else { difference = abs(board.rectangle.angle - movementAngle) * 1.5 * deltaTimeS; }
 
 	if (movementAngle > board.rectangle.angle) { 
 		if ((slide == false && turnRight == false) || turnLeft == true) {
 			if (turnLeft == true) {
-				board.rectangle.angle += 0.2; 
+				board.rectangle.angle += 120 * deltaTimeS; 
 			}
-			board.rectangle.angle += 1; 
+			board.rectangle.angle += 150 * deltaTimeS; 
 		}
 
 		if (movementAngle - board.rectangle.angle > 5) {
@@ -138,7 +138,7 @@ void updateBoard(int elapsedTime, int speedZone) {
 			else { generateThane(100); }
 		}
 
-		board.rectangle.angle += 0.01; 
+		board.rectangle.angle += 20 * deltaTimeS; 
 
 		if (movementAngle - board.rectangle.angle > 90) {
 			movementAngle -= 180;
@@ -149,9 +149,9 @@ void updateBoard(int elapsedTime, int speedZone) {
 	if (movementAngle < board.rectangle.angle) { 
 		if ((slide == false && turnLeft == false) || turnRight == true) {
 			if (turnRight == true) {
-				board.rectangle.angle -= 0.2; 
+				board.rectangle.angle -= 120 * deltaTimeS; 
 			}
-			board.rectangle.angle -= 1; 
+			board.rectangle.angle -= 150 * deltaTimeS; 
 		}
 		if (board.rectangle.angle - movementAngle > 5) {
 			if (board.velocity - difference < 0) {
@@ -165,7 +165,7 @@ void updateBoard(int elapsedTime, int speedZone) {
 			else { generateThane(100); }
 		}
 
-		board.rectangle.angle -= 0.01;
+		board.rectangle.angle -= 20 * deltaTimeS;
 
 		if (board.rectangle.angle - movementAngle > 90) {
 			movementAngle += 180;
