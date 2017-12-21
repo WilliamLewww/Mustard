@@ -1,3 +1,37 @@
+#include "constants.h"
+#include <fstream>
+
+void grabConfig();
+int run(int argc, char *argv[]);
+int SCREENWIDTH = 1920, SCREENHEIGHT = 1080;
+bool isHeight = false;
+
+int main(int argc, char *argv[]) {
+	grabConfig();
+	run(argc, argv);
+}
+
+void grabConfig() {
+	std::ifstream fin("config.txt");
+
+	int x;
+	while (fin >> x) {
+		if (isHeight == false) {
+			if (x > 1920) { SCREENWIDTH = 1920; }
+			else { SCREENWIDTH = x; }
+			
+			isHeight = true;
+		}
+		else {
+			if (x > 1080) { SCREENHEIGHT = 1080; }
+			else { SCREENHEIGHT = x; }
+		}
+	}
+
+	fin.close();
+}
+
+
 #include "main.h"
 
 void initialize();
@@ -11,7 +45,7 @@ SDL_GLContext context;
 
 bool isRunning = true; 
 int frameStart, frameEnd, deltaTime = 0;
-int main(int argc, char *argv[]) {
+int run(int argc, char *argv[]) {
 	displayWindow = SDL_CreateWindow("Hotdog", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREENWIDTH, SCREENHEIGHT, SDL_WINDOW_OPENGL);
 	context = SDL_GL_CreateContext(displayWindow);
 	glOrtho(-SCREENWIDTH / 2, SCREENWIDTH / 2, SCREENHEIGHT / 2, -SCREENHEIGHT / 2, 0, 1);
