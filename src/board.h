@@ -32,7 +32,7 @@ struct Board {
 	
 	double tuckSpeed = 8;
 	double turnSpeed = 50;
-
+	
 	double slidePower = 0;
 
 	float velocity = 0;

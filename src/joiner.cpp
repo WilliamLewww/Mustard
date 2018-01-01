@@ -26,17 +26,17 @@ void Joiner::update(int elapsedTime) {
 		}
 	}
 
-	for (std::vector<Vector2> rail : world.track.railList) {
-		for (int x = 0; x < rail.size(); x++) {
-			if (board.rectangle.position.x + 100 > rail[x].x) {
-				if (board.rectangle.position.x < rail[x].x + 100) {
-					world.reset();
-					handleCollision(rail[x], rail[x + 1]);
-					handleCollision(rail[x], rail[x + 1]);
-				}
-			}
-		}
-	}
+	// for (std::vector<Vector2> rail : world.track.railList) {
+	// 	for (int x = 0; x < rail.size(); x++) {
+	// 		if (board.rectangle.position.x + 100 > rail[x].x) {
+	// 			if (board.rectangle.position.x < rail[x].x + 100) {
+	// 				world.reset();
+	// 				handleCollision(rail[x], rail[x + 1]);
+	// 				handleCollision(rail[x], rail[x + 1]);
+	// 			}
+	// 		}
+	// 	}
+	// }
 
 	if (std::find(keyList.begin(), keyList.end(), SDLK_p) != keyList.end()) {
 		drawDetails = true;

@@ -107,6 +107,14 @@ public:
 		railList[indexBottom].push_back(Vector2(railList[indexBottom][railList[indexBottom].size() - 1].x + spacingX, railList[indexBottom][railList[indexBottom].size() - 1].y + bottomY));
 	};
 
+	inline addVertexRelativeTop(int index, int topY, int spacingX) {
+		railList[index].push_back(Vector2(railList[index][railList[index].size() - 1].x + spacingX, railList[index][railList[index].size() - 1].y + topY));
+	};
+
+	inline addVertexRelativeBottom(int index, int slope) {
+		railList[index].push_back(Vector2(railList[0][railList[index].size() - 1].x, railList[0][railList[index].size() - 1].y));
+	};
+
 	inline addVertexComp(int indexTop, int indexBottom, int topY, int spacingX) {
 		railList[indexTop].push_back(Vector2(railList[indexTop][railList[indexTop].size() - 1].x + spacingX, railList[indexTop][railList[indexTop].size() - 1].y + topY));
 		railList[indexBottom].push_back(Vector2(railList[indexBottom][railList[indexBottom].size() - 1].x + spacingX, railList[indexBottom][railList[indexBottom].size() - 1].y + topY));
