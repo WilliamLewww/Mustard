@@ -319,42 +319,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/environment.cpp",
-			"settings":
-			{
-				"buffer_size": 8191,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/track.h",
-			"settings":
-			{
-				"buffer_size": 5123,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/joiner.cpp",
-			"settings":
-			{
-				"buffer_size": 1842,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "main.cpp",
-			"settings":
-			{
-				"buffer_size": 2278,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "SDL Project",
 	"build_system_choices":
@@ -444,7 +408,7 @@
 			],
 			[
 				"SDL Project",
-				""
+				"Single File"
 			]
 		],
 		[
@@ -535,7 +499,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 267.0,
+		"height": 137.0,
 		"last_filter": "git push",
 		"selected_items":
 		[
@@ -544,12 +508,36 @@
 				"Git: Push"
 			],
 			[
-				"git co",
+				"git comm",
 				"Git: Commit"
 			],
 			[
 				"git add",
 				"Git: Add All"
+			],
+			[
+				"git pull",
+				"Git: Pull"
+			],
+			[
+				"git pu",
+				"Git: Pull Using Rebase"
+			],
+			[
+				"git",
+				"Git: Status"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Install Package Control"
+			],
+			[
+				"git co",
+				"Git: Commit"
 			],
 			[
 				"git c",
@@ -560,16 +548,8 @@
 				"Git: Commit"
 			],
 			[
-				"git comm",
-				"Git: Commit"
-			],
-			[
 				"hex",
 				"HexViewer: Toggle Hex View"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"git ad",
@@ -610,10 +590,6 @@
 			[
 				"git his",
 				"Git: Commit history"
-			],
-			[
-				"git",
-				"Git: Quick Commit (repo)"
 			],
 			[
 				"git commit ",
@@ -662,13 +638,9 @@
 			[
 				"matr",
 				"Material Theme: Configuration"
-			],
-			[
-				"pack",
-				"Install Package Control"
 			]
 		],
-		"width": 840.0
+		"width": 420.0
 	},
 	"console":
 	{
@@ -693,20 +665,27 @@
 	"expanded_folders":
 	[
 		"/C/Projects/Mustard",
-		"/C/Projects/Mustard/src"
+		"/C/Projects/Mustard/Parallel Curves"
 	],
 	"file_history":
 	[
+		"/C/Projects/Mustard/Parallel Curves/src/track.h",
+		"/C/Projects/Mustard/Parallel Curves/main.h",
+		"/C/Projects/Mustard/Parallel Curves/src/vector2.h",
+		"/C/Projects/Mustard/Parallel Curves/src/vector2.cpp",
+		"/C/Projects/Mustard/Parallel Curves/main.cpp",
+		"/C/Projects/Mustard/main.h",
+		"/C/Projects/Mustard/Parallel Curves/src/geometry.cpp",
+		"/C/Projects/Mustard/Parallel Curves/src/geometry.h",
+		"/C/Projects/Mustard/main.cpp",
+		"/C/Projects/Mustard/src/joiner.cpp",
 		"/C/Projects/Mustard/src/track.h",
+		"/C/Projects/Mustard/src/environment.cpp",
 		"/C/Projects/Mustard/config.txt",
 		"/C/Projects/Mustard/src/board.h",
 		"/C/Projects/Mustard/constants.h",
-		"/C/Projects/Mustard/src/joiner.cpp",
 		"/C/Projects/Mustard/src/board.cpp",
 		"/C/Projects/Mustard/src/polylist.h",
-		"/C/Projects/Mustard/main.cpp",
-		"/C/Projects/Mustard/main.h",
-		"/C/Projects/Mustard/src/environment.cpp",
 		"/C/Projects/Mustard/src/environment.h",
 		"/C/Projects/Mustard/src/board_old_cpp.txt",
 		"/C/Projects/Mustard/src/board_old_h.txt",
@@ -796,7 +775,7 @@
 	],
 	"find":
 	{
-		"height": 31.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -810,6 +789,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"1.0",
+			"0.1",
+			"camera",
 			"bottomY",
 			"spacingX",
 			"indexTop",
@@ -912,131 +894,14 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/environment.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8191,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2805,
-								2805
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 681.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/track.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5123,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4118,
-								4118
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 35.0,
-						"translation.y": 1170.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/joiner.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1842,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								681,
-								681
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 45.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "main.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2278,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								239,
-								243
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 31.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -1067,7 +932,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 96.0
+		"height": 102.0
 	},
 	"output.find_results":
 	{
@@ -1085,7 +950,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 58.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
