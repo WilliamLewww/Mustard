@@ -58,10 +58,8 @@ int main(int argc, char *argv[]) {
 // (x, y)
 
 // Original Equation = 5 * sin(0.5 * x)
-
 // g(t) = 5 * sin(0.5 * x)
 // f(t) = x
-
 // g'(t) = (5 * cos(0.5 * x)) / 2 
 // f'(t) = 0.5
 
