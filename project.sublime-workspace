@@ -319,6 +319,15 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "Parallel Curves/main.cpp",
+			"settings":
+			{
+				"buffer_size": 2853,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "SDL Project",
 	"build_system_choices":
@@ -496,10 +505,10 @@
 			]
 		]
 	],
-	"build_varint": "",
+	"build_varint": "Single File",
 	"command_palette":
 	{
-		"height": 137.0,
+		"height": 392.0,
 		"last_filter": "git push",
 		"selected_items":
 		[
@@ -508,12 +517,16 @@
 				"Git: Push"
 			],
 			[
-				"git comm",
+				"git co",
 				"Git: Commit"
 			],
 			[
 				"git add",
 				"Git: Add All"
+			],
+			[
+				"git comm",
+				"Git: Commit"
 			],
 			[
 				"git pull",
@@ -534,10 +547,6 @@
 			[
 				"pack",
 				"Install Package Control"
-			],
-			[
-				"git co",
-				"Git: Commit"
 			],
 			[
 				"git c",
@@ -640,7 +649,7 @@
 				"Material Theme: Configuration"
 			]
 		],
-		"width": 420.0
+		"width": 444.0
 	},
 	"console":
 	{
@@ -665,15 +674,16 @@
 	"expanded_folders":
 	[
 		"/C/Projects/Mustard",
-		"/C/Projects/Mustard/Parallel Curves"
+		"/C/Projects/Mustard/Parallel Curves",
+		"/C/Projects/Mustard/Parallel Curves/src"
 	],
 	"file_history":
 	[
+		"/C/Projects/Mustard/Parallel Curves/main.cpp",
 		"/C/Projects/Mustard/Parallel Curves/src/track.h",
 		"/C/Projects/Mustard/Parallel Curves/main.h",
 		"/C/Projects/Mustard/Parallel Curves/src/vector2.h",
 		"/C/Projects/Mustard/Parallel Curves/src/vector2.cpp",
-		"/C/Projects/Mustard/Parallel Curves/main.cpp",
 		"/C/Projects/Mustard/main.h",
 		"/C/Projects/Mustard/Parallel Curves/src/geometry.cpp",
 		"/C/Projects/Mustard/Parallel Curves/src/geometry.h",
@@ -789,6 +799,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"300",
+			"2.5",
 			"1.0",
 			"0.1",
 			"camera",
@@ -894,8 +906,38 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "Parallel Curves/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2853,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1663,
+								1663
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 810.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],

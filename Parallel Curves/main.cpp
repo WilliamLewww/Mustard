@@ -47,45 +47,58 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-// Example Equation
-// y = sin(x)
-// f(t) = x
-// g(t) = y
+/* NOTEPAD
 
-//parametric equations
-// x = (a * g'(t)) / sqrt(pow(f'(t), 2) + pow(g'(t), 2)) + f(t);
-// y = -(a * f'(t)) / sqrt(pow(f'(t), 2) + pow(g'(t), 2)) + g(t);
-// (x, y)
+Example Equation
+y = sin(x)
+f(t) = x
+g(t) = y
 
-// Original Equation = 5 * sin(0.5 * x)
-// g(t) = 5 * sin(0.5 * x)
-// f(t) = x
-// g'(t) = (5 * cos(0.5 * x)) / 2 
-// f'(t) = 0.5
+parametric equations
+x = (distance * g'(t)) / sqrt(pow(f'(t), 2) + pow(g'(t), 2)) + f(t);
+y = -(distance * f'(t)) / sqrt(pow(f'(t), 2) + pow(g'(t), 2)) + g(t);
+(x, y)
+
+Original Equation = 5 * sin(0.5 * x)
+g(t) = 5 * sin(0.5 * x)
+f(t) = x
+g'(t) = (5 * cos(0.5 * x)) / 2 
+f'(t) = 0.5
+
+*/
 
 Track track;
 Vector2 cameraPosition = Vector2(0,0);
 
-double a = 0.5;
+double distance = 0.5; // between 0 and 1.5
+
+double a = 1, // between -1 and 1
+	   b = 2; // between  0 and 2
+
+double f(double x) { return (a * sin(b * x)); }
+double fDerivative(double x) { return (a * b * cos(b * x)); }
+double g(double x) { return x; }
+double gDerivative(double x) { return b; }
+
 void initialize() {
 	track.addRail(2);
 
-	for (int x = 0; x < 1000; x++) {
-		track.addVertexSingle(0, Vector2(x, 5 * sin(0.5 * x)));
+	for (double x = 0; x < 10; x += 0.1) {
+		track.addVertexSingle(0, Vector2(x, f(x)));
 		track.addVertexSingle(1, Vector2(
-			(a * (5 * cos(0.5 * x)) / 2) / sqrt(pow(0.5, 2) + pow((5 * cos(0.5 * x)) / 2 , 2)) + x,
-			-(a * 0.5) / sqrt(pow(0.5, 2) + pow((5 * cos(0.5 * x)) / 2 , 2)) + 5 * sin(0.5 * x)));
+			(distance * fDerivative(x)) / sqrt(pow(gDerivative(x), 2) + pow(fDerivative(x), 2)) + g(x),
+			-(distance * gDerivative(x)) / sqrt(pow(gDerivative(x), 2) + pow(fDerivative(x), 2)) + f(x)));
 	}
 
-	for (Vector2& vector : track.railList[0]) { vector.expand(300, 300); }
-	for (Vector2& vector : track.railList[1]) { vector.expand(300, 300); }
+	for (Vector2& vector : track.railList[0]) { vector.expand(50, 50); }
+	for (Vector2& vector : track.railList[1]) { vector.expand(50, 50); }
 }
 
 void update(int elapsedTime) {
-	if (std::find(keyList.begin(), keyList.end(), SDLK_w) != keyList.end()) { cameraPosition.y -= 2.5; }
-	if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) { cameraPosition.y += 2.5; }
-	if (std::find(keyList.begin(), keyList.end(), SDLK_a) != keyList.end()) { cameraPosition.x -= 2.5; }
-	if (std::find(keyList.begin(), keyList.end(), SDLK_d) != keyList.end()) { cameraPosition.x += 2.5; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_w) != keyList.end()) { cameraPosition.y -= 5.0; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) { cameraPosition.y += 5.0; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_a) != keyList.end()) { cameraPosition.x -= 5.0; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_d) != keyList.end()) { cameraPosition.x += 5.0; }
 }
 
 void render(SDL_Window* window, SDL_GLContext context) {
