@@ -327,7 +327,7 @@
 			"file": "Parallel Curves/main.cpp",
 			"settings":
 			{
-				"buffer_size": 3485,
+				"buffer_size": 3129,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -977,15 +977,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3485,
+						"buffer_size": 3129,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								141,
-								141
+								1520,
+								1520
 							]
 						],
 						"settings":
