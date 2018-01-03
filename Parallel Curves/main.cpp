@@ -67,6 +67,24 @@ f'(t) = 0.5
 
 */
 
+// Example Equation
+// y = sin(x)
+// f(t) = x
+// g(t) = y
+
+//parametric equations
+// x = (a * g'(t)) / sqrt(pow(f'(t), 2) + pow(g'(t), 2)) + f(t);
+// y = -(a * f'(t)) / sqrt(pow(f'(t), 2) + pow(g'(t), 2)) + g(t);
+// (x, y)
+
+// Original Equation = 5 * sin(0.5 * x)
+
+// g(t) = 5 * sin(0.5 * x)
+// f(t) = x
+
+// g'(t) = (5 * cos(0.5 * x)) / 2 
+// f'(t) = 0.5
+
 Track track;
 Vector2 cameraPosition = Vector2(0,0);
 
