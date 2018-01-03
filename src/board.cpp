@@ -46,31 +46,31 @@ void updateBoard(int elapsedTime, int speedZone) {
 		std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) == keyList.end())) {
 		turnLeft = true;
 
-		if (std::find(keyList.begin(), keyList.end(), SDLK_a) != keyList.end()) {
+		if (std::find(keyList.begin(), keyList.end(), SDLK_d) != keyList.end()) {
+			coleman = true;
 			slide = true;
 
 			board.rectangle.angle += ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 3;
-			movementAngle += ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 2;
+			movementAngle += (board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS);
 		}
 		else {
-			if (std::find(keyList.begin(), keyList.end(), SDLK_d) != keyList.end()) {
+			if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) {
 				slide = true;
 
 				board.rectangle.angle += ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 6;
 				movementAngle += (board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS) / 2;
 			}
 			else {
-				if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) {
-					coleman = true;
+				if (std::find(keyList.begin(), keyList.end(), SDLK_a) != keyList.end()) {
 					slide = true;
 
 					board.rectangle.angle += ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 3;
-					movementAngle += (board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS);
+					movementAngle += ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 2;
 				}
 				else {
 					board.rectangle.angle += board.turnSpeed * deltaTimeS;
 					movementAngle += board.turnSpeed * deltaTimeS;
-				}
+				}	
 			}
 		}
 	}
@@ -82,26 +82,26 @@ void updateBoard(int elapsedTime, int speedZone) {
 		std::find(keyList.begin(), keyList.end(), SDLK_LEFT) == keyList.end())) {
 		turnRight = true;
 
-		if (std::find(keyList.begin(), keyList.end(), SDLK_a) != keyList.end()) {
+		if (std::find(keyList.begin(), keyList.end(), SDLK_d) != keyList.end()) {
+			coleman = true;
 			slide = true;
 
 			board.rectangle.angle -= ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 3;
-			movementAngle -= ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 2;
+			movementAngle -= (board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS);
 		}
 		else {
-			if (std::find(keyList.begin(), keyList.end(), SDLK_d) != keyList.end()) {
+			if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) {
 				slide = true;
 
 				board.rectangle.angle -= ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 6;
 				movementAngle -= (board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS) / 3;
 			}
 			else {
-				if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) {
-					coleman = true;
+				if (std::find(keyList.begin(), keyList.end(), SDLK_a) != keyList.end()) {
 					slide = true;
 
 					board.rectangle.angle -= ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 3;
-					movementAngle -= (board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS);
+					movementAngle -= ((board.turnSpeed * deltaTimeS) + (board.slidePower * deltaTimeS)) * 2;
 				}
 				else {
 					board.rectangle.angle -= board.turnSpeed * deltaTimeS;
@@ -121,7 +121,7 @@ void updateBoard(int elapsedTime, int speedZone) {
 	}
 
 	double difference;
-	if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) { difference = abs(board.rectangle.angle - movementAngle) * 3 * deltaTimeS; }
+	if (coleman) { difference = abs(board.rectangle.angle - movementAngle) * 3 * deltaTimeS; }
 	else { difference = abs(board.rectangle.angle - movementAngle) * 1.5 * deltaTimeS; }
 
 	if (movementAngle > board.rectangle.angle) { 
