@@ -5,12 +5,15 @@
 - Run main.exe
 
 ## Controls
-Left arrow & Right arrow = Turn
+### Basic
+- Left arrow & Right arrow = Turn
 
-Turn Keys + A = Regular Slide
-Turn Keys + S = "Coleman Slide"
-Turn Keys + D = Technical Slide
+### Slides
+- Turn Keys + A = Regular Slide
+- Turn Keys + S = "Coleman Slide"
+- Turn Keys + D = Technical Slide
 
-O/P = turn on/off road lines
-K/L = turn on/off GUI
-I = reset thane/brake lines
+### Display
+- O/P = turn on/off road lines
+- K/L = turn on/off GUI
+- I = reset thane/brake lines
