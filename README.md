@@ -1,10 +1,19 @@
 # Thane
 
 ### Getting Started:
-- Extract Contents
+- Extract Content
 - Run main.exe
 
-### Controls:
--
--
--
+## Controls
+### Basic
+- Left arrow & Right arrow = Turn
+
+### Slides
+- Turn Keys + A = Regular Slide
+- Turn Keys + S = "Coleman Slide"
+- Turn Keys + D = Technical Slide
+
+### Display
+- O/P = turn on/off road lines
+- K/L = turn on/off GUI
+- I = reset thane/brake lines
