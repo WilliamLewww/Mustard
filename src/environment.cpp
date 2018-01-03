@@ -64,26 +64,26 @@ void World::generateSpeedZones() {
 
 int curveFunction(double a, double b, double c, int x);
 void World::generateTrack() {
-	// track.addRail(2);
-	// track.addVertex(0, 1, Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 0);
-	// track.addVertex(0, 1, Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 45);
-	// track.addVertexRelative(0, 1, -25, 100, 25);
-	// track.addVertexRelative(0, 1, 0, 150, 0);
-	// track.addVertexRelative(0, 1, -75, 50, 75);
-	// track.addVertexRelative(0, 1, -76, 50, 76);
-	// randomLongTrackPar(track, 0, 1, 50 , 100, 20, 20);
-
 	track.addRail(2);
 	track.addVertex(0, 1, Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 0);
-	track.addVertex(0, 1, Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 100);
+	track.addVertex(0, 1, Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 45);
 	track.addVertexRelative(0, 1, -25, 100, 25);
 	track.addVertexRelative(0, 1, 0, 150, 0);
-	track.addVertexRelative(0, 1, 15, 150, -15);
+	track.addVertexRelative(0, 1, -75, 50, 75);
+	track.addVertexRelative(0, 1, -76, 50, 76);
+	randomLongTrackPar(track, 0, 1, 50 , 100, 20, 20);
 
-	for (int x = 1; x < 100; x++) {
-		track.addVertexRelativeTop(0, -25 * sin(0.05 * x), 10);
-		track.addVertexRelativeBottom(1, 1.25 * cos(0.05 * x));
-	}
+	// track.addRail(2);
+	// track.addVertex(0, 1, Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 0);
+	// track.addVertex(0, 1, Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 100);
+	// track.addVertexRelative(0, 1, -25, 100, 25);
+	// track.addVertexRelative(0, 1, 0, 150, 0);
+	// track.addVertexRelative(0, 1, 15, 150, -15);
+
+	// for (int x = 1; x < 100; x++) {
+	// 	track.addVertexRelativeTop(0, -25 * sin(0.05 * x), 10);
+	// 	track.addVertexRelativeBottom(1, 1.25 * cos(0.05 * x));
+	// }
 }
 
 //  -1 < a < 1
