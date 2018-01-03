@@ -10,8 +10,8 @@
 
 ### Slides
 - Turn Keys + A = Regular Slide
-- Turn Keys + S = "Coleman Slide"
-- Turn Keys + D = Technical Slide
+- Turn Keys + S = Technical Slide
+- Turn Keys + D = "Coleman Slide"
 
 ### Display
 - O/P = turn on/off road lines
