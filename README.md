@@ -1,6 +1,7 @@
 # Thane
 
 ### Getting Started:
+- Download Latest Release (https://github.com/WilliamLewww/Thane/releases)
 - Extract Content
 - Run main.exe
 
