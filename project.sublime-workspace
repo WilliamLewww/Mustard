@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"betw",
+				"betweenA"
+			],
+			[
+				"fun",
+				"functionCount"
+			],
+			[
+				"sli",
+				"slidePower"
+			],
+			[
 				"col",
 				"coleman"
 			],
@@ -184,10 +196,6 @@
 				"vector\tstd::vector"
 			],
 			[
-				"sli",
-				"slideRight"
-			],
-			[
 				"tu",
 				"turnRight"
 			],
@@ -324,19 +332,37 @@
 	"buffers":
 	[
 		{
-			"file": "src/board.cpp",
+			"file": "Parallel Curves/main.cpp",
 			"settings":
 			{
-				"buffer_size": 8356,
+				"buffer_size": 5443,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/environment.h",
+			"file": "Parallel Curves/src/track.h",
 			"settings":
 			{
-				"buffer_size": 350,
+				"buffer_size": 3085,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/board.cpp",
+			"settings":
+			{
+				"buffer_size": 7715,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/board.h",
+			"settings":
+			{
+				"buffer_size": 962,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -429,7 +455,7 @@
 			],
 			[
 				"SDL Project",
-				""
+				"Single File"
 			]
 		],
 		[
@@ -520,7 +546,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 368.0,
+		"height": 392.0,
 		"last_filter": "git add",
 		"selected_items":
 		[
@@ -696,6 +722,7 @@
 	],
 	"file_history":
 	[
+		"/C/Projects/Mustard/Separate Axis Theorem/main.cpp",
 		"/C/Projects/Mustard/src/board.cpp",
 		"/C/Projects/Mustard/src/joiner.cpp",
 		"/C/Projects/Mustard/src/environment.cpp",
@@ -764,7 +791,6 @@
 		"/C/Libraries/ftgl-2.1.3~rc5/docs/tutorial.dox",
 		"/C/Projects/Mustard/src/freesans.ttf",
 		"/C/Libraries/SDL2_ttf-2.0.14/i686-w64-mingw32/include/SDL2/SDL_ttf.h",
-		"/C/Projects/Mustard/Separate Axis Theorem/main.cpp",
 		"/C/Projects/Mustard/Separate Axis Theorem/src/vrectangle.h",
 		"/C/Users/WilliamLew/Downloads/hw1.py",
 		"/C/Users/WilliamLew/Desktop/cmu.py",
@@ -818,6 +844,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"50",
+			"topIndex",
+			"SCREENWIDTH / 2 - 10",
+			"SCREENHEIGHT / 2 - 20",
+			"random",
+			"+ (board.slidePower * deltaTimeS)",
 			"SDLK_d",
 			"f",
 			"fDer",
@@ -946,19 +978,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/board.cpp",
+					"file": "Parallel Curves/main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8356,
+						"buffer_size": 5443,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1831,
-								1831
+								2593,
+								2593
 							]
 						],
 						"settings":
@@ -967,7 +999,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 495.0,
+						"translation.y": 900.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -975,11 +1007,11 @@
 				},
 				{
 					"buffer": 1,
-					"file": "src/environment.h",
-					"semi_transient": true,
+					"file": "Parallel Curves/src/track.h",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 350,
+						"buffer_size": 3085,
 						"regions":
 						{
 						},
@@ -992,13 +1024,72 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/board.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7715,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2509,
+								2509
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/board.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 962,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								592,
+								592
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]

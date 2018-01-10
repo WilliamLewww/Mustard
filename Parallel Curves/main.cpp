@@ -63,33 +63,90 @@ g(t) = 5 * sin(0.5 * x)
 f(t) = x
 g'(t) = (5 * cos(0.5 * x)) / 2 
 f'(t) = 0.5
+
+Process
+	1.flatten start
+	2.generate curve from function
+	3.flatten end
+	4.repeat steps 1-3
+-
 */
 
 Track track;
 Vector2 cameraPosition = Vector2(0,0);
 
-double distance = 0.5; // between 0 and 1.5
+//double distance = -0.5; // between -0.5 and 0
 
-double a = 1, // between -1 and 1
-	   b = 2; // between  0 and 2
+//double a = 1, // between -1 and 1
+//	     b = 2; // between  0 and 2
 
-double f(double x) { return (a * sin(b * x)); }
-double fDerivative(double x) { return (a * b * cos(b * x)); }
-double g(double x) { return x; }
-double gDerivative(double x) { return b; }
+double f(double x, double a, double b) { return (a * sin(b * x)); }
+double fDerivative(double x, double a, double b) { return (a * b * cos(b * x)); }
+double g(double x, double a, double b) { return x; }
+double gDerivative(double x, double a, double b) { return b; }
 
-void initialize() {
-	track.addRail(2);
+void givenInputFunction(Track& track, int period, int buffer, double distance, double a, double b, Vector2 expandVal) {
+	std::vector<Vector2> railA;
+	std::vector<Vector2> railB;
 
-	for (double x = 0; x < 10; x += 0.1) {
-		track.addVertexSingle(0, Vector2(x, f(x)));
-		track.addVertexSingle(1, Vector2(
-			(distance * fDerivative(x)) / sqrt(pow(gDerivative(x), 2) + pow(fDerivative(x), 2)) + g(x),
-			-(distance * gDerivative(x)) / sqrt(pow(gDerivative(x), 2) + pow(fDerivative(x), 2)) + f(x)));
+	for (double x = 0; x < period; x += 0.1) {
+		railA.push_back(Vector2(x, f(x, a, b)));
+		railB.push_back(Vector2(
+			(distance * fDerivative(x, a, b)) / sqrt(pow(gDerivative(x, a, b), 2) + pow(fDerivative(x, a, b), 2)) + g(x, a, b),
+			-(distance * gDerivative(x, a, b)) / sqrt(pow(gDerivative(x, a, b), 2) + pow(fDerivative(x, a, b), 2)) + f(x, a, b)));
 	}
 
-	for (Vector2& vector : track.railList[0]) { vector.expand(50, 50); }
-	for (Vector2& vector : track.railList[1]) { vector.expand(50, 50); }
+	Vector2 initialPoint = track.railList[0][track.railList[0].size() - 1];
+	for (Vector2& vector2 : railA) { 
+		vector2.expand(expandVal.x, expandVal.y);
+		track.addVertexSingle(0, vector2 + initialPoint + Vector2(buffer, 0));
+	}
+	for (Vector2& vector2 : railB) { 
+		vector2.expand(expandVal.x, expandVal.y); 
+		track.addVertexSingle(1, vector2 + initialPoint + Vector2(buffer, 0));
+	}
+}
+
+void randomInputFunction(Track& track, int functionCount, int period, int buffer, double distance, Vector2 betweenA, Vector2 betweenB, Vector2 expandVal) {
+	std::vector<Vector2> railA;
+	std::vector<Vector2> railB;
+
+	for (int count = 0; count < functionCount; count++) {
+		double a = (rand() % (int)(betweenA.y - betweenA.x + 1) + betweenA.x) / 10;
+		double b = (rand() % (int)(betweenB.y - betweenB.x + 1) + betweenB.x) / 10;
+
+		for (double x = 0; x < period; x += 0.1) {
+			railA.push_back(Vector2(x, f(x, a, b)));
+			railB.push_back(Vector2(
+				(distance * fDerivative(x, a, b)) / sqrt(pow(gDerivative(x, a, b), 2) + pow(fDerivative(x, a, b), 2)) + g(x, a, b),
+				-(distance * gDerivative(x, a, b)) / sqrt(pow(gDerivative(x, a, b), 2) + pow(fDerivative(x, a, b), 2)) + f(x, a, b)));
+		}
+
+		Vector2 initialPoint = track.railList[0][track.railList[0].size() - 1];
+		for (Vector2& vector2 : railA) { 
+			vector2.expand(expandVal.x, expandVal.y);
+			track.addVertexSingle(0, vector2 + initialPoint + Vector2(buffer, 0));
+		}
+		for (Vector2& vector2 : railB) { 
+			vector2.expand(expandVal.x, expandVal.y); 
+			track.addVertexSingle(1, vector2 + initialPoint + Vector2(buffer, 0));
+		}
+
+		railA.clear();
+		railB.clear();
+	}
+}
+
+void initialize() {
+	srand(time(NULL));
+	track.addRail(2);
+
+	track.addVertex(0, 1, Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 0);
+	track.addVertex(0, 1, Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 45);
+	track.addVertexRelative(0, 1, -25, 100, 25);
+	track.addVertexRelative(0, 1, 0, 150, 0);
+	//givenInputFunction(track, 10, 100, -0.3, 1, 2, Vector2(250, 250));
+	randomInputFunction(track, 25, 5, 50, -0.3, Vector2(-10, 10), Vector2(0, 20), Vector2(50, 50));
 }
 
 void update(int elapsedTime) {
