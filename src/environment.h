@@ -10,7 +10,7 @@ class World {
 public:
 	Track track;
 	void generateSpeedZones();
-	void generateTrack();
+	void generateTrack(int generationStyle);
 	void draw(bool drawTrackDetails);
 
 	void reset();

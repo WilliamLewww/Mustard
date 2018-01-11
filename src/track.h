@@ -102,6 +102,10 @@ public:
 		railList[indexBottom].push_back(Vector2(position.x, position.y + spacing));
 	};
 
+	inline addVertexSingle(int index, Vector2 position) {
+		railList[index].push_back(Vector2(position.x, position.y));
+	};
+
 	inline addVertexRelative(int indexTop, int indexBottom, int topY, int spacingX, int bottomY) {
 		railList[indexTop].push_back(Vector2(railList[indexTop][railList[indexTop].size() - 1].x + spacingX, railList[indexTop][railList[indexTop].size() - 1].y + topY));
 		railList[indexBottom].push_back(Vector2(railList[indexBottom][railList[indexBottom].size() - 1].x + spacingX, railList[indexBottom][railList[indexBottom].size() - 1].y + bottomY));

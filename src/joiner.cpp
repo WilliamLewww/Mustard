@@ -2,14 +2,14 @@
 
 bool drawDetails = true, drawGUI = true;
 
-void Joiner::initialize() {
+void Joiner::initialize(int generationStyle) {
 	initialPosition = Vector2((SCREENWIDTH / 2) - (board.rectangle.width / 2), SCREENHEIGHT / 2);
 	linkBoard("board_1.txt", initialPosition, 40, 10);
 	board.polylist.position = &board.rectangle.position;
 	board.polylist.angle = &board.rectangle.angle;
 	cameraPosition = &board.rectangle.position;
 
-	world.generateTrack();
+	world.generateTrack(generationStyle);
 	world.generateSpeedZones();
 }
 

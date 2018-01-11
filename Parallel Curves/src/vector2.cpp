@@ -20,6 +20,7 @@ Vector2 Vector2::vectorAbs() {
 
 	return *this;
 }
+
 void Vector2::expand(double xArgs, double yArgs) {
 	x *= xArgs;
 	y *= yArgs;

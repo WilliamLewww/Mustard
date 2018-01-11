@@ -16,7 +16,7 @@ class Joiner {
 	int speedZone = 0;
 
 public:
-	void initialize();
+	void initialize(int generationStyle);
 	void draw();
 	void update(int elapsedTime);
 };
