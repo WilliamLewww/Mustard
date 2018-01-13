@@ -32,6 +32,7 @@ void World::draw(bool drawTrackDetails = true) {
 	for (std::vector<Vector2> polygon : mountainPolygons) {
 		drawPolygon(polygon, mountainColor, 255);
 	}
+
 	track.draw(drawTrackDetails);
 }
 
@@ -47,11 +48,21 @@ void World::generateMountainPolygons() {
 
 			mountainPolygons.push_back(tempPolygon);
 
-			tempPolygonTop.emplace_back(track.railList[0][x]);
-			tempPolygonTop.emplace_back(track.railList[0][x - 1]);
-			tempPolygonTop.emplace_back(track.railList[0][x - 1].x, track.railList[0][x - 1].y - 50);
-			tempPolygonTop.emplace_back(track.railList[0][x].x, track.railList[0][x].y - 50);
+			switch (generationStyle) {
+				case 0: 
+					tempPolygonTop.emplace_back(track.railList[0][x]);
+					tempPolygonTop.emplace_back(track.railList[0][x - 1]);
+					tempPolygonTop.emplace_back(track.railList[0][x - 1].x, track.railList[0][x - 1].y - 50);
+					tempPolygonTop.emplace_back(track.railList[0][x].x, track.railList[0][x].y - 50);
+				break;
+				case 1:
+					tempPolygonTop.emplace_back(track.railList[0][x]);
+					tempPolygonTop.emplace_back(track.railList[0][x - 1]);
+					tempPolygonTop.emplace_back(track.railList[0][x - 1].x, track.railList[0][x - 1].y - 50 - mountainOffsetValue[x - 1]);
+					tempPolygonTop.emplace_back(track.railList[0][x].x, track.railList[0][x].y - 50 - mountainOffsetValue[x]);
+				break;
 
+			}
 			mountainPolygons.push_back(tempPolygonTop);
 		}
 	}
@@ -70,8 +81,7 @@ void World::generateSpeedZones() {
 	randomGradualSpeedZone(track, 5, 0, 50, 5, 2, 15);
 }
 
-int curveFunction(double a, double b, double c, int x);
-void World::generateTrack(int generationStyle) {
+void World::generateTrack() {
 	track.addRail(2);
 	track.addVertex(0, 1, Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 0);
 	track.addVertex(0, 1, Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 45);
@@ -85,27 +95,11 @@ void World::generateTrack(int generationStyle) {
 			break;
 		case 1:
 			randomInputFunction(track, 50, 5, 100, -0.3, Vector2(-10, 10), Vector2(0, 20), Vector2(500, 500));
+			for (int x = 0; x < track.railList[0].size(); x++) {
+				mountainOffsetValue.push_back(rand() % 25 - 12);
+			}
 			break;
 	}
-
-	// track.addRail(2);
-	// track.addVertex(0, 1, Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 0);
-	// track.addVertex(0, 1, Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 100);
-	// track.addVertexRelative(0, 1, -25, 100, 25);
-	// track.addVertexRelative(0, 1, 0, 150, 0);
-	// track.addVertexRelative(0, 1, 15, 150, -15);
-
-	// for (int x = 1; x < 100; x++) {
-	// 	track.addVertexRelativeTop(0, -25 * sin(0.05 * x), 10);
-	// 	track.addVertexRelativeBottom(1, 1.25 * cos(0.05 * x));
-	// }
-}
-
-//  -1 < a < 1
-// -10 < b < 10
-//   1 < c < 5
-int curveFunction(double a, double b, double c, int x) {
-	return (a * sin(b * pow(x, c))) * 10;
 }
 
 void givenInputFunction(Track& track, int period, int buffer, double distance, double a, double b, Vector2 expandVal) {

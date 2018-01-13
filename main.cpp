@@ -8,13 +8,12 @@ void render(SDL_Window* window, SDL_GLContext context);
 void grabConfig();
 
 int generationStyle = -1;
+int SCREENWIDTH = 1920, SCREENHEIGHT = 1080;
 
 Joiner joiner;
 
 SDL_Event event;
 SDL_GLContext context;
-
-int SCREENWIDTH = 1920, SCREENHEIGHT = 1080;
 
 bool isRunning = true; 
 int frameStart, frameEnd, deltaTime = 0;
@@ -90,26 +89,26 @@ void render(SDL_Window* window, SDL_GLContext context) {
 	SDL_GL_SwapWindow(window);
 }
 
-int configPart = 0;
+int readStep = 0;
 void grabConfig() {
 	std::ifstream fin("config.txt");
 
 	int x;
 	while (fin >> x) {
-		switch (configPart) {
+		switch (readStep) {
 			case 0:
 				if (x > 1920) { SCREENWIDTH = 1920; }
 				else { SCREENWIDTH = x; }
-				configPart += 1;
+				readStep += 1;
 				break;
 			case 1:
 				if (x > 1080) { SCREENHEIGHT = 1080; }
 				else { SCREENHEIGHT = x; }
-				configPart += 1;
+				readStep += 1;
 				break;
 			case 2:
 				generationStyle = x;
-				configPart += 1;
+				readStep += 1;
 				break;
 		}
 	}

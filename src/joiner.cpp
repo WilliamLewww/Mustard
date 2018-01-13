@@ -9,7 +9,8 @@ void Joiner::initialize(int generationStyle) {
 	board.polylist.angle = &board.rectangle.angle;
 	cameraPosition = &board.rectangle.position;
 
-	world.generateTrack(generationStyle);
+	world.generationStyle = generationStyle;
+	world.generateTrack();
 	world.generateSpeedZones();
 }
 
