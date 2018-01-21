@@ -33,7 +33,7 @@ void World::draw(bool drawTrackDetails = true) {
 		drawPolygon(polygon, mountainColor, 255);
 	}
 
-	track.draw(drawTrackDetails);
+	track.draw(generationStyle, drawTrackDetails);
 }
 
 void World::generateMountainPolygons() {
@@ -94,7 +94,7 @@ void World::generateTrack() {
 			randomLongTrackPar(track, 0, 1, 50 , 100, 20, 20);
 			break;
 		case 1:
-			randomInputFunction(track, 50, 5, 100, -0.3, Vector2(-10, 10), Vector2(0, 20), Vector2(500, 500));
+			randomInputFunction(track, 50, 5, 500, -0.3, Vector2(-10, 10), Vector2(0, 20), Vector2(1000, 1000));
 			for (int x = 0; x < track.railList[0].size(); x++) {
 				mountainOffsetValue.push_back(rand() % 25 - 12);
 			}

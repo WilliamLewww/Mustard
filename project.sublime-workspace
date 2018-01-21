@@ -4,12 +4,24 @@
 		"selected_items":
 		[
 			[
-				"moun",
-				"mountainPolygons"
+				"board",
+				"boardPosition"
 			],
 			[
-				"genera",
-				"generationStyle"
+				"p",
+				"position"
+			],
+			[
+				"re",
+				"rectangle"
+			],
+			[
+				"rail",
+				"railList"
+			],
+			[
+				"bo",
+				"boardAngle"
 			],
 			[
 				"betw",
@@ -340,39 +352,56 @@
 	"buffers":
 	[
 		{
-			"file": "src/environment.h",
+			"file": "src/gui/minimap.h",
 			"settings":
 			{
-				"buffer_size": 417,
+				"buffer_size": 1571,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/environment.cpp",
+			"file": "src/gui/shoeometer.h",
 			"settings":
 			{
-				"buffer_size": 10873,
+				"buffer_size": 711,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/board.h",
+			"settings":
+			{
+				"buffer_size": 962,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/gui/gui.cpp",
+			"settings":
+			{
+				"buffer_size": 208,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/gui/gui.h",
+			"settings":
+			{
+				"buffer_size": 1581,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "src/joiner.cpp",
 			"settings":
 			{
-				"buffer_size": 1870,
+				"buffer_size": 2003,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/config.txt",
-			"settings":
-			{
-				"buffer_size": 10,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -725,25 +754,24 @@
 	"expanded_folders":
 	[
 		"/C/Projects/Mustard",
-		"/C/Projects/Mustard/src"
+		"/C/Projects/Mustard/src",
+		"/C/Projects/Mustard/src/gui"
 	],
 	"file_history":
 	[
-		"/C/Projects/Bitmap-Bagel/export_polylist.py",
-		"/C/Projects/Cereal/cereal.py",
-		"/C/Projects/Cereal/cereal_nodiv.py",
-		"/C/Projects/Mustard/config.txt",
-		"/C/Projects/Mustard/src/config.txt",
-		"/C/Projects/Mustard/src/board.cpp",
+		"/C/Projects/Mustard/src/vector2.h",
+		"/C/Projects/Mustard/src/vector2.cpp",
+		"/C/Projects/Mustard/src/gui/gui.h",
 		"/C/Projects/Mustard/main.cpp",
 		"/C/Projects/Mustard/src/environment.cpp",
+		"/C/Projects/Mustard/src/config.txt",
+		"/C/Projects/Mustard/src/board.cpp",
+		"/C/Projects/Mustard/src/track.h",
+		"/C/Projects/Mustard/config.txt",
 		"/C/Projects/Mustard/src/joiner.cpp",
 		"/C/Projects/Mustard/src/joiner.h",
 		"/C/Projects/Mustard/src/environment.h",
-		"/C/Projects/Mustard/src/track.h",
-		"/C/Projects/Mustard/src/vector2.cpp",
 		"/C/Projects/Mustard/Parallel Curves/src/vector2.cpp",
-		"/C/Projects/Mustard/src/vector2.h",
 		"/C/Projects/Mustard/Parallel Curves/src/track.h",
 		"/C/Projects/Mustard/Parallel Curves/main.cpp",
 		"/C/Projects/Mustard/src/board.h",
@@ -789,7 +817,6 @@
 		"/C/Users/WilliamLew/Downloads/cs112_f17_week2_linter.py",
 		"/C/Users/WilliamLew/Downloads/lab2.py",
 		"/C/Projects/Mustard/src/gui/gui.cpp",
-		"/C/Projects/Mustard/src/gui/gui.h",
 		"/C/Projects/Mustard/src/gui/speedometer.h",
 		"/C/Projects/Mustard/src/gui/shoeometer.h",
 		"/C/Projects/Mustard/src/gui/gbutton.h",
@@ -841,7 +868,7 @@
 	],
 	"find":
 	{
-		"height": 52.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -855,8 +882,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"}\n",
-			"configPart",
+			"board",
 			"50",
 			"topIndex",
 			"SCREENWIDTH / 2 - 10",
@@ -986,52 +1012,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/environment.h",
+					"file": "src/gui/minimap.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 417,
+						"buffer_size": 1571,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								262,
-								262
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/environment.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10873,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4455,
-								4455
+								451,
+								451
 							]
 						],
 						"settings":
@@ -1047,20 +1045,49 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/joiner.cpp",
-					"semi_transient": false,
+					"buffer": 1,
+					"file": "src/gui/shoeometer.h",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1870,
+						"buffer_size": 711,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								445,
-								445
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/board.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 962,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								356,
+								356
 							]
 						],
 						"settings":
@@ -1077,24 +1104,82 @@
 				},
 				{
 					"buffer": 3,
-					"file": "src/config.txt",
+					"file": "src/gui/gui.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10,
+						"buffer_size": 208,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10,
-								10
+								53,
+								53
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/gui/gui.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1581,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								495,
+								495
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 31.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/joiner.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2003,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1838,
+								1838
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1108,7 +1193,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 52.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -1139,7 +1224,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 288.0
+		"height": 102.0
 	},
 	"output.find_results":
 	{
@@ -1157,7 +1242,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 96.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1207,7 +1292,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 342.0,
+	"side_bar_width": 127.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

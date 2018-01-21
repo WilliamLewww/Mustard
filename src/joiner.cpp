@@ -12,11 +12,14 @@ void Joiner::initialize(int generationStyle) {
 	world.generationStyle = generationStyle;
 	world.generateTrack();
 	world.generateSpeedZones();
+
+	gui.initializeMinimap(world.track.railList, initialPosition);
 }
 
 void Joiner::update(int elapsedTime) {
 	visibleFrame.position.x = cameraPosition->x - (SCREENWIDTH / 2);
 
+	gui.updateMinimap(board.rectangle.position, board.rectangle.angle);
 	gui.updateSpeedometer((int)board.velocity, 2);
 	gui.updateShoeometer((int)board.shoe.left, 1);
 	updateBoard(elapsedTime, speedZone);

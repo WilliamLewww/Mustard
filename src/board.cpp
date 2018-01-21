@@ -57,8 +57,14 @@ void updateBoard(int elapsedTime, int speedZone) {
 			if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) {
 				slide = true;
 
-				board.rectangle.angle += (board.turnSpeed * deltaTimeS) * 6;
-				movementAngle += (board.turnSpeed * deltaTimeS) / 2;
+				if (coleman == true) {
+					board.rectangle.angle += (board.turnSpeed * deltaTimeS) * 5;
+					movementAngle += (board.turnSpeed * deltaTimeS) / 2;
+				}
+				else {
+					board.rectangle.angle += (board.turnSpeed * deltaTimeS) * 6;
+					movementAngle += (board.turnSpeed * deltaTimeS) / 2;
+				}
 			}
 			else {
 				if (std::find(keyList.begin(), keyList.end(), SDLK_a) != keyList.end()) {
@@ -93,8 +99,14 @@ void updateBoard(int elapsedTime, int speedZone) {
 			if (std::find(keyList.begin(), keyList.end(), SDLK_s) != keyList.end()) {
 				slide = true;
 
-				board.rectangle.angle -= board.turnSpeed * deltaTimeS * 6;
-				movementAngle -= board.turnSpeed * deltaTimeS / 3;
+				if (coleman == true) {
+					board.rectangle.angle -= board.turnSpeed * deltaTimeS * 5;
+					movementAngle -= board.turnSpeed * deltaTimeS / 3;
+				}
+				else {
+					board.rectangle.angle -= board.turnSpeed * deltaTimeS * 6;
+					movementAngle -= board.turnSpeed * deltaTimeS / 3;
+				}
 			}
 			else {
 				if (std::find(keyList.begin(), keyList.end(), SDLK_a) != keyList.end()) {
@@ -137,6 +149,9 @@ void updateBoard(int elapsedTime, int speedZone) {
 			if (coleman) { generateThane(255); }
 			else { generateThane(100); }
 		}
+		else {
+			coleman = false;
+		}
 
 		board.rectangle.angle += 20 * deltaTimeS; 
 
@@ -164,6 +179,9 @@ void updateBoard(int elapsedTime, int speedZone) {
 			if (coleman) { generateThane(255); }
 			else { generateThane(100); }
 		}
+		else {
+			coleman = false;
+		}
 
 		board.rectangle.angle -= 20 * deltaTimeS;
 
@@ -184,7 +202,7 @@ void updateBoard(int elapsedTime, int speedZone) {
 	else { board.rectangle.position += (direction * deltaTimeS) * board.velocity; }
 
 	slide = false;
-	coleman = false;
+	//coleman = false;
 }
 
 void generateThane(int multiplier) {

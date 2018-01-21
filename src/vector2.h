@@ -8,6 +8,7 @@ public:
 	Vector2();
 	Vector2(double xArgs, double yArgs);
 	void expand(double xArgs, double yArgs);
+	void shrink(double xArgs, double yArgs);
 	double max();
 	double min();
 	Vector2 get();

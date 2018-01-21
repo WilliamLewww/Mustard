@@ -64,7 +64,7 @@ public:
 		return std::vector<Vector2>(railList[side].begin() + visibleRange.x, railList[side].begin() + visibleRange.y);
 	};
 	
-	inline void draw(bool drawDetails = true) {
+	inline void draw(int generationStyle, bool drawDetails = true) {
 		generateGroundPolygons();
 
 		for (std::vector<Vector2> polygon : roadPolygonList) {
@@ -72,8 +72,10 @@ public:
 		}
 
 		if (drawDetails == true) {
-			drawLineStrip(getVisibleRail(0), 10, sideColor, 100);
-			drawLineStrip(getVisibleRail(1), -10, sideColor, 100);
+			if (generationStyle == 0) {
+				drawLineStrip(getVisibleRail(0), 10, sideColor, 100);
+				drawLineStrip(getVisibleRail(1), -10, sideColor, 100);
+			}
 			drawLineStrip(getVisibleRail(0), getVisibleRail(1), -2, centerColor, 75);
 			drawLineStrip(getVisibleRail(0), getVisibleRail(1), 2, centerColor, 75);
 

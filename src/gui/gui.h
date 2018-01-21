@@ -1,15 +1,26 @@
 #pragma once
+#include "..\..\constants.h"
 #include "gbutton.h"
 #include "shoeometer.h"
 #include "speedometer.h"
+#include "minimap.h"
 #include <vector>
 
 class GUI {
+	Minimap minimap = Minimap(Vector2(1000 - 200 - 5, 5), 200, 200);
 	Speedometer speedometer;
 	Shoeometer shoeometer;
 	std::vector<GButton> buttonList;
 public:
 	void draw();
+
+	inline void initializeMinimap(std::vector<std::vector<Vector2>> railList, Vector2 boardInitialPosition) {
+		minimap.initialize(railList, boardInitialPosition);
+	};
+
+	inline void updateMinimap(Vector2 position, double angle) {
+		minimap.update(position, angle);
+	};
 
 	inline void updateSpeedometer(int velocity, int style) { 
 		switch (style) {

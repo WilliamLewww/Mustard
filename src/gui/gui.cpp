@@ -1,6 +1,7 @@
 #include "gui.h"
 
 void GUI::draw() {
+	minimap.draw();
 	speedometer.draw();
 	shoeometer.draw();
 	for (GButton button : buttonList) {
