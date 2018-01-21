@@ -34,6 +34,7 @@ void Joiner::update(int elapsedTime) {
 		for (int x = 0; x < rail.size(); x++) {
 			if (board.rectangle.position.x + 100 > rail[x].x) {
 				if (board.rectangle.position.x < rail[x].x + 100) {
+					gui.resetMinimap();
 					world.reset();
 					handleCollision(rail[x], rail[x + 1]);
 					handleCollision(rail[x], rail[x + 1]);

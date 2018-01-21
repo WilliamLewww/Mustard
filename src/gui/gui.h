@@ -7,7 +7,7 @@
 #include <vector>
 
 class GUI {
-	Minimap minimap = Minimap(Vector2(1000 - 200 - 5, 5), 200, 200);
+	Minimap minimap = Minimap(Vector2(5, 5), 200, 200);
 	Speedometer speedometer;
 	Shoeometer shoeometer;
 	std::vector<GButton> buttonList;
@@ -21,6 +21,10 @@ public:
 	inline void updateMinimap(Vector2 position, double angle) {
 		minimap.update(position, angle);
 	};
+
+	inline void resetMinimap() {
+		minimap.resetVisibleRange();
+	}
 
 	inline void updateSpeedometer(int velocity, int style) { 
 		switch (style) {
