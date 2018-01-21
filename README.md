@@ -14,6 +14,7 @@
 
 ## Controls
 ### Basic
+- Spacebar = Push/Tuck
 - Left arrow & Right arrow = Turn
 
 ### Slides
