@@ -1,4 +1,4 @@
-# Thane (Latest Release: 1.3.0)
+# Thane (Latest Release: 1.3.1)
 
 ### Getting Started:
 - Download Latest Release (https://github.com/WilliamLewww/Thane/releases)
@@ -10,7 +10,7 @@
 - Second Line: Generation Format (**0** - Random Generation || **1** - Smoother Track)
 
 ### Latest Update: https://www.youtube.com/watch?v=yBC1sSh-92M
-- **mini-map feature** to make turns more predictable
+- **fixed regular slides** feeling "too much like a car"
 
 ## Controls
 ### Basic
