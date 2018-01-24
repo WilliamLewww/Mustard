@@ -13,7 +13,7 @@ void Joiner::initialize(int generationStyle) {
 	world.generateTrack();
 	world.generateSpeedZones();
 
-	gui.initializeMinimap(world.track.railList, initialPosition);
+	gui.initializeMinimap(world.track.railList, initialPosition, Vector2(5, 5), SCREENWIDTH / 5, SCREENHEIGHT / 3);
 }
 
 void Joiner::update(int elapsedTime) {

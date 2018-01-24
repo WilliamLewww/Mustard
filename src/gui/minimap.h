@@ -7,7 +7,7 @@ class Minimap {
 	Vector2 position;
 	double width, height;
 	int color[3] = { 0, 0, 0 };
-	int alpha = 150;
+	int alpha = 255;
 
 	Vector2 trianglePosition;
 

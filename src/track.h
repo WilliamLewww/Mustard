@@ -41,7 +41,7 @@ public:
 		}
 
 		for (int x = 0; x < roadPolygonList.size(); x++) {
-			if (roadPolygonList[x][0].x < visibleFrame.sLeft()) {
+			if (roadPolygonList[x][0].x < visibleFrame.sLeft() - (visibleFrame.width / 2)) {
 				roadPolygonList.erase(roadPolygonList.begin());
 				x -= 1;
 			}
@@ -51,8 +51,8 @@ public:
 
 	inline setVisibleRange() {
 		for (int x = visibleRange.x; x < railList[0].size(); x++) {
-			if (railList[0][x].x < visibleFrame.sLeft()) { visibleRange.x += 1; }
-			if (railList[0][x].x < visibleFrame.sRight()) { visibleRange.y = x; }
+			if (railList[0][x].x < visibleFrame.sLeft() - (visibleFrame.width / 2)) { visibleRange.x += 1; }
+			if (railList[0][x].x < visibleFrame.sRight() - (visibleFrame.width / 2)) { visibleRange.y = x; }
 			else { break; }
 		}
 	};

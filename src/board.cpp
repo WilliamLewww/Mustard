@@ -59,11 +59,11 @@ void updateBoard(int elapsedTime, int speedZone) {
 
 				if (coleman == true) {
 					board.rectangle.angle += (board.turnSpeed * deltaTimeS) * 5;
-					movementAngle += (board.turnSpeed * deltaTimeS) / 2;
+					movementAngle += (board.turnSpeed * deltaTimeS) / 3;
 				}
 				else {
 					board.rectangle.angle += (board.turnSpeed * deltaTimeS) * 6;
-					movementAngle += (board.turnSpeed * deltaTimeS) / 2;
+					movementAngle += (board.turnSpeed * deltaTimeS) / 3;
 				}
 			}
 			else {
@@ -71,7 +71,7 @@ void updateBoard(int elapsedTime, int speedZone) {
 					slide = true;
 
 					board.rectangle.angle += board.turnSpeed * deltaTimeS * 3;
-					movementAngle += board.turnSpeed * deltaTimeS * 2;
+					movementAngle += board.turnSpeed * deltaTimeS * 1.25;
 				}
 				else {
 					board.rectangle.angle += board.turnSpeed * deltaTimeS;
@@ -113,7 +113,7 @@ void updateBoard(int elapsedTime, int speedZone) {
 					slide = true;
 
 					board.rectangle.angle -= board.turnSpeed * deltaTimeS * 3;
-					movementAngle -= board.turnSpeed * deltaTimeS * 2;
+					movementAngle -= board.turnSpeed * deltaTimeS * 1.25;
 				}
 				else {
 					board.rectangle.angle -= board.turnSpeed * deltaTimeS;
