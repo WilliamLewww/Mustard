@@ -10,8 +10,7 @@
 - Second Line: Generation Format (**0** - Random Generation || **1** - Smoother Track)
 
 ### Latest Update: https://www.youtube.com/watch?v=yBC1sSh-92M
-- fixed **track generation** (rails would be deconstructed to quickly)
-- fixed **mini-map** sizing to match relative screen size
+- fixed limits for track generation
 
 ## Controls
 ### Basic
