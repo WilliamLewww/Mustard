@@ -132,6 +132,9 @@ void randomInputFunction(Track& track, int functionCount, int period, int buffer
 		double a = (rand() % (int)(betweenA.y - betweenA.x + 1) + betweenA.x) / 10;
 		double b = (rand() % (int)(betweenB.y - betweenB.x + 1) + betweenB.x) / 10;
 
+		while (a == 0) { a = (rand() % (int)(betweenA.y - betweenA.x + 1) + betweenA.x) / 10; }
+		while (b == 0) { b = (rand() % (int)(betweenB.y - betweenB.x + 1) + betweenB.x) / 10; }
+
 		for (double x = 0; x < period; x += 0.1) {
 			railA.push_back(Vector2(x, f(x, a, b)));
 			railB.push_back(Vector2(
