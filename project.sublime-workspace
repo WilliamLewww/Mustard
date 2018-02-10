@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"left",
+				"leftButtonPress"
+			],
+			[
+				"scree",
+				"screenWidth"
+			],
+			[
+				"hand",
+				"handleUserInput"
+			],
+			[
+				"init",
+				"initializeExternalController"
+			],
+			[
+				"setS",
+				"setScreenHeight"
+			],
+			[
+				"scre",
+				"screenWidth"
+			],
+			[
+				"scr",
+				"screenWidth"
+			],
+			[
+				"upd",
+				"updateAndRender"
+			],
+			[
+				"board",
+				"boardNumber"
+			],
+			[
+				"boa",
+				"boardHeight"
+			],
+			[
+				"read",
+				"readStep"
+			],
+			[
 				"visi",
 				"visibleFrame"
 			],
@@ -66,10 +110,6 @@
 			[
 				"ar",
 				"argv"
-			],
-			[
-				"scree",
-				"SCREENHEIGHT"
 			],
 			[
 				"rever",
@@ -312,10 +352,6 @@
 				"tempTrack2"
 			],
 			[
-				"init",
-				"initialPosition"
-			],
-			[
 				"lim",
 				"limitTop"
 			],
@@ -344,28 +380,10 @@
 	"buffers":
 	[
 		{
-			"file": "src/environment.cpp",
+			"file": "main.cpp",
 			"settings":
 			{
-				"buffer_size": 11073,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/gui/minimap.h",
-			"settings":
-			{
-				"buffer_size": 2615,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/board.cpp",
-			"settings":
-			{
-				"buffer_size": 8137,
+				"buffer_size": 1836,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -377,62 +395,6 @@
 		[
 			[
 				[
-					"Packages/C++/C++ Single File.sublime-build",
-					""
-				],
-				[
-					"Packages/C++/C++ Single File.sublime-build",
-					"Run"
-				]
-			],
-			[
-				"Packages/C++/C++ Single File.sublime-build",
-				"Run"
-			]
-		],
-		[
-			[
-				[
-					"Packages/Python/Python.sublime-build",
-					""
-				],
-				[
-					"Packages/Python/Python.sublime-build",
-					"Syntax Check"
-				]
-			],
-			[
-				"Packages/Python/Python.sublime-build",
-				""
-			]
-		],
-		[
-			[
-				[
-					"SDL Project",
-					""
-				],
-				[
-					"SDL Project",
-					"Compile"
-				],
-				[
-					"Packages/C++/C++ Single File.sublime-build",
-					""
-				],
-				[
-					"Packages/C++/C++ Single File.sublime-build",
-					"Run"
-				]
-			],
-			[
-				"SDL Project",
-				""
-			]
-		],
-		[
-			[
-				[
 					"SDL Project",
 					""
 				],
@@ -460,90 +422,6 @@
 			[
 				"SDL Project",
 				""
-			]
-		],
-		[
-			[
-				[
-					"SDL Project",
-					""
-				],
-				[
-					"SDL Project",
-					"Main"
-				],
-				[
-					"SDL Project",
-					"Compile"
-				],
-				[
-					"Packages/C++/C++ Single File.sublime-build",
-					""
-				],
-				[
-					"Packages/C++/C++ Single File.sublime-build",
-					"Run"
-				]
-			],
-			[
-				"SDL Project",
-				""
-			]
-		],
-		[
-			[
-				[
-					"SDL Project",
-					""
-				],
-				[
-					"SDL Project",
-					"Main"
-				],
-				[
-					"SDL Project",
-					"Compile"
-				],
-				[
-					"SDL Project",
-					"Single File"
-				],
-				[
-					"Packages/C++/C++ Single File.sublime-build",
-					""
-				],
-				[
-					"Packages/C++/C++ Single File.sublime-build",
-					"Run"
-				]
-			],
-			[
-				"SDL Project",
-				""
-			]
-		],
-		[
-			[
-				[
-					"SDL Project",
-					""
-				],
-				[
-					"SDL Project",
-					"Run"
-				],
-				[
-					"Packages/C++/C++ Single File.sublime-build",
-					""
-				],
-				[
-					"Packages/C++/C++ Single File.sublime-build",
-					"Run"
-				]
-			],
-			[
-				"SDL Project",
-				"Run"
 			]
 		]
 	],
@@ -719,41 +597,59 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Projects/Mustard",
-		"/C/Projects/Mustard/src",
-		"/C/Projects/Mustard/src/gui"
+		"/C/Projects/Thane"
 	],
 	"file_history":
 	[
-		"/C/Projects/Mustard/src/track.h",
+		"/C/Projects/Thane/main.h",
+		"/C/Projects/Thane/src/input.h",
+		"/C/Projects/Thane/src/input.cpp",
+		"/C/Projects/Mustard/main.cpp",
+		"/C/Projects/Thane/project.sublime-project",
+		"/C/Projects/Thane/src/vector2.cpp",
+		"/C/Projects/Thane/src/vector2.h",
+		"/C/Projects/Mustard/src/vector2.cpp",
+		"/C/Projects/Mustard/src/vector2.h",
+		"/C/Projects/Mustard/src/input.cpp",
+		"/C/Projects/Mustard/src/input.h",
+		"/C/Projects/Mustard/main.h",
+		"/C/Projects/Mustard/project.sublime-project",
+		"/C/Projects/Mustard/project.sublime-workspace",
+		"/C/Projects/Thane/project.sublime-workspace",
+		"/C/Projects/Thane/main.cpp",
 		"/C/Projects/Mustard/src/camera.cpp",
-		"/C/Projects/Mustard/src/joiner.cpp",
-		"/C/Projects/Mustard/src/environment.cpp",
+		"/C/Projects/Mustard/src/vrectangle.h",
+		"/C/Projects/Mustard/src/joiner.h",
 		"/C/Projects/Mustard/src/gui/gui.h",
-		"/C/Projects/Mustard/src/gui/gui.cpp",
+		"/C/Projects/Mustard/src/geometry.h",
+		"/C/Projects/Mustard/main_old.h",
+		"/C/Projects/Mustard/src/world.h",
+		"/C/Projects/Mustard/main_old.cpp",
+		"/C/Projects/Mustard/src/world.cpp",
+		"/C/Projects/Mustard/global.h",
+		"/C/Projects/Mustard/src/joiner.cpp",
+		"/C/Projects/Mustard/config.txt",
 		"/C/Projects/Mustard/src/board.cpp",
+		"/C/Projects/Mustard/src/board.h",
+		"/C/Projects/Mustard/board_1.txt",
+		"/C/Projects/Mustard/src/environment.cpp",
 		"/C/Projects/Mustard/src/gui/minimap.h",
+		"/C/Projects/Bitmap-Bagel/export_polylist.py",
+		"/C/Projects/Mustard/src/track.h",
+		"/C/Projects/Mustard/src/gui/gui.cpp",
 		"/C/Projects/Mustard/src/environment.h",
 		"/C/Projects/Mustard/src/config.txt",
 		"/C/Projects/Mustard/src/gui/config.txt",
-		"/C/Projects/Bitmap-Bagel/export_polylist.py",
 		"/C/Projects/Cereal/cereal.py",
 		"/C/Projects/Cereal/cereal_nodiv.py",
-		"/C/Projects/Mustard/config.txt",
-		"/C/Projects/Mustard/main.cpp",
-		"/C/Projects/Mustard/src/joiner.h",
-		"/C/Projects/Mustard/src/vector2.cpp",
 		"/C/Projects/Mustard/Parallel Curves/src/vector2.cpp",
-		"/C/Projects/Mustard/src/vector2.h",
 		"/C/Projects/Mustard/Parallel Curves/src/track.h",
 		"/C/Projects/Mustard/Parallel Curves/main.cpp",
-		"/C/Projects/Mustard/src/board.h",
 		"/C/Projects/Mustard/Separate Axis Theorem/main.cpp",
 		"/C/Projects/Mustard/src/board_old_2.cpp.txt",
 		"/C/Users/William/Desktop/Mustard/Parallel Curves/main.cpp",
 		"/C/Projects/Mustard/Parallel Curves/main.h",
 		"/C/Projects/Mustard/Parallel Curves/src/vector2.h",
-		"/C/Projects/Mustard/main.h",
 		"/C/Projects/Mustard/Parallel Curves/src/geometry.cpp",
 		"/C/Projects/Mustard/Parallel Curves/src/geometry.h",
 		"/C/Projects/Mustard/constants.h",
@@ -766,13 +662,9 @@
 		"/C/Projects/Mustard/src/board_old.cpp",
 		"/C/Projects/Mustard/src/gui/board.cpp",
 		"/C/Projects/Mustard/src/geometry.cpp",
-		"/C/Projects/Mustard/src/geometry.h",
 		"/C/Projects/Mustard/src/chunder.h",
 		"/C/Projects/Mustard/src/rock.h",
 		"/C/Users/WilliamLew/Desktop/cmu/b.py",
-		"/C/Projects/Mustard/project.sublime-project",
-		"/C/Projects/Mustard/src/input.h",
-		"/C/Projects/Mustard/src/input.cpp",
 		"/C/Projects/Mustard/Separate Axis Theorem/src/vrectangle.cpp",
 		"/C/Users/WilliamLew/Desktop/test.bmp",
 		"/C/Users/WilliamLew/Desktop/cmu/a.py",
@@ -785,7 +677,6 @@
 		"/C/Projects/Example_Site/src/main.js",
 		"/C/Projects/Mustard/src/vector3.h",
 		"/C/Projects/Mustard/src/vector3.cpp",
-		"/C/Projects/Mustard/src/vrectangle.h",
 		"/C/Users/WilliamLew/Downloads/cs112_f17_week2_linter.py",
 		"/C/Users/WilliamLew/Downloads/lab2.py",
 		"/C/Projects/Mustard/src/gui/speedometer.h",
@@ -853,119 +744,19 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"}\n",
-			"configPart",
-			"50",
-			"topIndex",
-			"SCREENWIDTH / 2 - 10",
-			"SCREENHEIGHT / 2 - 20",
-			"random",
-			"+ (board.slidePower * deltaTimeS)",
-			"SDLK_d",
-			"f",
-			"fDer",
-			"fDerivative",
-			"gDerivative",
-			"g",
-			"fDer",
-			"gDer",
-			"fDerivative",
-			"gDerivative",
-			"curveDerivative",
-			"curve",
-			"1",
-			"250",
-			"50",
-			"a",
-			"300",
-			"2.5",
-			"1.0",
-			"0.1",
-			"camera",
-			"bottomY",
-			"spacingX",
-			"indexTop",
-			"1",
-			"board.rectangle.angle",
-			"coleman",
-			"shoeLeft",
-			"SDLK_",
-			"segment",
-			"color",
-			"10",
-			"40",
-			"angle",
-			"resetVisibleRange",
-			"tempPolygon.emplace_back(railList[0][x]);",
-			"[0]",
-			"[1]",
-			"min",
-			"50",
-			"top",
-			"bottom",
-			"top",
-			"bottom",
-			"top",
-			"bottom",
-			"Vector2",
-			"6",
-			");\n",
-			"25",
-			"100",
-			"trackCompliment",
-			"releaseSlide",
-			"recoverSlide",
-			"needToReleaseSlide",
-			"interval",
-			"5",
-			"\\",
-			"Init",
-			"\\",
-			"x",
-			"linePos",
-			"x",
-			"maxX",
-			"x",
-			"rectMaxY",
-			"rectMinY",
-			"maxY",
-			"MinY",
-			"minY",
-			"rectY",
-			"yCoords",
-			"double",
-			"**",
-			"topLeft",
-			"y",
-			"thaneLines",
-			"board.length",
-			"board.position",
+			"position",
 			"height",
 			"width",
-			"rotation",
-			"angle",
-			"((",
-			"angle",
-			"degrees",
-			"angle",
-			"Rectangle",
-			"y",
-			"x",
-			"spacing",
-			"count",
-			"spacing",
-			"count",
-			"generateTrack",
-			"std::co",
-			"width",
-			"\\",
-			"Projects",
-			"slideSpeed",
-			"slideTime",
-			"board.velocity",
-			"\\",
-			"create",
-			"init"
+			"extern",
+			"inline",
+			"window",
+			"SCREENHEIGHT",
+			"SCREENWIDTH",
+			"600",
+			"1000",
+			"SCREENHEIGHT",
+			"1920",
+			"Mustard"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -973,7 +764,6 @@
 		"regex": false,
 		"replace_history":
 		[
-			""
 		],
 		"reverse": false,
 		"show_context": true,
@@ -984,88 +774,29 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/environment.cpp",
+					"file": "main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11073,
+						"buffer_size": 1836,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6079,
-								6079
+								571,
+								571
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3780.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/gui/minimap.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2615,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								237,
-								237
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/board.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8137,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								535,
-								535
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1074,6 +805,11 @@
 					"stack_index": 0,
 					"type": "text"
 				}
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
@@ -1094,11 +830,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -1110,19 +853,11 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 288.0
+		"height": 242.0
 	},
 	"output.find_results":
 	{
 		"height": 0.0
-	},
-	"output.git":
-	{
-		"height": 268.0
-	},
-	"output.hex_viewer_inspector":
-	{
-		"height": 212.0
 	},
 	"pinned_build_system": "",
 	"project": "project.sublime-project",

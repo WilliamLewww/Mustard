@@ -5,11 +5,10 @@
 			"cmd":
 			[
 				"g++",
-				"C:/Projects/Mustard/main.cpp",
+				"C:/Projects/Thane/main.cpp",
 				"-o",
-				"C:/Projects/Mustard/main",
-				"C:/Projects/Mustard/src/*.cpp",
-				"C:/Projects/Mustard/src/gui/*.cpp",
+				"C:/Projects/Thane/main",
+				"C:/Projects/Thane/src/*.cpp",
 				"-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include",
 				"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib",
 				"-lmingw32",
@@ -17,7 +16,7 @@
 				"-lSDL2",
 				"-lopengl32",
 				"&&",
-				"C:/Projects/Mustard/main"
+				"C:/Projects/Thane/main"
 			],
 			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
 			"name": "SDL Project",
