@@ -1,23 +1,29 @@
 #pragma once
-#include "vector2.h"
 #include <SDL2\SDL.h>
 #include <vector>
 #include <algorithm>
+#include "vector2.h"
 
-void getKeys(SDL_Event event);
-void removeInitialPress();
-extern std::vector<SDL_Keycode> keyList;
-extern std::vector<SDL_Keycode> pressKeyList;
+class Input {
+private:
+	std::vector<SDL_Keycode> keyList;
+	std::vector<SDL_Keycode> pressKeyList;
 
-void getButtons(SDL_Event event);
-extern bool leftButtonDown, leftButtonPress;
-extern bool middleMouseDown, middleMousePress;
-extern bool scrollUp, scrollDown;
-extern int mouseX, mouseY;
+	bool leftButtonDown, leftButtonPress;
+	bool middleMouseDown, middleMousePress;
+	bool scrollUp, scrollDown;
+	int mouseX, mouseY;
 
-void getController();
-extern int controllerPad;
-extern std::vector<int> controllerList;
-extern std::vector<int> controllerPressList;
+	int controllerPad;
+	std::vector<int> controllerList;
+	std::vector<int> controllerPressList;
 
-bool checkMouseOnEntity(Vector2 position, int width, int height);
+public:
+	inline std::vector<SDL_Keycode> getKeyList() { return keyList; };
+
+	void getKeyTrigger(SDL_Event event);
+	void clearExpiredInput();
+	void getMouseTrigger(SDL_Event event);
+	void setupController();
+	bool checkMouseOnEntity(Vector2 entityPosition, int entityWidth, int entityHeight);
+};
