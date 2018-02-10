@@ -4,38 +4,6 @@
 		"selected_items":
 		[
 			[
-				"left",
-				"leftButtonPress"
-			],
-			[
-				"scree",
-				"screenWidth"
-			],
-			[
-				"hand",
-				"handleUserInput"
-			],
-			[
-				"init",
-				"initializeExternalController"
-			],
-			[
-				"setS",
-				"setScreenHeight"
-			],
-			[
-				"scre",
-				"screenWidth"
-			],
-			[
-				"scr",
-				"screenWidth"
-			],
-			[
-				"upd",
-				"updateAndRender"
-			],
-			[
 				"board",
 				"boardNumber"
 			],
@@ -110,6 +78,10 @@
 			[
 				"ar",
 				"argv"
+			],
+			[
+				"scree",
+				"SCREENHEIGHT"
 			],
 			[
 				"rever",
@@ -352,6 +324,10 @@
 				"tempTrack2"
 			],
 			[
+				"init",
+				"initialPosition"
+			],
+			[
 				"lim",
 				"limitTop"
 			],
@@ -380,11 +356,10 @@
 	"buffers":
 	[
 		{
-			"file": "main.cpp",
+			"file": "/C/Projects/Thane/main.cpp",
 			"settings":
 			{
-				"buffer_size": 1836,
-				"encoding": "UTF-8",
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		}
@@ -392,6 +367,62 @@
 	"build_system": "SDL Project",
 	"build_system_choices":
 	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"SDL Project",
+					""
+				],
+				[
+					"SDL Project",
+					"Compile"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"SDL Project",
+				""
+			]
+		],
 		[
 			[
 				[
@@ -422,6 +453,90 @@
 			[
 				"SDL Project",
 				""
+			]
+		],
+		[
+			[
+				[
+					"SDL Project",
+					""
+				],
+				[
+					"SDL Project",
+					"Main"
+				],
+				[
+					"SDL Project",
+					"Compile"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"SDL Project",
+				""
+			]
+		],
+		[
+			[
+				[
+					"SDL Project",
+					""
+				],
+				[
+					"SDL Project",
+					"Main"
+				],
+				[
+					"SDL Project",
+					"Compile"
+				],
+				[
+					"SDL Project",
+					"Single File"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"SDL Project",
+				""
+			]
+		],
+		[
+			[
+				[
+					"SDL Project",
+					""
+				],
+				[
+					"SDL Project",
+					"Run"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"SDL Project",
+				"Run"
 			]
 		]
 	],
@@ -597,26 +712,13 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Projects/Thane"
+		"/C/Projects/Mustard",
+		"/C/Projects/Mustard/src"
 	],
 	"file_history":
 	[
-		"/C/Projects/Thane/main.h",
-		"/C/Projects/Thane/src/input.h",
-		"/C/Projects/Thane/src/input.cpp",
 		"/C/Projects/Mustard/main.cpp",
-		"/C/Projects/Thane/project.sublime-project",
-		"/C/Projects/Thane/src/vector2.cpp",
-		"/C/Projects/Thane/src/vector2.h",
-		"/C/Projects/Mustard/src/vector2.cpp",
-		"/C/Projects/Mustard/src/vector2.h",
-		"/C/Projects/Mustard/src/input.cpp",
-		"/C/Projects/Mustard/src/input.h",
 		"/C/Projects/Mustard/main.h",
-		"/C/Projects/Mustard/project.sublime-project",
-		"/C/Projects/Mustard/project.sublime-workspace",
-		"/C/Projects/Thane/project.sublime-workspace",
-		"/C/Projects/Thane/main.cpp",
 		"/C/Projects/Mustard/src/camera.cpp",
 		"/C/Projects/Mustard/src/vrectangle.h",
 		"/C/Projects/Mustard/src/joiner.h",
@@ -642,7 +744,9 @@
 		"/C/Projects/Mustard/src/gui/config.txt",
 		"/C/Projects/Cereal/cereal.py",
 		"/C/Projects/Cereal/cereal_nodiv.py",
+		"/C/Projects/Mustard/src/vector2.cpp",
 		"/C/Projects/Mustard/Parallel Curves/src/vector2.cpp",
+		"/C/Projects/Mustard/src/vector2.h",
 		"/C/Projects/Mustard/Parallel Curves/src/track.h",
 		"/C/Projects/Mustard/Parallel Curves/main.cpp",
 		"/C/Projects/Mustard/Separate Axis Theorem/main.cpp",
@@ -665,6 +769,9 @@
 		"/C/Projects/Mustard/src/chunder.h",
 		"/C/Projects/Mustard/src/rock.h",
 		"/C/Users/WilliamLew/Desktop/cmu/b.py",
+		"/C/Projects/Mustard/project.sublime-project",
+		"/C/Projects/Mustard/src/input.h",
+		"/C/Projects/Mustard/src/input.cpp",
 		"/C/Projects/Mustard/Separate Axis Theorem/src/vrectangle.cpp",
 		"/C/Users/WilliamLew/Desktop/test.bmp",
 		"/C/Users/WilliamLew/Desktop/cmu/a.py",
@@ -744,19 +851,124 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"position",
-			"height",
-			"width",
-			"extern",
-			"inline",
+			"SCREENHEIGHT",
+			"SCREENWIDTH",
 			"window",
 			"SCREENHEIGHT",
 			"SCREENWIDTH",
-			"600",
-			"1000",
-			"SCREENHEIGHT",
-			"1920",
-			"Mustard"
+			"}\n",
+			"configPart",
+			"50",
+			"topIndex",
+			"SCREENWIDTH / 2 - 10",
+			"SCREENHEIGHT / 2 - 20",
+			"random",
+			"+ (board.slidePower * deltaTimeS)",
+			"SDLK_d",
+			"f",
+			"fDer",
+			"fDerivative",
+			"gDerivative",
+			"g",
+			"fDer",
+			"gDer",
+			"fDerivative",
+			"gDerivative",
+			"curveDerivative",
+			"curve",
+			"1",
+			"250",
+			"50",
+			"a",
+			"300",
+			"2.5",
+			"1.0",
+			"0.1",
+			"camera",
+			"bottomY",
+			"spacingX",
+			"indexTop",
+			"1",
+			"board.rectangle.angle",
+			"coleman",
+			"shoeLeft",
+			"SDLK_",
+			"segment",
+			"color",
+			"10",
+			"40",
+			"angle",
+			"resetVisibleRange",
+			"tempPolygon.emplace_back(railList[0][x]);",
+			"[0]",
+			"[1]",
+			"min",
+			"50",
+			"top",
+			"bottom",
+			"top",
+			"bottom",
+			"top",
+			"bottom",
+			"Vector2",
+			"6",
+			");\n",
+			"25",
+			"100",
+			"trackCompliment",
+			"releaseSlide",
+			"recoverSlide",
+			"needToReleaseSlide",
+			"interval",
+			"5",
+			"\\",
+			"Init",
+			"\\",
+			"x",
+			"linePos",
+			"x",
+			"maxX",
+			"x",
+			"rectMaxY",
+			"rectMinY",
+			"maxY",
+			"MinY",
+			"minY",
+			"rectY",
+			"yCoords",
+			"double",
+			"**",
+			"topLeft",
+			"y",
+			"thaneLines",
+			"board.length",
+			"board.position",
+			"height",
+			"width",
+			"rotation",
+			"angle",
+			"((",
+			"angle",
+			"degrees",
+			"angle",
+			"Rectangle",
+			"y",
+			"x",
+			"spacing",
+			"count",
+			"spacing",
+			"count",
+			"generateTrack",
+			"std::co",
+			"width",
+			"\\",
+			"Projects",
+			"slideSpeed",
+			"slideTime",
+			"board.velocity",
+			"\\",
+			"create",
+			"init"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -764,6 +976,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			""
 		],
 		"reverse": false,
 		"show_context": true,
@@ -779,19 +992,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "main.cpp",
+					"file": "/C/Projects/Thane/main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1836,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								571,
-								571
+								0,
+								0
 							]
 						],
 						"settings":
@@ -805,11 +1018,6 @@
 					"stack_index": 0,
 					"type": "text"
 				}
-			]
-		},
-		{
-			"sheets":
-			[
 			]
 		}
 	],
@@ -830,18 +1038,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -853,11 +1054,19 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 242.0
+		"height": 339.0
 	},
 	"output.find_results":
 	{
 		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 268.0
+	},
+	"output.hex_viewer_inspector":
+	{
+		"height": 212.0
 	},
 	"pinned_build_system": "",
 	"project": "project.sublime-project",
