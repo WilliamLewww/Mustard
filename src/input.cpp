@@ -1,25 +1,12 @@
 #include "input.h"
 
-std::vector<SDL_Keycode> keyList;
-std::vector<SDL_Keycode> pressKeyList;
-
-std::vector<int> controllerList;
-std::vector<int> controllerPressList;
-
-bool leftButtonDown, leftButtonPress;
-bool middleMouseDown, middleMousePress;
-bool scrollUp, scrollDown;
-int mouseX, mouseY;
-
-int controllerPad;
-
-void getController() {
+void Input::setupController() {
 	if (SDL_NumJoysticks() > 0) {
 		SDL_JoystickOpen(0);
 	}
 }
 
-void getKeys(SDL_Event event) {
+void Input::getKeyTrigger(SDL_Event event) {
 	if (event.type == SDL_KEYDOWN) {
 		if (std::find(keyList.begin(), keyList.end(), event.key.keysym.sym) == keyList.end()) {
 			pressKeyList.push_back(event.key.keysym.sym);
@@ -58,12 +45,15 @@ void getKeys(SDL_Event event) {
 	}
 }
 
-void removeInitialPress() {
+void Input::clearExpiredInput() {
 	pressKeyList.clear();
 	controllerPressList.clear();
+
+	leftButtonPress = false;
+	middleMousePress = false;
 }
 
-void getButtons(SDL_Event event) {
+void Input::getMouseTrigger(SDL_Event event) {
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
 		if (event.button.button == SDL_BUTTON_LEFT) {
 			leftButtonDown = true;
@@ -101,8 +91,8 @@ void getButtons(SDL_Event event) {
 	}
 }
 
-bool checkMouseOnEntity(Vector2 position, int width, int height) {
-	if (mouseX >= position.x && mouseX <= position.x + width && mouseY >= position.y && mouseY <= position.y + height) {
+bool Input::checkMouseOnEntity(Vector2 entityPosition, int entityWidth, int entityHeight) {
+	if (mouseX >= entityPosition.x && mouseX <= entityPosition.x + entityWidth && mouseY >= entityPosition.y && mouseY <= entityPosition.y + entityHeight) {
 		return true;
 	}
 
