@@ -1,7 +1,7 @@
 #pragma once
-#include <SDL2\SDL.h>
 #include <vector>
 #include <algorithm>
+#include <SDL2\SDL.h>
 #include "vector2.h"
 
 class Input {

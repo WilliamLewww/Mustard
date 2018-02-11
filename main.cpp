@@ -11,14 +11,29 @@ int main(int argc, char *argv[]) {
 }
 
 void Engine::initialize() {
-	setScreenWidth(1000);
-	setScreenHeight(600);
+	grabConfiguration();
+
+	setScreenWidth(getConfigurationFromFile()["ScreenWidth"]);
+	setScreenHeight(getConfigurationFromFile()["ScreenHeight"]);
 
 	displayWindow = SDL_CreateWindow("Thane", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_OPENGL);
-	context = SDL_GL_CreateContext(displayWindow);
+	displayContext = SDL_GL_CreateContext(displayWindow);
 	glOrtho(-screenWidth / 2, screenWidth / 2, screenHeight / 2, -screenHeight / 2, 0, 1);
 
 	initializeExternalController();
+
+	joiner.initialize();
+}
+
+void Engine::grabConfiguration() {
+	std::ifstream configFile("config.txt");
+	std::string lineFromFile;
+	while (std::getline(configFile, lineFromFile)) {
+		if (lineFromFile[0] != '#') {
+			configurationsFromFile[lineFromFile.substr(0, lineFromFile.find(" "))] 
+				= atoi(lineFromFile.substr(lineFromFile.find(" ") + 1, lineFromFile.length()).c_str());
+		}
+	}
 }
 
 void Engine::initializeExternalController() {
@@ -80,14 +95,16 @@ void Engine::handleEscapeKey() {
 
 void Engine::update() {
 	handleEscapeKey();
+	joiner.update();
 }
 
 void Engine::render() {
-	SDL_GL_MakeCurrent(displayWindow, context);
+	SDL_GL_MakeCurrent(displayWindow, displayContext);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 
 	glPushMatrix();
+	joiner.draw();
 	glPopMatrix();
 
 	SDL_GL_SwapWindow(displayWindow);

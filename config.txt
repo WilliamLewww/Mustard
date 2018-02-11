@@ -1,0 +1,5 @@
+#Setup Resolution (Default = 1000x600)
+ScreenWidth 1000
+ScreenHeight 600
+#Board ID (Default = 1)
+BoardID 1
