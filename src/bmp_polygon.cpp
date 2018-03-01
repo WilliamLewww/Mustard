@@ -1,13 +1,18 @@
-#include "polygon.h"
+#include "bmp_polygon.h"
 
-void Polygon::setColor(int red, int green, int blue, int alpha) {
+void BitmapPolygon::setSize(int width, int height) {
+	this->width = width;
+	this->height = height;
+}
+
+void BitmapPolygon::setColor(int red, int green, int blue, int alpha) {
 	color[0] = red;
 	color[1] = green;
 	color[2] = blue;
 	this->alpha = alpha;
 }
 
-void Polygon::setVerticesFromFile(const char* filename) {
+void BitmapPolygon::setVerticesFromFile(const char* filename) {
 	std::ifstream fin(filename);
 	Vector2 temp_vertex = Vector2(-1, -1);
 
@@ -23,10 +28,6 @@ void Polygon::setVerticesFromFile(const char* filename) {
 	fin.close();
 };
 
-void Polygon::draw() {
-	drawPolygon(position, width, height, vertices, angle, color, alpha);
-};
-
-void Polygon::drawOutline() {
-	drawLineStrip(position, width, height, vertices, angle, color);
+void BitmapPolygon::drawOutline() {
+	drawing.drawLineStrip(position, width, height, vertices, angle, color);
 };

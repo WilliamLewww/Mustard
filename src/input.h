@@ -19,7 +19,7 @@ private:
 	std::vector<int> controllerPressList;
 
 public:
-	inline std::vector<SDL_Keycode> getKeyList() { return keyList; };
+	bool checkKeyDown(SDL_Keycode Keycode);
 
 	void getKeyTrigger(SDL_Event event);
 	void clearExpiredInput();
@@ -27,3 +27,5 @@ public:
 	void setupController();
 	bool checkMouseOnEntity(Vector2 entityPosition, int entityWidth, int entityHeight);
 };
+
+extern Input input;

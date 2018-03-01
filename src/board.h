@@ -1,13 +1,63 @@
 #pragma once
-#include "vector2.h"
+#include <vector>
+#include <string>
+#include "camera.h"
+#include "input.h"
+#include "vector3.h"
+#include "bmp_polygon.h"
+#include "configuration.h"
 
 class Board {
 private:
+	int boardColor[3] = { 103, 156, 192 };
+	int thaneColor[3] = { 255, 255, 255 };
+
+	float elapsedTimeSeconds;
+
+	float velocity;
+	int rollSpeed = 10;
+
+	double pushInterval = 0.7, pushSpeed = 50, pushTimer = 0, pushMax = 200;
+	double tuckSpeed = 8;
+	double turnSpeed = 50;
+
+	bool slide = false, shutdownSlide = false;
+	bool turnLeft = false, turnRight = false;
+
+	double movementAngle = 0;
+	bool flipped = false;
+
+	std::vector<Vector3> thaneLines;
+	std::vector<Vector2> brakeLines;
+
+	void addSpeedFromHill(int speedZone);
+	void handlePushTuck();
+	void handleFootBrake();
+
+	void handleLeftTurn();
+	void handleRightTurn();
+
+	double getAngleDifference();
+	void handleSlideRight(double difference);
+	void handleSlideLeft(double difference);
+
+	Vector2 getDirection();
+	void moveInDirection(Vector2 direction);
+
+	void refreshSlide();
+
 	void generateThane(int multiplier);
+	void clearLines();
+	void drawThaneLines();
+	void drawBrakeLines();
+	
+	void linkPolygonWithConfigurations();
 	void handleCollision(Vector2* wall);
 	void handleCollision(Vector2 pointA, Vector2 pointB);
 public:
-	void link(const char* path, Vector2 initialPosition, double width, double height);
-	void update(int elapsedTime, int speedZone);
+	BitmapPolygon bitmapPolygon;
+	
+	void initialize();
+	void update(int elapsedTimeSeconds, int speedZone);
 	void draw();
 };

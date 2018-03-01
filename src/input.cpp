@@ -1,5 +1,15 @@
 #include "input.h"
 
+Input input;
+
+bool Input::checkKeyDown(SDL_Keycode Keycode) {
+	if (std::find(keyList.begin(), keyList.end(), Keycode) != keyList.end()) {
+		return true;
+	}
+
+	return false;
+}
+
 void Input::setupController() {
 	if (SDL_NumJoysticks() > 0) {
 		SDL_JoystickOpen(0);
