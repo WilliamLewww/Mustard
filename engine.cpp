@@ -88,6 +88,7 @@ void Engine::handleEscapeKey() {
 
 void Engine::render() {
 	SDL_GL_MakeCurrent(displayWindow, displayContext);
+	glClearColor(0.11, 0.42, 0.63, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 

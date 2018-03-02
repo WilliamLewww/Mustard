@@ -1,24 +1,9 @@
 #include "world.h"
 
-void random(int difficulty, int points, int pointSpacing);
-void randomPar(int difficulty, int points, int pointSpacing);
-void randomUp(int difficulty, int points, int pointSpacing);
-void randomUpPar(int difficulty, int points, int pointSpacing);
-void randomDown(int difficulty, int points, int pointSpacing);
-void randomDownPar(int difficulty, int points, int pointSpacing);
-void randomLongTrack(int difficulty, int count, int points, int pointSpacing);
-void randomLongTrackPar(int difficulty, int count, int points, int pointSpacing);
-
-void randomSpeedZone(int difficulty, int initialSpeed, int initialNode, int spacing);
-void randomGradualSpeedZone(int difficulty, int min, int max, int initialSpeed, int initialNode, int spacing);
-
 double f(double x, double a, double b) { return (a * sin(b * x)); }
 double fDerivative(double x, double a, double b) { return (a * b * cos(b * x)); }
 double g(double x, double a, double b) { return x; }
 double gDerivative(double x, double a, double b) { return b; }
-
-void givenInputFunction(int period, int buffer, double distance, double a, double b, Vector2 expandVal);
-void randomInputFunction(int functionCount, int period, int buffer, double distance, Vector2 betweenA, Vector2 betweenB, Vector2 expandVal);
 
 void World::reset() {
 	track.resetVisibleRange();
@@ -43,12 +28,12 @@ void World::generateMountainPolygons() {
 		if (x > 0 && (mountainPolygons.size() == 0 || mountainPolygons[mountainPolygons.size() - 1][0].x < track.railList[0][x].x)) {
 			tempPolygon.emplace_back(track.railList[1][x]);
 			tempPolygon.emplace_back(track.railList[1][x - 1]);
-			tempPolygon.emplace_back(track.railList[1][x - 1].x, track.railList[1][x - 1].y + (SCREENHEIGHT * 2));
-			tempPolygon.emplace_back(track.railList[1][x].x, track.railList[1][x].y + (SCREENHEIGHT * 2));
+			tempPolygon.emplace_back(track.railList[1][x - 1].x, track.railList[1][x - 1].y + (configuration.getScreenHeight() * 2));
+			tempPolygon.emplace_back(track.railList[1][x].x, track.railList[1][x].y + (configuration.getScreenHeight() * 2));
 
 			mountainPolygons.push_back(tempPolygon);
 
-			switch (generationStyle) {
+			switch (configuration.getConfigurations()["TrackGenerationStyle"]) {
 				case 0: 
 					tempPolygonTop.emplace_back(track.railList[0][x]);
 					tempPolygonTop.emplace_back(track.railList[0][x - 1]);
@@ -68,7 +53,7 @@ void World::generateMountainPolygons() {
 	}
 
 	for (int x = 0; x < mountainPolygons.size(); x++) {
-		if (mountainPolygons[x][0].x < visibleFrame.sLeft()) {
+		if (mountainPolygons[x][0].x < camera.getBoundaryLeft()) {
 			mountainPolygons.erase(mountainPolygons.begin());
 			x -= 1;
 		}
@@ -78,23 +63,18 @@ void World::generateMountainPolygons() {
 
 void World::generateSpeedZones() {
 	track.addSpeedZone(0, 0);
-	randomGradualSpeedZone(track, 5, 0, 50, 5, 2, 15);
+	randomGradualSpeedZone(5, 0, 50, 5, 2, 15);
 }
 
 void World::generateTrack() {
-	track.addRail(2);
-	track.addVertex(Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 0);
-	track.addVertex(Vector2(SCREENWIDTH / 2 - 10, SCREENHEIGHT / 2 - 20), 45);
+	track.initialize();
+	track.addVertex(Vector2(-10, -20), 0);
+	track.addVertex(Vector2(-10, -20), 45);
 	track.addVertexRelative(-25, 100, 25);
 	track.addVertexRelative(0, 150, 0);
-	switch (generationStyle) {
-		case 0:
-			track.addVertexRelative(-75, 50, 75);
-			track.addVertexRelative(-76, 50, 76);
-			randomLongTrackPar(track, 50 , 100, 20, 20);
-			break;
+	switch (configuration.getConfigurations()["TrackGenerationStyle"]) {
 		case 1:
-			randomInputFunction(track, 50, 5, 500, -0.3, Vector2(-10, 10), Vector2(0, 20), Vector2(1000, 1000));
+			randomInputFunction(50, 5, 500, -0.3, Vector2(-10, 10), Vector2(0, 20), Vector2(1000, 1000));
 			for (int x = 0; x < track.railList[0].size(); x++) {
 				mountainOffsetValue.push_back(rand() % 25 - 12);
 			}
@@ -102,7 +82,7 @@ void World::generateTrack() {
 	}
 }
 
-void givenInputFunction(int period, int buffer, double distance, double a, double b, Vector2 expandVal) {
+void World::givenInputFunction(int period, int buffer, double distance, double a, double b, Vector2 expandVal) {
 	std::vector<Vector2> railA;
 	std::vector<Vector2> railB;
 
@@ -124,7 +104,7 @@ void givenInputFunction(int period, int buffer, double distance, double a, doubl
 	}
 }
 
-void randomInputFunction(int functionCount, int period, int buffer, double distance, Vector2 betweenA, Vector2 betweenB, Vector2 expandVal) {
+void World::randomInputFunction(int functionCount, int period, int buffer, double distance, Vector2 betweenA, Vector2 betweenB, Vector2 expandVal) {
 	std::vector<Vector2> railA;
 	std::vector<Vector2> railB;
 
@@ -157,7 +137,7 @@ void randomInputFunction(int functionCount, int period, int buffer, double dista
 	}
 }
 
-void randomGradualSpeedZone(int difficulty, int min, int max, int initialSpeed, int initialNode, int spacing) {
+void World::randomGradualSpeedZone(int difficulty, int min, int max, int initialSpeed, int initialNode, int spacing) {
 	bool end = false;
 	int currentSpeed = initialSpeed;
 
@@ -179,94 +159,8 @@ void randomGradualSpeedZone(int difficulty, int min, int max, int initialSpeed, 
 	}
 }
 
-void randomSpeedZone(int difficulty, int initialSpeed, int initialNode, int spacing) {
+void World::randomSpeedZone(int difficulty, int initialSpeed, int initialNode, int spacing) {
 	for (int x = initialNode; x < track.railList[0].size(); x += spacing) {
 		track.addSpeedZone(x, (rand() % (difficulty + difficulty + 1) - difficulty) + initialSpeed);
 	}
-}
-
-void randomLongTrackPar(int difficulty, int count, int points, int pointSpacing) {
-	for (int x = 0; x < count; x++) {
-		switch (rand() % 3) {
-			case 0:
-				randomPar(track, 0, 1, difficulty, points, pointSpacing);
-				break;
-			case 1:
-				randomDownPar(track, 0, 1, difficulty, points, pointSpacing);
-				break;
-			case 2:
-				randomUpPar(track, 0, 1, difficulty, points, pointSpacing);
-				break;
-		}
-	}
-}
-
-void randomLongTrack(int difficulty, int count, int points, int pointSpacing) {
-	for (int x = 0; x < count; x++) {
-		switch (rand() % 3) {
-			case 0:
-				random(track, 0, 1, difficulty, points, pointSpacing);
-				break;
-			case 1:
-				randomDown(track, 0, 1, difficulty, points, pointSpacing);
-				break;
-			case 2:
-				randomUp(track, 0, 1, difficulty, points, pointSpacing);
-				break;
-		}
-	}
-}
-
-void randomUpPar(int difficulty, int points, int pointSpacing) {
-	for (int x = 0; x < points; x++) { 
-		track.addVertexComp(0, 1, -(rand() % (difficulty + 1)), pointSpacing);
-	}
-}
-
-void randomDownPar(int difficulty, int points, int pointSpacing) {
-	for (int x = 0; x < points; x++) { 
-		track.addVertexComp(0, 1, rand() % (difficulty + 1), pointSpacing);
-	}
-}
-
-void randomPar(int difficulty, int points, int pointSpacing) {
-	for (int x = 0; x < points; x++) { 
-		track.addVertexComp(0, 1, (rand() % (difficulty + 1) - (difficulty / 2)), pointSpacing);
-	}
-}
-
-void randomUp(int difficulty, int points, int pointSpacing) {
-	for (int x = 0; x < points; x++) { 
-		track.addVertexComp(0, 1, -(rand() % (difficulty + 1)), pointSpacing, 200, -20, 20);
-	}
-}
-
-void randomDown(int difficulty, int points, int pointSpacing) {
-	for (int x = 0; x < points; x++) { 
-		track.addVertexComp(0, 1, rand() % (difficulty + 1), pointSpacing, 200, -20, 20);
-	}
-}
-
-void random(int difficulty, int points, int pointSpacing) {
-	for (int x = 0; x < points; x++) { 
-		track.addVertexComp(0, 1, (rand() % (difficulty + 1) - (difficulty / 2)), pointSpacing, 200, -20, 20);
-	}
-}
-
-void smoothCarveUp(int interval, int spacing, int count) {
-	int intensity = 0;
-	for (int x = 0; x < count; x++) {
-		track.addVertexRelative(0, 1, -intensity, spacing * spacing, -intensity);
-		if (x < count / 2) { intensity += interval; }
-		else {intensity -= interval; }
-	} 
-}
-
-void smoothCarveDown(int interval, int spacing, int count) {
-	int intensity = 0;
-	for (int x = 0; x < count; x++) {
-		track.addVertexRelative(0, 1, intensity, spacing * spacing, intensity);
-		if (x < count / 2) { intensity += interval; }
-		else {intensity -= interval; }
-	} 
 }
