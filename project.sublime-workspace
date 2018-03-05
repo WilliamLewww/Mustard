@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"initia",
+				"initializeMinimap"
+			],
+			[
+				"genera",
+				"generateSpeedZones"
+			],
+			[
 				"road",
 				"roadPolygonList"
 			],
@@ -110,10 +118,6 @@
 			[
 				"moun",
 				"mountainPolygons"
-			],
-			[
-				"genera",
-				"generationStyle"
 			],
 			[
 				"betw",
@@ -416,37 +420,46 @@
 	"buffers":
 	[
 		{
-			"file": "src/joiner.cpp",
-			"settings":
-			{
-				"buffer_size": 595,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/world.cpp",
-			"settings":
-			{
-				"buffer_size": 6345,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "engine.cpp",
-			"settings":
-			{
-				"buffer_size": 2056,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "src/joiner.h",
 			"settings":
 			{
-				"buffer_size": 249,
+				"buffer_size": 301,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/joiner.cpp",
+			"settings":
+			{
+				"buffer_size": 1359,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/gui/gui.h",
+			"settings":
+			{
+				"buffer_size": 360,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/gui/gui.cpp",
+			"settings":
+			{
+				"buffer_size": 456,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/drawing.cpp",
+			"settings":
+			{
+				"buffer_size": 13594,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -640,7 +653,7 @@
 	},
 	"console":
 	{
-		"height": 364.0,
+		"height": 826.0,
 		"history":
 		[
 			"rand()",
@@ -661,35 +674,38 @@
 	"expanded_folders":
 	[
 		"/C/Projects/Thane",
-		"/C/Projects/Thane/src"
+		"/C/Projects/Thane/src",
+		"/C/Projects/Thane/src/gui"
 	],
 	"file_history":
 	[
-		"/C/Projects/Thane/src/world.cpp",
+		"/C/Projects/Thane/src/gui/minimap.cpp",
+		"/C/Projects/Thane/src/gui/minimap.h",
+		"/C/Projects/Thane/project.sublime-project",
+		"/C/Projects/Thane/src/board.cpp",
 		"/C/Projects/Thane/src/track.h",
+		"/C/Projects/Thane/src/joiner.cpp",
 		"/C/Projects/Thane/src/world.h",
-		"/C/Projects/Thane/src/track.cpp",
+		"/C/Projects/Thane/src/world.cpp",
 		"/C/Projects/Thane/src/config.txt",
+		"/C/Projects/Thane/config.txt",
+		"/C/Projects/Thane/src/joiner.h",
+		"/C/Projects/Thane/src/board.h",
+		"/C/Projects/Thane/engine.cpp",
+		"/C/Projects/Thane/src/bmp_polygon.cpp",
+		"/C/Projects/Thane/src/bmp_polygon.h",
+		"/C/Projects/Thane/src/track.cpp",
 		"/C/Projects/Thane/src/camera.cpp",
 		"/C/Projects/Thane/src/camera.h",
-		"/C/Projects/Thane/config.txt",
 		"/C/Projects/Thane/src/World.h",
-		"/C/Projects/Thane/src/board.cpp",
-		"/C/Projects/Thane/src/joiner.cpp",
-		"/C/Projects/Thane/src/board.h",
 		"/C/Projects/Thane/src/drawing.h",
 		"/C/Projects/Thane/src/drawing.cpp",
 		"/C/Projects/Thane/engine.h",
-		"/C/Projects/Thane/engine.cpp",
 		"/C/Projects/Thane/main.cpp",
-		"/C/Projects/Thane/src/joiner.h",
 		"/C/Projects/Thane/src/configuration.h",
 		"/C/Projects/Thane/src/configuration.cpp",
-		"/C/Projects/Thane/src/bmp_polygon.h",
-		"/C/Projects/Thane/src/bmp_polygon.cpp",
 		"/C/Projects/Thane/src/input.cpp",
 		"/C/Projects/Thane/src/input.h",
-		"/C/Projects/Thane/project.sublime-project",
 		"/C/Projects/Thane/src/engine.cpp",
 		"/C/Projects/Thane/main.h",
 		"/C/Projects/Thane/configuration.cpp",
@@ -790,17 +806,15 @@
 		"/C/Users/WilliamLew/Downloads/hw1.py",
 		"/C/Users/WilliamLew/Desktop/cmu.py",
 		"/C/Projects/Mustard/Separate Axis Theorem/src/vector2.cpp",
-		"/C/Projects/Mustard/Separate Axis Theorem/main.h",
-		"/C/Projects/Mustard/Separate Axis Theorem/src/geometry.cpp",
-		"/C/Projects/Mustard/Separate Axis Theorem/src/geometry.h"
+		"/C/Projects/Mustard/Separate Axis Theorem/main.h"
 	],
 	"find":
 	{
-		"height": 82.0
+		"height": 47.0
 	},
 	"find_in_files":
 	{
-		"height": 482.0,
+		"height": 1235.0,
 		"where_history":
 		[
 		]
@@ -810,6 +824,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"inline",
+			"Board",
 			"SCREENWIDTH",
 			"SCREENHEIGHT",
 			"track, 0, 1,",
@@ -904,24 +920,110 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/joiner.cpp",
+					"file": "src/joiner.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 595,
+						"buffer_size": 301,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								35,
-								35
+								181,
+								181
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/joiner.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1359,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								997,
+								997
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/gui/gui.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 360,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								360,
+								360
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/gui/gui.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 456,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								299,
+								299
 							]
 						],
 						"settings":
@@ -934,91 +1036,40 @@
 					},
 					"stack_index": 3,
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
 				{
-					"buffer": 1,
-					"file": "src/world.cpp",
+					"buffer": 4,
+					"file": "src/drawing.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6345,
+						"buffer_size": 13594,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3048,
-								3048
+								1012,
+								1012
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1489.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "engine.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2056,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1881,
-								1881
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1444.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/joiner.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 249,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								31,
-								31
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1026,11 +1077,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 45.0
+		"height": 47.0
 	},
 	"input":
 	{
-		"height": 166.0
+		"height": 417.0
 	},
 	"layout":
 	{
@@ -1041,11 +1092,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -1057,7 +1115,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 242.0
+		"height": 229.0
 	},
 	"output.find_results":
 	{
@@ -1067,7 +1125,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 84.0
+		"height": 86.0
 	},
 	"save_all_on_build": true,
 	"select_file":

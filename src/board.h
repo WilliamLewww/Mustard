@@ -52,12 +52,14 @@ private:
 	void drawBrakeLines();
 	
 	void linkPolygonWithConfigurations();
-	void handleCollision(Vector2* wall);
-	void handleCollision(Vector2 pointA, Vector2 pointB);
+	void reset();
 public:
 	BitmapPolygon bitmapPolygon;
 	
 	void initialize();
 	void update(int elapsedTimeSeconds, int speedZone);
 	void draw();
+
+	void handleCollision(Vector2* wall);
+	void handleCollision(Vector2 pointA, Vector2 pointB);
 };

@@ -269,3 +269,24 @@ void Board::clearLines() {
 		brakeLines.clear();
 	}
 }
+
+void Board::reset() {
+	bitmapPolygon.setPosition(Vector2(0, 0));
+	bitmapPolygon.setAngle(0);
+	movementAngle = 0;
+	velocity = 0;
+	flipped = false;
+}
+
+void Board::handleCollision(Vector2* wall) {
+	if (bitmapPolygon.checkCollision(wall) == true) {
+		reset();
+	}
+}
+
+void Board::handleCollision(Vector2 pointA, Vector2 pointB) {
+	Vector2 tempVector[] = { pointA, pointB };
+	if (bitmapPolygon.checkCollision(tempVector) == true) {
+		reset();
+	}
+}

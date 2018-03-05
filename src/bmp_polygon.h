@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include <fstream>
 #include <vector>
 #include "vector2.h"
@@ -14,6 +15,11 @@ private:
 
 	int color[3];
 	int alpha;
+
+	Vector2 project(Vector2 axisArgs, Vector2 vertex);
+	double dotProduct(Vector2 projection, Vector2 axis);
+	std::vector<double> getProducts(BitmapPolygon rectangle, Vector2 axis);
+	std::vector<double> getProducts(Vector2* line, Vector2 axis);
 public:
 	inline void setPosition(Vector2 position) { this->position = position; };
 	inline void setAngle(double angle) { this->angle = angle; };
@@ -40,6 +46,12 @@ public:
 		return Vector2((width / 2) * cos((angle * drawing.PI) / 180) - (-height / 2) * sin((angle * drawing.PI) / 180) + position.x + (width / 2),
 				   (-width / 2) * sin((angle * drawing.PI) / 180) - (-height / 2) * cos((angle * drawing.PI) / 180) + position.y + (height / 2));
 	};
+
+	inline Vector2 axisA() { return getTopRight() - getTopLeft(); };
+	inline Vector2 axisB() { return getTopRight() - getBottomRight(); };
+
+	bool checkCollision(BitmapPolygon rectangle);
+	bool checkCollision(Vector2* line);
 
 	void setSize(int width, int height);
 	void setColor(int red, int green, int blue, int alpha);

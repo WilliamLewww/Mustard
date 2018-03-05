@@ -1,4 +1,5 @@
 #pragma once
+#include "gui/gui.h"
 #include "world.h"
 #include "board.h"
 #include "camera.h"
@@ -8,6 +9,9 @@ class Joiner {
 private:
 	World world;
 	Board board;
+	GUI gui;
+
+	int speedZone = 0;
 public:
 	void initialize();
 	void draw();

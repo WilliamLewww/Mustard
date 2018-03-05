@@ -10,7 +10,7 @@ void World::reset() {
 	mountainPolygons.clear();
 }
 
-void World::draw(bool drawTrackDetails = true) {
+void World::draw() {
 	track.updateVisibleRange();
 	generateMountainPolygons();
 
@@ -18,7 +18,7 @@ void World::draw(bool drawTrackDetails = true) {
 		drawing.drawPolygon(polygon, mountainColor, 255);
 	}
 
-	track.draw(configuration.getConfigurations()["TrackGenerationStyle"], drawTrackDetails);
+	track.draw(configuration.getConfigurations()["TrackGenerationStyle"], configuration.getConfigurations()["DrawTrackDetails"]);
 }
 
 void World::generateMountainPolygons() {
@@ -61,13 +61,18 @@ void World::generateMountainPolygons() {
 	}
 }
 
+void World::generateWorld() {
+	track.initialize();
+	generateTrack();
+	generateSpeedZones();
+}
+
 void World::generateSpeedZones() {
 	track.addSpeedZone(0, 0);
 	randomGradualSpeedZone(5, 0, 50, 5, 2, 15);
 }
 
 void World::generateTrack() {
-	track.initialize();
 	track.addVertex(Vector2(-10, -20), 0);
 	track.addVertex(Vector2(-10, -20), 45);
 	track.addVertexRelative(-25, 100, 25);

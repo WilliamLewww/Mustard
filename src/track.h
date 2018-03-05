@@ -5,7 +5,6 @@
 #include <vector>
 
 class Track {
-	std::vector<Vector2> speedZones;
 	std::vector<std::vector<Vector2>> roadPolygonList;
 
 	int sideColor[3] = { 225, 225, 225 };
@@ -15,6 +14,7 @@ class Track {
 	int* speedZoneColor(int speed);
 public:
 	std::vector<std::vector<Vector2>> railList;
+	std::vector<Vector2> speedZones;
 	Vector2 visibleRange = Vector2(0,0);
 
 	void initialize();
