@@ -2,7 +2,7 @@
 #include "minimap.h"
 #include <vector>
 
-class GUI {
+class HUD {
 	Minimap minimap = Minimap(Vector2(5, 5), 200, 200);
 public:
 	void draw();

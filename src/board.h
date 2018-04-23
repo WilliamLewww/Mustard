@@ -2,10 +2,10 @@
 #include <vector>
 #include <string>
 #include "camera.h"
-#include "input.h"
-#include "vector3.h"
+#include "core\input.h"
+#include "core\vector3.h"
 #include "bmp_polygon.h"
-#include "configuration.h"
+#include "core\configuration.h"
 
 class Board {
 private:

@@ -3,9 +3,19 @@
 void Engine::initialize() {
 	configuration.initialize();
 
+	gui.setupWindow();
+
 	displayWindow = SDL_CreateWindow("Thane", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, configuration.getScreenWidth(), configuration.getScreenHeight(), SDL_WINDOW_OPENGL);
 	displayContext = SDL_GL_CreateContext(displayWindow);
 	glOrtho(-configuration.getScreenWidth() / 2, configuration.getScreenWidth() / 2, configuration.getScreenHeight() / 2, -configuration.getScreenHeight() / 2, 0, 1);
+	
+	gui.setDisplayWindow(displayWindow);
+	gui.setEvent(&event);
+
+	gui.bindWindow();
+
+	initializeWindowHandle();
+	initializeAudio();
 
 	initializeExternalController();
 
@@ -13,6 +23,16 @@ void Engine::initialize() {
 	seedRandom();
 
 	joiner.initialize();
+}
+
+void Engine::initializeWindowHandle() {
+	SDL_VERSION(&wmInfo.version);
+	SDL_GetWindowWMInfo(displayWindow, &wmInfo);
+	hwnd = wmInfo.info.win.window;
+}
+
+void Engine::initializeAudio() {
+	audio.initialize(hwnd);
 }
 
 void Engine::initializeExternalController() {
@@ -39,18 +59,21 @@ void Engine::start() {
 
 void Engine::quit() {
 	SDL_Quit();
+	audio.quit();
 }
 
 void Engine::handleEvents() {
 	input.clearExpiredInput();
 
 	while (SDL_PollEvent(&event)) {
+		gui.processEvent();
 		if (event.type == SDL_QUIT) {
 			isRunning = false;
 		}
 
 		handleUserInput();
 	}
+	gui.newFrame();
 }
 
 void Engine::handleUserInput() {
@@ -95,6 +118,8 @@ void Engine::render() {
 	glPushMatrix();
 	joiner.draw();
 	glPopMatrix();
+
+	gui.draw();
 
 	SDL_GL_SwapWindow(displayWindow);
 }

@@ -7,12 +7,12 @@ void Joiner::initialize() {
 	camera.linkPosition(board.bitmapPolygon.getPositionAddress());
 	
 	world.generateWorld();
-	gui.initializeMinimap(world.track.railList, Vector2(0, 0), Vector2(5, 5), configuration.getScreenWidth() / 5, configuration.getScreenHeight() / 3);
+	hud.initializeMinimap(world.track.railList, Vector2(0, 0), Vector2(5, 5), configuration.getScreenWidth() / 5, configuration.getScreenHeight() / 3);
 }
 
 void Joiner::update(int elapsedTime) {
 	board.update(elapsedTime, speedZone);
-	gui.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle());
+	hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle());
 
 	for (Vector2 speed : world.track.speedZones) {
 		if (board.bitmapPolygon.getPosition().x > world.track.railList[0][speed.x].x) {
@@ -23,7 +23,7 @@ void Joiner::update(int elapsedTime) {
 	for (std::vector<Vector2> rail : world.track.railList) {
 		for (int x = 0; x < rail.size(); x++) {
 			if (board.bitmapPolygon.getPosition().x + 100 > rail[x].x && board.bitmapPolygon.getPosition().x < rail[x].x + 100) {
-				gui.resetMinimap();
+				hud.resetMinimap();
 				world.reset();
 				board.handleCollision(rail[x], rail[x + 1]);
 				board.handleCollision(rail[x], rail[x + 1]);
@@ -39,5 +39,5 @@ void Joiner::draw() {
 	board.draw();
 	glPopMatrix();
 
-	gui.draw();
+	hud.draw();
 }

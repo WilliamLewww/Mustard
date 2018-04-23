@@ -2,8 +2,8 @@
 #include <algorithm>
 #include <fstream>
 #include <vector>
-#include "vector2.h"
-#include "drawing.h"
+#include "core\vector2.h"
+#include "core\drawing.h"
 
 class BitmapPolygon {
 private:

@@ -1,6 +1,6 @@
 #pragma once
-#include "..\vector2.h"
-#include "..\drawing.h"
+#include "..\core\vector2.h"
+#include "..\core\drawing.h"
 #include <vector>
 
 class Minimap {

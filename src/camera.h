@@ -1,6 +1,6 @@
 #pragma once
-#include "vector2.h"
-#include "configuration.h"
+#include "core\vector2.h"
+#include "core\configuration.h"
 
 class Camera {
 private:

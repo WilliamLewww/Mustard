@@ -1,15 +1,15 @@
 #pragma once
-#include "gui/gui.h"
+#include "hud/hud.h"
 #include "world.h"
 #include "board.h"
 #include "camera.h"
-#include "configuration.h"
+#include "core\configuration.h"
 
 class Joiner {
 private:
 	World world;
 	Board board;
-	GUI gui;
+	HUD hud;
 
 	int speedZone = 0;
 public:

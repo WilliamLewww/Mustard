@@ -19,6 +19,8 @@ private:
 	std::vector<int> controllerPressList;
 
 public:
+	std::vector<SDL_Keycode> returnKeyList();
+	
 	bool checkKeyDown(SDL_Keycode Keycode);
 
 	void getKeyTrigger(SDL_Event event);

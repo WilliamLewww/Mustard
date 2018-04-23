@@ -2,6 +2,10 @@
 
 Input input;
 
+std::vector<SDL_Keycode> Input::returnKeyList() {
+	return keyList;
+}
+
 bool Input::checkKeyDown(SDL_Keycode Keycode) {
 	if (std::find(keyList.begin(), keyList.end(), Keycode) != keyList.end()) {
 		return true;
