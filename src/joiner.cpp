@@ -3,7 +3,10 @@
 Joiner joiner;
 
 void Joiner::initialize() {
-	tempTrackStyle = configuration.getConfigurations()["TrackGenerationStyle"];
+	trackGenerationStyle = configuration.getConfigurations()["TrackGenerationStyle"];
+	boardID = configuration.getConfigurations()["BoardID"];
+	boardWidth = configuration.getConfigurations()["BoardWidth"];
+	boardHeight = configuration.getConfigurations()["BoardHeight"];
 
 	initializeWorld();
 }
@@ -46,18 +49,45 @@ void Joiner::update(int elapsedTime) {
 	ImGui::Begin("Main Menu");
 
 	ImGui::PushItemWidth(-100);
-	ImGui::InputInt("Track Style", &tempTrackStyle);
-	if (tempTrackStyle < 0) { tempTrackStyle = 0; }
-	if (tempTrackStyle > 1) { tempTrackStyle = 1; }
+	ImGui::InputInt("Track Style", &trackGenerationStyle);
+	if (trackGenerationStyle < 0) { trackGenerationStyle = 0; }
+	if (trackGenerationStyle > 1) { trackGenerationStyle = 1; }
+
+	if (ImGui::Button("Edit Board Properties")) {
+		showBoardProperty = true;
+	}
 
 	if (ImGui::Button("Re-Initialize")) {
-		configuration.setConfiguration("TrackGenerationStyle", tempTrackStyle);
+		configuration.setConfiguration("TrackGenerationStyle", trackGenerationStyle);
+		configuration.setConfiguration("BoardID", boardID);
+		configuration.setConfiguration("BoardWidth", boardWidth);
+		configuration.setConfiguration("BoardHeight", boardHeight);
 
 		board = Board();
 		world = World();
 		initializeWorld();
 	}
 	ImGui::End();
+
+	if (showBoardProperty) {
+		ImGui::SetNextWindowSizeConstraints(ImVec2(300, 200), ImVec2(300, 200));
+		ImGui::Begin("Board Property");
+		ImGui::PushItemWidth(-175);
+		ImGui::InputInt("Board ID", &boardID);
+		ImGui::Columns(2);
+		ImGui::InputInt("Width", &boardWidth);
+		ImGui::NextColumn();
+		ImGui::InputInt("Height", &boardHeight);
+		ImGui::Columns(1);
+		ImGui::PushItemWidth(ImGui::GetWindowWidth() - 100);
+		ImGui::ColorEdit4("Board Color", boardColor);
+		ImGui::PushItemWidth(ImGui::GetWindowWidth() - 100);
+		ImGui::ColorEdit3("Thane Color", thaneColor);
+		if (ImGui::Button("Close")) {
+			showBoardProperty = false;
+		}
+		ImGui::End();
+	}
 }
 
 void Joiner::draw() {

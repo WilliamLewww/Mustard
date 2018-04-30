@@ -6,6 +6,8 @@ ScreenHeight 600
 BoardID 1
 BoardWidth 40
 BoardHeight 10
+BoardColor 103 156 192
+ThaneColor 255 255 255
 
 #Track Generation Pattern (Default = 1)
 TrackGenerationStyle 0

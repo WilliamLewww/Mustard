@@ -14,7 +14,9 @@ private:
 
 	int speedZone = 0;
 
-	int tempTrackStyle;
+	int showBoardProperty;
+	int trackGenerationStyle, boardID, boardWidth, boardHeight;
+	float boardColor[4], thaneColor[3];
 public:
 	void initialize();
 	void initializeWorld();
