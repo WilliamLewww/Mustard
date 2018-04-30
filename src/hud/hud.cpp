@@ -1,7 +1,9 @@
 #include "hud.h"
 
 void HUD::draw() {
-	minimap.draw();
+	if (configuration.getConfigurations()["DrawMinimap"] == 1) {
+		minimap.draw();
+	}
 }
 
 void HUD::initializeMinimap(std::vector<std::vector<Vector2>> railList, Vector2 boardInitialPosition, Vector2 position, int width, int height) {

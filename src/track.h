@@ -1,8 +1,8 @@
 #pragma once
+#include <vector>
 #include "core\vector2.h"
 #include "core\drawing.h"
 #include "camera.h"
-#include <vector>
 
 class Track {
 	std::vector<std::vector<Vector2>> roadPolygonList;

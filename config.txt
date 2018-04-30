@@ -8,7 +8,10 @@ BoardWidth 40
 BoardHeight 10
 
 #Track Generation Pattern (Default = 1)
-TrackGenerationStyle 1
+TrackGenerationStyle 0
 
 #Draw Lines/Guides on Track (Default = 1)
 DrawTrackDetails 1
+
+#Draw Minimap (Default = 1)
+DrawMinimap 1

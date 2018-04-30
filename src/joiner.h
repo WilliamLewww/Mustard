@@ -1,9 +1,10 @@
 #pragma once
-#include "hud/hud.h"
+#include "core\configuration.h"
+#include "core\gui.h"
+#include "hud\hud.h"
 #include "world.h"
 #include "board.h"
 #include "camera.h"
-#include "core\configuration.h"
 
 class Joiner {
 private:

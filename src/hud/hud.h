@@ -1,6 +1,7 @@
 #pragma once
-#include "minimap.h"
 #include <vector>
+#include "..\core\configuration.h"
+#include "minimap.h"
 
 class HUD {
 	Minimap minimap = Minimap(Vector2(5, 5), 200, 200);

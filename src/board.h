@@ -4,8 +4,8 @@
 #include "camera.h"
 #include "core\input.h"
 #include "core\vector3.h"
-#include "bmp_polygon.h"
 #include "core\configuration.h"
+#include "bmp_polygon.h"
 
 class Board {
 private:

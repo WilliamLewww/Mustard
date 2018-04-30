@@ -420,36 +420,28 @@
 	"buffers":
 	[
 		{
-			"file": "engine.cpp",
+			"file": "main.cpp",
 			"settings":
 			{
-				"buffer_size": 2489,
+				"buffer_size": 140,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "project.sublime-project",
+			"file": "config.txt",
 			"settings":
 			{
-				"buffer_size": 2192,
+				"buffer_size": 306,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Projects/Objective-Neural-Network/project.sublime-project",
+			"file": "src/world.cpp",
 			"settings":
 			{
-				"buffer_size": 2286,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/hud/hud.cpp",
-			"settings":
-			{
-				"buffer_size": 456,
+				"buffer_size": 7593,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -663,22 +655,27 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Projects/Thane"
+		"/C/Projects/Thane",
+		"/C/Projects/Thane/src"
 	],
 	"file_history":
 	[
-		"/C/Projects/Thane/project.sublime-project",
+		"/C/Projects/Thane/src/world.h",
+		"/C/Projects/Thane/config.txt",
+		"/C/Projects/Thane/src/joiner.cpp",
+		"/C/Projects/Thane/src/hud/hud.cpp",
 		"/C/Projects/Thane/src/hud/hud.h",
-		"/C/Projects/Thane/src/joiner.h",
-		"/C/Projects/Thane/engine.cpp",
-		"/C/Projects/Thane/src/gui/minimap.h",
+		"/C/Projects/Thane/src/core/configuration.cpp",
+		"/C/Projects/Thane/src/bmp_polygon.h",
 		"/C/Projects/Thane/src/board.h",
 		"/C/Projects/Thane/src/track.h",
+		"/C/Projects/Thane/src/joiner.h",
+		"/C/Projects/Thane/engine.cpp",
+		"/C/Projects/Objective-Neural-Network/project.sublime-project",
+		"/C/Projects/Thane/project.sublime-project",
+		"/C/Projects/Thane/src/gui/minimap.h",
 		"/C/Projects/Thane/src/gui/minimap.cpp",
-		"/C/Projects/Thane/src/world.h",
 		"/C/Projects/Thane/src/camera.h",
-		"/C/Projects/Thane/src/bmp_polygon.h",
-		"/C/Projects/Thane/src/joiner.cpp",
 		"/C/Projects/Thane/src/hud/gui.h",
 		"/C/Projects/Objective-Neural-Network/main.cpp",
 		"/C/Projects/Thane/src/HUD/gui.cpp",
@@ -686,7 +683,6 @@
 		"/C/Projects/Objective-Neural-Network/engine.cpp",
 		"/C/Projects/Objective-Neural-Network/engine.h",
 		"/C/Projects/Thane/engine.h",
-		"/C/Projects/Objective-Neural-Network/project.sublime-project",
 		"/C/Projects/Thane/src/core/gui.cpp",
 		"/C/Projects/Thane/src/drawing.cpp",
 		"/C/Projects/Thane/src/gui/gui.cpp",
@@ -694,7 +690,6 @@
 		"/C/Projects/Thane/src/board.cpp",
 		"/C/Projects/Thane/src/world.cpp",
 		"/C/Projects/Thane/src/config.txt",
-		"/C/Projects/Thane/config.txt",
 		"/C/Projects/Thane/src/bmp_polygon.cpp",
 		"/C/Projects/Thane/src/track.cpp",
 		"/C/Projects/Thane/src/camera.cpp",
@@ -792,9 +787,7 @@
 		"/C/Projects/Mustard/src/gui/shoeometer.h",
 		"/C/Projects/Mustard/src/gui/gbutton.h",
 		"/C/Projects/Mustard/src/constants.h",
-		"/C/Projects/Mustard/src/gbutton.h",
-		"/C/Projects/Mustard/src/gui.cpp",
-		"/C/Projects/Mustard/src/gui.h"
+		"/C/Projects/Mustard/src/gbutton.h"
 	],
 	"find":
 	{
@@ -812,6 +805,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"topIndex",
 			"gui",
 			"GUI",
 			"inline",
@@ -915,106 +909,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "engine.cpp",
+					"file": "main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2489,
+						"buffer_size": 140,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								99,
-								99
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "project.sublime-project",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2192,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								126,
-								126
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/C/Projects/Objective-Neural-Network/project.sublime-project",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2286,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								665,
-								665
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/hud/hud.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 456,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13,
-								13
+								68,
+								68
 							]
 						],
 						"settings":
@@ -1025,7 +932,64 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "config.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 306,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								201,
+								201
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/world.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7593,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6612,
+								6612
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3999.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1064,7 +1028,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 229.0
+		"height": 231.0
 	},
 	"output.find_results":
 	{
@@ -1102,7 +1066,7 @@
 		[
 			[
 				"",
-				"C:\\Projects\\Bitmap\\project.sublime-project"
+				"C:\\Projects\\Objective-Neural-Network\\project.sublime-project"
 			]
 		],
 		"width": 760.0

@@ -7,12 +7,17 @@ void Joiner::initialize() {
 	camera.linkPosition(board.bitmapPolygon.getPositionAddress());
 	
 	world.generateWorld();
-	hud.initializeMinimap(world.track.railList, Vector2(0, 0), Vector2(5, 5), configuration.getScreenWidth() / 5, configuration.getScreenHeight() / 3);
+
+	if (configuration.getConfigurations()["DrawMinimap"] == 1) {
+		hud.initializeMinimap(world.track.railList, Vector2(0, 0), Vector2(5, 5), configuration.getScreenWidth() / 5, configuration.getScreenHeight() / 3);
+	}
 }
 
 void Joiner::update(int elapsedTime) {
 	board.update(elapsedTime, speedZone);
-	hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle());
+	if (configuration.getConfigurations()["DrawMinimap"] == 1) {
+		hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle());
+	}
 
 	for (Vector2 speed : world.track.speedZones) {
 		if (board.bitmapPolygon.getPosition().x > world.track.railList[0][speed.x].x) {
@@ -30,6 +35,10 @@ void Joiner::update(int elapsedTime) {
 			}
 		}
 	}
+
+	ImGui::SetNextWindowSizeConstraints(ImVec2(150, 200), ImVec2(150, 200));
+	ImGui::Begin("Main Menu");
+	ImGui::End();
 }
 
 void Joiner::draw() {
