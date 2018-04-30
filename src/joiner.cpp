@@ -3,6 +3,12 @@
 Joiner joiner;
 
 void Joiner::initialize() {
+	tempTrackStyle = configuration.getConfigurations()["TrackGenerationStyle"];
+
+	initializeWorld();
+}
+
+void Joiner::initializeWorld() {
 	board.initialize();
 	camera.linkPosition(board.bitmapPolygon.getPositionAddress());
 	
@@ -36,8 +42,21 @@ void Joiner::update(int elapsedTime) {
 		}
 	}
 
-	ImGui::SetNextWindowSizeConstraints(ImVec2(150, 200), ImVec2(150, 200));
+	ImGui::SetNextWindowSizeConstraints(ImVec2(200, 200), ImVec2(200, 200));
 	ImGui::Begin("Main Menu");
+
+	ImGui::PushItemWidth(-100);
+	ImGui::InputInt("Track Style", &tempTrackStyle);
+	if (tempTrackStyle < 0) { tempTrackStyle = 0; }
+	if (tempTrackStyle > 1) { tempTrackStyle = 1; }
+
+	if (ImGui::Button("Re-Initialize")) {
+		configuration.setConfiguration("TrackGenerationStyle", tempTrackStyle);
+
+		board = Board();
+		world = World();
+		initializeWorld();
+	}
 	ImGui::End();
 }
 

@@ -13,8 +13,11 @@ private:
 	HUD hud;
 
 	int speedZone = 0;
+
+	int tempTrackStyle;
 public:
 	void initialize();
+	void initializeWorld();
 	void draw();
 	void update(int elapsedTime);
 };

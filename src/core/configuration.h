@@ -8,9 +8,10 @@ private:
 	std::map<std::string, int> configurations;
 
 	void grabConfigurationFromFile();
-	void setScreenSize();
+	void linkScreenSize();
 public:
 	inline std::map<std::string, int> getConfigurations() { return configurations; };
+	inline void setConfiguration(std::string name, int value) { configurations[name] = value; };
 
 	inline int getScreenWidth() { return screenWidth; };
 	inline int getScreenHeight() { return screenHeight; };

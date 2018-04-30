@@ -4,7 +4,7 @@ Configuration configuration;
 
 void Configuration::initialize() {
 	grabConfigurationFromFile();
-	setScreenSize();
+	linkScreenSize();
 }
 
 void Configuration::grabConfigurationFromFile() {
@@ -18,7 +18,7 @@ void Configuration::grabConfigurationFromFile() {
 	}
 }
 
-void Configuration::setScreenSize() {
+void Configuration::linkScreenSize() {
 	screenWidth = getConfigurations()["ScreenWidth"];
 	screenHeight = getConfigurations()["ScreenHeight"];
 }
