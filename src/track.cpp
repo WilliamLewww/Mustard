@@ -13,12 +13,20 @@ void Track::draw(int generationStyle, bool drawDetails = true) {
 	}
 
 	if (drawDetails == true) {
-		if (generationStyle == 0) {
-			drawing.drawLineStrip(getVisibleRail(0), 10, sideColor, 100);
-			drawing.drawLineStrip(getVisibleRail(1), -10, sideColor, 100);
+		switch (generationStyle) {
+			case 0:
+				for (std::vector<Vector2> segment : railList) {
+					drawing.drawLineStrip(std::vector<Vector2>(segment.begin() + visibleRange.x, segment.begin() + visibleRange.y), rockyColor);
+				}
+				break;
+			case 1:
+				drawing.drawLineStrip(getVisibleRail(0), 10, sideColor, 100);
+				drawing.drawLineStrip(getVisibleRail(1), -10, sideColor, 100);
+
+				drawing.drawLineStrip(getVisibleRail(0), getVisibleRail(1), -2, centerColor, 75);
+				drawing.drawLineStrip(getVisibleRail(0), getVisibleRail(1), 2, centerColor, 75);
+				break;
 		}
-		drawing.drawLineStrip(getVisibleRail(0), getVisibleRail(1), -2, centerColor, 75);
-		drawing.drawLineStrip(getVisibleRail(0), getVisibleRail(1), 2, centerColor, 75);
 
 		for (Vector2 speedZone : speedZones) {
 			if (railList[0][speedZone.x].x < camera.getBoundaryRight() && railList[0][speedZone.x].x > camera.getBoundaryLeft()) {
