@@ -8,6 +8,15 @@ void Joiner::initialize() {
 	boardWidth = configuration.getConfigurations()["BoardWidth"];
 	boardHeight = configuration.getConfigurations()["BoardHeight"];
 
+	boardColor[0] = (float)configuration.getConfigurations()["BoardColorR"] / 255;
+	boardColor[1] = (float)configuration.getConfigurations()["BoardColorG"] / 255;
+	boardColor[2] = (float)configuration.getConfigurations()["BoardColorB"] / 255;
+	boardColor[3] = (float)configuration.getConfigurations()["BoardColorA"] / 255;
+
+	thaneColor[0] = (float)configuration.getConfigurations()["ThaneColorR"] / 255;
+	thaneColor[1] = (float)configuration.getConfigurations()["ThaneColorG"] / 255;
+	thaneColor[2] = (float)configuration.getConfigurations()["ThaneColorB"] / 255;
+
 	initializeWorld();
 }
 
@@ -45,7 +54,7 @@ void Joiner::update(int elapsedTime) {
 		}
 	}
 
-	ImGui::SetNextWindowSizeConstraints(ImVec2(200, 200), ImVec2(200, 200));
+	ImGui::SetNextWindowSizeConstraints(ImVec2(200, 110), ImVec2(200, 110));
 	ImGui::Begin("Main Menu");
 
 	ImGui::PushItemWidth(-100);
@@ -57,11 +66,22 @@ void Joiner::update(int elapsedTime) {
 		showBoardProperty = true;
 	}
 
+	ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
+
 	if (ImGui::Button("Re-Initialize")) {
 		configuration.setConfiguration("TrackGenerationStyle", trackGenerationStyle);
 		configuration.setConfiguration("BoardID", boardID);
 		configuration.setConfiguration("BoardWidth", boardWidth);
 		configuration.setConfiguration("BoardHeight", boardHeight);
+
+		configuration.setConfiguration("BoardColorR", boardColor[0] * 255);
+		configuration.setConfiguration("BoardColorG", boardColor[1] * 255);
+		configuration.setConfiguration("BoardColorB", boardColor[2] * 255);
+		configuration.setConfiguration("BoardColorA", boardColor[3] * 255);
+
+		configuration.setConfiguration("ThaneColorR", thaneColor[0] * 255);
+		configuration.setConfiguration("ThaneColorG", thaneColor[1] * 255);
+		configuration.setConfiguration("ThaneColorB", thaneColor[2] * 255);
 
 		board = Board();
 		world = World();
@@ -70,7 +90,7 @@ void Joiner::update(int elapsedTime) {
 	ImGui::End();
 
 	if (showBoardProperty) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(300, 200), ImVec2(300, 200));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(300, 160), ImVec2(300, 160));
 		ImGui::Begin("Board Property");
 		ImGui::PushItemWidth(-175);
 		ImGui::InputInt("Board ID", &boardID);
@@ -83,6 +103,9 @@ void Joiner::update(int elapsedTime) {
 		ImGui::ColorEdit4("Board Color", boardColor);
 		ImGui::PushItemWidth(ImGui::GetWindowWidth() - 100);
 		ImGui::ColorEdit3("Thane Color", thaneColor);
+
+		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
+
 		if (ImGui::Button("Close")) {
 			showBoardProperty = false;
 		}

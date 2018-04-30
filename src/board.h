@@ -9,8 +9,7 @@
 
 class Board {
 private:
-	int boardColor[3] = { 103, 156, 192 };
-	int thaneColor[3] = { 255, 255, 255 };
+	int thaneColor[3];
 
 	float elapsedTimeSeconds;
 

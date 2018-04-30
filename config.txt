@@ -2,18 +2,25 @@
 ScreenWidth 1000
 ScreenHeight 600
 
-#Board ID (Default = 1)
-BoardID 1
-BoardWidth 40
-BoardHeight 10
-BoardColor 103 156 192
-ThaneColor 255 255 255
+#Board ID
+BoardID 2
+BoardWidth 36
+BoardHeight 9
 
-#Track Generation Pattern (Default = 1)
+BoardColorR 103
+BoardColorG 156
+BoardColorB 192
+BoardColorA 255
+
+ThaneColorR 246
+ThaneColorG 171
+ThaneColorB 176
+
+#Track Generation Pattern
 TrackGenerationStyle 0
 
-#Draw Lines/Guides on Track (Default = 1)
+#Draw Lines/Guides on Track
 DrawTrackDetails 1
 
-#Draw Minimap (Default = 1)
+#Draw Minimap
 DrawMinimap 1

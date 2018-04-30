@@ -2,13 +2,16 @@
 
 void Board::initialize() {
 	linkPolygonWithConfigurations();
-	
-	bitmapPolygon.setColor(boardColor[0], boardColor[1], boardColor[2], 255);
 	bitmapPolygon.setPosition(Vector2(0, 0));
 }
 
 void Board::linkPolygonWithConfigurations() {
+	thaneColor[0] = configuration.getConfigurations()["ThaneColorR"];
+	thaneColor[1] = configuration.getConfigurations()["ThaneColorG"];
+	thaneColor[2] = configuration.getConfigurations()["ThaneColorB"];
+
 	bitmapPolygon.setSize(configuration.getConfigurations()["BoardWidth"], configuration.getConfigurations()["BoardHeight"]);
+	bitmapPolygon.setColor(configuration.getConfigurations()["BoardColorR"], configuration.getConfigurations()["BoardColorG"], configuration.getConfigurations()["BoardColorB"], configuration.getConfigurations()["BoardColorA"]);
 	std::string boardFileName = "board_" + std::to_string(configuration.getConfigurations()["BoardID"]) + ".txt";
 	bitmapPolygon.setVerticesFromFile(boardFileName.c_str());
 }
