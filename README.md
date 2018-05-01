@@ -26,9 +26,10 @@ Thane (short for polyurethane) lines are the skid marks produced when a skateboa
 - K/L = turn on/off GUI
 - I = reset thane/brake lines
 
-(https://www.youtube.com/watch?v=i--V-p5Xf4Y)
+## Videos
 
-[![Video](https://img.youtube.com/vi/i--V-p5Xf4Y/0.jpg)](https://www.youtube.com/watch?v=i--V-p5Xf4Y)
+| [![Video](https://img.youtube.com/vi/i--V-p5Xf4Y/0.jpg)](https://www.youtube.com/watch?v=i--V-p5Xf4Y)  | [![Video](https://img.youtube.com/vi/vRrIBMhBG30/0.jpg)](https://www.youtube.com/watch?v=vRrIBMhBG30) |
+| ------------- | ------------- |
 
 ## Release History
 - 1.4.3
