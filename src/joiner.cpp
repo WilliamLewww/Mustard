@@ -54,7 +54,7 @@ void Joiner::update(int elapsedTime) {
 		}
 	}
 
-	ImGui::SetNextWindowSizeConstraints(ImVec2(200, 110), ImVec2(200, 110));
+	ImGui::SetNextWindowSizeConstraints(ImVec2(200, 125), ImVec2(200, 125));
 	ImGui::Begin("Main Menu");
 
 	ImGui::PushItemWidth(-100);
@@ -86,6 +86,8 @@ void Joiner::update(int elapsedTime) {
 		board = Board();
 		world = World();
 		initializeWorld();
+
+		showBoardProperty = false;
 	}
 	ImGui::End();
 
@@ -95,9 +97,24 @@ void Joiner::update(int elapsedTime) {
 		ImGui::PushItemWidth(-175);
 		ImGui::InputInt("Board ID", &boardID);
 		ImGui::Columns(2);
-		ImGui::InputInt("Width", &boardWidth);
+		ImGui::Text(("Width: " + std::to_string(boardWidth)).c_str());   
 		ImGui::NextColumn();
-		ImGui::InputInt("Height", &boardHeight);
+		ImGui::Text(("Height: " + std::to_string(boardHeight)).c_str());   
+
+		if (boardID < 1) { boardID = 1; }
+		if (boardID > 2) { boardID = 2; }
+
+		switch (boardID) {
+			case 1:
+				boardWidth = configuration.getConfigurations()["PresetBoard1Width"];
+				boardHeight = configuration.getConfigurations()["PresetBoard1Height"];
+				break;
+			case 2:
+				boardWidth = configuration.getConfigurations()["PresetBoard2Width"];
+				boardHeight = configuration.getConfigurations()["PresetBoard2Height"];
+				break;
+		}
+
 		ImGui::Columns(1);
 		ImGui::PushItemWidth(ImGui::GetWindowWidth() - 100);
 		ImGui::ColorEdit4("Board Color", boardColor);

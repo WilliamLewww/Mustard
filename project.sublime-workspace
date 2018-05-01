@@ -8,6 +8,10 @@
 				"boardHeight"
 			],
 			[
+				"boa",
+				"boardID"
+			],
+			[
 				"con",
 				"configurations"
 			],
@@ -94,10 +98,6 @@
 			[
 				"upd",
 				"updateAndRender"
-			],
-			[
-				"boa",
-				"boardHeight"
 			],
 			[
 				"read",
@@ -423,7 +423,7 @@
 			"file": "src/joiner.cpp",
 			"settings":
 			{
-				"buffer_size": 4392,
+				"buffer_size": 4916,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -459,7 +459,7 @@
 			"file": "config.txt",
 			"settings":
 			{
-				"buffer_size": 363,
+				"buffer_size": 470,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -810,7 +810,7 @@
 	],
 	"find":
 	{
-		"height": 82.0
+		"height": 47.0
 	},
 	"find_in_files":
 	{
@@ -928,7 +928,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -937,15 +937,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4392,
+						"buffer_size": 4916,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3458,
-								3458
+								3371,
+								3371
 							]
 						],
 						"settings":
@@ -954,10 +954,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1674.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -985,13 +985,13 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1007,8 +1007,8 @@
 						"selection":
 						[
 							[
-								514,
-								514
+								126,
+								126
 							]
 						],
 						"settings":
@@ -1020,7 +1020,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1058,15 +1058,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 363,
+						"buffer_size": 470,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								349,
-								349
+								83,
+								83
 							]
 						],
 						"settings":
@@ -1077,7 +1077,7 @@
 						"translation.y": 31.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]

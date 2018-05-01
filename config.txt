@@ -2,10 +2,10 @@
 ScreenWidth 1000
 ScreenHeight 600
 
-#Board ID
-BoardID 2
-BoardWidth 36
-BoardHeight 9
+#Default
+BoardID 1
+BoardWidth 40
+BoardHeight 10
 
 BoardColorR 103
 BoardColorG 156
@@ -24,3 +24,11 @@ DrawTrackDetails 1
 
 #Draw Minimap
 DrawMinimap 1
+
+#Preset 1
+PresetBoard1Width 40
+PresetBoard1Height 10
+
+#Preset 2
+PresetBoard2Width 36
+PresetBoard2Height 9
