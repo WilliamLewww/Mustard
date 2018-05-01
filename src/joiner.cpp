@@ -5,8 +5,8 @@ Joiner joiner;
 void Joiner::initialize() {
 	trackGenerationStyle = configuration.getConfigurations()["TrackGenerationStyle"];
 	boardID = configuration.getConfigurations()["BoardID"];
+	boardLength = configuration.getConfigurations()["BoardLength"];
 	boardWidth = configuration.getConfigurations()["BoardWidth"];
-	boardHeight = configuration.getConfigurations()["BoardHeight"];
 
 	boardColor[0] = (float)configuration.getConfigurations()["BoardColorR"] / 255;
 	boardColor[1] = (float)configuration.getConfigurations()["BoardColorG"] / 255;
@@ -71,8 +71,8 @@ void Joiner::update(int elapsedTime) {
 	if (ImGui::Button("Re-Initialize")) {
 		configuration.setConfiguration("TrackGenerationStyle", trackGenerationStyle);
 		configuration.setConfiguration("BoardID", boardID);
+		configuration.setConfiguration("BoardLength", boardLength);
 		configuration.setConfiguration("BoardWidth", boardWidth);
-		configuration.setConfiguration("BoardHeight", boardHeight);
 
 		configuration.setConfiguration("BoardColorR", boardColor[0] * 255);
 		configuration.setConfiguration("BoardColorG", boardColor[1] * 255);
@@ -97,21 +97,33 @@ void Joiner::update(int elapsedTime) {
 		ImGui::PushItemWidth(-175);
 		ImGui::InputInt("Board ID", &boardID);
 		ImGui::Columns(2);
-		ImGui::Text(("Width: " + std::to_string(boardWidth)).c_str());   
+		ImGui::Text(("Length: " + std::to_string(boardLength)).c_str());   
 		ImGui::NextColumn();
-		ImGui::Text(("Height: " + std::to_string(boardHeight)).c_str());   
+		ImGui::Text(("Width: " + std::to_string(boardWidth)).c_str());   
 
 		if (boardID < 1) { boardID = 1; }
-		if (boardID > 2) { boardID = 2; }
+		if (boardID > 5) { boardID = 5; }
 
 		switch (boardID) {
 			case 1:
+				boardLength = configuration.getConfigurations()["PresetBoard1Length"];
 				boardWidth = configuration.getConfigurations()["PresetBoard1Width"];
-				boardHeight = configuration.getConfigurations()["PresetBoard1Height"];
 				break;
 			case 2:
+				boardLength = configuration.getConfigurations()["PresetBoard2Length"];
 				boardWidth = configuration.getConfigurations()["PresetBoard2Width"];
-				boardHeight = configuration.getConfigurations()["PresetBoard2Height"];
+				break;
+			case 3:
+				boardLength = configuration.getConfigurations()["PresetBoard3Length"];
+				boardWidth = configuration.getConfigurations()["PresetBoard3Width"];
+				break;
+			case 4:
+				boardLength = configuration.getConfigurations()["PresetBoard4Length"];
+				boardWidth = configuration.getConfigurations()["PresetBoard4Width"];
+				break;
+			case 5:
+				boardLength = configuration.getConfigurations()["PresetBoard5Length"];
+				boardWidth = configuration.getConfigurations()["PresetBoard5Width"];
 				break;
 		}
 

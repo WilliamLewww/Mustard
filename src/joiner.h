@@ -15,7 +15,7 @@ private:
 	int speedZone = 0;
 
 	int showBoardProperty;
-	int trackGenerationStyle, boardID, boardWidth, boardHeight;
+	int trackGenerationStyle, boardID, boardLength, boardWidth;
 	float boardColor[4], thaneColor[3];
 public:
 	void initialize();
