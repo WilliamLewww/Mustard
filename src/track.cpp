@@ -38,6 +38,12 @@ void Track::draw(int generationStyle, bool drawDetails = true) {
 	}
 };
 
+void Track::generateTrackDirection() {
+	for (int x = 0; x < railList[0].size() - 1; x += 2) {
+		trackDirection.push_back(Vector2(railList[0][x].x, -atan((railList[0][x + 2].y - railList[0][x].y) / (railList[0][x + 2].x - railList[0][x].x)) * (180 / drawing.PI)));
+	}
+}
+
 int* Track::speedZoneColor(int speed) {
 	int* tempColor = (int*)malloc(3 * sizeof(int));
 	tempColor[0] = ((double)speed / 50) * 255;

@@ -32,7 +32,7 @@ void Joiner::initializeWorld() {
 }
 
 void Joiner::update(int elapsedTime) {
-	board.update(elapsedTime, speedZone);
+	board.update(elapsedTime, speedZone, trackDirection);
 	if (configuration.getConfigurations()["DrawMinimap"] == 1) {
 		hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle());
 	}
@@ -40,6 +40,12 @@ void Joiner::update(int elapsedTime) {
 	for (Vector2 speed : world.track.speedZones) {
 		if (board.bitmapPolygon.getPosition().x > world.track.railList[0][speed.x].x) {
 			speedZone = speed.y;
+		}
+	}
+
+	for (Vector2 direction : world.track.trackDirection) {
+		if (board.bitmapPolygon.getPosition().x > direction.x) {
+			trackDirection = direction.y;
 		}
 	}
 

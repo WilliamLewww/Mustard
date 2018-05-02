@@ -29,7 +29,7 @@ private:
 	std::vector<Vector3> thaneLines;
 	std::vector<Vector2> brakeLines;
 
-	void addSpeedFromHill(int speedZone);
+	void addSpeedFromHill(int speedZone, int trackDirection);
 	void handlePushTuck();
 	void handleFootBrake();
 
@@ -56,7 +56,7 @@ public:
 	BitmapPolygon bitmapPolygon;
 	
 	void initialize();
-	void update(int elapsedTimeSeconds, int speedZone);
+	void update(int elapsedTimeSeconds, int speedZone, int trackDirection);
 	void draw();
 
 	void handleCollision(Vector2* wall);

@@ -16,10 +16,13 @@ class Track {
 public:
 	std::vector<std::vector<Vector2>> railList;
 	std::vector<Vector2> speedZones;
+	std::vector<Vector2> trackDirection;
+
 	Vector2 visibleRange = Vector2(0,0);
 
 	void initialize();
 
+	void generateTrackDirection();
 	void resetVisibleRange();
 	void generateGroundPolygons();
 	void updateVisibleRange();

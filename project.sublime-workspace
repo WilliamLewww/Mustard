@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"tra",
+				"trackDirection"
+			],
+			[
 				"board",
 				"boardHeight"
 			],
@@ -420,24 +424,6 @@
 	"buffers":
 	[
 		{
-			"file": "src/joiner.cpp",
-			"settings":
-			{
-				"buffer_size": 5426,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/joiner.h",
-			"settings":
-			{
-				"buffer_size": 476,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "main.cpp",
 			"settings":
 			{
@@ -450,7 +436,7 @@
 			"file": "src/board.cpp",
 			"settings":
 			{
-				"buffer_size": 8667,
+				"buffer_size": 9296,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -459,16 +445,24 @@
 			"file": "src/board.h",
 			"settings":
 			{
-				"buffer_size": 1348,
+				"buffer_size": 1388,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "config.txt",
+			"file": "src/joiner.cpp",
 			"settings":
 			{
-				"buffer_size": 629,
+				"buffer_size": 5598,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/track.cpp",
+			"settings":
+			{
+				"buffer_size": 5068,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -705,24 +699,25 @@
 	],
 	"file_history":
 	[
+		"/C/Projects/Thane/src/board.h",
+		"/C/Projects/Thane/main.cpp",
+		"/C/Projects/Thane/src/world.cpp",
+		"/C/Projects/Thane/src/track.h",
+		"/C/Projects/Thane/src/joiner.h",
+		"/C/Projects/Thane/src/joiner.cpp",
+		"/C/Projects/Thane/src/track.cpp",
+		"/C/Projects/Thane/config.txt",
+		"/C/Projects/Thane/src/board.cpp",
 		"/C/Projects/Bitmap-Bagel/export_polylist.py",
 		"/C/Projects/Thane/src/hud/minimap.cpp",
 		"/C/Projects/Thane/src/hud/minimap.h",
 		"/C/Projects/Thane/README.md",
-		"/C/Projects/Thane/config.txt",
-		"/C/Projects/Thane/src/joiner.cpp",
 		"/C/Projects/Thane/src/core/configuration.h",
-		"/C/Projects/Thane/src/track.h",
-		"/C/Projects/Thane/src/track.cpp",
 		"/C/Projects/Thane/src/core/configuration.cpp",
-		"/C/Projects/Thane/src/joiner.h",
-		"/C/Projects/Thane/main.cpp",
-		"/C/Projects/Thane/src/world.cpp",
 		"/C/Projects/Thane/src/world.h",
 		"/C/Projects/Thane/src/hud/hud.cpp",
 		"/C/Projects/Thane/src/hud/hud.h",
 		"/C/Projects/Thane/src/bmp_polygon.h",
-		"/C/Projects/Thane/src/board.h",
 		"/C/Projects/Thane/engine.cpp",
 		"/C/Projects/Objective-Neural-Network/project.sublime-project",
 		"/C/Projects/Thane/project.sublime-project",
@@ -739,7 +734,6 @@
 		"/C/Projects/Thane/src/core/gui.cpp",
 		"/C/Projects/Thane/src/drawing.cpp",
 		"/C/Projects/Thane/src/gui/gui.cpp",
-		"/C/Projects/Thane/src/board.cpp",
 		"/C/Projects/Thane/src/config.txt",
 		"/C/Projects/Thane/src/bmp_polygon.cpp",
 		"/C/Projects/Thane/src/camera.cpp",
@@ -836,7 +830,7 @@
 	],
 	"find":
 	{
-		"height": 47.0
+		"height": 82.0
 	},
 	"find_in_files":
 	{
@@ -850,6 +844,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"board",
 			"Height",
 			"Width",
 			"Height",
@@ -972,69 +967,11 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/joiner.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5426,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3779,
-								3779
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2667.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/joiner.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 476,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								314,
-								314
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "main.cpp",
 					"semi_transient": false,
 					"settings":
@@ -1058,30 +995,53 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 2,
-			"sheets":
-			[
+				},
 				{
-					"buffer": 3,
+					"buffer": 1,
 					"file": "src/board.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8667,
+						"buffer_size": 9296,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								493,
-								493
+								1597,
+								1597
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 958.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/board.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1388,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								524,
+								524
 							]
 						],
 						"settings":
@@ -1097,20 +1057,49 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/board.h",
+					"buffer": 3,
+					"file": "src/joiner.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1348,
+						"buffer_size": 5598,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								199,
-								199
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 306.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/track.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5068,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1467,
+								1467
 							]
 						],
 						"settings":
@@ -1123,34 +1112,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "config.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 629,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								374,
-								374
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 31.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1173,18 +1134,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -1248,7 +1202,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},

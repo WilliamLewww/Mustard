@@ -12,7 +12,7 @@ private:
 	Board board;
 	HUD hud;
 
-	int speedZone = 0;
+	int speedZone = 0, trackDirection = 0;
 
 	int showBoardProperty;
 	int trackGenerationStyle, boardID, boardLength, boardWidth;

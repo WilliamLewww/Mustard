@@ -16,10 +16,10 @@ void Board::linkPolygonWithConfigurations() {
 	bitmapPolygon.setVerticesFromFile(boardFileName.c_str());
 }
 
-void Board::update(int elapsedTime, int speedZone) {
+void Board::update(int elapsedTime, int speedZone, int trackDirection) {
 	elapsedTimeSeconds = (float)(elapsedTime) / 1000;
 
-	addSpeedFromHill(speedZone);
+	addSpeedFromHill(speedZone, trackDirection);
 	handlePushTuck();
 	handleLeftTurn();
 	handleRightTurn();
@@ -50,8 +50,23 @@ void Board::drawBrakeLines() {
 	//for (Vector2 line : brakeLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawing.drawPoint(line, board.shoe.breakColor); }}
 }
 
-void Board::addSpeedFromHill(int speedZone) {
-	velocity += (rollSpeed + speedZone) * elapsedTimeSeconds;
+void Board::addSpeedFromHill(int speedZone, int trackDirection) {
+	if (bitmapPolygon.getAngle() > trackDirection - 30 && bitmapPolygon.getAngle() < trackDirection + 30) {
+		if (bitmapPolygon.getAngle() > trackDirection - 15 && bitmapPolygon.getAngle() < trackDirection + 15) {
+			if (bitmapPolygon.getAngle() > trackDirection - 10 && bitmapPolygon.getAngle() < trackDirection + 10) {
+				velocity += (rollSpeed + speedZone) * 1.2 * elapsedTimeSeconds;
+			}
+			else {
+				velocity += (rollSpeed + speedZone) * elapsedTimeSeconds;
+			}
+		}
+		else {
+			velocity += (rollSpeed + speedZone) * 0.8 * elapsedTimeSeconds;
+		}
+	}
+	else {
+		velocity += (rollSpeed + speedZone) * 0.5 * elapsedTimeSeconds;
+	}
 }
 
 void Board::handlePushTuck() {

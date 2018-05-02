@@ -64,6 +64,7 @@ void World::generateMountainPolygons() {
 void World::generateWorld() {
 	track.initialize();
 	generateTrack();
+	track.generateTrackDirection();
 	generateSpeedZones();
 }
 
