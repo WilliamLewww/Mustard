@@ -16,7 +16,7 @@ private:
 	float velocity;
 	int rollSpeed = 10;
 
-	double pushInterval = 0.7, pushSpeed = 50, pushTimer = 0, pushMax = 200;
+	double pushInterval = 0.7, pushSpeed = 35, pushTimer = 0, pushMax = 150;
 	double tuckSpeed = 8;
 	double turnSpeed = 50;
 

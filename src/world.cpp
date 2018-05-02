@@ -152,13 +152,13 @@ void World::randomLongTrackPar(Track& track, int difficulty, int count, int poin
 	for (int x = 0; x < count; x++) {
 		switch (rand() % 3) {
 			case 0:
-				randomPar(track, difficulty, points, pointSpacing);
+				randomUpPar(track, difficulty, points, pointSpacing);
 				break;
 			case 1:
 				randomDownPar(track, difficulty, points, pointSpacing);
 				break;
 			case 2:
-				randomUpPar(track, difficulty, points, pointSpacing);
+				randomPar(track, difficulty - 25, points, pointSpacing - 5);
 				break;
 		}
 	}

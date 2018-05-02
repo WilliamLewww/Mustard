@@ -54,18 +54,18 @@ void Board::addSpeedFromHill(int speedZone, int trackDirection) {
 	if (bitmapPolygon.getAngle() > trackDirection - 30 && bitmapPolygon.getAngle() < trackDirection + 30) {
 		if (bitmapPolygon.getAngle() > trackDirection - 15 && bitmapPolygon.getAngle() < trackDirection + 15) {
 			if (bitmapPolygon.getAngle() > trackDirection - 10 && bitmapPolygon.getAngle() < trackDirection + 10) {
-				velocity += (rollSpeed + speedZone) * 1.2 * elapsedTimeSeconds;
+				velocity += (rollSpeed + speedZone) * elapsedTimeSeconds;
 			}
 			else {
-				velocity += (rollSpeed + speedZone) * elapsedTimeSeconds;
+				velocity += (rollSpeed + speedZone) * 0.8 * elapsedTimeSeconds;
 			}
 		}
 		else {
-			velocity += (rollSpeed + speedZone) * 0.8 * elapsedTimeSeconds;
+			velocity += (rollSpeed + speedZone) * 0.5 * elapsedTimeSeconds;
 		}
 	}
 	else {
-		velocity += (rollSpeed + speedZone) * 0.5 * elapsedTimeSeconds;
+		velocity += (rollSpeed + speedZone) * 0.3 * elapsedTimeSeconds;
 	}
 }
 
