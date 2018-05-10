@@ -46,7 +46,6 @@ private:
 	void refreshSlide();
 
 	void generateThane(int multiplier);
-	void clearLines();
 	void drawThaneLines();
 	void drawBrakeLines();
 	
@@ -59,6 +58,8 @@ public:
 	void update(int elapsedTimeSeconds, int speedZone, int trackDirection);
 	void draw();
 
+	void clearLines();
+	
 	void handleCollision(Vector2* wall);
 	void handleCollision(Vector2 pointA, Vector2 pointB);
 };

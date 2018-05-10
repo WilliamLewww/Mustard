@@ -17,6 +17,8 @@ void Joiner::initialize() {
 	thaneColor[1] = (float)configuration.getConfigurations()["ThaneColorG"] / 255;
 	thaneColor[2] = (float)configuration.getConfigurations()["ThaneColorB"] / 255;
 
+	configuration.setConfiguration("HardTrack", trackHard);
+
 	initializeWorld();
 }
 
@@ -27,7 +29,7 @@ void Joiner::initializeWorld() {
 	world.generateWorld();
 
 	if (configuration.getConfigurations()["DrawMinimap"] == 1) {
-		hud.initializeMinimap(world.track.railList, Vector2(0, 0), Vector2(5, 5), configuration.getScreenWidth() / 5, configuration.getScreenHeight() / 3);
+		hud.initializeMinimap(world.track.railList, Vector2(-1000, 0), Vector2(0, 0), configuration.getScreenWidth() / 5, configuration.getScreenHeight() / 3);
 	}
 }
 
@@ -60,21 +62,21 @@ void Joiner::update(int elapsedTime) {
 		}
 	}
 
-	ImGui::SetNextWindowSizeConstraints(ImVec2(200, 125), ImVec2(200, 125));
+	ImGui::SetNextWindowSizeConstraints(ImVec2(225, 135), ImVec2(225, 135));
 	ImGui::Begin("Main Menu");
 
-	ImGui::PushItemWidth(-100);
-	ImGui::InputInt("Track Style", &trackGenerationStyle);
-	if (trackGenerationStyle < 0) { trackGenerationStyle = 0; }
-	if (trackGenerationStyle > 1) { trackGenerationStyle = 1; }
-
-	if (ImGui::Button("Edit Board Properties")) {
-		showBoardProperty = true;
+	ImGui::Columns(2);
+	if (ImGui::Button("Edit Track")) {
+		showTrackEdit = !showTrackEdit;
+	}
+	ImGui::NextColumn();
+	if (ImGui::Button("Edit Board")) {
+		showBoardEdit = !showBoardEdit;
 	}
 
-	ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
-
-	if (ImGui::Button("Re-Initialize")) {
+	ImGui::Columns(1);
+	
+	if (ImGui::Button("Apply Changes / Re-Initialize")) {
 		configuration.setConfiguration("TrackGenerationStyle", trackGenerationStyle);
 		configuration.setConfiguration("BoardID", boardID);
 		configuration.setConfiguration("BoardLength", boardLength);
@@ -89,22 +91,66 @@ void Joiner::update(int elapsedTime) {
 		configuration.setConfiguration("ThaneColorG", thaneColor[1] * 255);
 		configuration.setConfiguration("ThaneColorB", thaneColor[2] * 255);
 
+		configuration.setConfiguration("HardTrack", trackHard);
+
 		board = Board();
 		world = World();
 		initializeWorld();
 
-		showBoardProperty = false;
+		showBoardEdit = false;
+		showTrackEdit = false;
 	}
+
+	ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
+
+	if (ImGui::Button("Clear Thane")) {
+		board.clearLines();
+	}
+	ImGui::Checkbox("Display Session Stats", &showSessionStats);
 	ImGui::End();
 
-	if (showBoardProperty) {
+	if (showSessionStats) {
+		ImGui::SetNextWindowSizeConstraints(ImVec2(150, 250), ImVec2(150, 250));
+		ImGui::Begin("Session Stats");
+		ImGui::End();
+	}
+
+	if (showTrackEdit) {
+		ImGui::SetNextWindowSizeConstraints(ImVec2(300, 195), ImVec2(300, 195));
+		ImGui::Begin("Edit Track");
+		ImGui::PushItemWidth(-100);
+		ImGui::InputInt("Style", &trackGenerationStyle);
+		if (trackGenerationStyle < 0) { trackGenerationStyle = 0; }
+		if (trackGenerationStyle > 1) { trackGenerationStyle = 1; }
+
+
+		ImGui::PushItemWidth((ImGui::GetWindowWidth() / 2) - 15);
+		ImGui::InputInt("Difficulty", &trackDifficulty);
+
+		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
+		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
+
+		ImGui::Checkbox("Hard Track", &trackHard);
+		ImGui::Checkbox("Random Seed", &randomTrackSeed);
+		ImGui::InputInt("Seed", &trackSeed);
+
+		if (ImGui::Button("Close")) {
+			showTrackEdit = false;
+		}
+
+		ImGui::End();
+	}
+
+	if (showBoardEdit) {
 		ImGui::SetNextWindowSizeConstraints(ImVec2(300, 160), ImVec2(300, 160));
-		ImGui::Begin("Board Property");
+		ImGui::Begin("Edit Board");
 		ImGui::PushItemWidth(-175);
 		ImGui::InputInt("Board ID", &boardID);
 		ImGui::Columns(2);
+		ImGui::PushItemWidth(-200);
 		ImGui::Text(("Length: " + std::to_string(boardLength)).c_str());   
 		ImGui::NextColumn();
+		ImGui::PushItemWidth(-200);
 		ImGui::Text(("Width: " + std::to_string(boardWidth)).c_str());   
 
 		if (boardID < 1) { boardID = 1; }
@@ -142,7 +188,7 @@ void Joiner::update(int elapsedTime) {
 		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
 
 		if (ImGui::Button("Close")) {
-			showBoardProperty = false;
+			showBoardEdit = false;
 		}
 		ImGui::End();
 	}

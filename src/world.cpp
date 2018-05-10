@@ -74,15 +74,21 @@ void World::generateSpeedZones() {
 }
 
 void World::generateTrack() {
-	track.addVertex(Vector2(-10, -20), 0);
-	track.addVertex(Vector2(-10, -20), 45);
-	track.addVertexRelative(-25, 100, 25);
-	track.addVertexRelative(0, 150, 0);
+	track.addVertex(Vector2(-1000, -25), 0);
+	track.addVertex(Vector2(-1000, -25), 125);
+	track.addVertexRelative(0, 1150, 0);
 	switch (configuration.getConfigurations()["TrackGenerationStyle"]) {
 		case 0:
-			track.addVertexRelative(-75, 50, 75);
-			track.addVertexRelative(-76, 50, 76);
-			randomLongTrackPar(track, 50, 100, 20, 20);
+			if (configuration.getConfigurations()["HardTrack"]) {
+				track.addVertexRelative(-25, 50, 25);
+				track.addVertexRelative(-25, 50, 25);
+			}
+			else {
+				track.addVertexRelative(-75, 50, 75);
+				track.addVertexRelative(-76, 50, 76);
+			}
+
+			randomLongTrackPar(50, 100, 20, 20);
 			break;
 		case 1:
 			randomInputFunction(50, 5, 500, -0.3, Vector2(-10, 10), Vector2(0, 20), Vector2(1000, 1000));
@@ -148,35 +154,35 @@ void World::randomInputFunction(int functionCount, int period, int buffer, doubl
 	}
 }
 
-void World::randomLongTrackPar(Track& track, int difficulty, int count, int points, int pointSpacing) {
+void World::randomLongTrackPar(int difficulty, int count, int points, int pointSpacing) {
 	for (int x = 0; x < count; x++) {
 		switch (rand() % 3) {
 			case 0:
-				randomUpPar(track, difficulty, points, pointSpacing);
+				randomUpPar(difficulty, points, pointSpacing);
 				break;
 			case 1:
-				randomDownPar(track, difficulty, points, pointSpacing);
+				randomDownPar(difficulty, points, pointSpacing);
 				break;
 			case 2:
-				randomPar(track, difficulty - 25, points, pointSpacing - 5);
+				randomPar(difficulty - 25, points, pointSpacing - 5);
 				break;
 		}
 	}
 }
 
-void World::randomUpPar(Track& track, int difficulty, int points, int pointSpacing) {
+void World::randomUpPar(int difficulty, int points, int pointSpacing) {
 	for (int x = 0; x < points; x++) { 
 		track.addVertexComp(-(rand() % (difficulty + 1)), pointSpacing);
 	}
 }
 
-void World::randomDownPar(Track& track, int difficulty, int points, int pointSpacing) {
+void World::randomDownPar(int difficulty, int points, int pointSpacing) {
 	for (int x = 0; x < points; x++) { 
 		track.addVertexComp(rand() % (difficulty + 1), pointSpacing);
 	}
 }
 
-void World::randomPar(Track& track, int difficulty, int points, int pointSpacing) {
+void World::randomPar(int difficulty, int points, int pointSpacing) {
 	for (int x = 0; x < points; x++) { 
 		track.addVertexComp((rand() % (difficulty + 1) - (difficulty / 2)), pointSpacing);
 	}

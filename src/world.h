@@ -18,10 +18,10 @@ private:
 	void givenInputFunction(int period, int buffer, double distance, double a, double b, Vector2 expandVal);
 	void randomInputFunction(int functionCount, int period, int buffer, double distance, Vector2 betweenA, Vector2 betweenB, Vector2 expandVal);
 
-	void randomLongTrackPar(Track& track, int difficulty, int count, int points, int pointSpacing);
-	void randomUpPar(Track& track, int difficulty, int points, int pointSpacing);
-	void randomDownPar(Track& track, int difficulty, int points, int pointSpacing);
-	void randomPar(Track& track, int difficulty, int points, int pointSpacing);
+	void randomLongTrackPar(int difficulty, int count, int points, int pointSpacing);
+	void randomUpPar(int difficulty, int points, int pointSpacing);
+	void randomDownPar(int difficulty, int points, int pointSpacing);
+	void randomPar(int difficulty, int points, int pointSpacing);
 public:
 	Track track;
 	

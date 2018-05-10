@@ -14,8 +14,11 @@ private:
 
 	int speedZone = 0, trackDirection = 0;
 
-	int showBoardProperty;
-	int trackGenerationStyle, boardID, boardLength, boardWidth;
+	bool showBoardEdit, showTrackEdit, showSessionStats = true, randomTrackSeed = true;
+
+	int boardID, boardLength, boardWidth;
+	int trackGenerationStyle, trackDifficulty, trackSeed;
+	bool trackHard;
 	float boardColor[4], thaneColor[3];
 public:
 	void initialize();
