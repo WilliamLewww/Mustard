@@ -1,9 +1,12 @@
 #pragma once
 #include "core\drawing.h"
+#include "environment\environment.h"
 #include "track.h"
 
 class World {
 private:
+	Environment environment;
+	
 	int mountainColor[3] = { 118, 92, 67 };
 
 	std::vector<std::vector<Vector2>> mountainPolygons;

@@ -1,6 +1,6 @@
 #Window Resolution (Default = 1000x600)
-ScreenWidth 1920
-ScreenHeight 1080
+ScreenWidth 1000
+ScreenHeight 700
 
 #Default
 BoardID 1

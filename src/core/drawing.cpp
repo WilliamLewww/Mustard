@@ -167,6 +167,14 @@ void Drawing::drawLine(Vector2 a, Vector2 b, int color[3], int alpha) {
 	glEnd();
 }
 
+void Drawing::drawLineStrip(Vector2 *points, int count, Vector2 position, float scale, int color[3]) {
+	glBegin(GL_LINE_STRIP);
+	//glEnable(GL_LINE_SMOOTH);
+	glColor4f(convertColorFloatToRGB(color[0]), convertColorFloatToRGB(color[1]), convertColorFloatToRGB(color[2]), 1);
+	for (int x = 0; x < count; x++) { glVertex2f((points[x].x * scale) + position.x - (configuration.getScreenWidth() / 2), (points[x].y * scale) + position.y - (configuration.getScreenHeight() / 2)); }
+	glEnd();
+};
+
 void Drawing::drawLineStrip(std::vector<Vector2> points, int color[3]) {
 	glBegin(GL_LINE_STRIP);
 	//glEnable(GL_LINE_SMOOTH);
