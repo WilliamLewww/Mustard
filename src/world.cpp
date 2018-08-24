@@ -69,8 +69,7 @@ void World::generateWorld() {
 }
 
 void World::generateSpeedZones() {
-	track.addSpeedZone(0, 0);
-	randomGradualSpeedZone(5, 0, 50, 5, 2, 15);
+	randomGradualSpeedZone(5, 0, 50, 5, 0, 15);
 }
 
 void World::generateTrack() {

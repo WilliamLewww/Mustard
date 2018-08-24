@@ -3,9 +3,9 @@ ScreenWidth 1000
 ScreenHeight 700
 
 #Default
-BoardID 1
-BoardLength 40
-BoardWidth 10
+BoardID 2
+BoardLength 36
+BoardWidth 9
 
 BoardColorR 103
 BoardColorG 156

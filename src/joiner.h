@@ -14,7 +14,8 @@ private:
 
 	int speedZone = 0, trackDirection = 0;
 
-	bool showBoardEdit, showTrackEdit, showSessionStats = true, randomTrackSeed = true;
+	bool showBuyMenu = true;
+	bool showBoardEdit, showTrackEdit, showSessionStats = false, randomTrackSeed = true;
 
 	int boardID, boardLength, boardWidth;
 	int trackGenerationStyle, trackDifficulty, trackSeed;

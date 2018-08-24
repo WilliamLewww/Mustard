@@ -217,7 +217,9 @@ void Board::handleSlideRight(double difference) {
 			shutdownSlide = false;
 		}
 
-		bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (20 * elapsedTimeSeconds));  
+		if (slide == true) {
+			bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (20 * elapsedTimeSeconds));  
+		}
 
 		if (movementAngle - bitmapPolygon.getAngle() > 90) {
 			movementAngle -= 180;
@@ -249,7 +251,9 @@ void Board::handleSlideLeft(double difference) {
 			shutdownSlide = false;
 		}
 
-		bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (20 * elapsedTimeSeconds));  
+		if (slide == true) {
+			bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (20 * elapsedTimeSeconds));  
+		}
 
 		if (bitmapPolygon.getAngle() - movementAngle > 90) {
 			movementAngle += 180;

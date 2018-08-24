@@ -14,8 +14,8 @@
 				"C:/Projects/Thane/src/hud/*.cpp",
 				"C:/Projects/Thane/src/core/*.cpp",
 				"C:/Projects/Thane/src/core/imgui/*.cpp",
-				"-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include",
-				"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib",
+				"-IC:/Libraries/SDL2-2.0.8-mingw/i686-w64-mingw32/include",
+				"-LC:/Libraries/SDL2-2.0.8-mingw/i686-w64-mingw32/lib",
 				"-IC:/Libraries/bass24/c",
 				"-LC:/Libraries/bass24/c",
 				"-IC:/Libraries/bass_fx24/C",
@@ -33,69 +33,6 @@
 			"name": "SDL Project",
 			"selector": "source.c, source.c++",
 			"shell": true,
-			"variants":
-			[
-				{
-					"cmd":
-					[
-						"g++",
-						"${file}",
-						"-o",
-						"${file_base_name}.exe",
-						"src/*.cpp",
-						"-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include",
-						"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib",
-						"-lmingw32",
-						"-lSDL2main",
-						"-lSDL2",
-						"-lopengl32"
-					],
-					"name": "Compile",
-					"shell": true
-				}
-				,
-				{
-					"cmd":
-					[
-						"g++",
-						"$file",
-						"-o",
-						"$file_base_name",
-						"src/*.cpp",
-						"-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include",
-						"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib",
-						"-lmingw32",
-						"-lSDL2main",
-						"-lSDL2",
-						"-lopengl32",
-						"&&",
-						"$file_path/$file_base_name"
-					],
-					"name": "Run",
-					"shell": true
-				}
-				,
-				{
-					"cmd":
-					[
-						"g++",
-						"$file",
-						"-o",
-						"$file_base_name",
-						"src/*.cpp",
-						"-IC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/include",
-						"-LC:/Libraries/SDL2-2.0.5-mingw/i686-w64-mingw32/lib",
-						"-lmingw32",
-						"-lSDL2main",
-						"-lSDL2",
-						"-lopengl32",
-						"&&",
-						"$file_path/$file_base_name"
-					],
-					"name": "Single File",
-					"shell": true
-				}
-			],
 			"working_dir": "${file_path}"
 		}
 	],
