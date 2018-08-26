@@ -16,6 +16,9 @@ ThaneColorR 246
 ThaneColorG 171
 ThaneColorB 176
 
+#Track Speed Spacing
+TrackSpeedSpacing 15
+
 #Track Generation Pattern
 TrackGenerationStyle 0
 

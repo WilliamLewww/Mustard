@@ -3,7 +3,7 @@
 void Road::generate(std::vector<std::vector<Vector2>> railList, std::vector<Vector2> speedZones, int visibleRangeX, int visibleRangeY) {
 	if (roadColorList.size() == 0) {
 		for (int x = 0; x < railList[0].size(); x++) {
-			roadColorList.emplace_back(((speedZones[x / 15].y / 50.0f) - 0.5f) * 25.0f);
+			roadColorList.emplace_back(((speedZones[x / configuration.getConfigurations()["TrackSpeedSpacing"]].y / 50.0f) - 0.5f) * 25.0f);
 		}
 	}
 

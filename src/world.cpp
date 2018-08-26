@@ -69,7 +69,7 @@ void World::generateWorld() {
 }
 
 void World::generateSpeedZones() {
-	randomGradualSpeedZone(5, 0, 50, 5, 0, 15);
+	randomGradualSpeedZone(5, 0, 50, 5, 0, configuration.getConfigurations()["TrackSpeedSpacing"]);
 }
 
 void World::generateTrack() {

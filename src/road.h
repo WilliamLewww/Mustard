@@ -2,6 +2,7 @@
 #include <vector>
 #include "core\vector2.h"
 #include "core\drawing.h"
+#include "core\configuration.h"
 #include "camera.h"
 
 class Road {
