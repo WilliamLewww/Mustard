@@ -6,11 +6,8 @@ void Track::initialize() {
 }
 
 void Track::draw(int generationStyle, bool drawDetails = true) {
-	generateGroundPolygons();
-
-	for (std::vector<Vector2> polygon : roadPolygonList) {
-		drawing.drawPolygon(polygon, roadColor, 255);
-	}
+	road.generate(railList, speedZones, visibleRange.x, visibleRange.y);
+	road.draw(visibleRange.x);
 
 	if (drawDetails == true) {
 		switch (generationStyle) {
@@ -54,29 +51,7 @@ int* Track::speedZoneColor(int speed) {
 }
 
 void Track::resetVisibleRange() { 
-	visibleRange = Vector2(0,0); roadPolygonList.clear(); 
-}
-
-void Track::generateGroundPolygons() {
-	for (int x = visibleRange.x; x < visibleRange.y; x++) {
-		std::vector<Vector2> tempPolygon;
-		if (x > 0 && (roadPolygonList.size() == 0 || roadPolygonList[roadPolygonList.size() - 1][0].x < railList[0][x].x)) {
-			tempPolygon.emplace_back(railList[0][x]);
-			tempPolygon.emplace_back(railList[0][x - 1]);
-			tempPolygon.emplace_back(railList[1][x - 1]);
-			tempPolygon.emplace_back(railList[1][x]);
-
-			roadPolygonList.push_back(tempPolygon);
-		}
-	}
-
-	for (int x = 0; x < roadPolygonList.size(); x++) {
-		if (roadPolygonList[x][0].x < camera.getBoundaryLeft()) {
-			roadPolygonList.erase(roadPolygonList.begin());
-			x -= 1;
-		}
-		else { break; }
-	}
+	visibleRange = Vector2(0,0); road.clear(); 
 }
 
 void Track::updateVisibleRange() {

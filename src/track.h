@@ -3,14 +3,14 @@
 #include "core\vector2.h"
 #include "core\drawing.h"
 #include "camera.h"
+#include "road.h"
 
 class Track {
-	std::vector<std::vector<Vector2>> roadPolygonList;
+	Road road;
 
 	int rockyColor[3] = { 0, 0, 255 };
 	int sideColor[3] = { 225, 225, 225 };
 	int centerColor[3] = { 255, 173, 71 };
-	int roadColor[3] = { 60, 60, 60 };
 
 	int* speedZoneColor(int speed);
 public:

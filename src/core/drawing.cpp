@@ -232,6 +232,22 @@ void Drawing::drawLineStrip(Vector2 position, double width, double height, std::
 	glPopMatrix();
 }
 
+void Drawing::drawPolygon(std::vector<Vector2> points, float color, int alpha) {
+	glBegin(GL_POLYGON);
+	//glEnable(GL_LINE_SMOOTH);
+	glColor4f(convertColorFloatToRGB(color), convertColorFloatToRGB(color), convertColorFloatToRGB(color), convertColorFloatToRGB(alpha));
+	for (int x = 0; x < points.size(); x++) { glVertex2f(points[x].x - (configuration.getScreenWidth() / 2), points[x].y - (configuration.getScreenHeight() / 2)); }
+	glEnd();
+}
+
+void Drawing::drawPolygon(std::vector<Vector2> points, int color, int alpha) {
+	glBegin(GL_POLYGON);
+	//glEnable(GL_LINE_SMOOTH);
+	glColor4f(convertColorFloatToRGB(color), convertColorFloatToRGB(color), convertColorFloatToRGB(color), convertColorFloatToRGB(alpha));
+	for (int x = 0; x < points.size(); x++) { glVertex2f(points[x].x - (configuration.getScreenWidth() / 2), points[x].y - (configuration.getScreenHeight() / 2)); }
+	glEnd();
+}
+
 void Drawing::drawPolygon(std::vector<Vector2> points, int color[3], int alpha) {
 	glBegin(GL_POLYGON);
 	//glEnable(GL_LINE_SMOOTH);
