@@ -12,9 +12,13 @@ BoardColorG 156
 BoardColorB 192
 BoardColorA 255
 
-ThaneColorR 246
-ThaneColorG 171
-ThaneColorB 176
+#ThaneColorR 246
+#ThaneColorG 171
+#ThaneColorB 176
+
+ThaneColorR 255
+ThaneColorG 255
+ThaneColorB 255
 
 #Track Speed Spacing
 TrackSpeedSpacing 15

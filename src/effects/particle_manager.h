@@ -7,7 +7,8 @@ private:
 	float elapsedTimeSeconds;
 	std::vector<ThaneParticles> thaneParticlesList;
 public:
-	void generateThaneParticles(int count, Vector2 parentPosition);
+	void generateThaneParticles(int count, Vector2 parentPosition, int alpha);
+	void removeOldParticles();
 	void update(int elapsedTime);
 	void draw();
 };

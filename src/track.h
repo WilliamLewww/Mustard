@@ -6,6 +6,7 @@
 #include "road.h"
 
 class Track {
+private:
 	Road road;
 
 	int rockyColor[3] = { 0, 0, 255 };

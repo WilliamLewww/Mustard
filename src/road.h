@@ -6,6 +6,7 @@
 #include "camera.h"
 
 class Road {
+private:
 	std::vector<std::vector<Vector2>> roadPolygonList;
 	std::vector<float> roadColorList;
 

@@ -8,9 +8,9 @@ struct ThaneParticles {
 	float particleAcceleration;
 	std::vector<Vector2> particlePositions;
 	std::vector<int> offsetDirections;
-	bool dead;
+	int alpha;
 };
 
-ThaneParticles createThaneParticles(int count, Vector2 parentPosition);
+ThaneParticles createThaneParticles(int count, Vector2 parentPosition, int alpha);
 void updateThaneParticles(float elapsedTime, ThaneParticles &particles);
 void drawThaneParticles(ThaneParticles particles);

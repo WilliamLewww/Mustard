@@ -11,6 +11,7 @@ public:
 	const double PI = 3.14159265359;
 
 	void drawPoint(Vector2 position);
+	void drawPoint(Vector2 position, int alpha);
 	void drawPoint(Vector2 position, int color[3]);
 	void drawPoint(Vector2 position, int color[3], int alpha);
 	void drawRect(Vector2 position, int width, int height);

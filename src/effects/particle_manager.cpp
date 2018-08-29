@@ -2,8 +2,14 @@
 
 ParticleManager particleManager;
 
-void ParticleManager::generateThaneParticles(int count, Vector2 parentPosition) {
-	thaneParticlesList.push_back(createThaneParticles(count, parentPosition));
+void ParticleManager::generateThaneParticles(int count, Vector2 parentPosition, int alpha) {
+	thaneParticlesList.push_back(createThaneParticles(count, parentPosition, alpha));
+}
+
+void ParticleManager::removeOldParticles() {
+	if (thaneParticlesList.size() > 200) {
+		thaneParticlesList.erase(thaneParticlesList.begin(), thaneParticlesList.begin() + (thaneParticlesList.size() - 50));
+	}
 }
 
 void ParticleManager::update(int elapsedTime) {
@@ -12,6 +18,8 @@ void ParticleManager::update(int elapsedTime) {
 	for (ThaneParticles &particles : thaneParticlesList) {
 		updateThaneParticles(elapsedTimeSeconds, particles);
 	}
+
+	removeOldParticles();
 }
 
 void ParticleManager::draw() {

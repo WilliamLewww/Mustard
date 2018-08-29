@@ -1,7 +1,8 @@
 #include "thane_particle.h"
 
-ThaneParticles createThaneParticles(int count, Vector2 parentPosition) {
+ThaneParticles createThaneParticles(int count, Vector2 parentPosition, int alpha) {
 	ThaneParticles particles = { count };
+	particles.alpha = alpha;
 	particles.particleAcceleration = 50;
 	for (int x = 0; x < count; x++) {
 		particles.particlePositions.emplace_back(parentPosition);
@@ -23,6 +24,6 @@ void updateThaneParticles(float elapsedTimeSeconds, ThaneParticles &particles) {
 
 void drawThaneParticles(ThaneParticles particles) {
 	for (Vector2 position : particles.particlePositions) {
-		drawing.drawPoint(position);
+		drawing.drawPoint(position, particles.alpha);
 	}
 }

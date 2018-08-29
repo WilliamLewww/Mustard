@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
 #include <stdlib.h>
-#include "tree.h"
 #include "..\camera.h"
+#include "tree.h"
 
 class Environment {
 private:

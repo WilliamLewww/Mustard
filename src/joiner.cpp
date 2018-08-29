@@ -31,6 +31,7 @@ void Joiner::initializeWorld() {
 	if (configuration.getConfigurations()["DrawMinimap"] == 1) {
 		hud.initializeMinimap(world.track.railList, Vector2(-1000, 0), Vector2(0, 0), configuration.getScreenWidth() / 5, configuration.getScreenHeight() / 3);
 	}
+	hud.initializeSplitsDisplay();
 }
 
 void Joiner::update(int elapsedTime) {

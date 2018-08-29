@@ -13,6 +13,13 @@ void Drawing::drawPoint(Vector2 position) {
 	glEnd();
 }
 
+void Drawing::drawPoint(Vector2 position, int alpha) {
+	glBegin(GL_POINTS);
+	glColor4f(1, 1, 1, convertColorFloatToRGB(alpha));
+	glVertex2d(position.x - (configuration.getScreenWidth() / 2), position.y - (configuration.getScreenHeight() / 2));
+	glEnd();
+}
+
 void Drawing::drawPoint(Vector2 position, int color[3]) {
 	glBegin(GL_POINTS);
 	glColor4f(convertColorFloatToRGB(color[0]), convertColorFloatToRGB(color[1]), convertColorFloatToRGB(color[2]), 1);

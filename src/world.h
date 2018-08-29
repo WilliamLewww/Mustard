@@ -1,7 +1,7 @@
 #pragma once
+#include "core\configuration.h"
 #include "core\drawing.h"
 #include "environment\environment.h"
-#include "core\configuration.h"
 #include "track.h"
 
 class World {

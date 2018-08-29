@@ -1,9 +1,10 @@
 #pragma once
+#include <vector>
 #include "..\core\vector2.h"
 #include "..\core\drawing.h"
-#include <vector>
 
 class Minimap {
+private:
 	Vector2 position;
 	double width, height;
 	int color[3] = { 0, 0, 0 };
