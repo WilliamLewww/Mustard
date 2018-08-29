@@ -30,6 +30,9 @@ public:
 	inline double getHeight() { return height; };
 	inline double getAngle() { return angle; };
 
+	inline Vector2 getCenter() {
+		return Vector2(position.x + (width / 2), position.y + (height / 2));
+	};
 	inline Vector2 getTopLeft() {
 		return Vector2((-width / 2) * cos((angle * drawing.PI) / 180) - (height / 2) * sin((angle * drawing.PI) / 180) + position.x + (width / 2),
 				   (width / 2) * sin((angle * drawing.PI) / 180) - (height / 2) * cos((angle * drawing.PI) / 180) + position.y + (height / 2));

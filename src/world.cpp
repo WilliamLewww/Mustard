@@ -8,6 +8,7 @@ double gDerivative(double x, double a, double b) { return b; }
 void World::reset() {
 	track.resetVisibleRange();
 	mountainPolygons.clear();
+	environment.resetVisibleRange();
 }
 
 void World::draw() {
@@ -19,6 +20,8 @@ void World::draw() {
 	}
 
 	track.draw(configuration.getConfigurations()["TrackGenerationStyle"], configuration.getConfigurations()["DrawTrackDetails"]);
+
+	environment.draw();
 }
 
 void World::generateMountainPolygons() {
@@ -66,6 +69,9 @@ void World::generateWorld() {
 	generateTrack();
 	track.generateTrackDirection();
 	generateSpeedZones();
+	environment.generateTrees(track.railList[1], 5, 10, 5, 15);
+	// environment.generateTrees(track.railList[1], 8, 40, 5, 15);
+	environment.generateTrees(track.railList[0], 5, 0, 3, 7);
 }
 
 void World::generateSpeedZones() {

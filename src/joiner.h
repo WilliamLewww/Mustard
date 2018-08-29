@@ -2,6 +2,7 @@
 #include "core\configuration.h"
 #include "core\gui.h"
 #include "hud\hud.h"
+#include "effects\particle_manager.h"
 #include "world.h"
 #include "board.h"
 #include "camera.h"

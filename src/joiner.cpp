@@ -35,6 +35,7 @@ void Joiner::initializeWorld() {
 
 void Joiner::update(int elapsedTime) {
 	board.update(elapsedTime, speedZone, trackDirection);
+	particleManager.update(elapsedTime);
 	if (configuration.getConfigurations()["DrawMinimap"] == 1) {
 		hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle());
 	}
@@ -199,6 +200,7 @@ void Joiner::draw() {
 	glTranslatef(-camera.getPosition().x + (configuration.getScreenWidth() / 2) - (board.bitmapPolygon.getWidth() / 2), -camera.getPosition().y + (configuration.getScreenHeight() / 2) - (board.bitmapPolygon.getHeight() / 2), 0);
 	world.draw();
 	board.draw();
+	particleManager.draw();
 	glPopMatrix();
 
 	hud.draw();

@@ -11,6 +11,7 @@
 				"C:/Projects/Thane/engine.cpp",
 				"C:/Projects/Thane/src/*.cpp",
 				"C:/Projects/Thane/src/environment/*.cpp",
+				"C:/Projects/Thane/src/effects/*.cpp",
 				"C:/Projects/Thane/src/hud/*.cpp",
 				"C:/Projects/Thane/src/core/*.cpp",
 				"C:/Projects/Thane/src/core/imgui/*.cpp",

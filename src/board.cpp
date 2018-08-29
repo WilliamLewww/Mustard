@@ -283,6 +283,11 @@ void Board::generateThane(int multiplier) {
 	thaneLines.push_back(Vector3(bitmapPolygon.getTopRight(), thaneAlpha));
 	thaneLines.push_back(Vector3(bitmapPolygon.getBottomLeft(), thaneAlpha));
 	thaneLines.push_back(Vector3(bitmapPolygon.getBottomRight(), thaneAlpha));
+
+	particleManager.generateThaneParticles(1, bitmapPolygon.getTopLeft());
+	particleManager.generateThaneParticles(1, bitmapPolygon.getTopRight());
+	particleManager.generateThaneParticles(1, bitmapPolygon.getBottomLeft());
+	particleManager.generateThaneParticles(1, bitmapPolygon.getBottomRight());
 }
 
 void Board::clearLines() {

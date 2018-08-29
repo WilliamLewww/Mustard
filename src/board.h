@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include "camera.h"
+#include "effects\particle_manager.h"
 #include "core\input.h"
 #include "core\vector3.h"
 #include "core\configuration.h"

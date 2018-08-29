@@ -4,11 +4,11 @@
 
 class Tree {
 private:
-	Vector2 position;
 	float scale = 1;
 
-	int color[3] = { 100, 100, 100 };
+	int color[3] = { 127, 153, 178 };
 public:
+	Vector2 position;
 	Tree(Vector2 position, float scale);
 
 	void draw();
