@@ -57,8 +57,9 @@ void Joiner::update(int elapsedTime) {
 	for (std::vector<Vector2> rail : world.track.railList) {
 		for (int x = 0; x < rail.size(); x++) {
 			if (board.bitmapPolygon.getPosition().x + 100 > rail[x].x && board.bitmapPolygon.getPosition().x < rail[x].x + 100) {
+				hud.resetMinimap();
+				
 				if (board.handleCollision(rail[x], rail[x + 1])) {
-					hud.resetMinimap();
 					world.reset();
 					hud.resetSplitsDisplay();
 				}

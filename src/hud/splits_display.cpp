@@ -34,7 +34,9 @@ void SplitsDisplay::update(int elapsedTime, Vector2 bPosition) {
 		std::cout << splitList[currentCheckpointIndex][splitList[currentCheckpointIndex].size() - 1] << ":" << currentCheckpointIndex << std::endl;
 
 		splitTimer = 0;
-		currentCheckpointIndex += 1;
+		if (currentCheckpointIndex < splitList.size()) {
+			currentCheckpointIndex += 1;
+		}
 	}
 }
 
@@ -42,12 +44,8 @@ void SplitsDisplay::draw() {
 	for (int x = 0; x < splitList.size(); x++) {
 		drawing.drawRect(rectanglePositionList[x], rectangleWidth, height, getColorFromSplit(splitList[x]));
 	}
-	
-	// for (Vector2 rectanglePosition : rectanglePositionList) {
-	// 	drawing.drawRect(rectanglePosition, rectangleWidth, height, color);
-	// }
 
-	//drawing.drawRect(position, width, height, color);
+	drawing.drawCircleFill(rectanglePositionList[currentCheckpointIndex] + Vector2(rectangleWidth / 2, height / 2), 5, circleColor);
 }
 
 int* SplitsDisplay::getColorFromSplit(std::vector<float> splitHistory) {

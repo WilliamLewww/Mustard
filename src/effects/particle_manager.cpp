@@ -7,8 +7,8 @@ void ParticleManager::generateThaneParticles(int count, Vector2 parentPosition, 
 }
 
 void ParticleManager::removeOldParticles() {
-	if (thaneParticlesList.size() > 200) {
-		thaneParticlesList.erase(thaneParticlesList.begin(), thaneParticlesList.begin() + (thaneParticlesList.size() - 50));
+	if (thaneParticlesList.size() > 400) {
+		thaneParticlesList.erase(thaneParticlesList.begin(), thaneParticlesList.begin() + (thaneParticlesList.size() - 400));
 	}
 }
 

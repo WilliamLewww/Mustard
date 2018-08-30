@@ -13,7 +13,7 @@ ThaneParticles createThaneParticles(int count, Vector2 parentPosition, int alpha
 }
 
 void updateThaneParticles(float elapsedTimeSeconds, ThaneParticles &particles) {
-	particles.particleAcceleration -= 5;
+	particles.particleAcceleration -= 2;
 	for (int x = 0; x < particles.particlePositions.size(); x++) {
 		if (particles.particleAcceleration > -100) {
 			particles.particlePositions[x].y -= particles.particleAcceleration * elapsedTimeSeconds;

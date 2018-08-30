@@ -7,7 +7,7 @@
 class HUD {
 private:
 	Minimap minimap = Minimap(Vector2(0, 0), 200, 200);
-	SplitsDisplay splitsDisplay = SplitsDisplay(Vector2(0, 0), 500, 50);
+	SplitsDisplay splitsDisplay = SplitsDisplay(Vector2(0, 0), 500, 25);
 public:
 	void initializeSplitsDisplay(Vector2 firstRail, Vector2 lastRail);
 	void updateSplitsDisplay(int elapsedTime, Vector2 bPosition);

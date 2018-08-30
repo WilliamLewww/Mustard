@@ -7,6 +7,7 @@ private:
 	float elapsedTimeSeconds;
 
 	int color[3] = { 255, 255, 255 };
+	int circleColor[3] = { 0, 153, 255 };
 	
 	std::vector<int> checkpointList;
 	std::vector<std::vector<float>> splitList;
