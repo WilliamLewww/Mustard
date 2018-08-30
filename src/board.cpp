@@ -305,15 +305,23 @@ void Board::reset() {
 	flipped = false;
 }
 
-void Board::handleCollision(Vector2* wall) {
+bool Board::handleCollision(Vector2* wall) {
 	if (bitmapPolygon.checkCollision(wall) == true) {
 		reset();
+
+		return true;
 	}
+
+	return false;
 }
 
-void Board::handleCollision(Vector2 pointA, Vector2 pointB) {
+bool Board::handleCollision(Vector2 pointA, Vector2 pointB) {
 	Vector2 tempVector[] = { pointA, pointB };
 	if (bitmapPolygon.checkCollision(tempVector) == true) {
 		reset();
+
+		return true;
 	}
+
+	return false;
 }

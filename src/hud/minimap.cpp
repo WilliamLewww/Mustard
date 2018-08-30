@@ -11,7 +11,7 @@ void Minimap::initialize(std::vector<std::vector<Vector2>> rList, Vector2 bIniti
 	boardInitialPosition = bInitialPosition;
 	boardInitialPosition.shrink(scaleFactor, scaleFactor);
 	railList = rList;
-
+	
 	Vector2 firstPoint = Vector2(railList[0][0].x / scaleFactor, railList[0][0].y / scaleFactor);
 
 	for (Vector2 &rail : railList[0]) { 

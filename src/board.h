@@ -61,6 +61,6 @@ public:
 
 	void clearLines();
 	
-	void handleCollision(Vector2* wall);
-	void handleCollision(Vector2 pointA, Vector2 pointB);
+	bool handleCollision(Vector2* wall);
+	bool handleCollision(Vector2 pointA, Vector2 pointB);
 };

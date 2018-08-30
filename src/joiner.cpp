@@ -31,7 +31,7 @@ void Joiner::initializeWorld() {
 	if (configuration.getConfigurations()["DrawMinimap"] == 1) {
 		hud.initializeMinimap(world.track.railList, Vector2(-1000, 0), Vector2(0, 0), configuration.getScreenWidth() / 5, configuration.getScreenHeight() / 3);
 	}
-	hud.initializeSplitsDisplay();
+	hud.initializeSplitsDisplay(world.track.railList[0][0], world.track.railList[0][world.track.railList[0].size() - 1]);
 }
 
 void Joiner::update(int elapsedTime) {
@@ -40,6 +40,7 @@ void Joiner::update(int elapsedTime) {
 	if (configuration.getConfigurations()["DrawMinimap"] == 1) {
 		hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle());
 	}
+	hud.updateSplitsDisplay(elapsedTime, board.bitmapPolygon.getPosition());
 
 	for (Vector2 speed : world.track.speedZones) {
 		if (board.bitmapPolygon.getPosition().x > world.track.railList[0][speed.x].x) {
@@ -56,10 +57,11 @@ void Joiner::update(int elapsedTime) {
 	for (std::vector<Vector2> rail : world.track.railList) {
 		for (int x = 0; x < rail.size(); x++) {
 			if (board.bitmapPolygon.getPosition().x + 100 > rail[x].x && board.bitmapPolygon.getPosition().x < rail[x].x + 100) {
-				hud.resetMinimap();
-				world.reset();
-				board.handleCollision(rail[x], rail[x + 1]);
-				board.handleCollision(rail[x], rail[x + 1]);
+				if (board.handleCollision(rail[x], rail[x + 1])) {
+					hud.resetMinimap();
+					world.reset();
+					hud.resetSplitsDisplay();
+				}
 			}
 		}
 	}
