@@ -74,6 +74,8 @@ Thane (short for polyurethane) lines are the skid marks produced when a skateboa
   - added missing collision
 - 1.1.0
   - updated controls
+- 1.0.0
+  - first public release
   
 <br><br>
 
