@@ -62,9 +62,17 @@ void Joiner::update(int elapsedTime) {
 				if (board.handleCollision(rail[x], rail[x + 1])) {
 					world.reset();
 					hud.resetSplitsDisplay();
+					selectedRun = hud.splitsDisplay.splitList.size() - 1;
 				}
 			}
 		}
+	}
+
+	if (board.bitmapPolygon.getPosition().x > world.track.railList[0][world.track.railList[0].size() - 1].x) {
+		board.reset();
+		world.reset();
+		hud.resetSplitsDisplay();
+		selectedRun = hud.splitsDisplay.splitList.size() - 1;
 	}
 
 	ImGui::SetNextWindowSizeConstraints(ImVec2(225, 135), ImVec2(225, 135));
@@ -98,8 +106,15 @@ void Joiner::update(int elapsedTime) {
 
 		configuration.setConfiguration("HardTrack", trackHard);
 
+		if (randomTrackSeed == true) {
+			joiner.seed = time(NULL);
+		}
+
+		srand(seed);
+
 		board = Board();
 		world = World();
+		hud = HUD();
 		initializeWorld();
 
 		showBoardEdit = false;
@@ -117,6 +132,21 @@ void Joiner::update(int elapsedTime) {
 	if (showSessionStats) {
 		ImGui::SetNextWindowSizeConstraints(ImVec2(150, 250), ImVec2(150, 250));
 		ImGui::Begin("Session Stats");
+		ImGui::InputInt("Run", &selectedRun);
+		if (selectedRun < 0) {
+			selectedRun = 0;
+		}
+		if (selectedRun > hud.splitsDisplay.splitList.size() - 1) {
+			selectedRun = hud.splitsDisplay.splitList.size() - 1;
+		}
+
+		ImGui::TextColored(ImVec4(1,0,0,1), "Final: %f", hud.splitsDisplay.finalTimeList[selectedRun]);
+		ImGui::TextColored(ImVec4(1,1,0,1), "Splits");
+		ImGui::BeginChild("Scrolling");
+		for (int x = 0; x < hud.splitsDisplay.splitList[selectedRun].size(); x++) {
+		    ImGui::Text("#%i : %f", x, hud.splitsDisplay.splitList[selectedRun][x]);
+		}
+		ImGui::EndChild();
 		ImGui::End();
 	}
 
@@ -130,14 +160,13 @@ void Joiner::update(int elapsedTime) {
 
 
 		ImGui::PushItemWidth((ImGui::GetWindowWidth() / 2) - 15);
-		ImGui::InputInt("Difficulty", &trackDifficulty);
 
 		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
 		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
 
 		ImGui::Checkbox("Hard Track", &trackHard);
 		ImGui::Checkbox("Random Seed", &randomTrackSeed);
-		ImGui::InputInt("Seed", &trackSeed);
+		ImGui::InputInt("Seed", &seed);
 
 		if (ImGui::Button("Close")) {
 			showTrackEdit = false;
@@ -150,7 +179,7 @@ void Joiner::update(int elapsedTime) {
 		ImGui::SetNextWindowSizeConstraints(ImVec2(300, 160), ImVec2(300, 160));
 		ImGui::Begin("Edit Board");
 		ImGui::PushItemWidth(-175);
-		ImGui::InputInt("Board ID", &boardID);
+		ImGui::InputInt("Board Preset", &boardID);
 		ImGui::Columns(2);
 		ImGui::PushItemWidth(-200);
 		ImGui::Text(("Length: " + std::to_string(boardLength)).c_str());   

@@ -46,7 +46,8 @@ void Engine::enableBlendAlpha() {
 }
 
 void Engine::seedRandom() {
-	srand(time(NULL));
+	joiner.seed = time(NULL);
+	srand(joiner.seed);
 }
 
 void Engine::start() {

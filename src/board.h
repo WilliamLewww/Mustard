@@ -51,12 +51,12 @@ private:
 	void drawBrakeLines();
 	
 	void linkPolygonWithConfigurations();
-	void reset();
 public:
 	BitmapPolygon bitmapPolygon;
 	
 	void initialize();
 	void update(int elapsedTimeSeconds, int speedZone, int trackDirection);
+	void reset();
 	void draw();
 
 	void clearLines();

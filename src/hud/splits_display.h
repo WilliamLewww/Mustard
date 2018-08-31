@@ -10,16 +10,18 @@ private:
 	int circleColor[3] = { 0, 153, 255 };
 	
 	std::vector<int> checkpointList;
-	std::vector<std::vector<float>> splitList;
 	int currentCheckpointIndex;
+	int currentRun;
 	float splitTimer;
 
 	std::vector<Vector2> rectanglePositionList;
 	float rectangleWidth;
 
-	int* getColorFromSplit(std::vector<float> splitHistory);
+	int* getColorFromSplit();
 
 public:
+	std::vector<std::vector<float>> splitList;
+	std::vector<float> finalTimeList;
 	Vector2 position;
 	int width, height;
 	

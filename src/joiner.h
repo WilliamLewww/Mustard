@@ -1,4 +1,5 @@
 #pragma once
+#include <ctime>
 #include "core\configuration.h"
 #include "core\gui.h"
 #include "hud\hud.h"
@@ -16,13 +17,16 @@ private:
 	int speedZone = 0, trackDirection = 0;
 
 	bool showBuyMenu = true;
-	bool showBoardEdit, showTrackEdit, showSessionStats = false, randomTrackSeed = true;
+	bool showBoardEdit, showTrackEdit, showSessionStats = true, randomTrackSeed = false;
 
+	int selectedRun = 0;
 	int boardID, boardLength, boardWidth;
-	int trackGenerationStyle, trackDifficulty, trackSeed;
+	int trackGenerationStyle;
 	bool trackHard;
 	float boardColor[4], thaneColor[3];
 public:
+	int seed;
+
 	void initialize();
 	void initializeWorld();
 	void draw();
