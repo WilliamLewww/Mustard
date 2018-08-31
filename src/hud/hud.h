@@ -10,7 +10,7 @@ private:
 public:
 	SplitsDisplay splitsDisplay = SplitsDisplay(Vector2(0, 0), 500, 25);
 	
-	void initializeSplitsDisplay(Vector2 firstRail, Vector2 lastRail);
+	void initializeSplitsDisplay(int checkpointCount, Vector2 firstRail, Vector2 lastRail);
 	void updateSplitsDisplay(int elapsedTime, Vector2 bPosition);
 	void resetSplitsDisplay();
 	void initializeMinimap(std::vector<std::vector<Vector2>> railList, Vector2 boardInitialPosition, Vector2 position, int width, int height);

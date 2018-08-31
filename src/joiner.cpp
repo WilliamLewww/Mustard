@@ -31,48 +31,54 @@ void Joiner::initializeWorld() {
 	if (configuration.getConfigurations()["DrawMinimap"] == 1) {
 		hud.initializeMinimap(world.track.railList, Vector2(-1000, 0), Vector2(0, 0), configuration.getScreenWidth() / 5, configuration.getScreenHeight() / 3);
 	}
-	hud.initializeSplitsDisplay(world.track.railList[0][0], world.track.railList[0][world.track.railList[0].size() - 1]);
+	hud.initializeSplitsDisplay(checkpointCount, world.track.railList[0][0], world.track.railList[0][world.track.railList[0].size() - 1]);
 }
 
 void Joiner::update(int elapsedTime) {
-	board.update(elapsedTime, speedZone, trackDirection);
-	particleManager.update(elapsedTime);
-	if (configuration.getConfigurations()["DrawMinimap"] == 1) {
-		hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle());
-	}
-	hud.updateSplitsDisplay(elapsedTime, board.bitmapPolygon.getPosition());
+	if (input.checkKeyDown(SDLK_p)) { isPaused = true; }
+	else { isPaused = false; }
 
-	for (Vector2 speed : world.track.speedZones) {
-		if (board.bitmapPolygon.getPosition().x > world.track.railList[0][speed.x].x) {
-			speedZone = speed.y;
+	if (isPaused == false) {
+		board.update(elapsedTime, speedZone, trackDirection);
+		particleManager.update(elapsedTime);
+		if (configuration.getConfigurations()["DrawMinimap"] == 1) {
+			hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle());
 		}
-	}
+		hud.updateSplitsDisplay(elapsedTime, board.bitmapPolygon.getPosition());
 
-	for (Vector2 direction : world.track.trackDirection) {
-		if (board.bitmapPolygon.getPosition().x > direction.x) {
-			trackDirection = direction.y;
+		for (Vector2 speed : world.track.speedZones) {
+			if (board.bitmapPolygon.getPosition().x > world.track.railList[0][speed.x].x) {
+				speedZone = speed.y;
+			}
 		}
-	}
 
-	for (std::vector<Vector2> rail : world.track.railList) {
-		for (int x = 0; x < rail.size(); x++) {
-			if (board.bitmapPolygon.getPosition().x + 100 > rail[x].x && board.bitmapPolygon.getPosition().x < rail[x].x + 100) {
-				hud.resetMinimap();
-				
-				if (board.handleCollision(rail[x], rail[x + 1])) {
-					world.reset();
-					hud.resetSplitsDisplay();
-					selectedRun = hud.splitsDisplay.splitList.size() - 1;
+		for (Vector2 direction : world.track.trackDirection) {
+			if (board.bitmapPolygon.getPosition().x > direction.x) {
+				trackDirection = direction.y;
+			}
+		}
+
+		for (std::vector<Vector2> rail : world.track.railList) {
+			for (int x = 0; x < rail.size(); x++) {
+				if (board.bitmapPolygon.getPosition().x + 100 > rail[x].x && board.bitmapPolygon.getPosition().x < rail[x].x + 100) {
+					hud.resetMinimap();
+					
+					if (board.handleCollision(rail[x], rail[x + 1])) {
+						world.reset();
+						hud.resetSplitsDisplay();
+						selectedRun = hud.splitsDisplay.splitList.size() - 1;
+					}
 				}
 			}
 		}
-	}
 
-	if (board.bitmapPolygon.getPosition().x > world.track.railList[0][world.track.railList[0].size() - 1].x) {
-		board.reset();
-		world.reset();
-		hud.resetSplitsDisplay();
-		selectedRun = hud.splitsDisplay.splitList.size() - 1;
+		if (board.bitmapPolygon.getPosition().x > world.track.railList[0][world.track.railList[0].size() - 1].x) {
+			board.reset();
+			world.reset();
+			hud.resetSplitsDisplay();
+			selectedRun = hud.splitsDisplay.splitList.size() - 1;
+		}
+
 	}
 
 	ImGui::SetNextWindowSizeConstraints(ImVec2(225, 135), ImVec2(225, 135));
@@ -144,7 +150,7 @@ void Joiner::update(int elapsedTime) {
 		ImGui::TextColored(ImVec4(1,1,0,1), "Splits");
 		ImGui::BeginChild("Scrolling");
 		for (int x = 0; x < hud.splitsDisplay.splitList[selectedRun].size(); x++) {
-		    ImGui::Text("#%i : %f", x, hud.splitsDisplay.splitList[selectedRun][x]);
+		    ImGui::Text("#%i : %f", x + 1, hud.splitsDisplay.splitList[selectedRun][x]);
 		}
 		ImGui::EndChild();
 		ImGui::End();

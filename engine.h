@@ -19,7 +19,7 @@ private:
 
 	SDL_SysWMinfo wmInfo;
 	HWND hwnd;
-
+	
 	bool isRunning = true; 
 	int frameStart, frameEnd, deltaTime = 0;
 

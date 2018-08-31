@@ -14,8 +14,11 @@ private:
 	Board board;
 	HUD hud;
 
+	int checkpointCount = 15;
+
 	int speedZone = 0, trackDirection = 0;
 
+	bool isPaused = false;
 	bool showBuyMenu = true;
 	bool showBoardEdit, showTrackEdit, showSessionStats = true, randomTrackSeed = false;
 

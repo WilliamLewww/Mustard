@@ -8,9 +8,9 @@ void HUD::draw() {
 	splitsDisplay.draw();
 }
 
-void HUD::initializeSplitsDisplay(Vector2 firstRail, Vector2 lastRail) {
+void HUD::initializeSplitsDisplay(int checkpointCount, Vector2 firstRail, Vector2 lastRail) {
 	splitsDisplay.position = Vector2((configuration.getScreenWidth() / 2) - (splitsDisplay.width / 2), configuration.getScreenHeight() - splitsDisplay.height);
-	splitsDisplay.generateCheckpoints(25, firstRail, lastRail);
+	splitsDisplay.generateCheckpoints(checkpointCount, firstRail, lastRail);
 }
 
 void HUD::updateSplitsDisplay(int elapsedTime, Vector2 bPosition) {

@@ -31,14 +31,14 @@ void SplitsDisplay::update(int elapsedTime, Vector2 bPosition) {
 	elapsedTimeSeconds = (float)(elapsedTime) / 1000;
 
 	splitTimer += elapsedTimeSeconds;
-	if (bPosition.x > checkpointList[currentCheckpointIndex] && currentCheckpointIndex < checkpointList.size() - 1) {
+	if (bPosition.x > checkpointList[currentCheckpointIndex] && currentCheckpointIndex < checkpointList.size()) {
 		splitList[currentRun].push_back(splitTimer);
 
 		splitTimer = 0;
 		currentCheckpointIndex += 1;
 	}
 	else {
-		if (currentCheckpointIndex == checkpointList.size() - 1 && finalTimeList[currentRun] == 0) {
+		if (currentCheckpointIndex == checkpointList.size() && finalTimeList[currentRun] == 0) {
 			float totalTime = 0;
 			for (float time : splitList[currentRun]) {
 				totalTime += time;
@@ -55,7 +55,12 @@ void SplitsDisplay::draw() {
 		//drawing.drawRect(rectanglePositionList[x], rectangleWidth, height, getColorFromSplit(splitList[x]));
 	}
 
-	drawing.drawCircleFill(rectanglePositionList[currentCheckpointIndex] + Vector2(rectangleWidth / 2, height / 2), 5, circleColor);
+	if (currentCheckpointIndex == checkpointList.size()) {
+		drawing.drawCircleFill(rectanglePositionList[currentCheckpointIndex - 1] + Vector2(rectangleWidth / 2, height / 2), 10, circleColorFin);
+	}
+	else {
+		drawing.drawCircleFill(rectanglePositionList[currentCheckpointIndex] + Vector2(rectangleWidth / 2, height / 2), 5, circleColor);
+	}
 }
 
 int* SplitsDisplay::getColorFromSplit() {
