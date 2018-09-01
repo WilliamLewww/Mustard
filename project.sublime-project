@@ -7,7 +7,8 @@
 				"g++",
 				"C:/Projects/Thane/main.cpp",
 				"-o",
-				"C:/Projects/Thane/main",
+				"C:/Projects/Thane/Thane",
+				"C:/Projects/Thane/build.res",
 				"C:/Projects/Thane/engine.cpp",
 				"C:/Projects/Thane/src/*.cpp",
 				"C:/Projects/Thane/src/environment/*.cpp",
@@ -28,7 +29,7 @@
 				"-lSDL2",
 				"-lopengl32",
 				"&&",
-				"C:/Projects/Thane/main"
+				"C:/Projects/Thane/Thane"
 			],
 			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
 			"name": "SDL Project",
