@@ -284,11 +284,21 @@ void Board::generateThane(int multiplier) {
 	thaneLines.push_back(Vector3(bitmapPolygon.getBottomLeft(), thaneAlpha));
 	thaneLines.push_back(Vector3(bitmapPolygon.getBottomRight(), thaneAlpha));
 
-	if (rand() % 7 == 0) {
-		particleManager.generateThaneParticles(1, bitmapPolygon.getTopLeft(), thaneAlpha + 75);
-		particleManager.generateThaneParticles(1, bitmapPolygon.getTopRight(), thaneAlpha + 75);
-		particleManager.generateThaneParticles(1, bitmapPolygon.getBottomLeft(), thaneAlpha + 75);
-		particleManager.generateThaneParticles(1, bitmapPolygon.getBottomRight(), thaneAlpha + 75);
+	if (elapsedTimeSeconds > 0.01) {
+		if (rand() % 2 == 0) {
+			particleManager.generateThaneParticles(1, bitmapPolygon.getTopLeft(), thaneAlpha + 25);
+			particleManager.generateThaneParticles(1, bitmapPolygon.getTopRight(), thaneAlpha + 25);
+			particleManager.generateThaneParticles(1, bitmapPolygon.getBottomLeft(), thaneAlpha + 25);
+			particleManager.generateThaneParticles(1, bitmapPolygon.getBottomRight(), thaneAlpha + 25);
+		}
+	}
+	else {
+		if (rand() % 7 == 0) {
+			particleManager.generateThaneParticles(1, bitmapPolygon.getTopLeft(), thaneAlpha + 50);
+			particleManager.generateThaneParticles(1, bitmapPolygon.getTopRight(), thaneAlpha + 50);
+			particleManager.generateThaneParticles(1, bitmapPolygon.getBottomLeft(), thaneAlpha + 50);
+			particleManager.generateThaneParticles(1, bitmapPolygon.getBottomRight(), thaneAlpha + 50);
+		}
 	}
 }
 
