@@ -1,4 +1,4 @@
-# Thane 1.6.2                   
+# Thane 1.6.3                   
 Thane (short for polyurethane) lines are the skid marks produced when a skateboard is slid/drifted. In downhill skateboarding, sliding is the most important mechanic that is used to get down a hill in a controllable manner.
 
 [Link to Project's Webpage](https://www.williamlewww.com/mustard/)
@@ -35,6 +35,8 @@ Thane (short for polyurethane) lines are the skid marks produced when a skateboa
 | ------------- | ------------- |
 
 ## Release History
+- 1.6.3
+  - normalized particle effect with framerate
 - 1.6.2
   - fixed bug allowing players to leave the track in the starting area
   - changed the starting area layout
