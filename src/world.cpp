@@ -15,6 +15,7 @@ void World::draw() {
 	track.updateVisibleRange();
 	generateMountainPolygons();
 
+	drawing.drawPolygon(mountainPolygonsStart, mountainColor, 255);
 	for (std::vector<Vector2> polygon : mountainPolygons) {
 		drawing.drawPolygon(polygon, mountainColor, 255);
 	}
@@ -25,6 +26,11 @@ void World::draw() {
 }
 
 void World::generateMountainPolygons() {
+	mountainPolygonsStart.emplace_back(track.railList[0][0] + Vector2(0, -30));
+	mountainPolygonsStart.emplace_back(track.railList[0][0] + Vector2(-25, -30));
+	mountainPolygonsStart.emplace_back(track.railList[0][0] + Vector2(-25, 80));
+	mountainPolygonsStart.emplace_back(track.railList[0][0] + Vector2(0, 80));
+
 	for (int x = track.visibleRange.x; x < track.visibleRange.y; x++) {
 		std::vector<Vector2> tempPolygon;
 		std::vector<Vector2> tempPolygonTop;
@@ -79,9 +85,10 @@ void World::generateSpeedZones() {
 }
 
 void World::generateTrack() {
-	track.addVertex(Vector2(-1000, -25), 0);
-	track.addVertex(Vector2(-1000, -25), 125);
-	track.addVertexRelative(0, 1150, 0);
+	track.addVertex(Vector2(-10, -20), 0);
+	track.addVertex(Vector2(-10, -20), 45);
+	track.addVertexRelative(-25, 100, 25);
+	track.addVertexRelative(0, 150, 0);
 	switch (configuration.getConfigurations()["TrackGenerationStyle"]) {
 		case 0:
 			if (configuration.getConfigurations()["HardTrack"]) {

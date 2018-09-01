@@ -10,6 +10,7 @@ private:
 	
 	int mountainColor[3] = { 118, 92, 67 };
 
+	std::vector<Vector2> mountainPolygonsStart;
 	std::vector<std::vector<Vector2>> mountainPolygons;
 	std::vector<int> mountainOffsetValue;
 
