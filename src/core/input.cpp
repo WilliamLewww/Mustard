@@ -14,6 +14,18 @@ bool Input::checkKeyDown(SDL_Keycode Keycode) {
 	return false;
 }
 
+bool Input::checkButtonDown(int buttonCode) {
+	if (std::find(controllerList.begin(), controllerList.end(), buttonCode) != controllerList.end()) {
+		return true;
+	}
+
+	return false;
+}
+
+int Input::getControllerPadInput() {
+	return controllerPad;
+}
+
 void Input::setupController() {
 	if (SDL_NumJoysticks() > 0) {
 		SDL_JoystickOpen(0);

@@ -22,6 +22,8 @@ public:
 	std::vector<SDL_Keycode> returnKeyList();
 	
 	bool checkKeyDown(SDL_Keycode Keycode);
+	bool checkButtonDown(int buttonCode);
+	int getControllerPadInput();
 
 	void getKeyTrigger(SDL_Event event);
 	void clearExpiredInput();

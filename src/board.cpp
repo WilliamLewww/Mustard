@@ -70,7 +70,7 @@ void Board::addSpeedFromHill(int speedZone, int trackDirection) {
 }
 
 void Board::handlePushTuck() {
-	if (input.checkKeyDown(SDLK_SPACE) && slide == false) {
+	if ((input.checkKeyDown(SDLK_SPACE) || input.checkButtonDown(5) || input.checkButtonDown(4)) && slide == false) {
 		if (velocity > pushMax) {
 			velocity += tuckSpeed * elapsedTimeSeconds;
 		}
@@ -102,10 +102,10 @@ void Board::handleFootBrake() {
 }
 
 void Board::handleLeftTurn() {
-	if (input.checkKeyDown(SDLK_LEFT) && !input.checkKeyDown(SDLK_RIGHT)) {
+	if ((input.checkKeyDown(SDLK_LEFT) && !input.checkKeyDown(SDLK_RIGHT)) || input.getControllerPadInput() == 7) {
 		turnLeft = true;
 
-		if (input.checkKeyDown(SDLK_d)) {
+		if (input.checkKeyDown(SDLK_d) || input.checkButtonDown(1)) {
 			shutdownSlide = true;
 			slide = true;
 
@@ -113,7 +113,7 @@ void Board::handleLeftTurn() {
 			movementAngle += turnSpeed * elapsedTimeSeconds;
 		}
 		else {
-			if (input.checkKeyDown(SDLK_s)) {
+			if (input.checkKeyDown(SDLK_s) || input.checkButtonDown(2)) {
 				slide = true;
 
 				if (shutdownSlide == true) {
@@ -126,7 +126,7 @@ void Board::handleLeftTurn() {
 				}
 			}
 			else {
-				if (input.checkKeyDown(SDLK_a)) {
+				if (input.checkKeyDown(SDLK_a) || input.checkButtonDown(0)) {
 					slide = true;
 
 					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (turnSpeed * elapsedTimeSeconds * 3));
@@ -145,10 +145,10 @@ void Board::handleLeftTurn() {
 }
 
 void Board::handleRightTurn() {
-	if (input.checkKeyDown(SDLK_RIGHT) && !input.checkKeyDown(SDLK_LEFT)) {
+	if ((input.checkKeyDown(SDLK_RIGHT) && !input.checkKeyDown(SDLK_LEFT)) || input.getControllerPadInput() == 3) {
 		turnRight = true;
 
-		if (input.checkKeyDown(SDLK_d)) {
+		if (input.checkKeyDown(SDLK_d) || input.checkButtonDown(1)) {
 			shutdownSlide = true;
 			slide = true;
 
@@ -156,7 +156,7 @@ void Board::handleRightTurn() {
 			movementAngle -= turnSpeed * elapsedTimeSeconds;
 		}
 		else {
-			if (input.checkKeyDown(SDLK_s)) {
+			if (input.checkKeyDown(SDLK_s) || input.checkButtonDown(2)) {
 				slide = true;
 
 				if (shutdownSlide == true) {
@@ -169,7 +169,7 @@ void Board::handleRightTurn() {
 				}
 			}
 			else {
-				if (input.checkKeyDown(SDLK_a)) {
+				if (input.checkKeyDown(SDLK_a) || input.checkButtonDown(0)) {
 					slide = true;
 
 					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (turnSpeed * elapsedTimeSeconds * 3));
