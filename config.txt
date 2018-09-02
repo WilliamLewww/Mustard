@@ -39,3 +39,7 @@ PresetBoard1Width 10
 #Preset 2
 PresetBoard2Length 36
 PresetBoard2Width 9
+
+#Preset 2
+PresetBoard3Length 32
+PresetBoard3Width 10

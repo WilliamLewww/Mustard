@@ -189,7 +189,7 @@ void Joiner::update(int elapsedTime) {
 		ImGui::Text(("Width: " + std::to_string(boardWidth)).c_str());   
 
 		if (boardID < 1) { boardID = 1; }
-		if (boardID > 2) { boardID = 2; }
+		if (boardID > 3) { boardID = 3; }
 
 		switch (boardID) {
 			case 1:
@@ -199,6 +199,10 @@ void Joiner::update(int elapsedTime) {
 			case 2:
 				boardLength = configuration.getConfigurations()["PresetBoard2Length"];
 				boardWidth = configuration.getConfigurations()["PresetBoard2Width"];
+				break;
+			case 3:
+				boardLength = configuration.getConfigurations()["PresetBoard3Length"];
+				boardWidth = configuration.getConfigurations()["PresetBoard3Width"];
 				break;
 		}
 
