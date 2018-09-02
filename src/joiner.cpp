@@ -17,8 +17,6 @@ void Joiner::initialize() {
 	thaneColor[1] = (float)configuration.getConfigurations()["ThaneColorG"] / 255;
 	thaneColor[2] = (float)configuration.getConfigurations()["ThaneColorB"] / 255;
 
-	configuration.setConfiguration("HardTrack", trackHard);
-
 	initializeWorld();
 }
 
@@ -110,8 +108,6 @@ void Joiner::update(int elapsedTime) {
 		configuration.setConfiguration("ThaneColorG", thaneColor[1] * 255);
 		configuration.setConfiguration("ThaneColorB", thaneColor[2] * 255);
 
-		configuration.setConfiguration("HardTrack", trackHard);
-
 		if (randomTrackSeed == true) {
 			joiner.seed = time(NULL);
 		}
@@ -157,12 +153,12 @@ void Joiner::update(int elapsedTime) {
 	}
 
 	if (showTrackEdit) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(300, 195), ImVec2(300, 195));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(300, 150), ImVec2(300, 150));
 		ImGui::Begin("Edit Track");
 		ImGui::PushItemWidth(-100);
 		ImGui::InputInt("Style", &trackGenerationStyle);
 		if (trackGenerationStyle < 0) { trackGenerationStyle = 0; }
-		if (trackGenerationStyle > 1) { trackGenerationStyle = 1; }
+		if (trackGenerationStyle > 2) { trackGenerationStyle = 2; }
 
 
 		ImGui::PushItemWidth((ImGui::GetWindowWidth() / 2) - 15);
@@ -170,7 +166,6 @@ void Joiner::update(int elapsedTime) {
 		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
 		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
 
-		ImGui::Checkbox("Hard Track", &trackHard);
 		ImGui::Checkbox("Random Seed", &randomTrackSeed);
 		ImGui::InputInt("Seed", &seed);
 
@@ -182,7 +177,7 @@ void Joiner::update(int elapsedTime) {
 	}
 
 	if (showBoardEdit) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(300, 160), ImVec2(300, 160));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(300, 155), ImVec2(300, 155));
 		ImGui::Begin("Edit Board");
 		ImGui::PushItemWidth(-175);
 		ImGui::InputInt("Board Preset", &boardID);
@@ -194,7 +189,7 @@ void Joiner::update(int elapsedTime) {
 		ImGui::Text(("Width: " + std::to_string(boardWidth)).c_str());   
 
 		if (boardID < 1) { boardID = 1; }
-		if (boardID > 5) { boardID = 5; }
+		if (boardID > 2) { boardID = 2; }
 
 		switch (boardID) {
 			case 1:
@@ -204,18 +199,6 @@ void Joiner::update(int elapsedTime) {
 			case 2:
 				boardLength = configuration.getConfigurations()["PresetBoard2Length"];
 				boardWidth = configuration.getConfigurations()["PresetBoard2Width"];
-				break;
-			case 3:
-				boardLength = configuration.getConfigurations()["PresetBoard3Length"];
-				boardWidth = configuration.getConfigurations()["PresetBoard3Width"];
-				break;
-			case 4:
-				boardLength = configuration.getConfigurations()["PresetBoard4Length"];
-				boardWidth = configuration.getConfigurations()["PresetBoard4Width"];
-				break;
-			case 5:
-				boardLength = configuration.getConfigurations()["PresetBoard5Length"];
-				boardWidth = configuration.getConfigurations()["PresetBoard5Width"];
 				break;
 		}
 

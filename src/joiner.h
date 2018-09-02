@@ -25,7 +25,6 @@ private:
 	int selectedRun = 0;
 	int boardID, boardLength, boardWidth;
 	int trackGenerationStyle;
-	bool trackHard;
 	float boardColor[4], thaneColor[3];
 public:
 	int seed;

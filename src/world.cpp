@@ -91,15 +91,8 @@ void World::generateTrack() {
 	track.addVertexRelative(0, 150, 0);
 	switch (configuration.getConfigurations()["TrackGenerationStyle"]) {
 		case 0:
-			if (configuration.getConfigurations()["HardTrack"]) {
-				track.addVertexRelative(-25, 50, 25);
-				track.addVertexRelative(-25, 50, 25);
-			}
-			else {
-				track.addVertexRelative(-75, 50, 75);
-				track.addVertexRelative(-76, 50, 76);
-			}
-
+			track.addVertexRelative(-75, 50, 75);
+			track.addVertexRelative(-76, 50, 76);
 			randomLongTrackPar(50, 100, 20, 20);
 			break;
 		case 1:
@@ -107,6 +100,11 @@ void World::generateTrack() {
 			for (int x = 0; x < track.railList[0].size(); x++) {
 				mountainOffsetValue.push_back(rand() % 25 - 12);
 			}
+			break;
+		case 2:
+			track.addVertexRelative(-25, 50, 25);
+			track.addVertexRelative(-25, 50, 25);
+			randomLongTrackPar(50, 100, 20, 20);
 			break;
 	}
 }
