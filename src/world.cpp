@@ -43,6 +43,7 @@ void World::generateMountainPolygons() {
 			mountainPolygons.push_back(tempPolygon);
 
 			switch (configuration.getConfigurations()["TrackGenerationStyle"]) {
+				case 2:
 				case 0: 
 					tempPolygonTop.emplace_back(track.railList[0][x]);
 					tempPolygonTop.emplace_back(track.railList[0][x - 1]);

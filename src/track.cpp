@@ -11,6 +11,7 @@ void Track::draw(int generationStyle, bool drawDetails = true) {
 
 	if (drawDetails == true) {
 		switch (generationStyle) {
+			case 2:
 			case 0:
 				for (std::vector<Vector2> segment : railList) {
 					drawing.drawLineStrip(std::vector<Vector2>(segment.begin() + visibleRange.x, segment.begin() + visibleRange.y), rockyColor);
