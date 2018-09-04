@@ -51,7 +51,7 @@ void SplitsDisplay::update(int elapsedTime, Vector2 bPosition) {
 
 void SplitsDisplay::draw() {
 	for (int x = 0; x < checkpointList.size(); x++) {
-		drawing.drawRect(rectanglePositionList[x], rectangleWidth, height, getColorFromSplit());
+		drawing.drawRect(rectanglePositionList[x], rectangleWidth, height, getColorFromSplit(x));
 		//drawing.drawRect(rectanglePositionList[x], rectangleWidth, height, getColorFromSplit(splitList[x]));
 	}
 
@@ -63,11 +63,43 @@ void SplitsDisplay::draw() {
 	}
 }
 
-int* SplitsDisplay::getColorFromSplit() {
+int* SplitsDisplay::getColorFromSplit(int checkpoint) {
 	int* tempColor = (int*)malloc(3 * sizeof(int));
-	tempColor[0] = 128;
-	tempColor[1] = 128;
-	tempColor[2] = 0;
+	tempColor[0] = 100;
+	tempColor[1] = 100;
+	tempColor[2] = 100;
+
+	float average = 0, latest = 0;
+	int count = 0;
+
+	for (int x = 0; x < splitList.size(); x++) {
+		if (splitList[x].size() > checkpoint) {
+			latest = splitList[x][checkpoint];
+			average += splitList[x][checkpoint];
+			count += 1;
+		}
+	}
+
+	if (count > 0) {
+		average /= count;
+	}
+
+	if (latest < average) {
+		tempColor[0] = 0;
+		tempColor[1] = 255;
+		tempColor[2] = 0;
+	}
+	if (latest > average) {
+		tempColor[0] = 255;
+		tempColor[1] = 0;
+		tempColor[2] = 0;
+	}
+
+	if (count == 1) {
+		tempColor[0] = 128;
+		tempColor[1] = 128;
+		tempColor[2] = 0;
+	}
 
 	return tempColor;
 }

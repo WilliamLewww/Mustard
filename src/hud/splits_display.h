@@ -18,7 +18,7 @@ private:
 	std::vector<Vector2> rectanglePositionList;
 	float rectangleWidth;
 
-	int* getColorFromSplit();
+	int* getColorFromSplit(int checkpoint);
 
 public:
 	std::vector<std::vector<float>> splitList;
