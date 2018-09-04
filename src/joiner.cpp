@@ -36,7 +36,11 @@ void Joiner::update(int elapsedTime) {
 	if (input.checkKeyDown(SDLK_p)) { isPaused = true; }
 	else { isPaused = false; }
 
-	if (isPaused == false) {
+	if (input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
+		isKeyStart = true;
+	}
+
+	if (isPaused == false && isKeyStart == true) {
 		board.update(elapsedTime, speedZone, trackDirection);
 		particleManager.update(elapsedTime);
 		if (configuration.getConfigurations()["DrawMinimap"] == 1) {
@@ -62,6 +66,7 @@ void Joiner::update(int elapsedTime) {
 					hud.resetMinimap();
 					
 					if (board.handleCollision(rail[x], rail[x + 1])) {
+						isKeyStart = false;
 						world.reset();
 						hud.resetSplitsDisplay();
 						selectedRun = hud.splitsDisplay.splitList.size() - 1;
@@ -71,6 +76,7 @@ void Joiner::update(int elapsedTime) {
 		}
 
 		if (board.bitmapPolygon.getPosition().x > world.track.railList[0][world.track.railList[0].size() - 1].x) {
+			isKeyStart = false;
 			board.reset();
 			world.reset();
 			hud.resetSplitsDisplay();
@@ -114,6 +120,7 @@ void Joiner::update(int elapsedTime) {
 
 		srand(seed);
 
+		isKeyStart = false;
 		board = Board();
 		world = World();
 		hud = HUD();

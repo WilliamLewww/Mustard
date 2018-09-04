@@ -19,6 +19,8 @@ private:
 	int speedZone = 0, trackDirection = 0;
 
 	bool isPaused = false;
+	bool isKeyStart = false;
+	
 	bool showBuyMenu = true;
 	bool showBoardEdit, showTrackEdit, showSessionStats = true, randomTrackSeed = false;
 

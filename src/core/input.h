@@ -24,6 +24,7 @@ public:
 	bool checkKeyDown(SDL_Keycode Keycode);
 	bool checkButtonDown(int buttonCode);
 	int getControllerPadInput();
+	int getKeyListSize();
 
 	void getKeyTrigger(SDL_Event event);
 	void clearExpiredInput();
