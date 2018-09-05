@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"rand",
+				"randomY"
+			],
+			[
+				"rando",
+				"randomY"
+			],
+			[
+				"ran",
+				"randomY"
+			],
+			[
+				"chec",
+				"checkpointList"
+			],
+			[
+				"elapsed",
+				"elapsedTimeSeconds"
+			],
+			[
 				"elap",
 				"elapsedTimeSeconds"
 			],
@@ -492,75 +512,18 @@
 				"limitBottom"
 			],
 			[
-				"ran",
-				"random"
-			],
-			[
 				"pus",
 				"pushTimer"
-			],
-			[
-				"slideTi",
-				"slideTimer"
-			],
-			[
-				"st",
-				"startSlideAngle"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "src/environment/squirrel.h",
-			"settings":
-			{
-				"buffer_size": 319,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "src/environment/squirrel.cpp",
 			"settings":
 			{
-				"buffer_size": 335,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/environment/environment.cpp",
-			"settings":
-			{
-				"buffer_size": 1545,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/world.h",
-			"settings":
-			{
-				"buffer_size": 1283,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/environment/environment.h",
-			"settings":
-			{
-				"buffer_size": 542,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/joiner.cpp",
-			"settings":
-			{
-				"buffer_size": 7858,
+				"buffer_size": 2368,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -569,16 +532,35 @@
 			"file": "src/world.cpp",
 			"settings":
 			{
-				"buffer_size": 8486,
+				"buffer_size": 8457,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/hud/splits_display.cpp",
+			"file": "src/environment/squirrel.h",
 			"settings":
 			{
-				"buffer_size": 2767,
+				"buffer_size": 532,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/environment/environment.cpp",
+			"settings":
+			{
+				"buffer_size": 1650,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/environment/environment.h",
+			"settings":
+			{
+				"buffer_size": 595,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -587,6 +569,7 @@
 			"settings":
 			{
 				"buffer_size": 140,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -865,47 +848,54 @@
 	[
 		"/C/Projects/Thane",
 		"/C/Projects/Thane/src",
-		"/C/Projects/Thane/src/environment"
+		"/C/Projects/Thane/src/core",
+		"/C/Projects/Thane/src/effects",
+		"/C/Projects/Thane/src/environment",
+		"/C/Projects/Thane/src/hud"
 	],
 	"file_history":
 	[
+		"/C/Projects/Thane/src/hud/hud.cpp",
+		"/C/Projects/Thane/src/hud/splits_display.cpp",
+		"/C/Projects/Thane/src/hud/minimap.h",
+		"/C/Projects/Thane/src/hud/minimap.cpp",
+		"/C/Projects/Thane/src/world.cpp",
+		"/C/Projects/Thane/src/environment/environment.h",
+		"/C/Projects/Thane/src/environment/environment.cpp",
+		"/C/Projects/Thane/src/environment/squirrel.h",
 		"/C/Projects/Thane/src/joiner.cpp",
 		"/C/Projects/Thane/src/hud/splits_display.h",
-		"/C/Projects/Thane/src/environment/pinecone.h",
-		"/C/Projects/Thane/src/environment/pinecone.cpp",
-		"/C/Projects/Thane/src/hud/splits_display.cpp",
+		"/C/Projects/Thane/src/environment/squirrel.cpp",
+		"/C/Projects/Thane/src/effects/thane_particle.cpp",
+		"/C/Projects/Thane/src/board.h",
 		"/C/Projects/Thane/main.cpp",
+		"/C/Projects/Thane/src/effects/thane_particle.h",
+		"/C/Projects/Thane/src/hud/hud.h",
 		"/C/Projects/Thane/src/board.cpp",
 		"/C/Projects/Thane/src/joiner.h",
-		"/C/Projects/Thane/src/core/drawing.cpp",
-		"/C/Projects/Thane/engine.cpp",
+		"/C/Projects/Thane/src/effects/particle_manager.cpp",
+		"/C/Projects/Thane/src/effects/particle_manager.h",
 		"/C/Projects/Thane/src/core/input.h",
+		"/C/Projects/Thane/src/core/timer.h",
+		"/C/Projects/Thane/engine.cpp",
+		"/C/Projects/Thane/src/world.h",
+		"/C/Projects/Thane/src/core/timer.cpp",
+		"/C/Projects/Thane/engine.h",
 		"/C/Projects/Thane/src/core/input.cpp",
-		"/C/Projects/Thane/src/hud/hud.cpp",
-		"/C/Projects/Thane/src/hud/hud.h",
-		"/C/Projects/Thane/src/board.h",
+		"/C/Projects/Thane/src/environment/pinecone.h",
+		"/C/Projects/Thane/src/environment/pinecone.cpp",
+		"/C/Projects/Thane/src/core/drawing.cpp",
 		"/C/Projects/Thane/src/core/drawing.h",
 		"/C/Projects/Thane/todo",
-		"/C/Projects/Thane/engine.h",
 		"/C/Projects/Thane/config.txt",
-		"/C/Projects/Thane/src/effects/particle_manager.cpp",
-		"/C/Projects/Thane/src/effects/thane_particle.cpp",
 		"/C/Projects/Thane/src/bmp_polygon.cpp",
 		"/C/Projects/Thane/src/bmp_polygon.h",
-		"/C/Projects/Thane/src/hud/minimap.cpp",
-		"/C/Projects/Thane/src/hud/minimap.h",
-		"/C/Projects/Thane/src/world.cpp",
 		"/C/Projects/Thane/src/track.cpp",
-		"/C/Projects/Thane/src/world.h",
-		"/C/Projects/Thane/src/environment/environment.h",
 		"/C/Projects/Thane/src/track.h",
 		"/C/Projects/Thane/src/road.h",
-		"/C/Projects/Thane/src/effects/thane_particle.h",
-		"/C/Projects/Thane/src/effects/particle_manager.h",
 		"/C/Users/William/AppData/Roaming/Sublime Text 3/Packages/User/Java Run.sublime-build",
 		"/C/Users/William/AppData/Roaming/Sublime Text 3/Packages/User/Java.sublime-build",
 		"/C/Projects/Thane/project.sublime-project",
-		"/C/Projects/Thane/src/environment/environment.cpp",
 		"/C/Projects/Thane/src/environment/tree.cpp",
 		"/C/Projects/Thane/src/environment/tree.h",
 		"/C/Projects/Thane/src/effects/particle_manager",
@@ -992,11 +982,7 @@
 		"/C/Projects/Mustard/Parallel Curves/main.h",
 		"/C/Projects/Mustard/Parallel Curves/src/vector2.h",
 		"/C/Projects/Mustard/Parallel Curves/src/geometry.cpp",
-		"/C/Projects/Mustard/Parallel Curves/src/geometry.h",
-		"/C/Projects/Mustard/constants.h",
-		"/C/Projects/Mustard/src/polylist.h",
-		"/C/Projects/Mustard/src/board_old_cpp.txt",
-		"/C/Projects/Mustard/src/board_old_h.txt"
+		"/C/Projects/Mustard/Parallel Curves/src/geometry.h"
 	],
 	"find":
 	{
@@ -1007,6 +993,7 @@
 		"height": 1235.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -1014,6 +1001,19 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"100",
+			"topRail",
+			"50",
+			"5",
+			"topRail",
+			"x",
+			"bottomRail",
+			"decisionTimer",
+			"5",
+			"elapsedTime",
+			"elapsed",
+			"elapsedTime",
+			"elapsed",
 			"reset",
 			"seed",
 			"joiner",
@@ -1128,20 +1128,7 @@
 			"start",
 			"pi",
 			"convertColor",
-			"SCREENHEIGHT",
-			"SCREENWIDTH",
-			"*",
-			"inline",
-			"Context",
-			"context",
-			"position",
-			"height",
-			"width",
-			"extern",
-			"inline",
-			"window",
-			"SCREENHEIGHT",
-			"SCREENWIDTH"
+			"SCREENHEIGHT"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1159,29 +1146,88 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/environment/squirrel.h",
+					"file": "src/environment/squirrel.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 319,
+						"buffer_size": 2368,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								125,
-								125
+								1079,
+								1079
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 240.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/world.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8457,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3160,
+								3160
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 819.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/environment/squirrel.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 532,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								376,
+								376
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1189,79 +1235,28 @@
 					},
 					"stack_index": 2,
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
 				{
-					"buffer": 1,
-					"file": "src/environment/squirrel.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 335,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								262,
-								262
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "src/environment/environment.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1545,
+						"buffer_size": 1650,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1009,
-								1009
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 80.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/world.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1283,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1213,
-								1213
+								480,
+								480
 							]
 						],
 						"settings":
@@ -1273,7 +1268,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1282,113 +1277,20 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 542,
+						"buffer_size": 595,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								539,
-								539
+								376,
+								376
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 3,
-			"sheets":
-			[
-				{
-					"buffer": 5,
-					"file": "src/joiner.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7858,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1781,
-								1781
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 517.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/world.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8486,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3192,
-								3192
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 979.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/hud/splits_display.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2767,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								27,
-								27
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1398,7 +1300,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 5,
 					"file": "main.cpp",
 					"semi_transient": false,
 					"settings":
@@ -1410,8 +1312,8 @@
 						"selection":
 						[
 							[
-								110,
-								110
+								140,
+								140
 							]
 						],
 						"settings":
@@ -1422,7 +1324,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1520,7 +1422,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},

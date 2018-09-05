@@ -5,9 +5,7 @@
 #include "track.h"
 
 class World {
-private:
-	Environment environment;
-	
+private:	
 	int mountainColor[3] = { 118, 92, 67 };
 
 	std::vector<Vector2> mountainPolygonsStart;
@@ -28,6 +26,7 @@ private:
 	void randomDownPar(int difficulty, int points, int pointSpacing);
 	void randomPar(int difficulty, int points, int pointSpacing);
 public:
+	Environment environment;
 	Track track;
 	
 	void generateWorld();

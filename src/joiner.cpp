@@ -33,7 +33,7 @@ void Joiner::initializeWorld() {
 }
 
 void Joiner::update() {
-	if (input.checkKeyDown(SDLK_p)) { isPaused = true; }
+	if (input.checkKeyDown(SDLK_f)) { isPaused = true; }
 	else { isPaused = false; }
 
 	if (input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
@@ -76,6 +76,15 @@ void Joiner::update() {
 				}
 			}
 		}
+
+		for (Squirrel& squirrel : world.environment.squirrelList) {
+			if (board.handleCollision(squirrel.polygon)) {
+				squirrel.setDead(true);
+				std::cout << "HELLO" << std::endl;
+			}
+		}
+
+
 
 		if (board.bitmapPolygon.getPosition().x > world.track.railList[0][world.track.railList[0].size() - 1].x) {
 			isKeyStart = false;

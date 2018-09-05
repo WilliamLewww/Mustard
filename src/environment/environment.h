@@ -11,14 +11,16 @@ private:
 	float elapsedTimeSeconds;
 
 	Vector2 visibleTreeRange;
-	std::vector<std::vector<Tree>> treeList;
+	Vector2 visibleSquirrelRange;
 
-	std::vector<Squirrel> squirrelList;
+	std::vector<std::vector<Tree>> treeList;
 public:
+	std::vector<Squirrel> squirrelList;
+	
 	void resetVisibleRange();
 
 	void generateTrees(std::vector<Vector2> rail, int concentration, int offsetY, int scaleMin, int scaleMax);
-	void generateSquirrels(std::vector<Vector2> rail, int concentration, int scaleMin, int scaleMax);
+	void generateSquirrels(std::vector<std::vector<Vector2>> rail, int concentration, int scaleMin, int scaleMax);
 
 	void update();
 	void draw();

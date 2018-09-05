@@ -14,24 +14,27 @@ void Environment::generateTrees(std::vector<Vector2> rail, int concentration, in
 	tempTreeList.clear();
 }
 
-void Environment::generateSquirrels(std::vector<Vector2> rail, int concentration, int scaleMin, int scaleMax) {
-	for (int x = 0; x < rail.size(); x++) {
+void Environment::generateSquirrels(std::vector<std::vector<Vector2>> rail, int concentration, int scaleMin, int scaleMax) {
+	visibleSquirrelRange = Vector2(0, 0);
+
+	for (int x = 0; x < rail[1].size(); x++) {
 		if (rand() % concentration == 0) {
 			int randomScale = rand() % (scaleMax + 1 - scaleMin) + scaleMin;
-			squirrelList.emplace_back(Vector2(rail[x].x, rail[x].y + 50), Vector2(rail[x].x, rail[x].y), randomScale, randomScale);
+			squirrelList.emplace_back(Vector2(rail[1][x].x, rail[1][x].y + 50), Vector2(rail[1][x].x, rail[1][x].y), Vector2(rail[0][x].x, rail[0][x].y), randomScale, randomScale);
 		}
 	}
 }
 
 void Environment::resetVisibleRange() {
 	visibleTreeRange = Vector2(0, 0);
+	visibleSquirrelRange = Vector2(0, 0);
 }
 
 void Environment::update() {
 	elapsedTimeSeconds = timer.getTimeSeconds();
 	
-	for (Squirrel& squirrel : squirrelList) {
-		squirrel.update(elapsedTimeSeconds);
+	for (int x = visibleSquirrelRange.x; x < visibleSquirrelRange.y; x++) {
+		squirrelList[x].update(elapsedTimeSeconds);
 	}
 }
 
@@ -43,13 +46,21 @@ void Environment::draw() {
 		visibleTreeRange.y += 1;
 	}
 
+	while (squirrelList[visibleSquirrelRange.x].polygon.getX() < camera.getBoundaryLeft()) {
+		visibleSquirrelRange.x += 1;
+	}
+
+	while (squirrelList[visibleSquirrelRange.y].polygon.getX() < camera.getBoundaryRight()) {
+		visibleSquirrelRange.y += 1;
+	}
+
 	for (std::vector<Tree> treeListTotal : treeList) {
 		for (int x = visibleTreeRange.x; x < visibleTreeRange.y; x++) {
 			treeListTotal[x].draw();
 		}
 	}
 
-	for (Squirrel squirrel : squirrelList) {
-		squirrel.draw();
+	for (int x = visibleSquirrelRange.x; x < visibleSquirrelRange.y; x++) {
+		squirrelList[x].draw();
 	}
 }

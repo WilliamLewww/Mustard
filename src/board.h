@@ -61,7 +61,8 @@ public:
 	void draw();
 
 	void clearLines();
-	
+
+	bool handleCollision(BitmapPolygon polygon);
 	bool handleCollision(Vector2* wall);
 	bool handleCollision(Vector2 pointA, Vector2 pointB);
 };

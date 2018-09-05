@@ -315,6 +315,14 @@ void Board::reset() {
 	flipped = false;
 }
 
+bool Board::handleCollision(BitmapPolygon polygon) {
+	if (bitmapPolygon.checkCollision(polygon) == true) {
+		return true;
+	}
+
+	return false;
+}
+
 bool Board::handleCollision(Vector2* wall) {
 	if (bitmapPolygon.checkCollision(wall) == true) {
 		reset();
