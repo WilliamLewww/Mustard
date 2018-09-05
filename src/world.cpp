@@ -11,6 +11,10 @@ void World::reset() {
 	environment.resetVisibleRange();
 }
 
+void World::update() {
+	environment.update();
+}
+
 void World::draw() {
 	track.updateVisibleRange();
 	generateMountainPolygons();
@@ -77,6 +81,8 @@ void World::generateWorld() {
 	track.generateTrackDirection();
 	generateSpeedZones();
 	environment.generateTrees(track.railList[1], 5, 10, 5, 15);
+	environment.generateSquirrels(track.railList[1], 5, 5, 10);
+
 	// environment.generateTrees(track.railList[1], 8, 40, 5, 15);
 	// environment.generateTrees(track.railList[0], 5, 0, 3, 7);
 }

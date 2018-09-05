@@ -27,9 +27,9 @@ void SplitsDisplay::reset() {
 	currentRun += 1;
 }
 
-void SplitsDisplay::update(int elapsedTime, Vector2 bPosition) {
-	elapsedTimeSeconds = (float)(elapsedTime) / 1000;
-
+void SplitsDisplay::update(Vector2 bPosition) {
+	elapsedTimeSeconds = timer.getTimeSeconds();
+	
 	splitTimer += elapsedTimeSeconds;
 	if (bPosition.x > checkpointList[currentCheckpointIndex] && currentCheckpointIndex < checkpointList.size()) {
 		splitList[currentRun].push_back(splitTimer);

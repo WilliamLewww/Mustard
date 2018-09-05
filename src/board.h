@@ -3,6 +3,7 @@
 #include <string>
 #include "core\input.h"
 #include "core\vector3.h"
+#include "core\timer.h"
 #include "core\configuration.h"
 #include "effects\particle_manager.h"
 #include "bmp_polygon.h"
@@ -55,7 +56,7 @@ public:
 	BitmapPolygon bitmapPolygon;
 	
 	void initialize();
-	void update(int elapsedTimeSeconds, int speedZone, int trackDirection);
+	void update(int speedZone, int trackDirection);
 	void reset();
 	void draw();
 

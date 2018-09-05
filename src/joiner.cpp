@@ -32,7 +32,7 @@ void Joiner::initializeWorld() {
 	hud.initializeSplitsDisplay(checkpointCount, world.track.railList[0][0], world.track.railList[0][world.track.railList[0].size() - 1]);
 }
 
-void Joiner::update(int elapsedTime) {
+void Joiner::update() {
 	if (input.checkKeyDown(SDLK_p)) { isPaused = true; }
 	else { isPaused = false; }
 
@@ -41,12 +41,14 @@ void Joiner::update(int elapsedTime) {
 	}
 
 	if (isPaused == false && isKeyStart == true) {
-		board.update(elapsedTime, speedZone, trackDirection);
-		particleManager.update(elapsedTime);
+		board.update(speedZone, trackDirection);
+		particleManager.update();
+		world.update();
+
 		if (configuration.getConfigurations()["DrawMinimap"] == 1) {
 			hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle());
 		}
-		hud.updateSplitsDisplay(elapsedTime, board.bitmapPolygon.getPosition());
+		hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());
 
 		for (Vector2 speed : world.track.speedZones) {
 			if (board.bitmapPolygon.getPosition().x > world.track.railList[0][speed.x].x) {

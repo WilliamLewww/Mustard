@@ -9,6 +9,7 @@
 #include "src\core\drawing.h"
 #include "src\core\input.h"
 #include "src\core\gui.h"
+#include "src\core\timer.h"
 #include "src\joiner.h"
 
 class Engine {

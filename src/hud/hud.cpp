@@ -13,8 +13,8 @@ void HUD::initializeSplitsDisplay(int checkpointCount, Vector2 firstRail, Vector
 	splitsDisplay.generateCheckpoints(checkpointCount, firstRail, lastRail);
 }
 
-void HUD::updateSplitsDisplay(int elapsedTime, Vector2 bPosition) {
-	splitsDisplay.update(elapsedTime, bPosition);
+void HUD::updateSplitsDisplay(Vector2 bPosition) {
+	splitsDisplay.update(bPosition);
 }
 
 void HUD::resetSplitsDisplay() {

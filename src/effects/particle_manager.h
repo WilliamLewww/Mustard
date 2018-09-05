@@ -1,5 +1,6 @@
 #pragma once
 #include "..\core\vector2.h"
+#include "..\core\timer.h"
 #include "thane_particle.h"
 
 class ParticleManager {
@@ -9,7 +10,7 @@ private:
 public:
 	void generateThaneParticles(int count, Vector2 parentPosition, int alpha);
 	void removeOldParticles();
-	void update(int elapsedTime);
+	void update();
 	void draw();
 };
 

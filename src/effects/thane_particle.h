@@ -12,5 +12,5 @@ struct ThaneParticles {
 };
 
 ThaneParticles createThaneParticles(int count, Vector2 parentPosition, int alpha);
-void updateThaneParticles(float elapsedTime, ThaneParticles &particles);
+void updateThaneParticles(float elapsedTimeSeconds, ThaneParticles &particles);
 void drawThaneParticles(ThaneParticles particles);

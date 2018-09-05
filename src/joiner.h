@@ -34,7 +34,7 @@ public:
 	void initialize();
 	void initializeWorld();
 	void draw();
-	void update(int elapsedTime);
+	void update();
 };
 
 extern Joiner joiner;

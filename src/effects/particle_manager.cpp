@@ -12,8 +12,8 @@ void ParticleManager::removeOldParticles() {
 	}
 }
 
-void ParticleManager::update(int elapsedTime) {
-	elapsedTimeSeconds = (float)(elapsedTime) / 1000;
+void ParticleManager::update() {
+	elapsedTimeSeconds = timer.getTimeSeconds();
 
 	for (ThaneParticles &particles : thaneParticlesList) {
 		updateThaneParticles(elapsedTimeSeconds, particles);

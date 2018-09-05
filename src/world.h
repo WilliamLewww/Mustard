@@ -31,6 +31,7 @@ public:
 	Track track;
 	
 	void generateWorld();
+	void update();
 	void draw();
 
 	void reset();

@@ -16,8 +16,8 @@ void Board::linkPolygonWithConfigurations() {
 	bitmapPolygon.setVerticesFromFile(boardFileName.c_str());
 }
 
-void Board::update(int elapsedTime, int speedZone, int trackDirection) {
-	elapsedTimeSeconds = (float)(elapsedTime) / 1000;
+void Board::update(int speedZone, int trackDirection) {
+	elapsedTimeSeconds = timer.getTimeSeconds();
 
 	addSpeedFromHill(speedZone, trackDirection);
 	handlePushTuck();

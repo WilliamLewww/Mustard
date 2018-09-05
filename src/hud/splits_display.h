@@ -1,6 +1,7 @@
 #pragma once
 #include "..\core\vector2.h"
 #include "..\core\drawing.h"
+#include "..\core\timer.h"
 
 class SplitsDisplay {
 private:
@@ -29,6 +30,6 @@ public:
 	SplitsDisplay(Vector2 position, int width, int height);
 	void generateCheckpoints(int count, Vector2 firstRail, Vector2 lastRail);
 	void reset();
-	void update(int elapsedTime, Vector2 bPosition);
+	void update(Vector2 bPosition);
 	void draw();
 };
