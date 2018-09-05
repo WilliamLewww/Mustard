@@ -10,6 +10,11 @@ Squirrel::Squirrel(Vector2 position, Vector2 bottomRail, Vector2 topRail, int wi
 	randomInterval = rand() % (5) + 3;
 }
 
+void Squirrel::kill() {
+	dead = true;
+	particleManager.generateSquirrelGibParticles(100, polygon.getCenter(), 200);
+}
+
 void Squirrel::update(float elapsedTimeSeconds) {
 	if (dead == false) {
 		if (crossRoad == true) {

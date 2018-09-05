@@ -2,12 +2,13 @@
 #include <stdlib.h>
 #include "..\core\vector2.h"
 #include "..\core\drawing.h"
+#include "..\effects\particle_manager.h"
 #include "..\bmp_polygon.h"
 
 class Squirrel {
 private:
 	int color[3] = { 255, 218, 179 };
-	int deadColor[3] = { 134, 45, 45 };
+	int deadColor[3] = { 144, 55, 55 };
 
 	Vector2 bottomRail, topRail;
 	float decisionTimer = 5;
@@ -21,9 +22,8 @@ private:
 public:
 	BitmapPolygon polygon;
 
-	inline void setDead(bool isDead) { dead = isDead; };
-
 	Squirrel(Vector2 position, Vector2 bottomRail, Vector2 topRail, int width, int height);
 	void update(float elapsedTimeSeconds);
+	void kill();
 	void draw();
 };
