@@ -21,14 +21,14 @@ private:
 	std::vector<double> getProducts(BitmapPolygon rectangle, Vector2 axis);
 	std::vector<double> getProducts(Vector2* line, Vector2 axis);
 public:
-	inline void setX(float x) { this->position.x = x; }
-	inline void setY(float y) { this->position.y = y; }
+	inline void setX(float x) { this->position.x = x; };
+	inline void setY(float y) { this->position.y = y; };
 
-	inline void addX(float x) { this->position.x += x; }
-	inline void addY(float y) { this->position.y += y; }
+	inline void addX(float x) { this->position.x += x; };
+	inline void addY(float y) { this->position.y += y; };
 
-	inline float getX() { return position.x; }
-	inline float getY() { return position.y; }
+	inline float getX() { return position.x; };
+	inline float getY() { return position.y; };
 
 	inline void setPosition(Vector2 position) { this->position = position; };
 	inline void setAngle(double angle) { this->angle = angle; };

@@ -80,7 +80,6 @@ void Joiner::update() {
 		for (Squirrel& squirrel : world.environment.squirrelList) {
 			if (board.handleCollision(squirrel.polygon)) {
 				squirrel.setDead(true);
-				std::cout << "HELLO" << std::endl;
 			}
 		}
 
