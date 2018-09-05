@@ -72,6 +72,10 @@ int* SplitsDisplay::getColorFromSplit(int checkpoint) {
 	float average = 0, latest = 0;
 	int count = 0;
 
+	if (checkpoint > checkpointList.size() - 1) {
+		return tempColor;
+	}
+
 	for (int x = 0; x < splitList.size(); x++) {
 		if (splitList[x].size() > checkpoint) {
 			latest = splitList[x][checkpoint];
