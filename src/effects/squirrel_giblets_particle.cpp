@@ -1,6 +1,6 @@
 #include "squirrel_giblets_particle.h"
 
-int squirrelGibParticlesColor[3] = { 134, 45, 45 };
+int squirrelGibParticlesColor[3] = { 124, 35, 35 };
 
 SquirrelGibParticles createSquirrelGibParticles(int count, Vector2 parentPosition, int alpha) {
 	SquirrelGibParticles particles = { count };
@@ -10,7 +10,7 @@ SquirrelGibParticles createSquirrelGibParticles(int count, Vector2 parentPositio
 	particles.particleAcceleration = 100;
 	for (int x = 0; x < count; x++) {
 		particles.particlePositions.emplace_back(parentPosition);
-		// particles.offsetDirections.push_back((rand() % (10 + 1)) - 5);
+		particles.offsetFinalPosition.push_back(rand() % (10 + 1 + 10) - 10);
 		particles.offsetDirections.push_back(((float)(rand() % (100 + 1)) - 50) / 10);
 	}
 
@@ -20,9 +20,9 @@ SquirrelGibParticles createSquirrelGibParticles(int count, Vector2 parentPositio
 void updateSquirrelGibParticles(float elapsedTimeSeconds, SquirrelGibParticles &particles) {
 	particles.particleAcceleration -= 500 * elapsedTimeSeconds;
 	for (int x = 0; x < particles.particlePositions.size(); x++) {
-		if ((particles.particlePositions[x].y < particles.parentPosition.y) || (particles.particleAcceleration > 0)) {
+		if ((particles.particlePositions[x].y + particles.offsetFinalPosition[x] < particles.parentPosition.y) || (particles.particleAcceleration > 0)) {
 			particles.particlePositions[x].y -= particles.particleAcceleration * elapsedTimeSeconds;
-			particles.particlePositions[x].x += (particles.offsetDirections[x] * 25) * elapsedTimeSeconds;
+			particles.particlePositions[x].x += (particles.offsetDirections[x] * 15) * elapsedTimeSeconds;
 		}
 	}
 }

@@ -12,12 +12,12 @@ Squirrel::Squirrel(Vector2 position, Vector2 bottomRail, Vector2 topRail, int wi
 
 void Squirrel::kill() {
 	if (dead == false) {
-		for (int x = 0; x < 50; x++) {
-			particleManager.generateSquirrelGibParticles(2, polygon.getCenter(), 200);
+		for (int x = 0; x < 25; x++) {
+			particleManager.generateSquirrelGibParticles(4, polygon.getCenter(), 200);
 		}
 	}
 	else {
-		particleManager.generateSquirrelGibParticles(2, polygon.getCenter(), 200);
+		particleManager.generateSquirrelGibParticles(4, polygon.getCenter(), 200);
 	}
 
 	dead = true;

@@ -8,6 +8,7 @@ struct SquirrelGibParticles {
 	float particleAcceleration;
 	std::vector<Vector2> particlePositions;
 	Vector2 parentPosition;
+	std::vector<int> offsetFinalPosition;
 	std::vector<float> offsetDirections;
 	int alpha;
 };
