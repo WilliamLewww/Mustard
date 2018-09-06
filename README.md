@@ -36,7 +36,7 @@ Thane (short for polyurethane) lines are the skid marks produced when a skateboa
 
 ## Release History
 - 1.6.8
-  - added blood splatter for road squirrels
+  - added road squirrels
 - 1.6.7
   - initiate the update loop with user input
   - fixed splits on HUD
