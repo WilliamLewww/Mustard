@@ -3,8 +3,6 @@
 #include "..\core\drawing.h"
 #include "..\core\vector2.h"
 
-int thaneParticlesColor[3] = { 255, 255, 255 };
-
 struct ThaneParticles {
 	int particleCount;
 	float particleAcceleration;

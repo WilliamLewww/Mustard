@@ -1,5 +1,7 @@
 #include "thane_particle.h"
 
+int thaneParticlesColor[3] = { 255, 255, 255 };
+
 ThaneParticles createThaneParticles(int count, Vector2 parentPosition, int alpha) {
 	ThaneParticles particles = { count };
 	particles.alpha = alpha;

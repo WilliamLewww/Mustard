@@ -11,8 +11,16 @@ Squirrel::Squirrel(Vector2 position, Vector2 bottomRail, Vector2 topRail, int wi
 }
 
 void Squirrel::kill() {
+	if (dead == false) {
+		for (int x = 0; x < 50; x++) {
+			particleManager.generateSquirrelGibParticles(2, polygon.getCenter(), 200);
+		}
+	}
+	else {
+		particleManager.generateSquirrelGibParticles(2, polygon.getCenter(), 200);
+	}
+
 	dead = true;
-	particleManager.generateSquirrelGibParticles(100, polygon.getCenter(), 200);
 }
 
 void Squirrel::update(float elapsedTimeSeconds) {

@@ -15,8 +15,8 @@ void ParticleManager::removeOldParticles() {
 		thaneParticlesList.erase(thaneParticlesList.begin(), thaneParticlesList.begin() + (thaneParticlesList.size() - 400));
 	}
 
-	if (squirrelGibParticlesList.size() > 300) {
-		squirrelGibParticlesList.erase(squirrelGibParticlesList.begin(), squirrelGibParticlesList.begin() + (squirrelGibParticlesList.size() - 300));
+	if (squirrelGibParticlesList.size() > 400) {
+		squirrelGibParticlesList.erase(squirrelGibParticlesList.begin(), squirrelGibParticlesList.begin() + (squirrelGibParticlesList.size() - 200));
 	}
 }
 
