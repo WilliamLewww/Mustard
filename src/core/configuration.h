@@ -1,13 +1,12 @@
 #pragma once
-#include <map>
-#include <fstream>
+#include "file.h"
 
 class Configuration {
 private:
 	int screenWidth, screenHeight;
 	std::map<std::string, int> configurations;
 
-	void grabConfigurationFromFile();
+	void grabConfiguration();
 	void linkScreenSize();
 public:
 	inline std::map<std::string, int> getConfigurations() { return configurations; };

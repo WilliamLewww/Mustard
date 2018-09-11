@@ -1,0 +1,13 @@
+#pragma once
+#include <vector>
+#include <map>
+#include <fstream>
+#include "vector2.h"
+
+class File {
+public:
+	std::vector<Vector2> getVerticesFromFile(const char* filename);
+	std::map<std::string, int> getConfigurationFromFile(const char* filename);
+};
+
+extern File file;

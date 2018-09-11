@@ -1,7 +1,7 @@
 #pragma once
 #include <algorithm>
-#include <fstream>
 #include <vector>
+#include "core\file.h"
 #include "core\vector2.h"
 #include "core\drawing.h"
 
@@ -67,7 +67,7 @@ public:
 
 	void setSize(int width, int height);
 	void setColor(int red, int green, int blue, int alpha);
-	void setVerticesFromFile(const char* filename);
+	void setVertices(const char* filename);
 
 	void drawOutline();
 };

@@ -13,7 +13,7 @@ void Board::linkPolygonWithConfigurations() {
 	bitmapPolygon.setSize(configuration.getConfigurations()["BoardLength"], configuration.getConfigurations()["BoardWidth"]);
 	bitmapPolygon.setColor(configuration.getConfigurations()["BoardColorR"], configuration.getConfigurations()["BoardColorG"], configuration.getConfigurations()["BoardColorB"], configuration.getConfigurations()["BoardColorA"]);
 	std::string boardFileName = "board_" + std::to_string(configuration.getConfigurations()["BoardID"]) + ".txt";
-	bitmapPolygon.setVerticesFromFile(boardFileName.c_str());
+	bitmapPolygon.setVertices(boardFileName.c_str());
 }
 
 void Board::update(int speedZone, int trackDirection) {
