@@ -28,6 +28,11 @@ public:
 	int width, height;
 	
 	SplitsDisplay(Vector2 position, int width, int height);
+
+	int getBestTimeIndex();
+
+	void removeRun(int index);
+	
 	void generateCheckpoints(int count, Vector2 firstRail, Vector2 lastRail);
 	void reset();
 	void update(Vector2 bPosition);

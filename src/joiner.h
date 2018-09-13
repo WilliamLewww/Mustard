@@ -23,9 +23,10 @@ private:
 	bool isKeyStart = false;
 	
 	bool showBuyMenu = true;
-	bool showBoardEdit, showTrackEdit, showSessionStats = true, randomTrackSeed = false;
+	bool showBoardEdit, showTrackEdit, showSessionStats = true, showLeaderboards = false;
+	bool randomTrackSeed = false;
 
-	int selectedRun = 0;
+	int selectedRun = 0, leaderboardSelectedRun = 0;
 	int boardID, boardLength, boardWidth;
 	int trackGenerationStyle;
 	float boardColor[4], thaneColor[3];

@@ -83,8 +83,6 @@ void Joiner::update() {
 			}
 		}
 
-
-
 		if (board.bitmapPolygon.getPosition().x > world.track.railList[0][world.track.railList[0].size() - 1].x) {
 			isKeyStart = false;
 			board.reset();
@@ -95,7 +93,7 @@ void Joiner::update() {
 
 	}
 
-	ImGui::SetNextWindowSizeConstraints(ImVec2(225, 135), ImVec2(225, 135));
+	ImGui::SetNextWindowSizeConstraints(ImVec2(230, 155), ImVec2(230, 155));
 	ImGui::Begin("Main Menu");
 
 	ImGui::Columns(2);
@@ -142,24 +140,65 @@ void Joiner::update() {
 
 	ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
 
+	ImGui::Columns(2);
 	if (ImGui::Button("Clear Thane")) {
 		board.clearLines();
 	}
+	ImGui::NextColumn();
+	if (ImGui::Button("Leaderboards")) {
+		showLeaderboards = !showLeaderboards;
+	}
+	ImGui::Columns(1);
 	ImGui::Checkbox("Display Session Stats", &showSessionStats);
+	ImGui::Text("%.1f FPS", ImGui::GetIO().Framerate);
 	ImGui::End();
+
+	if (showLeaderboards) {
+		ImGui::SetNextWindowSizeConstraints(ImVec2(225, 350), ImVec2(225, 350));
+		ImGui::Begin("Leaderboards");
+
+		ImGui::Columns(2);
+		ImGui::SetColumnWidth(0, 115);
+		if (ImGui::Button("Export Splits")) {
+
+		}
+		ImGui::InputInt("Run #", &leaderboardSelectedRun);
+		if (leaderboardSelectedRun < 0) {
+			leaderboardSelectedRun = 0;
+		}
+		if (leaderboardSelectedRun > hud.splitsDisplay.splitList.size() - 1) {
+			leaderboardSelectedRun = hud.splitsDisplay.splitList.size() - 1;
+		}
+		ImGui::NextColumn();
+		ImGui::SetColumnWidth(1, 150);
+		if (ImGui::Button("Remove Run")) {
+			hud.splitsDisplay.removeRun(leaderboardSelectedRun);
+		}
+		if (ImGui::Button("Best Time")) {
+			leaderboardSelectedRun = hud.splitsDisplay.getBestTimeIndex();
+		}
+		ImGui::Columns(1);
+
+		if (ImGui::Button("Close")) {
+			showLeaderboards = false;
+		}
+
+		ImGui::TextColored(ImVec4(1,0,0,1), "Final: %f", hud.splitsDisplay.finalTimeList[leaderboardSelectedRun]);
+		ImGui::TextColored(ImVec4(1,1,0,1), "Splits");
+		ImGui::BeginChild("Scrolling");
+		for (int x = 0; x < hud.splitsDisplay.splitList[leaderboardSelectedRun].size(); x++) {
+		    ImGui::Text("#%i : %f", x + 1, hud.splitsDisplay.splitList[leaderboardSelectedRun][x]);
+		}
+		ImGui::EndChild();
+		ImGui::End();
+	}
 
 	if (showSessionStats) {
 		ImGui::SetNextWindowSizeConstraints(ImVec2(150, 250), ImVec2(150, 250));
 		ImGui::Begin("Session Stats");
-		ImGui::InputInt("Run", &selectedRun);
-		if (selectedRun < 0) {
-			selectedRun = 0;
-		}
-		if (selectedRun > hud.splitsDisplay.splitList.size() - 1) {
-			selectedRun = hud.splitsDisplay.splitList.size() - 1;
-		}
-
+		ImGui::TextColored(ImVec4(0,1,1,1), "Run # %i", selectedRun);
 		ImGui::TextColored(ImVec4(1,0,0,1), "Final: %f", hud.splitsDisplay.finalTimeList[selectedRun]);
+		ImGui::Spacing();
 		ImGui::TextColored(ImVec4(1,1,0,1), "Splits");
 		ImGui::BeginChild("Scrolling");
 		for (int x = 0; x < hud.splitsDisplay.splitList[selectedRun].size(); x++) {

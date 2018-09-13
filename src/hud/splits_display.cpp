@@ -6,6 +6,28 @@ SplitsDisplay::SplitsDisplay(Vector2 position, int width, int height) {
 	this->height = height;
 }
 
+void SplitsDisplay::removeRun(int index) {
+	if (index != finalTimeList.size() - 1) {
+		finalTimeList.erase(finalTimeList.begin() + index);
+		splitList.erase(splitList.begin() + index);
+		currentRun -= 1;
+	}
+}
+
+int SplitsDisplay::getBestTimeIndex() {
+	int highestIndex = 0;
+	float highestValue = finalTimeList[0];
+
+	for (int x = 0; x < finalTimeList.size(); x++) {
+		if (highestValue < finalTimeList[x]) {
+			highestIndex = x;
+			highestValue = finalTimeList[x];
+		}
+	}
+
+	return highestIndex;
+}
+
 void SplitsDisplay::generateCheckpoints(int count, Vector2 firstRail, Vector2 lastRail) {
 	currentCheckpointIndex = 0;
 	splitTimer = 0;
