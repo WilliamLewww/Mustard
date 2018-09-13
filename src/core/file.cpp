@@ -1,5 +1,18 @@
 #include "file.h"
 
+void File::exportSplits(int seed, std::vector<float> splits, float finalTime) {
+	std::ofstream out(std::to_string(seed) + ".splits");
+
+	out << "Final Time: " << finalTime << "\n\n";
+	out << "Splits:\n";
+	for (int x = 0; x < splits.size(); x++) {
+		if (x == splits.size() - 1) { out << splits[x]; }
+		else { out << splits[x] << "\n"; }
+	}
+
+	out.close();
+}
+
 std::vector<Vector2> File::getVerticesFromFile(const char* filename) {
 	std::ifstream fin(filename);
 	std::vector<Vector2> vertices;

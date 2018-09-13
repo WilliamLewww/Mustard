@@ -160,7 +160,7 @@ void Joiner::update() {
 		ImGui::Columns(2);
 		ImGui::SetColumnWidth(0, 115);
 		if (ImGui::Button("Export Splits")) {
-
+			file.exportSplits(seed, hud.splitsDisplay.splitList[leaderboardSelectedRun], hud.splitsDisplay.finalTimeList[leaderboardSelectedRun]);
 		}
 		ImGui::InputInt("Run #", &leaderboardSelectedRun);
 		if (leaderboardSelectedRun < 0) {

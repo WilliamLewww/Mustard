@@ -2,6 +2,7 @@
 #include <ctime>
 #include "core\configuration.h"
 #include "core\gui.h"
+#include "core\file.h"
 #include "hud\hud.h"
 #include "effects\particle_manager.h"
 #include "environment\squirrel.h"
