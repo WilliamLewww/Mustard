@@ -74,7 +74,6 @@ void SplitsDisplay::update(Vector2 bPosition) {
 void SplitsDisplay::draw() {
 	for (int x = 0; x < checkpointList.size(); x++) {
 		drawing.drawRect(rectanglePositionList[x], rectangleWidth, height, getColorFromSplit(x));
-		//drawing.drawRect(rectanglePositionList[x], rectangleWidth, height, getColorFromSplit(splitList[x]));
 	}
 
 	if (currentCheckpointIndex == checkpointList.size()) {

@@ -83,6 +83,8 @@ void Engine::handleUserInput() {
 }
 
 void Engine::delayEarlyFrames() {
+	//TODO: change to regulate FPS
+	
 	if (deltaTime < 1 / 60) {
 		frameStart = SDL_GetTicks();
 		SDL_Delay(1);
