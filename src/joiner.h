@@ -34,6 +34,9 @@ private:
 public:
 	int seed;
 
+	void reset();
+	void resetFull();
+
 	void initialize();
 	void initializeWorld();
 	void draw();

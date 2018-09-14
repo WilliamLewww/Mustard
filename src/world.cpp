@@ -82,9 +82,7 @@ void World::generateWorld() {
 	generateSpeedZones();
 	environment.generateTrees(track.railList[1], 5, 10, 5, 15);
 	environment.generateSquirrels(track.railList, 15, 5, 7);
-
-	// environment.generateTrees(track.railList[1], 8, 40, 5, 15);
-	// environment.generateTrees(track.railList[0], 5, 0, 3, 7);
+	environment.generateGravel(track.railList, 25);
 }
 
 void World::generateSpeedZones() {

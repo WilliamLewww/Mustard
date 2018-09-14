@@ -20,6 +20,27 @@ void Joiner::initialize() {
 	initializeWorld();
 }
 
+void Joiner::reset() {
+	isKeyStart = false;
+	world.reset();
+	hud.resetSplitsDisplay();
+	selectedRun = hud.splitsDisplay.splitList.size() - 1;
+}
+
+void Joiner::resetFull() {
+	selectedRun = 0; 
+	leaderboardSelectedRun = 0;
+
+	isKeyStart = false;
+	board = Board();
+	world = World();
+	hud = HUD();
+	initializeWorld();
+
+	showBoardEdit = false;
+	showTrackEdit = false;
+}
+
 void Joiner::initializeWorld() {
 	board.initialize();
 	camera.linkPosition(board.bitmapPolygon.getPositionAddress());
@@ -68,10 +89,7 @@ void Joiner::update() {
 					hud.resetMinimap();
 					
 					if (board.handleCollision(rail[x], rail[x + 1])) {
-						isKeyStart = false;
-						world.reset();
-						hud.resetSplitsDisplay();
-						selectedRun = hud.splitsDisplay.splitList.size() - 1;
+						reset();
 					}
 				}
 			}
@@ -84,11 +102,7 @@ void Joiner::update() {
 		}
 
 		if (board.bitmapPolygon.getPosition().x > world.track.railList[0][world.track.railList[0].size() - 1].x) {
-			isKeyStart = false;
-			board.reset();
-			world.reset();
-			hud.resetSplitsDisplay();
-			selectedRun = hud.splitsDisplay.splitList.size() - 1;
+			reset();
 		}
 
 	}
@@ -127,15 +141,7 @@ void Joiner::update() {
 		}
 
 		srand(seed);
-
-		isKeyStart = false;
-		board = Board();
-		world = World();
-		hud = HUD();
-		initializeWorld();
-
-		showBoardEdit = false;
-		showTrackEdit = false;
+		resetFull();
 	}
 
 	ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
@@ -196,7 +202,10 @@ void Joiner::update() {
 	if (showSessionStats) {
 		ImGui::SetNextWindowSizeConstraints(ImVec2(150, 250), ImVec2(150, 250));
 		ImGui::Begin("Session Stats");
-		ImGui::TextColored(ImVec4(0,1,1,1), "Run # %i", selectedRun);
+		if (selectedRun != hud.splitsDisplay.splitList.size() - 1) {
+			selectedRun = hud.splitsDisplay.splitList.size() - 1;
+		}
+		ImGui::TextColored(ImVec4(0,1,1,1), "Current Run: %i", selectedRun);
 		ImGui::TextColored(ImVec4(1,0,0,1), "Final: %f", hud.splitsDisplay.finalTimeList[selectedRun]);
 		ImGui::Spacing();
 		ImGui::TextColored(ImVec4(1,1,0,1), "Splits");

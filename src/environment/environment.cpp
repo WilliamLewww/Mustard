@@ -1,5 +1,12 @@
 #include "environment.h"
 
+void Environment::generateGravel(std::vector<std::vector<Vector2>> railList, int concentration) {
+	for (int x = 0; x < railList[0].size(); x++) {
+		if (rand() % concentration == 0) { gravel.generate(railList[0][x], true, concentration + 25, concentration + 50); }
+		if (rand() % concentration == 0) { gravel.generate(railList[1][x], false, concentration + 25, concentration + 50); }
+	}
+}
+
 void Environment::generateTrees(std::vector<Vector2> rail, int concentration, int offsetY, int scaleMin, int scaleMax) {
 	visibleTreeRange = Vector2(0, 0);
 	std::vector<Tree> tempTreeList;
@@ -26,6 +33,8 @@ void Environment::generateSquirrels(std::vector<std::vector<Vector2>> rail, int 
 }
 
 void Environment::resetVisibleRange() {
+	gravel.resetVisibleRange();
+
 	visibleTreeRange = Vector2(0, 0);
 	visibleSquirrelRange = Vector2(0, 0);
 }
@@ -53,6 +62,8 @@ void Environment::draw() {
 	while (squirrelList[visibleSquirrelRange.y].polygon.getX() < camera.getBoundaryRight()) {
 		visibleSquirrelRange.y += 1;
 	}
+
+	gravel.draw();
 
 	for (std::vector<Tree> treeListTotal : treeList) {
 		for (int x = visibleTreeRange.x; x < visibleTreeRange.y; x++) {
