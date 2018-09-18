@@ -28,4 +28,5 @@ public:
 
 	void update();
 	void draw();
+	void drawUnderMountain();
 };

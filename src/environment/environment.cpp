@@ -2,8 +2,7 @@
 
 void Environment::generateGravel(std::vector<std::vector<Vector2>> railList, int concentration) {
 	for (int x = 0; x < railList[0].size(); x++) {
-		if (rand() % concentration == 0) { gravel.generate(railList[0][x], true, concentration + 25, concentration + 50); }
-		if (rand() % concentration == 0) { gravel.generate(railList[1][x], false, concentration + 25, concentration + 50); }
+		if (rand() % concentration == 0) { gravel.generate(railList[1][x], false, concentration + 50, concentration + 150); }
 	}
 }
 
@@ -63,8 +62,6 @@ void Environment::draw() {
 		visibleSquirrelRange.y += 1;
 	}
 
-	gravel.draw();
-
 	for (std::vector<Tree> treeListTotal : treeList) {
 		for (int x = visibleTreeRange.x; x < visibleTreeRange.y; x++) {
 			treeListTotal[x].draw();
@@ -74,4 +71,8 @@ void Environment::draw() {
 	for (int x = visibleSquirrelRange.x; x < visibleSquirrelRange.y; x++) {
 		squirrelList[x].draw();
 	}
+}
+
+void Environment::drawUnderMountain() {
+	gravel.draw();
 }

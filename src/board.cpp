@@ -325,8 +325,6 @@ bool Board::handleCollision(BitmapPolygon polygon) {
 
 bool Board::handleCollision(Vector2* wall) {
 	if (bitmapPolygon.checkCollision(wall) == true) {
-		reset();
-
 		return true;
 	}
 
@@ -336,8 +334,6 @@ bool Board::handleCollision(Vector2* wall) {
 bool Board::handleCollision(Vector2 pointA, Vector2 pointB) {
 	Vector2 tempVector[] = { pointA, pointB };
 	if (bitmapPolygon.checkCollision(tempVector) == true) {
-		reset();
-
 		return true;
 	}
 

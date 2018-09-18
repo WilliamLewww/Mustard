@@ -20,11 +20,18 @@ void Joiner::initialize() {
 	initializeWorld();
 }
 
-void Joiner::reset() {
-	isKeyStart = false;
-	world.reset();
-	hud.resetSplitsDisplay();
-	selectedRun = hud.splitsDisplay.splitList.size() - 1;
+void Joiner::reset(bool crashed) {
+	if (crashed) {
+		isCrashed = true;
+		particleManager.generateCrashParticles(20, board.bitmapPolygon.getCenter());
+	}
+	else {
+		isKeyStart = false;
+		world.reset();
+		board.reset();
+		hud.resetSplitsDisplay();
+		selectedRun = hud.splitsDisplay.splitList.size() - 1;
+	}
 }
 
 void Joiner::resetFull() {
@@ -54,6 +61,21 @@ void Joiner::initializeWorld() {
 }
 
 void Joiner::update() {
+	if (isCrashed) {
+		if (allowRestartAfterCrash) {
+			if (input.getKeyListSize() > 0) {
+				isCrashed = false;
+				allowRestartAfterCrash = false;
+				reset(false);
+			}
+		}
+		else {
+			if (input.getKeyListSize() == 0) {
+				allowRestartAfterCrash = true;
+			}
+		}
+	}
+
 	if (input.checkKeyDown(SDLK_f)) { isPaused = true; }
 	else { isPaused = false; }
 
@@ -62,14 +84,20 @@ void Joiner::update() {
 	}
 
 	if (isPaused == false && isKeyStart == true) {
-		board.update(speedZone, trackDirection);
+		if (!isCrashed) {
+			board.update(speedZone, trackDirection);
+		}
+
 		particleManager.update();
 		world.update();
 
 		if (configuration.getConfigurations()["DrawMinimap"] == 1) {
 			hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle());
 		}
-		hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());
+
+		if (!isCrashed) {
+			hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());
+		}
 
 		for (Vector2 speed : world.track.speedZones) {
 			if (board.bitmapPolygon.getPosition().x > world.track.railList[0][speed.x].x) {
@@ -88,8 +116,8 @@ void Joiner::update() {
 				if (board.bitmapPolygon.getPosition().x + 100 > rail[x].x && board.bitmapPolygon.getPosition().x < rail[x].x + 100) {
 					hud.resetMinimap();
 					
-					if (board.handleCollision(rail[x], rail[x + 1])) {
-						reset();
+					if (board.handleCollision(rail[x], rail[x + 1]) && !isCrashed) {
+						reset(true);
 					}
 				}
 			}
@@ -102,7 +130,7 @@ void Joiner::update() {
 		}
 
 		if (board.bitmapPolygon.getPosition().x > world.track.railList[0][world.track.railList[0].size() - 1].x) {
-			reset();
+			reset(false);
 		}
 
 	}
@@ -290,7 +318,7 @@ void Joiner::draw() {
 	glPushMatrix();
 	glTranslatef(-camera.getPosition().x + (configuration.getScreenWidth() / 2) - (board.bitmapPolygon.getWidth() / 2), -camera.getPosition().y + (configuration.getScreenHeight() / 2) - (board.bitmapPolygon.getHeight() / 2), 0);
 	world.draw();
-	board.draw();
+	if (!isCrashed) { board.draw(); }
 	particleManager.draw();
 	glPopMatrix();
 

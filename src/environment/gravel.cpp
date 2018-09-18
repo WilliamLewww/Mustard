@@ -5,8 +5,7 @@ void Gravel::generate(Vector2 rail, bool isTop, int minPebbleCount, int maxPebbl
 	pebblePosition.push_back(std::vector<Vector2>());
 
 	int offsetY = rand() % 10;
-	int offsetX = 5 + (rand() % 15);
-	int spread = 50;
+	int spread = 75;
 
 	int randomPebbleCount = rand() % (maxPebbleCount + 1 - minPebbleCount) + minPebbleCount;
 
@@ -15,7 +14,7 @@ void Gravel::generate(Vector2 rail, bool isTop, int minPebbleCount, int maxPebbl
 			pebblePosition[pebblePosition.size() - 1].emplace_back(rail.x + (rand() % spread), rail.y + 25 + offsetY + (rand() % spread));
 		}
 		else {
-			pebblePosition[pebblePosition.size() - 1].emplace_back(rail.x + offsetX + (rand() % spread), rail.y - offsetY - (rand() % spread));
+			pebblePosition[pebblePosition.size() - 1].emplace_back(rail.x + (rand() % (spread + 25)), rail.y + offsetY - (rand() % spread));
 		}
 	}
 

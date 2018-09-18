@@ -14,5 +14,5 @@ struct SquirrelGibParticles {
 };
 
 SquirrelGibParticles createSquirrelGibParticles(int count, Vector2 parentPosition, int alpha);
-void updateSquirrelGibParticles(float elapsedTimeSeconds, SquirrelGibParticles &particles);
+void updateSquirrelGibParticles(float elapsedTimeSeconds, SquirrelGibParticles& particles);
 void drawSquirrelGibParticles(SquirrelGibParticles particles);

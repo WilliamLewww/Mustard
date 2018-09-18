@@ -22,6 +22,9 @@ private:
 
 	bool isPaused = false;
 	bool isKeyStart = false;
+	bool isCrashed = false;
+
+	bool allowRestartAfterCrash = false;
 	
 	bool showBuyMenu = true;
 	bool showBoardEdit, showTrackEdit, showSessionStats = true, showLeaderboards = false;
@@ -34,7 +37,7 @@ private:
 public:
 	int seed;
 
-	void reset();
+	void reset(bool isCrash);
 	void resetFull();
 
 	void initialize();

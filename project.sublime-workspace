@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"off",
+				"offsetY"
+			],
+			[
+				"spl",
+				"splitList"
+			],
+			[
 				"curr",
 				"currentRun"
 			],
@@ -14,10 +22,6 @@
 			[
 				"hi",
 				"highIndex"
-			],
-			[
-				"spl",
-				"splitsDisplay"
 			],
 			[
 				"show",
@@ -510,39 +514,16 @@
 			[
 				"axi",
 				"axisArgs"
-			],
-			[
-				"botto",
-				"bottomRight"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "src/core/file.cpp",
-			"settings":
-			{
-				"buffer_size": 1303,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/environment/environment.cpp",
-			"settings":
-			{
-				"buffer_size": 2364,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "src/environment/environment.h",
 			"settings":
 			{
-				"buffer_size": 746,
-				"encoding": "UTF-8",
+				"buffer_size": 773,
 				"line_ending": "Windows"
 			}
 		},
@@ -550,17 +531,16 @@
 			"file": "src/world.cpp",
 			"settings":
 			{
-				"buffer_size": 8330,
+				"buffer_size": 8413,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/environment/gravel.h",
+			"file": "main.cpp",
 			"settings":
 			{
-				"buffer_size": 203,
-				"encoding": "UTF-8",
+				"buffer_size": 140,
 				"line_ending": "Windows"
 			}
 		},
@@ -568,26 +548,43 @@
 			"file": "src/environment/gravel.cpp",
 			"settings":
 			{
-				"buffer_size": 435,
+				"buffer_size": 1183,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/board.cpp",
+			"file": "src/joiner.h",
 			"settings":
 			{
-				"buffer_size": 10653,
+				"buffer_size": 908,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "config.txt",
+			"file": "/C/Users/William/Desktop/internship.dat",
 			"settings":
 			{
-				"buffer_size": 635,
+				"buffer_size": 114,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/joiner.cpp",
+			"settings":
+			{
+				"buffer_size": 9535,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/bmp_polygon.h",
+			"settings":
+			{
+				"buffer_size": 2961,
 				"line_ending": "Windows"
 			}
 		}
@@ -866,29 +863,47 @@
 	[
 		"/C/Projects/Thane",
 		"/C/Projects/Thane/src",
-		"/C/Projects/Thane/src/environment"
+		"/C/Projects/Thane/src/core",
+		"/C/Projects/Thane/src/effects",
+		"/C/Projects/Thane/src/environment",
+		"/C/Projects/Thane/src/hud"
 	],
 	"file_history":
 	[
+		"/C/Users/William/AppData/Local/Packages/microsoft.windowscommunicationsapps_8wekyb3d8bbwe/LocalState/Files/S0/11/Main[155].java",
+		"/C/Projects/Enum Project/res/database.txt",
+		"/C/Projects/Enum Project/src/Main.java",
+		"/C/Projects/Thane/src/core/vector3.cpp",
+		"/C/Projects/Thane/src/core/imgui/imgui.h",
+		"/C/Users/William/Desktop/database.txt",
+		"/C/Projects/Thane/src/core/imgui/imgui.cpp",
+		"/C/Projects/Thane/config.txt",
+		"/C/Projects/Thane/main.cpp",
+		"/C/Projects/Thane/src/core/drawing.h",
+		"/C/Projects/Thane/src/core/imgui/imgui_internal.h",
+		"/C/Projects/Thane/engine.cpp",
+		"/C/Projects/Thane/engine.h",
+		"/C/Projects/Thane/src/hud/splits_display.cpp",
+		"/C/Projects/Thane/src/joiner.h",
+		"/C/Projects/Thane/src/joiner.cpp",
+		"/C/Projects/Thane/src/environment/environment.h",
+		"/C/Projects/Thane/src/effects/thane_particle.h",
+		"/C/Projects/Thane/src/core/file.cpp",
+		"/C/Projects/Thane/src/world.cpp",
+		"/C/Projects/Thane/src/environment/gravel.h",
+		"/C/Projects/Thane/src/environment/gravel.cpp",
+		"/C/Projects/Thane/src/environment/environment.cpp",
+		"/C/Projects/Thane/README.md",
+		"/C/Projects/Thane/src/board.cpp",
+		"/C/Users/William/Desktop/25_capping_frame_rate.cpp",
+		"/C/Users/William/Desktop/internship.dat",
 		"/C/Projects/Thane/src/environment/chunder.h",
 		"/C/Projects/Thane/src/environment/chunder.cpp",
-		"/C/Projects/Thane/src/joiner.h",
 		"/C/Projects/Thane/src/board.h",
 		"/C/Projects/Thane/src/core/file.h",
-		"/C/Users/William/Desktop/internship.dat",
-		"/C/Projects/Thane/src/board.cpp",
-		"/C/Projects/Thane/README.md",
-		"/C/Projects/Thane/engine.cpp",
-		"/C/Projects/Thane/src/joiner.cpp",
-		"/C/Projects/Thane/src/world.cpp",
 		"/C/Projects/Thane/src/hud/splits_display.h",
-		"/C/Projects/Thane/main.cpp",
-		"/C/Projects/Thane/src/hud/splits_display.cpp",
-		"/C/Projects/Thane/src/core/file.cpp",
-		"/C/Projects/Thane/engine.h",
 		"/C/Projects/Thane/src/bmp_polygon.h",
 		"/C/Projects/Thane/src/bmp_polygon.cpp",
-		"/C/Projects/Thane/src/core/drawing.h",
 		"/C/Projects/Thane/src/core/drawing.cpp",
 		"/C/Projects/Thane/src/world.h",
 		"/C/Projects/Thane/src/core/configuration.h",
@@ -900,10 +915,7 @@
 		"/C/Projects/Thane/src/environment/squirrel.h",
 		"/C/Projects/Thane/src/effects/squirrel_giblets_particle.h",
 		"/C/Projects/Thane/src/effects/thane_particle.cpp",
-		"/C/Projects/Thane/src/effects/thane_particle.h",
 		"/C/Projects/Thane/src/effects/particle_manager.h",
-		"/C/Projects/Thane/src/environment/environment.h",
-		"/C/Projects/Thane/src/environment/environment.cpp",
 		"/C/Projects/Thane/src/hud/hud.cpp",
 		"/C/Projects/Thane/src/hud/minimap.h",
 		"/C/Projects/Thane/src/hud/minimap.cpp",
@@ -915,7 +927,6 @@
 		"/C/Projects/Thane/src/environment/pinecone.h",
 		"/C/Projects/Thane/src/environment/pinecone.cpp",
 		"/C/Projects/Thane/todo",
-		"/C/Projects/Thane/config.txt",
 		"/C/Projects/Thane/src/track.cpp",
 		"/C/Projects/Thane/src/track.h",
 		"/C/Projects/Thane/src/road.h",
@@ -986,22 +997,11 @@
 		"/C/Projects/Mustard/config.txt",
 		"/C/Projects/Mustard/src/board.cpp",
 		"/C/Projects/Mustard/src/board.h",
-		"/C/Projects/Mustard/board_1.txt",
-		"/C/Projects/Mustard/src/environment.cpp",
-		"/C/Projects/Mustard/src/gui/minimap.h",
-		"/C/Projects/Mustard/src/track.h",
-		"/C/Projects/Mustard/src/gui/gui.cpp",
-		"/C/Projects/Mustard/src/environment.h",
-		"/C/Projects/Mustard/src/config.txt",
-		"/C/Projects/Mustard/src/gui/config.txt",
-		"/C/Projects/Cereal/cereal.py",
-		"/C/Projects/Cereal/cereal_nodiv.py",
-		"/C/Projects/Mustard/Parallel Curves/src/vector2.cpp",
-		"/C/Projects/Mustard/Parallel Curves/src/track.h"
+		"/C/Projects/Mustard/board_1.txt"
 	],
 	"find":
 	{
-		"height": 24.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -1016,6 +1016,22 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"reset",
+			"export",
+			"drawUnderMountain",
+			"updated",
+			".",
+			"..",
+			"...",
+			"..",
+			"enum",
+			"reset",
+			"selectedR",
+			"selectedRun",
+			"reset",
+			"30",
+			"treeList",
+			"min",
 			"selectedRun",
 			"board.reset",
 			"255",
@@ -1127,23 +1143,7 @@
 			"d",
 			"coleman",
 			"this->height",
-			"screenHeight",
-			"screenWidth",
-			"screenHeight",
-			"screenWidth",
-			"screenHeight",
-			"configuration",
-			"screenWidth",
-			"breakLines",
-			"break",
-			"pi",
-			"std::find(input.keyList.begin(), input.keyList.end(), SDLK_a) != input.keyList.end()",
-			"std::find(input.keyList.begin(), input.keyList.end(), SDLK_s) != input.keyList.end()",
-			"SDLK_ESCAPE",
-			"std::find(input.keyList.begin(), input.keyList.end(), SDLK_d) != input.keyList.end()",
-			"std::find(input.keyList.begin(), input.keyList.end(), SDLK_LEFT) != input.keyList.end()",
-			"input",
-			"getKeyList()"
+			"screenHeight"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1155,59 +1155,30 @@
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/core/file.cpp",
+					"file": "src/environment/environment.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1303,
+						"buffer_size": 773,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								356,
-								356
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/environment/environment.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2364,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								24,
-								24
+								12,
+								12
 							]
 						],
 						"settings":
@@ -1223,49 +1194,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/environment/environment.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 746,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								490,
-								490
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
+					"buffer": 1,
 					"file": "src/world.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8330,
+						"buffer_size": 8413,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3169,
-								3169
+								18,
+								18
 							]
 						],
 						"settings":
@@ -1277,24 +1219,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/environment/gravel.h",
+					"buffer": 2,
+					"file": "main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 203,
+						"buffer_size": 140,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12,
-								12
+								140,
+								140
 							]
 						],
 						"settings":
@@ -1305,58 +1247,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 3,
 					"file": "src/environment/gravel.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 435,
+						"buffer_size": 1183,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								207,
-								207
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 6,
-					"file": "src/board.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10653,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								324,
-								324
+								221,
+								221
 							]
 						],
 						"settings":
@@ -1372,20 +1280,49 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "config.txt",
+					"buffer": 4,
+					"file": "src/joiner.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 635,
+						"buffer_size": 908,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								14,
-								14
+								908,
+								908
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/William/Desktop/internship.dat",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 114,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								114,
+								114
 							]
 						],
 						"settings":
@@ -1396,7 +1333,71 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 6,
+					"file": "src/joiner.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9535,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								932,
+								937
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 51.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/bmp_polygon.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2961,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								618,
+								618
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1404,7 +1405,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 24.0
+		"height": 33.0
 	},
 	"input":
 	{
@@ -1452,7 +1453,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 44.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1502,7 +1503,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 130.0,
+	"side_bar_width": 138.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

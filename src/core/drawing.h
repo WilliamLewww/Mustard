@@ -22,6 +22,7 @@ public:
 	void drawLine(Vector2 a, Vector2 b);
 	void drawLine(Vector2 a, Vector2 b, int color[3]);
 	void drawLine(Vector2 a, Vector2 b, int color[3], int alpha);
+	void drawLine(Vector2 position, int width, int thickness, int color[3], double angle);
 	void drawLineStrip(Vector2 *points, int count, Vector2 position, float scale, int color[3]);
 	void drawLineStrip(std::vector<Vector2> points, int color[3]);
 	void drawLineStrip(std::vector<Vector2> points, int color[3], int alpha);

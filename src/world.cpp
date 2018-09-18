@@ -19,12 +19,13 @@ void World::draw() {
 	track.updateVisibleRange();
 	generateMountainPolygons();
 
+	track.draw(configuration.getConfigurations()["TrackGenerationStyle"], configuration.getConfigurations()["DrawTrackDetails"]);
+	environment.drawUnderMountain();
+
 	drawing.drawPolygon(mountainPolygonsStart, mountainColor, 255);
 	for (std::vector<Vector2> polygon : mountainPolygons) {
 		drawing.drawPolygon(polygon, mountainColor, 255);
 	}
-
-	track.draw(configuration.getConfigurations()["TrackGenerationStyle"], configuration.getConfigurations()["DrawTrackDetails"]);
 
 	environment.draw();
 }
@@ -82,7 +83,7 @@ void World::generateWorld() {
 	generateSpeedZones();
 	environment.generateTrees(track.railList[1], 5, 10, 5, 15);
 	environment.generateSquirrels(track.railList, 15, 5, 7);
-	environment.generateGravel(track.railList, 25);
+	environment.generateGravel(track.railList, 35);
 }
 
 void World::generateSpeedZones() {
