@@ -27,6 +27,7 @@ void Joiner::reset(bool crashed) {
 	}
 	else {
 		isKeyStart = false;
+		allowKeyStart = false;
 		world.reset();
 		board.reset();
 		hud.resetSplitsDisplay();
@@ -61,6 +62,27 @@ void Joiner::initializeWorld() {
 }
 
 void Joiner::update() {
+	if (input.checkKeyDown(SDLK_f)) { isPaused = true; }
+	else { isPaused = false; }
+
+	if (allowKeyStart && input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
+		isKeyStart = true;
+	}
+
+	if (!isKeyStart) {
+		if (allowKeyStart) {
+			if (input.getKeyListSize() > 0) {
+				isKeyStart = true;
+				allowKeyStart = false;
+			}
+		}
+		else {
+			if (input.getKeyListSize() == 0) {
+				allowKeyStart = true;
+			}
+		}
+	}
+
 	if (isCrashed) {
 		if (allowRestartAfterCrash) {
 			if (input.getKeyListSize() > 0) {
@@ -74,13 +96,6 @@ void Joiner::update() {
 				allowRestartAfterCrash = true;
 			}
 		}
-	}
-
-	if (input.checkKeyDown(SDLK_f)) { isPaused = true; }
-	else { isPaused = false; }
-
-	if (input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
-		isKeyStart = true;
 	}
 
 	if (isPaused == false && isKeyStart == true) {

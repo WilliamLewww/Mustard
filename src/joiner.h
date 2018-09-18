@@ -21,10 +21,10 @@ private:
 	int speedZone = 0, trackDirection = 0;
 
 	bool isPaused = false;
-	bool isKeyStart = false;
 	bool isCrashed = false;
-
 	bool allowRestartAfterCrash = false;
+	bool isKeyStart = false;
+	bool allowKeyStart = false;
 	
 	bool showBuyMenu = true;
 	bool showBoardEdit, showTrackEdit, showSessionStats = true, showLeaderboards = false;
