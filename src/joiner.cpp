@@ -35,7 +35,6 @@ void Joiner::reset(bool crashed, bool crashedParticles = true) {
 		stillShowBoard = false;
 		isKeyStart = false;
 		allowKeyStart = false;
-		particleManager.clearAllParticles();
 		world.reset();
 		board.reset();
 		hud.resetSplitsDisplay();
@@ -52,6 +51,7 @@ void Joiner::resetFull() {
 	world = World();
 	hud = HUD();
 	initializeWorld();
+	particleManager.clearAllParticles();
 
 	showBoardEdit = false;
 	showTrackEdit = false;
