@@ -20,14 +20,22 @@ void Joiner::initialize() {
 	initializeWorld();
 }
 
-void Joiner::reset(bool crashed) {
+void Joiner::reset(bool crashed, bool crashedParticles = true) {
 	if (crashed) {
 		isCrashed = true;
-		particleManager.generateCrashParticles(20, board.bitmapPolygon.getCenter());
+
+		if (crashedParticles) {
+			particleManager.generateCrashParticles(20, board.bitmapPolygon.getCenter());
+		}
+		else {
+			stillShowBoard = true;
+		}
 	}
 	else {
+		stillShowBoard = false;
 		isKeyStart = false;
 		allowKeyStart = false;
+		particleManager.clearAllParticles();
 		world.reset();
 		board.reset();
 		hud.resetSplitsDisplay();
@@ -62,8 +70,8 @@ void Joiner::initializeWorld() {
 }
 
 void Joiner::update() {
-	if (input.checkKeyDown(SDLK_f)) { isPaused = true; }
-	else { isPaused = false; }
+	// if (input.checkKeyDown(SDLK_f)) { isPaused = true; }
+	// else { isPaused = false; }
 
 	if (allowKeyStart && input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
 		isKeyStart = true;
@@ -71,7 +79,7 @@ void Joiner::update() {
 
 	if (!isKeyStart) {
 		if (allowKeyStart) {
-			if (input.getKeyListSize() > 0) {
+			if (input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
 				isKeyStart = true;
 				allowKeyStart = false;
 			}
@@ -144,8 +152,8 @@ void Joiner::update() {
 			}
 		}
 
-		if (board.bitmapPolygon.getPosition().x > world.track.railList[0][world.track.railList[0].size() - 1].x) {
-			reset(false);
+		if (board.bitmapPolygon.getPosition().x > hud.splitsDisplay.checkpointList[hud.splitsDisplay.checkpointList.size() - 1]) {
+			reset(true, false);
 		}
 
 	}
@@ -333,7 +341,7 @@ void Joiner::draw() {
 	glPushMatrix();
 	glTranslatef(-camera.getPosition().x + (configuration.getScreenWidth() / 2) - (board.bitmapPolygon.getWidth() / 2), -camera.getPosition().y + (configuration.getScreenHeight() / 2) - (board.bitmapPolygon.getHeight() / 2), 0);
 	world.draw();
-	if (!isCrashed) { board.draw(); }
+	if (!isCrashed || stillShowBoard) { board.draw(); }
 	particleManager.draw();
 	glPopMatrix();
 

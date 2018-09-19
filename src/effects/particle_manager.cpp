@@ -32,6 +32,12 @@ void ParticleManager::removeOldParticles() {
 	}
 }
 
+void ParticleManager::clearAllParticles() {
+	thaneParticlesList.clear();
+	squirrelGibParticlesList.clear();
+	crashParticlesList.clear();
+}
+
 void ParticleManager::update() {
 	elapsedTimeSeconds = timer.getTimeSeconds();
 

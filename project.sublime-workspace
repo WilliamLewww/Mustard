@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"ck",
+				"checkpointList"
+			],
+			[
+				"spli",
+				"splitList"
+			],
+			[
 				"is",
 				"isCrashed"
 			],
@@ -506,33 +514,34 @@
 			[
 				"line",
 				"linePos"
-			],
-			[
-				"ob",
-				"objectC"
-			],
-			[
-				"pr",
-				"productsA"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "src/effects/crash_particle.cpp",
+			"file": "src/joiner.h",
 			"settings":
 			{
-				"buffer_size": 1197,
+				"buffer_size": 1054,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/joiner.cpp",
+			"file": "src/effects/particle_manager.h",
 			"settings":
 			{
-				"buffer_size": 10262,
+				"buffer_size": 837,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/effects/particle_manager.cpp",
+			"settings":
+			{
+				"buffer_size": 2210,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -542,43 +551,74 @@
 			"settings":
 			{
 				"buffer_size": 10629,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/environment/gravel.cpp",
+			"settings":
+			{
+				"buffer_size": 1300,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/effects/crash_particle.h",
+			"file": "project.sublime-project",
 			"settings":
 			{
-				"buffer_size": 540,
+				"buffer_size": 2008,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/effects/particle_manager.h",
+			"file": "src/track.h",
 			"settings":
 			{
-				"buffer_size": 810,
+				"buffer_size": 1166,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/world.cpp",
+			"settings":
+			{
+				"buffer_size": 8413,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/track.cpp",
+			"settings":
+			{
+				"buffer_size": 4359,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/joiner.cpp",
+			"settings":
+			{
+				"buffer_size": 10607,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "Searching 79 files for \"enum\" (whole word)\n\nC:\\Projects\\Thane\\src\\core\\imgui\\imgui.cpp:\n  227      - Set io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad to enable.\n  228      - Backend: Set io.BackendFlags |= ImGuiBackendFlags_HasGamepad + fill the io.NavInputs[] fields before calling NewFrame(). Note that io.NavInputs[] is cleared by EndFrame().\n  229:     - See 'enum ImGuiNavInput_' in imgui.h for a description of inputs. For each entry of io.NavInputs[], set the following values:\n  230           0.0f= not held. 1.0f= fully held. Pass intermediate 0.0f..1.0f values for analog triggers/sticks.\n  231      - We uses a simple >0.0f test for activation testing, and won't attempt to test for a dead-zone.\n  ...\n  277   - 2017/12/13 (1.53) - obsoleted IsRootWindowFocused() in favor of using IsWindowFocused(ImGuiFocusedFlags_RootWindow). Kept redirection function (will obsolete).\n  278                       - obsoleted IsRootWindowOrAnyChildFocused() in favor of using IsWindowFocused(ImGuiFocusedFlags_RootAndChildWindows). Kept redirection function (will obsolete).\n  279:  - 2017/12/12 (1.53) - renamed ImGuiTreeNodeFlags_AllowOverlapMode to ImGuiTreeNodeFlags_AllowItemOverlap. Kept redirection enum (will obsolete).\n  280   - 2017/12/10 (1.53) - removed SetNextWindowContentWidth(), prefer using SetNextWindowContentSize(). Kept redirection function (will obsolete).\n  281   - 2017/11/27 (1.53) - renamed ImGuiTextBuffer::append() helper to appendf(), appendv() to appendfv(). If you copied the 'Log' demo in your code, it uses appendv() so that needs to be renamed.\n  ...\n  312   - 2016/11/06 (1.50) - BeginChild(const char*) now applies the stack id to the provided label, consistently with other functions as it should always have been. It shouldn't affect you unless (extremely unlikely) you were appending multiple times to a same child from different locations of the stack id. If that's the case, generate an id with GetId() and use it instead of passing string to BeginChild().\n  313   - 2016/10/15 (1.50) - avoid 'void* user_data' parameter to io.SetClipboardTextFn/io.GetClipboardTextFn pointers. We pass io.ClipboardUserData to it.\n  314:  - 2016/09/25 (1.50) - style.WindowTitleAlign is now a ImVec2 (ImGuiAlign enum was removed). set to (0.5f,0.5f) for horizontal+vertical centering, (0.0f,0.0f) for upper-left, etc.\n  315   - 2016/07/30 (1.50) - SameLine(x) with x>0.0f is now relative to left of column/group if any, and not always to left of window. This was sort of always the intent and hopefully breakage should be minimal.\n  316   - 2016/05/12 (1.49) - title bar (using ImGuiCol_TitleBg/ImGuiCol_TitleBgActive colors) isn't rendered over a window background (ImGuiCol_WindowBg color) anymore. \n  ...\n 5184  }\n 5185  \n 5186: enum ImGuiPopupPositionPolicy\n 5187  {\n 5188      ImGuiPopupPositionPolicy_Default,\n ....\n 6654  const char* ImGui::GetStyleColorName(ImGuiCol idx)\n 6655  {\n 6656:     // Create switch-case from enum with regexp: ImGuiCol_{.*}, --> case ImGuiCol_\\1: return \"\\1\";\n 6657      switch (idx)\n 6658      {\n ....\n 9727  }\n 9728  \n 9729: // We don't use an enum so we can build even with conflicting symbols (if another user of stb_textedit.h leak their STB_TEXTEDIT_K_* symbols)\n 9730  #define STB_TEXTEDIT_K_LEFT         0x10000 // keyboard input to move cursor left\n 9731  #define STB_TEXTEDIT_K_RIGHT        0x10001 // keyboard input to move cursor right\n ....\n 11588  \n 11589  // Edit colors components (each component in 0.0f..1.0f range). \n 11590: // See enum ImGuiColorEditFlags_ for available options. e.g. Only access 3 floats if ImGuiColorEditFlags_NoAlpha flag is set.\n 11591  // With typical options: Left-click on colored square to open color picker. Right-click to open option menu. CTRL-Click over input fields to edit them and TAB to go to next item.\n 11592  bool ImGui::ColorEdit4(const char* label, float col[4], ImGuiColorEditFlags flags)\n\nC:\\Projects\\Thane\\src\\core\\imgui\\imgui.h:\n   82  typedef unsigned int ImGuiID;       // Unique ID used by widgets (typically hashed from a stack of string)\n   83  typedef unsigned short ImWchar;     // Character for keyboard input/display\n   84: typedef int ImGuiCol;               // enum: a color identifier for styling     // enum ImGuiCol_\n   85: typedef int ImGuiDir;               // enum: a cardinal direction               // enum ImGuiDir_\n   86: typedef int ImGuiCond;              // enum: a condition for Set*()             // enum ImGuiCond_\n   87: typedef int ImGuiKey;               // enum: a key identifier (ImGui-side enum) // enum ImGuiKey_\n   88: typedef int ImGuiNavInput;          // enum: an input identifier for navigation // enum ImGuiNavInput_\n   89: typedef int ImGuiMouseCursor;       // enum: a mouse cursor identifier          // enum ImGuiMouseCursor_\n   90: typedef int ImGuiStyleVar;          // enum: a variable identifier for styling  // enum ImGuiStyleVar_\n   91: typedef int ImDrawCornerFlags;      // flags: for ImDrawList::AddRect*() etc.   // enum ImDrawCornerFlags_\n   92: typedef int ImDrawListFlags;        // flags: for ImDrawList                    // enum ImDrawListFlags_\n   93: typedef int ImFontAtlasFlags;       // flags: for ImFontAtlas                   // enum ImFontAtlasFlags_\n   94: typedef int ImGuiBackendFlags;      // flags: for io.BackendFlags               // enum ImGuiBackendFlags_\n   95: typedef int ImGuiColorEditFlags;    // flags: for ColorEdit*(), ColorPicker*()  // enum ImGuiColorEditFlags_\n   96: typedef int ImGuiColumnsFlags;      // flags: for *Columns*()                   // enum ImGuiColumnsFlags_\n   97: typedef int ImGuiConfigFlags;       // flags: for io.ConfigFlags                // enum ImGuiConfigFlags_\n   98: typedef int ImGuiDragDropFlags;     // flags: for *DragDrop*()                  // enum ImGuiDragDropFlags_\n   99: typedef int ImGuiComboFlags;        // flags: for BeginCombo()                  // enum ImGuiComboFlags_\n  100: typedef int ImGuiFocusedFlags;      // flags: for IsWindowFocused()             // enum ImGuiFocusedFlags_\n  101: typedef int ImGuiHoveredFlags;      // flags: for IsItemHovered() etc.          // enum ImGuiHoveredFlags_\n  102: typedef int ImGuiInputTextFlags;    // flags: for InputText*()                  // enum ImGuiInputTextFlags_\n  103: typedef int ImGuiSelectableFlags;   // flags: for Selectable()                  // enum ImGuiSelectableFlags_\n  104: typedef int ImGuiTreeNodeFlags;     // flags: for TreeNode*(),CollapsingHeader()// enum ImGuiTreeNodeFlags_\n  105: typedef int ImGuiWindowFlags;       // flags: for Begin*()                      // enum ImGuiWindowFlags_\n  106  typedef int (*ImGuiTextEditCallback)(ImGuiTextEditCallbackData *data);\n  107  typedef void (*ImGuiSizeCallback)(ImGuiSizeCallbackData* data);\n  ...\n  552  \n  553  // Flags for ImGui::Begin()\n  554: enum ImGuiWindowFlags_\n  555  {\n  556      ImGuiWindowFlags_NoTitleBar             = 1 << 0,   // Disable title-bar\n  ...\n  586  \n  587  // Flags for ImGui::InputText()\n  588: enum ImGuiInputTextFlags_\n  589  {\n  590      ImGuiInputTextFlags_CharsDecimal        = 1 << 0,   // Allow 0123456789.+-*/\n  ...\n  611  \n  612  // Flags for ImGui::TreeNodeEx(), ImGui::CollapsingHeader*()\n  613: enum ImGuiTreeNodeFlags_\n  614  {\n  615      ImGuiTreeNodeFlags_Selected             = 1 << 0,   // Draw as selected\n  ...\n  636  \n  637  // Flags for ImGui::Selectable()\n  638: enum ImGuiSelectableFlags_\n  639  {\n  640      ImGuiSelectableFlags_DontClosePopups    = 1 << 0,   // Clicking this don't close parent popup window\n  ...\n  644  \n  645  // Flags for ImGui::BeginCombo()\n  646: enum ImGuiComboFlags_\n  647  {\n  648      ImGuiComboFlags_PopupAlignLeft          = 1 << 0,   // Align the popup toward the left by default\n  ...\n  657  \n  658  // Flags for ImGui::IsWindowFocused()\n  659: enum ImGuiFocusedFlags_\n  660  {\n  661      ImGuiFocusedFlags_ChildWindows                  = 1 << 0,   // IsWindowFocused(): Return true if any children of the window is focused\n  ...\n  667  // Flags for ImGui::IsItemHovered(), ImGui::IsWindowHovered()\n  668  // Note: If you are trying to check whether your mouse should be dispatched to imgui or to your app, you should use the 'io.WantCaptureMouse' boolean for that. Please read the FAQ!\n  669: enum ImGuiHoveredFlags_\n  670  {\n  671      ImGuiHoveredFlags_Default                       = 0,        // Return true if directly over the item/window, not obstructed by another window, not obstructed by an active popup or modal blocking inputs under them.\n  ...\n  682  \n  683  // Flags for ImGui::BeginDragDropSource(), ImGui::AcceptDragDropPayload()\n  684: enum ImGuiDragDropFlags_\n  685  {\n  686      // BeginDragDropSource() flags\n  ...\n  701  \n  702  // A cardinal direction\n  703: enum ImGuiDir_\n  704  {\n  705      ImGuiDir_None    = -1,\n  ...\n  712  \n  713  // User fill ImGuiIO.KeyMap[] array with indices into the ImGuiIO.KeysDown[512] array\n  714: enum ImGuiKey_\n  715  {\n  716      ImGuiKey_Tab,\n  ...\n  742  // Gamepad:  Set io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad to enable. Back-end: set ImGuiBackendFlags_HasGamepad and fill the io.NavInputs[] fields before calling NewFrame(). Note that io.NavInputs[] is cleared by EndFrame().\n  743  // Read instructions in imgui.cpp for more details. Download PNG/PSD at goo.gl/9LgVZW.\n  744: enum ImGuiNavInput_\n  745  {\n  746      // Gamepad Mapping\n  ...\n  774  \n  775  // Configuration flags stored in io.ConfigFlags. Set by user/application.\n  776: enum ImGuiConfigFlags_\n  777  {\n  778      ImGuiConfigFlags_NavEnableKeyboard      = 1 << 0,   // Master keyboard navigation enable flag. NewFrame() will automatically fill io.NavInputs[] based on io.KeyDown[].\n  ...\n  788  \n  789  // Back-end capabilities flags stored in io.BackendFlags. Set by imgui_impl_xxx or custom back-end.\n  790: enum ImGuiBackendFlags_\n  791  {\n  792      ImGuiBackendFlags_HasGamepad            = 1 << 0,   // Back-end has a connected gamepad.\n  ...\n  796  \n  797  // Enumeration for PushStyleColor() / PopStyleColor()\n  798: enum ImGuiCol_\n  799  {\n  800      ImGuiCol_Text,\n  ...\n  851  \n  852  // Enumeration for PushStyleVar() / PopStyleVar() to temporarily modify the ImGuiStyle structure.\n  853: // NB: the enum only refers to fields of ImGuiStyle which makes sense to be pushed/popped inside UI code. During initialization, feel free to just poke into ImGuiStyle directly.\n  854: // NB: if changing this enum, you need to update the associated internal table GStyleVarInfo[] accordingly. This is where we link enum values to members offset/type.\n  855: enum ImGuiStyleVar_\n  856  {\n  857:     // Enum name ......................// Member in ImGuiStyle structure (see ImGuiStyle for descriptions)\n  858      ImGuiStyleVar_Alpha,               // float     Alpha\n  859      ImGuiStyleVar_WindowPadding,       // ImVec2    WindowPadding\n  ...\n  886  \n  887  // Enumeration for ColorEdit3() / ColorEdit4() / ColorPicker3() / ColorPicker4() / ColorButton()\n  888: enum ImGuiColorEditFlags_\n  889  {\n  890      ImGuiColorEditFlags_NoAlpha         = 1 << 1,   //              // ColorEdit, ColorPicker, ColorButton: ignore Alpha component (read 3 components from the input pointer).\n  ...\n  919  // Enumeration for GetMouseCursor()\n  920  // User code may request binding to display given cursor by calling SetMouseCursor(), which is why we have some cursors that are marked unused here\n  921: enum ImGuiMouseCursor_\n  922  {\n  923      ImGuiMouseCursor_None = -1,\n  ...\n  938  \n  939  // Condition for ImGui::SetWindow***(), SetNextWindow***(), SetNextTreeNode***() functions\n  940: // All those functions treat 0 as a shortcut to ImGuiCond_Always. From the point of view of the user use this as an enum (don't combine multiple values into flags).\n  941: enum ImGuiCond_\n  942  {\n  943      ImGuiCond_Always        = 1 << 0,   // Set the variable\n  ...\n  999      //------------------------------------------------------------------\n 1000  \n 1001:     ImGuiConfigFlags   ConfigFlags;         // = 0                  // See ImGuiConfigFlags_ enum. Set by user/application. Gamepad/keyboard navigation options, etc.\n 1002:     ImGuiBackendFlags  BackendFlags;        // = 0                  // Set ImGuiBackendFlags_ enum. Set by imgui_impl_xxx files or custom back-end.\n 1003      ImVec2        DisplaySize;              // <unset>              // Display size, in pixels. For clamping windows positions.\n 1004      float         DeltaTime;                // = 1.0f/60.0f         // Time elapsed since last frame, in seconds.\n ....\n 1508  };\n 1509  \n 1510: enum ImDrawCornerFlags_\n 1511  {\n 1512      ImDrawCornerFlags_TopLeft   = 1 << 0, // 0x1\n ....\n 1521  };\n 1522  \n 1523: enum ImDrawListFlags_\n 1524  {\n 1525      ImDrawListFlags_AntiAliasedLines = 1 << 0,\n ....\n 1673  };\n 1674  \n 1675: enum ImFontAtlasFlags_\n 1676  {\n 1677      ImFontAtlasFlags_NoPowerOfTwoHeight = 1 << 0,   // Don't round the height to next power of two\n\nC:\\Projects\\Thane\\src\\core\\imgui\\imgui_internal.h:\n   44  struct ImGuiWindowSettings;\n   45  \n   46: typedef int ImGuiLayoutType;        // enum: horizontal or vertical             // enum ImGuiLayoutType_\n   47: typedef int ImGuiButtonFlags;       // flags: for ButtonEx(), ButtonBehavior()  // enum ImGuiButtonFlags_\n   48: typedef int ImGuiItemFlags;         // flags: for PushItemFlag()                // enum ImGuiItemFlags_\n   49: typedef int ImGuiItemStatusFlags;   // flags: storage for DC.LastItemXXX        // enum ImGuiItemStatusFlags_\n   50: typedef int ImGuiNavHighlightFlags; // flags: for RenderNavHighlight()          // enum ImGuiNavHighlightFlags_\n   51: typedef int ImGuiNavDirSourceFlags; // flags: for GetNavInputAmount2d()         // enum ImGuiNavDirSourceFlags_\n   52: typedef int ImGuiSeparatorFlags;    // flags: for Separator() - internal        // enum ImGuiSeparatorFlags_\n   53: typedef int ImGuiSliderFlags;       // flags: for SliderBehavior()              // enum ImGuiSliderFlags_\n   54  \n   55  //-------------------------------------------------------------------------\n   ..\n  170  //-----------------------------------------------------------------------------\n  171  \n  172: enum ImGuiButtonFlags_\n  173  {\n  174      ImGuiButtonFlags_Repeat                 = 1 << 0,   // hold to repeat\n  ...\n  188  };\n  189  \n  190: enum ImGuiSliderFlags_\n  191  {\n  192      ImGuiSliderFlags_Vertical               = 1 << 0\n  193  };\n  194  \n  195: enum ImGuiColumnsFlags_\n  196  {\n  197      // Default: 0\n  ...\n  203  };\n  204  \n  205: enum ImGuiSelectableFlagsPrivate_\n  206  {\n  207      // NB: need to be in sync with last value of ImGuiSelectableFlags_\n  ...\n  212  };\n  213  \n  214: enum ImGuiSeparatorFlags_\n  215  {\n  216      ImGuiSeparatorFlags_Horizontal          = 1 << 0,   // Axis default to current layout type, so generally Horizontal unless e.g. in a menu bar\n  ...\n  219  \n  220  // Storage for LastItem data\n  221: enum ImGuiItemStatusFlags_\n  222  {\n  223      ImGuiItemStatusFlags_HoveredRect        = 1 << 0,\n  ...\n  226  \n  227  // FIXME: this is in development, not exposed/functional as a generic feature yet.\n  228: enum ImGuiLayoutType_\n  229  {\n  230      ImGuiLayoutType_Vertical,\n  ...\n  232  };\n  233  \n  234: enum ImGuiAxis\n  235  {\n  236      ImGuiAxis_None = -1,\n  ...\n  239  };\n  240  \n  241: enum ImGuiPlotType\n  242  {\n  243      ImGuiPlotType_Lines,\n  ...\n  245  };\n  246  \n  247: enum ImGuiDataType\n  248  {\n  249      ImGuiDataType_Int,\n  ...\n  253  };\n  254  \n  255: enum ImGuiInputSource\n  256  {\n  257      ImGuiInputSource_None = 0,\n  ...\n  264  \n  265  // FIXME-NAV: Clarify/expose various repeat delay/rate\n  266: enum ImGuiInputReadMode\n  267  {\n  268      ImGuiInputReadMode_Down,\n  ...\n  274  };\n  275  \n  276: enum ImGuiNavHighlightFlags_\n  277  {\n  278      ImGuiNavHighlightFlags_TypeDefault  = 1 << 0,\n  ...\n  282  };\n  283  \n  284: enum ImGuiNavDirSourceFlags_\n  285  {\n  286      ImGuiNavDirSourceFlags_Keyboard     = 1 << 0,\n  ...\n  289  };\n  290  \n  291: enum ImGuiNavForward\n  292  {\n  293      ImGuiNavForward_None,\n  ...\n  796  // Transient per-window flags, reset at the beginning of the frame. For child window, inherited from parent on first Begin().\n  797  // This is going to be exposed in imgui.h when stabilized enough.\n  798: enum ImGuiItemFlags_\n  799  {\n  800      ImGuiItemFlags_AllowKeyboardFocus           = 1 << 0,  // true\n  ...\n  891      char*                   Name;\n  892      ImGuiID                 ID;                                 // == ImHash(Name)\n  893:     ImGuiWindowFlags        Flags;                              // See enum ImGuiWindowFlags_\n  894      ImVec2                  PosFloat;\n  895      ImVec2                  Pos;                                // Position rounded-up to nearest pixel\n\nC:\\Projects\\Thane\\src\\core\\imgui\\stb_rect_pack.h:\n  151  // If you call init again, this will be reset to the default.\n  152  \n  153: enum\n  154  {\n  155     STBRP_HEURISTIC_Skyline_default=0,\n  ...\n  213  #endif\n  214  \n  215: enum\n  216  {\n  217     STBRP__INIT_skyline = 1\n\nC:\\Projects\\Thane\\src\\core\\imgui\\stb_truetype.h:\n  795  \n  796  #ifndef STBTT_vmove // you can predefine these to use different values (but why?)\n  797:    enum {\n  798        STBTT_vmove=1,\n  799        STBTT_vline,\n  ...\n 1009  //     http://www.microsoft.com/typography/otspec/name.htm\n 1010  \n 1011: enum { // platformID\n 1012     STBTT_PLATFORM_ID_UNICODE   =0,\n 1013     STBTT_PLATFORM_ID_MAC       =1,\n ....\n 1016  };\n 1017  \n 1018: enum { // encodingID for STBTT_PLATFORM_ID_UNICODE\n 1019     STBTT_UNICODE_EID_UNICODE_1_0    =0,\n 1020     STBTT_UNICODE_EID_UNICODE_1_1    =1,\n ....\n 1024  };\n 1025  \n 1026: enum { // encodingID for STBTT_PLATFORM_ID_MICROSOFT\n 1027     STBTT_MS_EID_SYMBOL        =0,\n 1028     STBTT_MS_EID_UNICODE_BMP   =1,\n ....\n 1031  };\n 1032  \n 1033: enum { // encodingID for STBTT_PLATFORM_ID_MAC; same as Script Manager codes\n 1034     STBTT_MAC_EID_ROMAN        =0,   STBTT_MAC_EID_ARABIC       =4,\n 1035     STBTT_MAC_EID_JAPANESE     =1,   STBTT_MAC_EID_HEBREW       =5,\n ....\n 1038  };\n 1039  \n 1040: enum { // languageID for STBTT_PLATFORM_ID_MICROSOFT; same as LCID...\n 1041         // problematic because there are e.g. 16 english LCIDs and 16 arabic LCIDs\n 1042     STBTT_MS_LANG_ENGLISH     =0x0409,   STBTT_MS_LANG_ITALIAN     =0x0410,\n ....\n 1048  };\n 1049  \n 1050: enum { // languageID for STBTT_PLATFORM_ID_MAC\n 1051     STBTT_MAC_LANG_ENGLISH      =0 ,   STBTT_MAC_LANG_JAPANESE     =11,\n 1052     STBTT_MAC_LANG_ARABIC       =12,   STBTT_MAC_LANG_KOREAN       =23,\n\nC:\\Projects\\Thane\\src\\effects\\particle_manager.h:\n    6  #include \"squirrel_giblets_particle.h\"\n    7  \n    8: enum M {\n    9  \tTHANE = 400;\n   10  \tSQUIRRELGIB = 75\n\n101 matches across 6 files\n",
+			"file": "src/hud/splits_display.cpp",
 			"settings":
 			{
-				"buffer_size": 18736,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
+				"buffer_size": 3207,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/core/imgui/imgui.h",
+			"file": "src/hud/splits_display.h",
 			"settings":
 			{
-				"buffer_size": 171777,
+				"buffer_size": 866,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -587,15 +627,6 @@
 			"settings":
 			{
 				"buffer_size": 140,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/joiner.h",
-			"settings":
-			{
-				"buffer_size": 1000,
-				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -678,6 +709,38 @@
 					"Compile"
 				],
 				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/Java Compile.sublime-build",
+					""
+				],
+				[
+					"Packages/User/Java Run.sublime-build",
+					""
+				]
+			],
+			[
+				"SDL Project",
+				"Compile"
+			]
+		],
+		[
+			[
+				[
+					"SDL Project",
+					""
+				],
+				[
+					"SDL Project",
+					"Compile"
+				],
+				[
 					"SDL Project",
 					"Run"
 				],
@@ -698,9 +761,41 @@
 				"SDL Project",
 				""
 			]
+		],
+		[
+			[
+				[
+					"SDL Project",
+					""
+				],
+				[
+					"SDL Project",
+					"gdb"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/Java Compile.sublime-build",
+					""
+				],
+				[
+					"Packages/User/Java Run.sublime-build",
+					""
+				]
+			],
+			[
+				"SDL Project",
+				"gdb"
+			]
 		]
 	],
-	"build_varint": "",
+	"build_varint": "Compile",
 	"command_palette":
 	{
 		"height": 392.0,
@@ -875,14 +970,24 @@
 		"/C/Projects/Thane",
 		"/C/Projects/Thane/src",
 		"/C/Projects/Thane/src/core",
-		"/C/Projects/Thane/src/effects",
-		"/C/Projects/Thane/src/environment"
+		"/C/Projects/Thane/src/environment",
+		"/C/Projects/Thane/src/hud"
 	],
 	"file_history":
 	[
+		"/C/Projects/Thane/main.cpp",
+		"/C/Projects/Thane/src/hud/minimap.cpp",
+		"/C/Projects/Thane/project.sublime-project",
+		"/C/Users/William/AppData/Roaming/Sublime Text 3/Packages/CMD/Context.sublime-menu",
+		"/C/Users/William/AppData/Roaming/Sublime Text 3/Packages/CMD/cmd.py",
+		"/C/Projects/Thane/src/core/imgui/imgui.h",
+		"/C/Projects/Thane/src/effects/particle_manager.h",
+		"/C/Projects/Thane/src/effects/crash_particle.h",
+		"/C/Projects/Thane/src/board.cpp",
+		"/C/Projects/Thane/src/effects/crash_particle.cpp",
+		"/C/Projects/Thane/src/joiner.cpp",
 		"/C/Projects/Thane/src/effects/particle_manager.cpp",
 		"/C/Projects/Thane/README.md",
-		"/C/Projects/Thane/main.cpp",
 		"/C/Projects/Thane/src/effects/squirrel_giblets_particle.h",
 		"/C/Projects/Thane/src/joiner.h",
 		"/C/Projects/Thane/src/effects/squirrel_giblets_particle.cpp",
@@ -890,7 +995,6 @@
 		"/C/Projects/Thane/src/core/drawing.h",
 		"/C/Projects/Thane/config.txt",
 		"/C/Projects/Thane/src/bmp_polygon.h",
-		"/C/Projects/Thane/src/joiner.cpp",
 		"/C/Projects/Thane/src/environment/gravel.cpp",
 		"/C/Projects/Thane/src/environment/environment.h",
 		"/C/Projects/Thane/src/world.cpp",
@@ -900,7 +1004,6 @@
 		"/C/Projects/Enum Project/res/database.txt",
 		"/C/Projects/Enum Project/src/Main.java",
 		"/C/Projects/Thane/src/core/vector3.cpp",
-		"/C/Projects/Thane/src/core/imgui/imgui.h",
 		"/C/Users/William/Desktop/database.txt",
 		"/C/Projects/Thane/src/core/imgui/imgui_internal.h",
 		"/C/Projects/Thane/engine.cpp",
@@ -910,7 +1013,6 @@
 		"/C/Projects/Thane/src/core/file.cpp",
 		"/C/Projects/Thane/src/environment/gravel.h",
 		"/C/Projects/Thane/src/environment/environment.cpp",
-		"/C/Projects/Thane/src/board.cpp",
 		"/C/Users/William/Desktop/25_capping_frame_rate.cpp",
 		"/C/Projects/Thane/src/environment/chunder.h",
 		"/C/Projects/Thane/src/environment/chunder.cpp",
@@ -925,10 +1027,8 @@
 		"/C/Projects/Thane/src/environment/squirrel.cpp",
 		"/C/Projects/Thane/src/environment/squirrel.h",
 		"/C/Projects/Thane/src/effects/thane_particle.cpp",
-		"/C/Projects/Thane/src/effects/particle_manager.h",
 		"/C/Projects/Thane/src/hud/hud.cpp",
 		"/C/Projects/Thane/src/hud/minimap.h",
-		"/C/Projects/Thane/src/hud/minimap.cpp",
 		"/C/Projects/Thane/src/hud/hud.h",
 		"/C/Projects/Thane/src/core/input.h",
 		"/C/Projects/Thane/src/core/timer.h",
@@ -942,7 +1042,6 @@
 		"/C/Projects/Thane/src/road.h",
 		"/C/Users/William/AppData/Roaming/Sublime Text 3/Packages/User/Java Run.sublime-build",
 		"/C/Users/William/AppData/Roaming/Sublime Text 3/Packages/User/Java.sublime-build",
-		"/C/Projects/Thane/project.sublime-project",
 		"/C/Projects/Thane/src/environment/tree.cpp",
 		"/C/Projects/Thane/src/environment/tree.h",
 		"/C/Projects/Thane/src/effects/particle_manager",
@@ -1003,11 +1102,7 @@
 		"/C/Projects/Mustard/main_old.cpp",
 		"/C/Projects/Mustard/src/world.cpp",
 		"/C/Projects/Mustard/global.h",
-		"/C/Projects/Mustard/src/joiner.cpp",
-		"/C/Projects/Mustard/config.txt",
-		"/C/Projects/Mustard/src/board.cpp",
-		"/C/Projects/Mustard/src/board.h",
-		"/C/Projects/Mustard/board_1.txt"
+		"/C/Projects/Mustard/src/joiner.cpp"
 	],
 	"find":
 	{
@@ -1173,52 +1268,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/effects/crash_particle.cpp",
+					"file": "src/joiner.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1197,
+						"buffer_size": 1054,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								890,
-								890
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/joiner.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10262,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1370,
-								1370
+								540,
+								554
 							]
 						],
 						"settings":
@@ -1226,15 +1293,73 @@
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 230.0,
-						"translation.y": 7106.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/effects/particle_manager.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 837,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								821,
+								836
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"file": "src/effects/particle_manager.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2210,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1414,
+								1414
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "src/board.cpp",
 					"semi_transient": false,
 					"settings":
@@ -1246,8 +1371,8 @@
 						"selection":
 						[
 							[
-								10593,
-								10593
+								1574,
+								1574
 							]
 						],
 						"settings":
@@ -1256,593 +1381,236 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 44110.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "src/effects/crash_particle.h",
+					"buffer": 4,
+					"file": "src/environment/gravel.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 540,
+						"buffer_size": 1300,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								264,
-								240
+								1126,
+								1126
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/effects/particle_manager.h",
+					"buffer": 5,
+					"file": "project.sublime-project",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 810,
+						"buffer_size": 2008,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								170,
-								186
+								1884,
+								1884
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 17.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/track.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1166,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/world.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8413,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 8,
+					"file": "src/track.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4359,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 418.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 9,
+					"file": "src/joiner.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 18736,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										371,
-										375
-									],
-									[
-										1210,
-										1214
-									],
-									[
-										2240,
-										2244
-									],
-									[
-										2760,
-										2764
-									],
-									[
-										2955,
-										2959
-									],
-									[
-										3109,
-										3113
-									],
-									[
-										3514,
-										3518
-									],
-									[
-										4197,
-										4201
-									],
-									[
-										4241,
-										4245
-									],
-									[
-										4302,
-										4306
-									],
-									[
-										4346,
-										4350
-									],
-									[
-										4407,
-										4411
-									],
-									[
-										4451,
-										4455
-									],
-									[
-										4513,
-										4517
-									],
-									[
-										4548,
-										4552
-									],
-									[
-										4557,
-										4561
-									],
-									[
-										4618,
-										4622
-									],
-									[
-										4662,
-										4666
-									],
-									[
-										4728,
-										4732
-									],
-									[
-										4772,
-										4776
-									],
-									[
-										4841,
-										4845
-									],
-									[
-										4885,
-										4889
-									],
-									[
-										4995,
-										4999
-									],
-									[
-										5109,
-										5113
-									],
-									[
-										5221,
-										5225
-									],
-									[
-										5334,
-										5338
-									],
-									[
-										5448,
-										5452
-									],
-									[
-										5564,
-										5568
-									],
-									[
-										5678,
-										5682
-									],
-									[
-										5791,
-										5795
-									],
-									[
-										5906,
-										5910
-									],
-									[
-										6018,
-										6022
-									],
-									[
-										6132,
-										6136
-									],
-									[
-										6246,
-										6250
-									],
-									[
-										6362,
-										6366
-									],
-									[
-										6479,
-										6483
-									],
-									[
-										6594,
-										6598
-									],
-									[
-										6822,
-										6826
-									],
-									[
-										6998,
-										7002
-									],
-									[
-										7210,
-										7214
-									],
-									[
-										7388,
-										7392
-									],
-									[
-										7597,
-										7601
-									],
-									[
-										7803,
-										7807
-									],
-									[
-										8252,
-										8256
-									],
-									[
-										8612,
-										8616
-									],
-									[
-										8740,
-										8744
-									],
-									[
-										8912,
-										8916
-									],
-									[
-										9311,
-										9315
-									],
-									[
-										9472,
-										9476
-									],
-									[
-										9811,
-										9815
-									],
-									[
-										10026,
-										10030
-									],
-									[
-										10213,
-										10217
-									],
-									[
-										10411,
-										10415
-									],
-									[
-										10517,
-										10521
-									],
-									[
-										10560,
-										10564
-									],
-									[
-										10603,
-										10607
-									],
-									[
-										10966,
-										10970
-									],
-									[
-										11394,
-										11398
-									],
-									[
-										11700,
-										11704
-									],
-									[
-										11756,
-										11760
-									],
-									[
-										12042,
-										12046
-									],
-									[
-										12216,
-										12220
-									],
-									[
-										12557,
-										12561
-									],
-									[
-										12677,
-										12681
-									],
-									[
-										12793,
-										12797
-									],
-									[
-										13072,
-										13076
-									],
-									[
-										13116,
-										13120
-									],
-									[
-										13228,
-										13232
-									],
-									[
-										13341,
-										13345
-									],
-									[
-										13452,
-										13456
-									],
-									[
-										13569,
-										13573
-									],
-									[
-										13688,
-										13692
-									],
-									[
-										13807,
-										13811
-									],
-									[
-										13923,
-										13927
-									],
-									[
-										14145,
-										14149
-									],
-									[
-										14289,
-										14293
-									],
-									[
-										14406,
-										14410
-									],
-									[
-										14495,
-										14499
-									],
-									[
-										14647,
-										14651
-									],
-									[
-										14892,
-										14896
-									],
-									[
-										15100,
-										15104
-									],
-									[
-										15199,
-										15203
-									],
-									[
-										15286,
-										15290
-									],
-									[
-										15377,
-										15381
-									],
-									[
-										15466,
-										15470
-									],
-									[
-										15618,
-										15622
-									],
-									[
-										15718,
-										15722
-									],
-									[
-										15844,
-										15848
-									],
-									[
-										15970,
-										15974
-									],
-									[
-										16252,
-										16256
-									],
-									[
-										16571,
-										16575
-									],
-									[
-										16885,
-										16889
-									],
-									[
-										16979,
-										16983
-									],
-									[
-										17184,
-										17188
-									],
-									[
-										17332,
-										17336
-									],
-									[
-										17468,
-										17472
-									],
-									[
-										17644,
-										17648
-									],
-									[
-										17810,
-										17814
-									],
-									[
-										18066,
-										18070
-									],
-									[
-										18338,
-										18342
-									],
-									[
-										18653,
-										18657
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								12559,
-								12559
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 28234.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/core/imgui/imgui.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 171777,
+						"buffer_size": 10607,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								141115,
-								141115
+								2935,
+								2935
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 142479.0,
+						"translation.y": 1172.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 1,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
+				},
 				{
-					"buffer": 7,
-					"file": "main.cpp",
+					"buffer": 10,
+					"file": "src/hud/splits_display.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 140,
+						"buffer_size": 3207,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1,
-								1
+								1438,
+								1452
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 173.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "src/joiner.h",
+					"buffer": 11,
+					"file": "src/hud/splits_display.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1000,
+						"buffer_size": 866,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								510,
-								523
+								536,
+								536
 							]
 						],
 						"settings":
@@ -1855,6 +1623,34 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "main.cpp",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 140,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								140,
+								140
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1900,7 +1696,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 207.0
+		"height": 96.0
 	},
 	"output.find_results":
 	{
@@ -1952,7 +1748,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

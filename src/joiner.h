@@ -25,6 +25,8 @@ private:
 	bool allowRestartAfterCrash = false;
 	bool isKeyStart = false;
 	bool allowKeyStart = false;
+
+	bool stillShowBoard = false;
 	
 	bool showBuyMenu = true;
 	bool showBoardEdit, showTrackEdit, showSessionStats = true, showLeaderboards = false;
@@ -37,7 +39,7 @@ private:
 public:
 	int seed;
 
-	void reset(bool isCrash);
+	void reset(bool isCrash, bool crashedParticles);
 	void resetFull();
 
 	void initialize();

@@ -26,16 +26,16 @@ void Gravel::resetVisibleRange() {
 }
 
 void Gravel::draw() {
-	while (pebblePosition[visibleRange.x][0].x < camera.getBoundaryLeft()) {
-		visibleRange.x += 1;
-	}
-	while (pebblePosition[visibleRange.y][0].x < camera.getBoundaryRight()) {
-		visibleRange.y += 1;
-	}
+	// while (pebblePosition[visibleRange.x][0].x < camera.getBoundaryLeft() && visibleRange.x < pebblePosition.size()) {
+	// 	visibleRange.x += 1;
+	// }
+	// while (pebblePosition[visibleRange.y][0].x < camera.getBoundaryRight() && visibleRange.y < pebblePosition.size()) {
+	// 	visibleRange.y += 1;
+	// }
 
-	for (int x = visibleRange.x; x < visibleRange.y; x++) {
-		for (Vector2 position : pebblePosition[x]) {
-			drawing.drawPoint(position, colorList[x]);
-		}
-	}
+	// for (int x = visibleRange.x; x < visibleRange.y; x++) {
+	// 	for (Vector2 position : pebblePosition[x]) {
+	// 		drawing.drawPoint(position, colorList[x]);
+	// 	}
+	// }
 }

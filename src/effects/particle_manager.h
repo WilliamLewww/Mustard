@@ -25,6 +25,7 @@ public:
 	void generateSquirrelGibParticles(int count, Vector2 parentPosition, int alpha);
 
 	void removeOldParticles();
+	void clearAllParticles();
 	void update();
 	void draw();
 };
