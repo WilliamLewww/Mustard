@@ -12,7 +12,7 @@ Thane (short for polyurethane) lines are the skid marks produced when a skateboa
 ## Installation
 - Download [Latest Release](https://github.com/WilliamLewww/Thane/releases)
 - Extract content from (.zip) file
-- Run main.exe
+- Run Thane.exe
 
 ## Controls
 ### Basic
