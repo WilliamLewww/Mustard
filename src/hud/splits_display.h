@@ -10,8 +10,7 @@ private:
 	int color[3] = { 255, 255, 255 };
 	int circleColor[3] = { 0, 153, 255 };
 	int circleColorFin[3] = { 0, 204, 0 };
-	
-	int currentCheckpointIndex;
+
 	int currentRun;
 	float splitTimer;
 
@@ -24,6 +23,8 @@ public:
 	std::vector<std::vector<float>> splitList;
 	std::vector<int> checkpointList;
 	std::vector<float> finalTimeList;
+	int currentCheckpointIndex;
+	
 	Vector2 position;
 	int width, height;
 	

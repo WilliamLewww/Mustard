@@ -38,6 +38,7 @@ Thane (short for polyurethane) lines are the skid marks produced when a skateboa
 - 1.6.12
   - added guard rails
   - added restart key
+  - splits HUD now auto-scrolls to bottom
 - 1.6.11
   - added new crash particle effect
   - fixed gravel's awkward road placement

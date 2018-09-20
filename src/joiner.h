@@ -17,6 +17,7 @@ private:
 	HUD hud;
 
 	int checkpointCount = 15;
+	int tempHUDCheckpoint = 0;
 
 	int speedZone = 0, trackDirection = 0;
 

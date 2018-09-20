@@ -139,7 +139,7 @@ void Joiner::update() {
 				if (board.bitmapPolygon.getPosition().x + 100 > rail[x].x && board.bitmapPolygon.getPosition().x < rail[x].x + 100) {
 					hud.resetMinimap();
 					
-					if (board.handleCollision(rail[x], rail[x + 1]) && !isCrashed) {
+					if (board.handleCollision(rail[x], rail[x + 1]) && !isCrashed && !input.checkKeyDown(SDLK_g)) {
 						reset(true);
 					}
 				}
@@ -256,7 +256,7 @@ void Joiner::update() {
 	}
 
 	if (showSessionStats) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(150, 250), ImVec2(150, 250));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(125, 250), ImVec2(125, 250));
 		ImGui::Begin("Session Stats");
 		if (selectedRun != hud.splitsDisplay.splitList.size() - 1) {
 			selectedRun = hud.splitsDisplay.splitList.size() - 1;
@@ -265,9 +265,10 @@ void Joiner::update() {
 		ImGui::TextColored(ImVec4(1,0,0,1), "Final: %f", hud.splitsDisplay.finalTimeList[selectedRun]);
 		ImGui::Spacing();
 		ImGui::TextColored(ImVec4(1,1,0,1), "Splits");
-		ImGui::BeginChild("Scrolling");
+		ImGui::BeginChild("Scrolling", ImVec2(0,0), false, ImGuiWindowFlags_NoScrollbar);
 		for (int x = 0; x < hud.splitsDisplay.splitList[selectedRun].size(); x++) {
 		    ImGui::Text("#%i : %f", x + 1, hud.splitsDisplay.splitList[selectedRun][x]);
+	   		ImGui::SetScrollHere(1);
 		}
 		ImGui::EndChild();
 		ImGui::End();
