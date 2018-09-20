@@ -156,6 +156,10 @@ void Joiner::update() {
 			reset(true, false);
 		}
 
+		if (input.checkKeyDown(SDLK_r) && !isCrashed) {
+			reset(true);
+		}
+
 	}
 
 	ImGui::SetNextWindowSizeConstraints(ImVec2(230, 155), ImVec2(230, 155));
