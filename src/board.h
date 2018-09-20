@@ -48,7 +48,6 @@ private:
 	void refreshSlide();
 
 	void generateThane(int multiplier);
-	void drawThaneLines();
 	void drawBrakeLines();
 	
 	void linkPolygonWithConfigurations();
@@ -59,6 +58,7 @@ public:
 	void update(int speedZone, int trackDirection);
 	void reset();
 	void draw();
+	void drawThaneLines();
 
 	void clearLines();
 

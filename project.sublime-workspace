@@ -556,28 +556,19 @@
 			}
 		},
 		{
-			"file": "README.md",
-			"settings":
-			{
-				"buffer_size": 3949,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "src/joiner.cpp",
 			"settings":
 			{
-				"buffer_size": 10715,
+				"buffer_size": 10827,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/camera.cpp",
+			"file": "README.md",
 			"settings":
 			{
-				"buffer_size": 829,
+				"buffer_size": 3991,
 				"line_ending": "Windows"
 			}
 		},
@@ -586,6 +577,24 @@
 			"settings":
 			{
 				"buffer_size": 3207,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/hud/splits_display.h",
+			"settings":
+			{
+				"buffer_size": 867,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/joiner.h",
+			"settings":
+			{
+				"buffer_size": 1082,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -985,6 +994,7 @@
 	],
 	"file_history":
 	[
+		"/C/Projects/Thane/README.md",
 		"/C/Projects/Thane/main.cpp",
 		"/C/Projects/Thane/src/environment/guard_rail.cpp",
 		"/C/Projects/Thane/src/environment/guard_rail.h",
@@ -1012,7 +1022,6 @@
 		"/C/Projects/Thane/src/core/imgui/imgui.h",
 		"/C/Projects/Thane/src/effects/crash_particle.h",
 		"/C/Projects/Thane/src/effects/crash_particle.cpp",
-		"/C/Projects/Thane/README.md",
 		"/C/Projects/Thane/src/effects/squirrel_giblets_particle.h",
 		"/C/Projects/Thane/src/effects/squirrel_giblets_particle.cpp",
 		"/C/Projects/Thane/src/core/drawing.cpp",
@@ -1278,7 +1287,7 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -1307,7 +1316,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -1335,7 +1344,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -1363,7 +1372,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -1389,27 +1398,56 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 625.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "README.md",
+					"file": "src/joiner.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3949,
+						"buffer_size": 10827,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1625,
-								1625
+								7722,
+								7722
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3053.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "README.md",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 3991,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								472,
+								472
 							]
 						],
 						"settings":
@@ -1419,36 +1457,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 110.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/joiner.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10715,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3936,
-								3936
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 64.0,
-						"translation.y": 1357.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1456,35 +1465,6 @@
 				},
 				{
 					"buffer": 6,
-					"file": "src/camera.cpp",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 829,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
 					"file": "src/hud/splits_display.cpp",
 					"semi_transient": false,
 					"settings":
@@ -1509,17 +1489,75 @@
 						"translation.y": 302.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/hud/splits_display.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 867,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								547,
+								569
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 8,
+					"file": "src/joiner.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1082,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								788,
+								788
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
 					"file": "src/environment/tree.cpp",
 					"semi_transient": false,
 					"settings":
@@ -1543,11 +1581,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "src/environment/environment.cpp",
 					"semi_transient": false,
 					"settings":
@@ -1559,8 +1597,8 @@
 						"selection":
 						[
 							[
-								950,
-								950
+								876,
+								876
 							]
 						],
 						"settings":
@@ -1572,11 +1610,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "src/environment/gravel.cpp",
 					"semi_transient": false,
 					"settings":
@@ -1601,7 +1639,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]

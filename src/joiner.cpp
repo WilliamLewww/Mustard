@@ -347,6 +347,7 @@ void Joiner::draw() {
 	glPushMatrix();
 	glTranslatef(-camera.getPosition().x + (configuration.getScreenWidth() / 2) - (board.bitmapPolygon.getWidth() / 2), -camera.getPosition().y + (configuration.getScreenHeight() / 2) - (board.bitmapPolygon.getHeight() / 2), 0);
 	world.draw();
+	board.drawThaneLines();
 	if (!isCrashed || stillShowBoard) { board.draw(); }
 	particleManager.draw();
 	glPopMatrix();

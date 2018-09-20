@@ -34,7 +34,6 @@ void Board::update(int speedZone, int trackDirection) {
 }
 
 void Board::draw() {
-	drawThaneLines();
 	bitmapPolygon.drawOutline();
 }
 
