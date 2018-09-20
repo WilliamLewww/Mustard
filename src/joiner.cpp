@@ -153,6 +153,7 @@ void Joiner::update() {
 		}
 
 		if (board.bitmapPolygon.getPosition().x > hud.splitsDisplay.checkpointList[hud.splitsDisplay.checkpointList.size() - 1]) {
+			hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());
 			reset(true, false);
 		}
 
