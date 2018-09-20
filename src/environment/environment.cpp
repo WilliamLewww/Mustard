@@ -6,6 +6,29 @@ void Environment::generateGravel(std::vector<std::vector<Vector2>> railList, int
 	}
 }
 
+void Environment::generateGuardRails(std::vector<Vector2> rail, int spacing, int chainMin, int chainMax, int concentration) {
+	visibleGuardRailRange = Vector2(0, 0);
+	bool createChain = false;
+	int chainSize;
+	int currentChainSize = 0;
+
+	for (int x = 0; x < rail.size() - spacing; x += spacing) {
+		if (rand() % concentration == 0 && createChain == false) {
+			chainSize = rand() % (chainMax + 1 - chainMin) + chainMin;
+			currentChainSize = 0;
+			createChain = true;
+		}
+		if (createChain) {
+			guardRailList.emplace_back(rail[x], rail[x + spacing]);
+			currentChainSize += 1;
+
+			if (currentChainSize == chainSize) {
+				createChain = false;
+			}
+		}
+	}
+}
+
 void Environment::generateTrees(std::vector<Vector2> rail, int concentration, int offsetY, int scaleMin, int scaleMax) {
 	visibleTreeRange = Vector2(0, 0);
 	std::vector<Tree> tempTreeList;
@@ -36,6 +59,7 @@ void Environment::resetVisibleRange() {
 
 	visibleTreeRange = Vector2(0, 0);
 	visibleSquirrelRange = Vector2(0, 0);
+	visibleGuardRailRange = Vector2(0, 0);
 }
 
 void Environment::update() {
@@ -62,10 +86,21 @@ void Environment::draw() {
 		visibleSquirrelRange.y += 1;
 	}
 
+	while (guardRailList[visibleGuardRailRange.x].nodeA.x < camera.getBoundaryLeft()) {
+		visibleGuardRailRange.x += 1;
+	}
+	while (guardRailList[visibleGuardRailRange.y].nodeB.x < camera.getBoundaryRight()) {
+		visibleGuardRailRange.y += 1;
+	}
+
 	for (std::vector<Tree> treeListTotal : treeList) {
 		for (int x = visibleTreeRange.x; x < visibleTreeRange.y; x++) {
 			treeListTotal[x].draw();
 		}
+	}
+
+	for (int x = visibleGuardRailRange.x; x < visibleGuardRailRange.y; x++) {
+		guardRailList[x].draw();
 	}
 
 	for (int x = visibleSquirrelRange.x; x < visibleSquirrelRange.y; x++) {

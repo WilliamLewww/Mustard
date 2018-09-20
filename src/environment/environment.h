@@ -6,13 +6,16 @@
 #include "tree.h"
 #include "squirrel.h"
 #include "gravel.h"
+#include "guard_rail.h"
 
 class Environment {
 private:
 	Gravel gravel;
 
+	std::vector<GuardRail> guardRailList;
 	std::vector<std::vector<Tree>> treeList;
 
+	Vector2 visibleGuardRailRange;
 	Vector2 visibleTreeRange;
 	Vector2 visibleSquirrelRange;
 
@@ -22,6 +25,7 @@ public:
 	
 	void resetVisibleRange();
 
+	void generateGuardRails(std::vector<Vector2> rail, int spacing, int chainMin, int chainMax, int concentration);
 	void generateGravel(std::vector<std::vector<Vector2>> rail, int concentration);
 	void generateTrees(std::vector<Vector2> rail, int concentration, int offsetY, int scaleMin, int scaleMax);
 	void generateSquirrels(std::vector<std::vector<Vector2>> rail, int concentration, int scaleMin, int scaleMax);
