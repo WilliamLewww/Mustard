@@ -15,7 +15,7 @@ Car::Car(Vector2 position, int railIndex, int spacing) {
 }
 
 void Car::setPathing(std::vector<Vector2> railList) {
-	if (currentRailIndex > railList.size() - spacing - 1) {
+	if (currentRailIndex > railList.size() - spacing - 3) {
 		polygon.setAngle(180);
 
 		speed = 0;
@@ -36,7 +36,7 @@ void Car::setPathing(std::vector<Vector2> railList) {
 		}
 
 		if (lowestIndex == currentRailIndex) {
-			currentRailIndex += spacing + 1;
+			currentRailIndex += spacing + 3;
 			currentRail = Vector2(railList[currentRailIndex].x, railList[currentRailIndex].y - 100);
 		}
 		else {
@@ -91,4 +91,12 @@ void Car::update(float elapsedTimeSeconds) {
 void Car::draw() {
 	drawing.drawRect(polygon.getPosition(), polygon.getWidth(), polygon.getHeight(), polygon.getAngle(), carColor[colorIndex]);
 	//drawing.drawLine(polygon.getCenter(), projectedPoint);
+}
+
+bool Car::handleCollision(BitmapPolygon polygon) {
+	if (polygon.checkCollision(polygon) == true) {
+		return true;
+	}
+
+	return false;
 }

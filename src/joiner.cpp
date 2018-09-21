@@ -152,6 +152,19 @@ void Joiner::update() {
 			}
 		}
 
+		for (Car car : world.environment.carList) {
+			if (board.handleCollision(car.polygon) && !isCrashed) {
+				reset(true);
+			}
+
+			//Frame Killer
+			// for (Squirrel& squirrel : world.environment.squirrelList) {
+			// 	if (car.handleCollision(squirrel.polygon)) {
+			// 		squirrel.kill();
+			// 	}
+			// }
+		}
+
 		if (board.bitmapPolygon.getPosition().x > hud.splitsDisplay.checkpointList[hud.splitsDisplay.checkpointList.size() - 1]) {
 			hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());
 			particleManager.generateFinishParticles(2, board.bitmapPolygon.getCenter());

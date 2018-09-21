@@ -13,8 +13,6 @@ class Environment {
 private:
 	Gravel gravel;
 
-	std::vector<Car> carList;
-
 	std::vector<GuardRail> guardRailList;
 	std::vector<std::vector<Tree>> treeList;
 	
@@ -24,6 +22,7 @@ private:
 
 	float elapsedTimeSeconds;
 public:
+	std::vector<Car> carList;
 	std::vector<Squirrel> squirrelList;
 	
 	void resetVisibleRange();
