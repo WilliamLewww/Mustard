@@ -1,10 +1,13 @@
 #include "car.h"
 
-Car::Car(Vector2 position, int width, int height, int railIndex, int spacing) {
+int carColor[5][3] = { {128,0,0}, {0,102,204}, {51,102,255}, {255,102,0}, {51,102,153} };
+
+Car::Car(Vector2 position, int railIndex, int spacing) {
 	polygon.setPosition(position);
-	polygon.setSize(width, height);
+	polygon.setSize(50 + (rand() % (7) - 3), 20 + (rand() % (7) - 3));
 
 	polygon.setAngle(180);
+	colorIndex = rand() % 6;
 
 	this->spacing = spacing;
 
@@ -12,6 +15,15 @@ Car::Car(Vector2 position, int width, int height, int railIndex, int spacing) {
 }
 
 void Car::setPathing(std::vector<Vector2> railList) {
+	if (currentRailIndex > railList.size() - spacing - 1) {
+		polygon.setAngle(180);
+
+		speed = 0;
+		currentRailIndex = 3;
+		polygon.setPosition(Vector2(railList[currentRailIndex].x, railList[currentRailIndex].y - 50));
+		currentRail = Vector2(railList[currentRailIndex].x, railList[currentRailIndex].y - 100);
+	}
+
 	float lowestY = railList[currentRailIndex].y;
 	int lowestIndex = currentRailIndex;
 
@@ -35,6 +47,7 @@ void Car::setPathing(std::vector<Vector2> railList) {
 }
 
 void Car::update(float elapsedTimeSeconds) {
+
 	directionVector = Vector2((float)cos((-polygon.getAngle() * M_PI) / 180), sin((-polygon.getAngle() * M_PI) / 180));
 	directionVector.normalize();
 	distanceToNode = (currentRail.x - polygon.getCenter().x) / cos((-polygon.getAngle() * M_PI) / 180);
@@ -76,6 +89,6 @@ void Car::update(float elapsedTimeSeconds) {
 }
 
 void Car::draw() {
-	drawing.drawRect(polygon.getPosition(), polygon.getWidth(), polygon.getHeight(), polygon.getAngle(), color);
-	drawing.drawLine(polygon.getCenter(), projectedPoint);
+	drawing.drawRect(polygon.getPosition(), polygon.getWidth(), polygon.getHeight(), polygon.getAngle(), carColor[colorIndex]);
+	//drawing.drawLine(polygon.getCenter(), projectedPoint);
 }

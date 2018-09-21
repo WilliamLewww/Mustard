@@ -4,8 +4,20 @@
 		"selected_items":
 		[
 			[
+				"speed",
+				"speedMax"
+			],
+			[
+				"spee",
+				"speedMax"
+			],
+			[
 				"curr",
 				"currentRail"
+			],
+			[
+				"lowes",
+				"lowestIndex"
 			],
 			[
 				"cu",
@@ -428,20 +440,12 @@
 				"tempPolygon"
 			],
 			[
-				"spee",
-				"speedZone"
-			],
-			[
 				"ini",
 				"initialSpeed"
 			],
 			[
 				"break",
 				"breakSpeed"
-			],
-			[
-				"speed",
-				"speedZone"
 			],
 			[
 				"index",
@@ -510,10 +514,6 @@
 			[
 				"dis",
 				"dist_c〔variable〕"
-			],
-			[
-				"pos",
-				"positionB"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "src/environment/car.h",
 			"settings":
 			{
-				"buffer_size": 699,
+				"buffer_size": 798,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -549,7 +549,7 @@
 			"file": "src/environment/car.cpp",
 			"settings":
 			{
-				"buffer_size": 1663,
+				"buffer_size": 2439,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -567,7 +567,7 @@
 			"file": "src/environment/environment.cpp",
 			"settings":
 			{
-				"buffer_size": 4039,
+				"buffer_size": 3795,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -1085,6 +1085,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"10",
+			"2",
+			"5",
+			"averageY",
+			"100",
+			"highestY",
 			"rotation",
 			"particle",
 			"squirrelGibParticlesList",
@@ -1206,13 +1212,7 @@
 			"ImGui",
 			"\t\n",
 			"boardColo",
-			"TrackGenerationStyle",
-			"tempTrackStyle",
-			"topIndex",
-			"gui",
-			"GUI",
-			"inline",
-			"Board"
+			"TrackGenerationStyle"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1239,15 +1239,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 699,
+						"buffer_size": 798,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								699,
-								699
+								798,
+								798
 							]
 						],
 						"settings":
@@ -1258,7 +1258,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1322,7 +1322,7 @@
 			]
 		},
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1331,15 +1331,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1663,
+						"buffer_size": 2439,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								770,
-								770
+								1229,
+								1229
 							]
 						],
 						"settings":
@@ -1347,10 +1347,10 @@
 							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 284.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1388,15 +1388,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4039,
+						"buffer_size": 3795,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1040,
-								1040
+								448,
+								448
 							]
 						],
 						"settings":
@@ -1408,7 +1408,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]

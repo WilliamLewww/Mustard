@@ -17,15 +17,15 @@ private:
 	int spacing;
 
 	float speed = 0, turnSpeed = 60;
-	float speedMax = 75, speedMin = 25;
+	float speedMax = 85, speedMin = 25;
 	float speedReduction = 75;
 
 	float differenceMagnitude = 8;
 
 	bool isLeft = false;
-	int color[3] = { 255, 0, 0 };
+	int colorIndex;
 public:
-	Car(Vector2 position, int width, int height, int railIndex, int spacing);
+	Car(Vector2 position, int railIndex, int spacing);
 
 	inline int getCurrentRailIndex() { return currentRailIndex; };
 	inline void setCurrentRail(Vector2 rail) { currentRail = rail; };

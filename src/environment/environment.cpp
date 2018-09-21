@@ -6,8 +6,31 @@ void Environment::generateGravel(std::vector<std::vector<Vector2>> railList, int
 	}
 }
 
-void Environment::generateCars(std::vector<Vector2> rail, int concentration) {
-	carList.emplace_back(Vector2(rail[3].x, rail[3].y - 50), 50, 20, 3, 10);
+void Environment::generateCars(std::vector<Vector2> rail, int count) {
+	int spacing = 7;
+	int randomIndex;
+
+	std::vector<int> indexList;
+	bool isTooClose = true;
+
+	for (int x = 0; x < count; x++) {
+		isTooClose = true;
+
+		while (isTooClose == true) {
+			isTooClose = false;
+
+			randomIndex = rand() % (rail.size() - spacing + 1 - 3) + 3;
+
+			for (int index : indexList) {
+				if (abs(randomIndex - index) < 20) {
+					isTooClose = true;
+				}
+			}
+		}
+
+		carList.emplace_back(Vector2(rail[randomIndex].x, rail[randomIndex].y - 50), randomIndex, spacing);
+		indexList.emplace_back(randomIndex);
+	}
 }
 
 void Environment::generateGuardRails(std::vector<Vector2> rail, int spacing, int chainMin, int chainMax, int concentration) {
