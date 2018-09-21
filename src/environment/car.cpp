@@ -8,20 +8,28 @@ Car::Car(Vector2 position, int width, int height, int railIndex, int spacing) {
 
 	this->spacing = spacing;
 
-	currentRailIndex = currentRailIndex;
+	currentRailIndex = railIndex;
 }
 
 void Car::setPathing(std::vector<Vector2> railList) {
-	if (isLeft) {
-		if (polygon.getCenter().x <= currentRail.x && currentRailIndex > spacing) {
-			currentRailIndex -= spacing;
+	float lowestY = railList[currentRailIndex].y;
+	int lowestIndex = currentRailIndex;
+
+	if (polygon.getCenter().x >= currentRail.x && currentRailIndex < railList.size() - 1 - spacing) {
+		for (int x = currentRailIndex; x < currentRailIndex + spacing; x++) {
+			if (lowestY > railList[x].y) {
+				lowestY = railList[x].y;
+				lowestIndex = x;
+			}
+		}
+
+		if (lowestIndex == currentRailIndex) {
+			currentRailIndex += spacing + 1;
 			currentRail = Vector2(railList[currentRailIndex].x, railList[currentRailIndex].y - 100);
 		}
-	}
-	else {
-		if (polygon.getCenter().x >= currentRail.x && currentRailIndex < railList.size() - 1 - spacing) {
-			currentRailIndex += spacing;
-			currentRail = Vector2(railList[currentRailIndex].x, railList[currentRailIndex].y - 100);
+		else {
+			currentRailIndex = lowestIndex;
+			currentRail = Vector2(railList[currentRailIndex].x, lowestY - 100);
 		}
 	}
 }
@@ -33,15 +41,34 @@ void Car::update(float elapsedTimeSeconds) {
 
 	projectedPoint = polygon.getCenter() + (directionVector * distanceToNode);
 
-	if (isLeft) {
+	if (projectedPoint.y <= currentRail.y + 5) {
+		polygon.addAngle(-turnSpeed * elapsedTimeSeconds);
+	}
 
+	if (projectedPoint.y >= currentRail.y - 5) {
+		polygon.addAngle(turnSpeed * elapsedTimeSeconds);
+	}
+
+	float difference = abs(currentRail.y - projectedPoint.y);
+
+	if (difference > 15) {
+		if (speed > 0) {
+			if (speed - ((speedReduction + (difference / differenceMagnitude)) * elapsedTimeSeconds) < speedMin) {
+				speed = speedMin;
+			}
+			else {
+				speed -= (speedReduction + (difference / differenceMagnitude)) * elapsedTimeSeconds;
+			}
+		}
 	}
 	else {
-		if (projectedPoint.y < currentRail.y) {
-			polygon.addAngle(-turnSpeed * elapsedTimeSeconds);
-		}
-		if (projectedPoint.y > currentRail.y) {
-			polygon.addAngle(turnSpeed * elapsedTimeSeconds);
+		if (speed < speedMax) {
+			if (speed + ((speedReduction + (difference / differenceMagnitude)) * elapsedTimeSeconds) > speedMax) {
+				speed = speedMax;
+			}
+			else {
+				speed += (speedReduction + (difference / differenceMagnitude)) * elapsedTimeSeconds;
+			}
 		}
 	}
 

@@ -6,12 +6,8 @@ void Environment::generateGravel(std::vector<std::vector<Vector2>> railList, int
 	}
 }
 
-//GET AVERAGE Y AND GOTO IT INSTEAD OF GOING TO THE ACTUAL Y
-//GET AVERAGE Y AND GOTO IT INSTEAD OF GOING TO THE ACTUAL Y
-//GET AVERAGE Y AND GOTO IT INSTEAD OF GOING TO THE ACTUAL Y
-//GET AVERAGE Y AND GOTO IT INSTEAD OF GOING TO THE ACTUAL Y
 void Environment::generateCars(std::vector<Vector2> rail, int concentration) {
-	carList.emplace_back(Vector2(rail[3].x, rail[3].y - 50), 50, 20, 10, 4);
+	carList.emplace_back(Vector2(rail[3].x, rail[3].y - 50), 50, 20, 3, 10);
 }
 
 void Environment::generateGuardRails(std::vector<Vector2> rail, int spacing, int chainMin, int chainMax, int concentration) {

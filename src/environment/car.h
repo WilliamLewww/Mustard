@@ -16,7 +16,11 @@ private:
 
 	int spacing;
 
-	int speed = 75, turnSpeed = 50;
+	float speed = 0, turnSpeed = 60;
+	float speedMax = 75, speedMin = 25;
+	float speedReduction = 75;
+
+	float differenceMagnitude = 8;
 
 	bool isLeft = false;
 	int color[3] = { 255, 0, 0 };
