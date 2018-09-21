@@ -32,6 +32,7 @@ public:
 
 	inline void setPosition(Vector2 position) { this->position = position; };
 	inline void setAngle(double angle) { this->angle = angle; };
+	inline void addAngle(double angle) { this->angle += angle; };
 
 	inline Vector2* getPositionAddress() { return &position; };
 	inline Vector2 getPosition() { return position; };

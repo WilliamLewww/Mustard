@@ -18,23 +18,32 @@ void ParticleManager::generateSquirrelGibParticles(int count, Vector2 parentPosi
 	squirrelGibParticlesList.push_back(createSquirrelGibParticles(count, parentPosition, alpha));
 }
 
+void ParticleManager::generateFinishParticles(int count, Vector2 parentPosition) {
+	finishParticlesList.push_back(createFinishParticles(count, parentPosition));
+}
+
 void ParticleManager::removeOldParticles() {
 	if (thaneParticlesList.size() > MaxParticleCount::Thane) {
-		thaneParticlesList.erase(thaneParticlesList.begin(), thaneParticlesList.begin() + (thaneParticlesList.size() - 400));
+		thaneParticlesList.erase(thaneParticlesList.begin(), thaneParticlesList.begin() + (thaneParticlesList.size() - MaxParticleCount::Thane));
 	}
 
 	if (squirrelGibParticlesList.size() > MaxParticleCount::SquirrelGib) {
-		squirrelGibParticlesList.erase(squirrelGibParticlesList.begin(), squirrelGibParticlesList.begin() + (squirrelGibParticlesList.size() - 75));
+		squirrelGibParticlesList.erase(squirrelGibParticlesList.begin(), squirrelGibParticlesList.begin() + (squirrelGibParticlesList.size() - MaxParticleCount::SquirrelGib));
+	}
+
+	if (finishParticlesList.size() > MaxParticleCount::Finish) {
+		finishParticlesList.erase(finishParticlesList.begin(), finishParticlesList.begin() + (finishParticlesList.size() - MaxParticleCount::Finish));
 	}
 
 	if (crashParticlesList.size() > MaxParticleCount::Crash) {
-		crashParticlesList.erase(crashParticlesList.begin(), crashParticlesList.begin() + (crashParticlesList.size() - 5));
+		crashParticlesList.erase(crashParticlesList.begin(), crashParticlesList.begin() + (crashParticlesList.size() - MaxParticleCount::Crash));
 	}
 }
 
 void ParticleManager::clearAllParticles() {
 	thaneParticlesList.clear();
 	squirrelGibParticlesList.clear();
+	finishParticlesList.clear();
 	crashParticlesList.clear();
 }
 
@@ -47,6 +56,10 @@ void ParticleManager::update() {
 
 	for (SquirrelGibParticles &particles : squirrelGibParticlesList) {
 		updateSquirrelGibParticles(elapsedTimeSeconds, particles);
+	}
+
+	for (FinishParticles &particles : finishParticlesList) {
+		updateFinishParticles(elapsedTimeSeconds, particles);
 	}
 
 	for (CrashParticles &particles : crashParticlesList) {
@@ -63,6 +76,10 @@ void ParticleManager::draw() {
 
 	for (SquirrelGibParticles particles : squirrelGibParticlesList) {
 		drawSquirrelGibParticles(particles);
+	}
+
+	for (FinishParticles particles : finishParticlesList) {
+		drawFinishParticles(particles);
 	}
 
 	for (CrashParticles particles : crashParticlesList) {

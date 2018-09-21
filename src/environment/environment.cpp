@@ -6,6 +6,14 @@ void Environment::generateGravel(std::vector<std::vector<Vector2>> railList, int
 	}
 }
 
+//GET AVERAGE Y AND GOTO IT INSTEAD OF GOING TO THE ACTUAL Y
+//GET AVERAGE Y AND GOTO IT INSTEAD OF GOING TO THE ACTUAL Y
+//GET AVERAGE Y AND GOTO IT INSTEAD OF GOING TO THE ACTUAL Y
+//GET AVERAGE Y AND GOTO IT INSTEAD OF GOING TO THE ACTUAL Y
+void Environment::generateCars(std::vector<Vector2> rail, int concentration) {
+	carList.emplace_back(Vector2(rail[3].x, rail[3].y - 50), 50, 20, 10, 4);
+}
+
 void Environment::generateGuardRails(std::vector<Vector2> rail, int spacing, int chainMin, int chainMax, int concentration) {
 	visibleGuardRailRange = Vector2(0, 0);
 	bool createChain = false;
@@ -62,11 +70,16 @@ void Environment::resetVisibleRange() {
 	visibleGuardRailRange = Vector2(0, 0);
 }
 
-void Environment::update() {
+void Environment::update(std::vector<std::vector<Vector2>> rail) {
 	elapsedTimeSeconds = timer.getTimeSeconds();
 	
 	for (int x = visibleSquirrelRange.x; x < visibleSquirrelRange.y; x++) {
 		squirrelList[x].update(elapsedTimeSeconds);
+	}
+
+	for (Car& car : carList) {
+		car.setPathing(rail[1]);
+		car.update(elapsedTimeSeconds);
 	}
 }
 
@@ -105,6 +118,10 @@ void Environment::draw() {
 
 	for (int x = visibleSquirrelRange.x; x < visibleSquirrelRange.y; x++) {
 		squirrelList[x].draw();
+	}
+
+	for (Car car : carList) {
+		car.draw();
 	}
 }
 

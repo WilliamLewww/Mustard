@@ -139,7 +139,7 @@ void Joiner::update() {
 				if (board.bitmapPolygon.getPosition().x + 100 > rail[x].x && board.bitmapPolygon.getPosition().x < rail[x].x + 100) {
 					hud.resetMinimap();
 					
-					if (board.handleCollision(rail[x], rail[x + 1]) && !isCrashed && !input.checkKeyDown(SDLK_g)) {
+					if (board.handleCollision(rail[x], rail[x + 1]) && !isCrashed) {
 						reset(true);
 					}
 				}
@@ -154,6 +154,7 @@ void Joiner::update() {
 
 		if (board.bitmapPolygon.getPosition().x > hud.splitsDisplay.checkpointList[hud.splitsDisplay.checkpointList.size() - 1]) {
 			hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());
+			particleManager.generateFinishParticles(2, board.bitmapPolygon.getCenter());
 			reset(true, false);
 		}
 
