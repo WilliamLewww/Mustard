@@ -85,7 +85,8 @@ void World::generateWorld() {
 	environment.generateTrees(track.railList[1], 5, 10, 5, 15);
 	environment.generateSquirrels(track.railList, 15, 5, 7);
 	environment.generateGravel(track.railList, 35);
-	environment.generateCars(track.railList[1], 30);
+	environment.generateCars(track.railList[1], 8);
+	environment.generateBikes(track.railList[0], 5);
 }
 
 void World::generateSpeedZones() {

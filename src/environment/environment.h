@@ -8,6 +8,7 @@
 #include "gravel.h"
 #include "guard_rail.h"
 #include "car.h"
+#include "bike.h"
 
 class Environment {
 private:
@@ -23,11 +24,13 @@ private:
 	float elapsedTimeSeconds;
 public:
 	std::vector<Car> carList;
+	std::vector<Bike> bikeList;
 	std::vector<Squirrel> squirrelList;
 	
 	void resetVisibleRange();
 
-	void generateCars(std::vector<Vector2> rail, int concentration);
+	void generateCars(std::vector<Vector2> rail, int count);
+	void generateBikes(std::vector<Vector2> rail, int count);
 	void generateGuardRails(std::vector<Vector2> rail, int spacing, int chainMin, int chainMax, int concentration);
 	void generateGravel(std::vector<std::vector<Vector2>> rail, int concentration);
 	void generateTrees(std::vector<Vector2> rail, int concentration, int offsetY, int scaleMin, int scaleMax);

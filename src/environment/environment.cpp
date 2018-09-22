@@ -6,6 +6,32 @@ void Environment::generateGravel(std::vector<std::vector<Vector2>> railList, int
 	}
 }
 
+void Environment::generateBikes(std::vector<Vector2> rail, int count) {
+	int randomIndex;
+
+	std::vector<int> indexList;
+	bool isTooClose = true;
+
+	for (int x = 0; x < count; x++) {
+		isTooClose = true;
+
+		while (isTooClose == true) {
+			isTooClose = false;
+
+			randomIndex = rand() % (rail.size() - 1 + 1 - 3) + 3;
+
+			for (int index : indexList) {
+				if (abs(randomIndex - index) < 5) {
+					isTooClose = true;
+				}
+			}
+		}
+
+		bikeList.emplace_back(Vector2(rail[randomIndex].x, rail[randomIndex].y + 25), randomIndex);
+		indexList.emplace_back(randomIndex);
+	}
+}
+
 void Environment::generateCars(std::vector<Vector2> rail, int count) {
 	int spacing = 7;
 	int randomIndex;
@@ -22,7 +48,7 @@ void Environment::generateCars(std::vector<Vector2> rail, int count) {
 			randomIndex = rand() % (rail.size() - spacing + 1 - 3) + 3;
 
 			for (int index : indexList) {
-				if (abs(randomIndex - index) < 20) {
+				if (abs(randomIndex - index) < 15) {
 					isTooClose = true;
 				}
 			}
@@ -100,6 +126,11 @@ void Environment::update(std::vector<std::vector<Vector2>> rail) {
 		car.setPathing(rail[1]);
 		car.update(elapsedTimeSeconds);
 	}
+
+	for (Bike& bike : bikeList) {
+		bike.setPathing(rail[0]);
+		bike.update(elapsedTimeSeconds);
+	}
 }
 
 void Environment::draw() {
@@ -141,6 +172,10 @@ void Environment::draw() {
 
 	for (Car car : carList) {
 		car.draw();
+	}
+
+	for (Bike bike : bikeList) {
+		bike.draw();
 	}
 }
 
