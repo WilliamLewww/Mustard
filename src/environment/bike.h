@@ -1,5 +1,6 @@
 #pragma once
 #include "..\core\vector2.h"
+#include "..\effects\particle_manager.h"
 #include "..\bmp_polygon.h"
 
 class Bike {
@@ -14,13 +15,15 @@ private:
 
 	float speed = 50, turnSpeed = 150;
 
-	bool isLeft = false;
 	int colorIndex;
+	bool isDead = false;
 public:
+	bool isLeft = false;
 	BitmapPolygon polygon;
 
-	Bike(Vector2 position, int railIndex);
+	Bike(Vector2 position, int railIndex, bool isLeft);
 
+	void kill();
 	void setPathing(std::vector<Vector2> railList);
 	void getCurrentRail(Vector2* rail);
 	void update(float elapsedTimeSeconds);

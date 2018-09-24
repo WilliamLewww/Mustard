@@ -29,7 +29,7 @@ public:
 
 	void setPathing(std::vector<Vector2> railList);
 	void getCurrentRail(Vector2* rail);
-	void update(float elapsedTimeSeconds);
+	void update(float elapsedTimeSeconds); 
 	void draw();
 
 	bool handleCollision(BitmapPolygon polygon);

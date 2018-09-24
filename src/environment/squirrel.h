@@ -18,7 +18,7 @@ private:
 	bool crossRoad = false;
 	int currentRail = 1;
 
-	bool dead = false;
+	bool isDead = false;
 public:
 	BitmapPolygon polygon;
 

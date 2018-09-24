@@ -18,6 +18,11 @@ void ParticleManager::generateSquirrelGibParticles(int count, Vector2 parentPosi
 	squirrelGibParticlesList.push_back(createSquirrelGibParticles(count, parentPosition, alpha));
 }
 
+void ParticleManager::generateBikeGibParticles(int count, Vector2 parentPosition) {
+	bikeGibParticlesList.push_back(createBikeGibParticles(count, parentPosition));
+}
+
+
 void ParticleManager::generateFinishParticles(int count, Vector2 parentPosition) {
 	finishParticlesList.push_back(createFinishParticles(count, parentPosition));
 }
@@ -29,6 +34,10 @@ void ParticleManager::removeOldParticles() {
 
 	if (squirrelGibParticlesList.size() > MaxParticleCount::SquirrelGib) {
 		squirrelGibParticlesList.erase(squirrelGibParticlesList.begin(), squirrelGibParticlesList.begin() + (squirrelGibParticlesList.size() - MaxParticleCount::SquirrelGib));
+	}
+
+	if (bikeGibParticlesList.size() > MaxParticleCount::BikeGib) {
+		bikeGibParticlesList.erase(bikeGibParticlesList.begin(), bikeGibParticlesList.begin() + (bikeGibParticlesList.size() - MaxParticleCount::BikeGib));
 	}
 
 	if (finishParticlesList.size() > MaxParticleCount::Finish) {
@@ -43,6 +52,7 @@ void ParticleManager::removeOldParticles() {
 void ParticleManager::clearAllParticles() {
 	thaneParticlesList.clear();
 	squirrelGibParticlesList.clear();
+	bikeGibParticlesList.clear();
 	finishParticlesList.clear();
 	crashParticlesList.clear();
 }
@@ -56,6 +66,10 @@ void ParticleManager::update() {
 
 	for (SquirrelGibParticles &particles : squirrelGibParticlesList) {
 		updateSquirrelGibParticles(elapsedTimeSeconds, particles);
+	}
+
+	for (BikeGibParticles &particles : bikeGibParticlesList) {
+		updateBikeGibParticles(elapsedTimeSeconds, particles);
 	}
 
 	for (FinishParticles &particles : finishParticlesList) {
@@ -76,6 +90,10 @@ void ParticleManager::draw() {
 
 	for (SquirrelGibParticles particles : squirrelGibParticlesList) {
 		drawSquirrelGibParticles(particles);
+	}
+
+	for (BikeGibParticles particles : bikeGibParticlesList) {
+		drawBikeGibParticles(particles);
 	}
 
 	for (FinishParticles particles : finishParticlesList) {

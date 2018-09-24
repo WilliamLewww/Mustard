@@ -164,6 +164,19 @@ void Joiner::update() {
 			// 	}
 			// }
 		}
+		
+		for (Bike& bike : world.environment.bikeList) {
+			if (board.handleCollision(bike.polygon) && !isCrashed) {
+				if (board.getVelocity() > 200) {
+					bike.kill();
+				}
+				else {
+					reset(true);
+				}
+			}
+		}
+
+		std::cout << board.getVelocity() << std::endl;
 
 		if (board.bitmapPolygon.getPosition().x > hud.splitsDisplay.checkpointList[hud.splitsDisplay.checkpointList.size() - 1]) {
 			hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());

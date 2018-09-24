@@ -6,7 +6,7 @@ void Environment::generateGravel(std::vector<std::vector<Vector2>> railList, int
 	}
 }
 
-void Environment::generateBikes(std::vector<Vector2> rail, int count) {
+void Environment::generateBikes(std::vector<Vector2> rail, int count, bool isLeft) {
 	int randomIndex;
 
 	std::vector<int> indexList;
@@ -27,7 +27,12 @@ void Environment::generateBikes(std::vector<Vector2> rail, int count) {
 			}
 		}
 
-		bikeList.emplace_back(Vector2(rail[randomIndex].x, rail[randomIndex].y + 25), randomIndex);
+		if (isLeft) {
+			bikeList.emplace_back(Vector2(rail[randomIndex].x, rail[randomIndex].y - 25), randomIndex, isLeft);
+		}
+		else {
+			bikeList.emplace_back(Vector2(rail[randomIndex].x, rail[randomIndex].y + 25), randomIndex, isLeft);
+		}
 		indexList.emplace_back(randomIndex);
 	}
 }
@@ -128,7 +133,12 @@ void Environment::update(std::vector<std::vector<Vector2>> rail) {
 	}
 
 	for (Bike& bike : bikeList) {
-		bike.setPathing(rail[0]);
+		if (!bike.isLeft) {
+			bike.setPathing(rail[0]);
+		}
+		else {
+			bike.setPathing(rail[1]);
+		}
 		bike.update(elapsedTimeSeconds);
 	}
 }

@@ -53,6 +53,8 @@ private:
 	void linkPolygonWithConfigurations();
 public:
 	BitmapPolygon bitmapPolygon;
+
+	inline float getVelocity() { return velocity; };
 	
 	void initialize();
 	void update(int speedZone, int trackDirection);

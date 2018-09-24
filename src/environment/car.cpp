@@ -47,7 +47,6 @@ void Car::setPathing(std::vector<Vector2> railList) {
 }
 
 void Car::update(float elapsedTimeSeconds) {
-
 	directionVector = Vector2((float)cos((-polygon.getAngle() * M_PI) / 180), sin((-polygon.getAngle() * M_PI) / 180));
 	directionVector.normalize();
 	distanceToNode = (currentRail.x - polygon.getCenter().x) / cos((-polygon.getAngle() * M_PI) / 180);

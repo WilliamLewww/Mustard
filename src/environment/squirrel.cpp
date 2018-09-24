@@ -11,7 +11,7 @@ Squirrel::Squirrel(Vector2 position, Vector2 bottomRail, Vector2 topRail, int wi
 }
 
 void Squirrel::kill() {
-	if (dead == false) {
+	if (isDead == false) {
 		for (int x = 0; x < 25; x++) {
 			particleManager.generateSquirrelGibParticles(4, polygon.getCenter(), 225);
 		}
@@ -20,11 +20,11 @@ void Squirrel::kill() {
 		particleManager.generateSquirrelGibParticles(4, polygon.getCenter(), 225);
 	}
 
-	dead = true;
+	isDead = true;
 }
 
 void Squirrel::update(float elapsedTimeSeconds) {
-	if (dead == false) {
+	if (isDead == false) {
 		if (crossRoad == true) {
 			if (currentRail == 1) {
 				if (polygon.getX() < topRail.x) polygon.addX(randomX * elapsedTimeSeconds);
@@ -93,7 +93,7 @@ void Squirrel::update(float elapsedTimeSeconds) {
 }
 
 void Squirrel::draw() {
-	if (dead) {
+	if (isDead) {
 		drawing.drawRect(polygon.getPosition(), polygon.getWidth(), polygon.getHeight(), deadColor);
 	}
 	else {
