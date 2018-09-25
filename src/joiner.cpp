@@ -167,12 +167,10 @@ void Joiner::update() {
 		
 		for (Bike& bike : world.environment.bikeList) {
 			if (board.handleCollision(bike.polygon) && !isCrashed) {
-				if (board.getVelocity() > 200) {
-					bike.kill();
-				}
-				else {
+				if (board.getVelocity() < 200) {
 					reset(true);
 				}
+				bike.kill();
 			}
 		}
 
