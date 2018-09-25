@@ -17,9 +17,6 @@ void Bike::kill() {
 	if (isDead == false) {
 		particleManager.generateBikeGibParticles(15, polygon.getCenter());
 	}
-	else {
-
-	}
 
 	isDead = true;
 }

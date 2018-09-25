@@ -4,7 +4,11 @@
 #include "..\core\vector2.h"
 
 struct BikeBloodParticle {
+	Vector2 position;
 
+	float acceleration;
+	float offsetDirections;
+	int alpha;
 };
 
 struct BikeFrameSegment {

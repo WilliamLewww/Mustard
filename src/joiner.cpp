@@ -176,8 +176,6 @@ void Joiner::update() {
 			}
 		}
 
-		std::cout << board.getVelocity() << std::endl;
-
 		if (board.bitmapPolygon.getPosition().x > hud.splitsDisplay.checkpointList[hud.splitsDisplay.checkpointList.size() - 1]) {
 			hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());
 			particleManager.generateFinishParticles(2, board.bitmapPolygon.getCenter());
