@@ -20,14 +20,21 @@ void World::draw() {
 	generateMountainPolygons();
 
 	track.draw(configuration.getConfigurations()["TrackGenerationStyle"], configuration.getConfigurations()["DrawTrackDetails"]);
+	
 	environment.drawUnderMountain();
-
 	drawing.drawPolygon(mountainPolygonsStart, mountainColor, 255);
 	for (std::vector<Vector2> polygon : mountainPolygons) {
 		drawing.drawPolygon(polygon, mountainColor, 255);
 	}
 
+	drawMountainOutline();
+
 	environment.draw();
+}
+
+void World::drawMountainOutline() {
+	drawing.drawLineStrip(track.getVisibleRail(0), -50, mountainOutlineColor, 255);
+	drawing.drawLineStrip(track.getVisibleRail(0), -48, mountainOutlineColor, 255);
 }
 
 void World::generateMountainPolygons() {

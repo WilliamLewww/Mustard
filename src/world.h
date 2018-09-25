@@ -7,10 +7,13 @@
 class World {
 private:	
 	int mountainColor[3] = { 118, 92, 67 };
+	int mountainOutlineColor[3] = { 78, 52, 27 };
 
 	std::vector<Vector2> mountainPolygonsStart;
 	std::vector<std::vector<Vector2>> mountainPolygons;
 	std::vector<int> mountainOffsetValue;
+
+	void drawMountainOutline();
 
 	void generateSpeedZones();
 	void generateTrack();
