@@ -8,11 +8,6 @@ void Joiner::initialize() {
 	boardLength = configuration.getConfigurations()["BoardLength"];
 	boardWidth = configuration.getConfigurations()["BoardWidth"];
 
-	boardColor[0] = (float)configuration.getConfigurations()["BoardColorR"] / 255;
-	boardColor[1] = (float)configuration.getConfigurations()["BoardColorG"] / 255;
-	boardColor[2] = (float)configuration.getConfigurations()["BoardColorB"] / 255;
-	boardColor[3] = (float)configuration.getConfigurations()["BoardColorA"] / 255;
-
 	thaneColor[0] = (float)configuration.getConfigurations()["ThaneColorR"] / 255;
 	thaneColor[1] = (float)configuration.getConfigurations()["ThaneColorG"] / 255;
 	thaneColor[2] = (float)configuration.getConfigurations()["ThaneColorB"] / 255;
@@ -206,11 +201,6 @@ void Joiner::update() {
 		configuration.setConfiguration("BoardLength", boardLength);
 		configuration.setConfiguration("BoardWidth", boardWidth);
 
-		configuration.setConfiguration("BoardColorR", boardColor[0] * 255);
-		configuration.setConfiguration("BoardColorG", boardColor[1] * 255);
-		configuration.setConfiguration("BoardColorB", boardColor[2] * 255);
-		configuration.setConfiguration("BoardColorA", boardColor[3] * 255);
-
 		configuration.setConfiguration("ThaneColorR", thaneColor[0] * 255);
 		configuration.setConfiguration("ThaneColorG", thaneColor[1] * 255);
 		configuration.setConfiguration("ThaneColorB", thaneColor[2] * 255);
@@ -326,36 +316,14 @@ void Joiner::update() {
 		ImGui::Begin("Edit Board");
 		ImGui::PushItemWidth(-175);
 		ImGui::InputInt("Board Preset", &boardID);
-		ImGui::Columns(2);
-		ImGui::PushItemWidth(-200);
 		ImGui::Text(("Length: " + std::to_string(boardLength)).c_str());   
-		ImGui::NextColumn();
-		ImGui::PushItemWidth(-200);
 		ImGui::Text(("Width: " + std::to_string(boardWidth)).c_str());   
 
 		if (boardID < 1) { boardID = 1; }
 		if (boardID > 3) { boardID = 3; }
 
-		switch (boardID) {
-			case 1:
-				boardLength = configuration.getConfigurations()["PresetBoard1Length"];
-				boardWidth = configuration.getConfigurations()["PresetBoard1Width"];
-				break;
-			case 2:
-				boardLength = configuration.getConfigurations()["PresetBoard2Length"];
-				boardWidth = configuration.getConfigurations()["PresetBoard2Width"];
-				break;
-			case 3:
-				boardLength = configuration.getConfigurations()["PresetBoard3Length"];
-				boardWidth = configuration.getConfigurations()["PresetBoard3Width"];
-				break;
-		}
-
-		ImGui::Columns(1);
-		ImGui::PushItemWidth(ImGui::GetWindowWidth() - 100);
-		ImGui::ColorEdit4("Board Color", boardColor);
-		ImGui::PushItemWidth(ImGui::GetWindowWidth() - 100);
-		ImGui::ColorEdit3("Thane Color", thaneColor);
+		boardLength = configuration.getConfigurations()[("PresetBoard" + std::to_string(boardID) + ("Length")).c_str()];
+		boardWidth = configuration.getConfigurations()[("PresetBoard" + std::to_string(boardID) + ("Width")).c_str()];
 
 		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
 

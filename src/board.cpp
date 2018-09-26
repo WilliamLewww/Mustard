@@ -9,9 +9,13 @@ void Board::linkPolygonWithConfigurations() {
 	thaneColor[0] = configuration.getConfigurations()["ThaneColorR"];
 	thaneColor[1] = configuration.getConfigurations()["ThaneColorG"];
 	thaneColor[2] = configuration.getConfigurations()["ThaneColorB"];
+	
+	bitmapPolygon.setColor(configuration.getConfigurations()[("Board" + std::to_string(configuration.getConfigurations()["BoardID"]) + ("ColorR")).c_str()], 
+		configuration.getConfigurations()[("Board" + std::to_string(configuration.getConfigurations()["BoardID"]) + ("ColorG")).c_str()], 
+		configuration.getConfigurations()[("Board" + std::to_string(configuration.getConfigurations()["BoardID"]) + ("ColorB")).c_str()], 
+		configuration.getConfigurations()["BoardColorA"]);
 
 	bitmapPolygon.setSize(configuration.getConfigurations()["BoardLength"], configuration.getConfigurations()["BoardWidth"]);
-	bitmapPolygon.setColor(configuration.getConfigurations()["BoardColorR"], configuration.getConfigurations()["BoardColorG"], configuration.getConfigurations()["BoardColorB"], configuration.getConfigurations()["BoardColorA"]);
 	std::string boardFileName = "board_" + std::to_string(configuration.getConfigurations()["BoardID"]) + ".txt";
 	bitmapPolygon.setVertices(boardFileName.c_str());
 }

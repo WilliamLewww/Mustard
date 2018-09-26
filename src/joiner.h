@@ -36,7 +36,7 @@ private:
 	int selectedRun = 0, leaderboardSelectedRun = 0;
 	int boardID, boardLength, boardWidth;
 	int trackGenerationStyle;
-	float boardColor[4], thaneColor[3];
+	float thaneColor[3];
 public:
 	int seed;
 

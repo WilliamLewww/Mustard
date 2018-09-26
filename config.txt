@@ -9,9 +9,7 @@ BoardID 1
 BoardLength 40
 BoardWidth 10
 
-BoardColorR 103
-BoardColorG 156
-BoardColorB 192
+#Board Alpha
 BoardColorA 255
 
 #ThaneColorR 246
@@ -37,11 +35,20 @@ DrawMinimap 1
 #Preset 1
 PresetBoard1Length 40
 PresetBoard1Width 10
+Board1ColorR 103
+Board1ColorG 156
+Board1ColorB 192
 
 #Preset 2
 PresetBoard2Length 36
 PresetBoard2Width 9
+Board2ColorR 155
+Board2ColorG 24
+Board2ColorB 24
 
-#Preset 2
+#Preset 3
 PresetBoard3Length 32
 PresetBoard3Width 10
+Board3ColorR 125
+Board3ColorG 104
+Board3ColorB 221
