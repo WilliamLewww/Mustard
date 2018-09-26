@@ -9,6 +9,7 @@ void Configuration::initialize() {
 
 void Configuration::grabConfiguration() {
 	configurations = file.getConfigurationFromFile("config.txt");
+	nameConfigurations = file.getNameConfigurationFromFile("config.txt");
 }
 
 void Configuration::linkScreenSize() {

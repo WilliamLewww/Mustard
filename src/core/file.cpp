@@ -37,9 +37,24 @@ std::map<std::string, int> File::getConfigurationFromFile(const char* filename) 
 	std::ifstream configFile(filename);
 	std::string lineFromFile;
 	while (std::getline(configFile, lineFromFile)) {
-		if (lineFromFile[0] != '#') {
+		if (lineFromFile[0] != '#' && lineFromFile[0] != '@') {
 			configurations[lineFromFile.substr(0, lineFromFile.find(" "))] 
 				= atoi(lineFromFile.substr(lineFromFile.find(" ") + 1, lineFromFile.length()).c_str());
+		}
+	}
+
+	return configurations;
+}
+
+std::map<std::string, std::string> File::getNameConfigurationFromFile(const char* filename) {
+	std::map<std::string, std::string> configurations;
+
+	std::ifstream configFile(filename);
+	std::string lineFromFile;
+	while (std::getline(configFile, lineFromFile)) {
+		if (lineFromFile[0] == '@') {
+			configurations[lineFromFile.substr(1, lineFromFile.find(" ") - 1)] 
+				= lineFromFile.substr(lineFromFile.find(" ") + 1, lineFromFile.length()).c_str();
 		}
 	}
 
