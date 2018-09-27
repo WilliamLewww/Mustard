@@ -4,7 +4,7 @@
 class Experimentals : public Wheel {
 public:
 	Experimentals(float currentHeightPercent)
-		:Wheel(48, 66, 78, false, LIP_ROUND) {
+		:Wheel(48, 66, 78, LIP_ROUND, false) {
 
 		this->currentHeightPercent = currentHeightPercent;
 		setColor(254, 78, 0);

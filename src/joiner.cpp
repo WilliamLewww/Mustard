@@ -290,7 +290,7 @@ void Joiner::update() {
 	}
 
 	if (showTrackEdit) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(300, 150), ImVec2(300, 150));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(275, 150), ImVec2(275, 150));
 		ImGui::Begin("Edit Track");
 		ImGui::PushItemWidth(-100);
 		ImGui::InputInt("Style", &trackGenerationStyle);
@@ -314,7 +314,7 @@ void Joiner::update() {
 	}
 
 	if (showBoardEdit) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(350, 155), ImVec2(350, 155));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 195), ImVec2(380, 195));
 		ImGui::Begin("Edit Board");
 		ImGui::Columns(2);
 		ImGui::PushItemWidth(-175);
@@ -325,8 +325,8 @@ void Joiner::update() {
 		if (boardID > 3) { boardID = 3; }
 
 		ImGui::TextColored(ImVec4(0,1,1,1), configuration.getNameConfigurations()[("Board" + std::to_string(boardID) + ("Name")).c_str()].c_str());
-		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Length: %i", boardLength);
-		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Width: %i", boardWidth);
+		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Length: %i\"", boardLength);
+		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Width: %i\"", boardWidth);
 
 		boardLength = configuration.getConfigurations()[("Board" + std::to_string(boardID) + ("Length")).c_str()];
 		boardWidth = configuration.getConfigurations()[("Board" + std::to_string(boardID) + ("Width")).c_str()];
@@ -339,6 +339,12 @@ void Joiner::update() {
 		if (wheelID > 5) { wheelID = 5; }
 
 		ImGui::TextColored(ImVec4(0,1,1,1), getWheelName(wheelID).c_str());
+		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Height: %imm", (int)getWheel(wheelID).getHeight());
+		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Width: %imm", (int)getWheel(wheelID).getWidth());
+		ImGui::TextColored(ImVec4(0.8,0.4,1,1), "Duro: %ia", getWheel(wheelID).getDurometer());
+		ImGui::Spacing();
+		ImGui::TextColored(ImVec4(0.5,0.1,1,1), ("Lip Profile: " + getWheelLipProfile(getWheel(wheelID).getLipID())).c_str());
+		ImGui::TextColored(ImVec4(0.5,0.1,1,1), ("Has Skin? " + getWheelHasSkin(getWheel(wheelID).getHasSkin())).c_str());
 
 		ImGui::Columns(1);
 

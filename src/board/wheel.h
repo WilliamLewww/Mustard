@@ -34,7 +34,7 @@ public:
 	inline float getHeight() { return height; };
 	inline float getCurrentHeightPercent() { return currentHeightPercent; };
 	inline int getDurometer() { return durometer; };
-	inline int getLipID() { return lipID; };
+	inline int getLipID() {  return lipID; };
 	inline bool getHasSkin() { return hasSkin; };
 
 	inline void decayWheel(float angleDifference, float speed) {
@@ -73,4 +73,54 @@ static std::string getWheelName(int wheelID) {
 	std::string wheelNames[] = { "Butterballs", "Experimentals", "Snakes", "Stimulus", "ZigZags" };
 
 	return wheelNames[wheelID - 1];
+};
+
+static std::string getWheelLipProfile(int lipID) {
+	std::string lipProfile;
+	switch (lipID) {
+		case 1:
+			lipProfile = "Square";
+			break;
+		case 2:
+			lipProfile = "Round";
+	}
+
+	return lipProfile;
+};
+
+static std::string getWheelHasSkin(bool hasSkin) {
+	std::string skin;
+	switch (hasSkin) {
+		case true:
+			skin = "True";
+			break;
+		case false:
+			skin = "False";
+	}
+
+	return skin;
+}
+
+static Wheel getWheel(int wheelID) {
+	Wheel wheel;
+
+	switch (wheelID) {
+		case 1:
+			wheel = Butterballs(100);
+			break;
+		case 2:
+			wheel = Experimentals(100);
+			break;
+		case 3:
+			wheel = Snakes(100);
+			break;
+		case 4:
+			wheel = Stimulus(100);
+			break;
+		case 5:
+			wheel = ZigZags(100);
+			break;
+	}
+
+	return wheel;
 };
