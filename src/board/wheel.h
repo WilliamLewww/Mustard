@@ -1,8 +1,8 @@
 #pragma once
 
 enum {
-	LIP_SQUARE = 1;
-	LIP_ROUND = 2;
+	LIP_SQUARE = 1,
+	LIP_ROUND = 2
 };
 
 class Wheel {
@@ -11,7 +11,7 @@ protected:
 	int durometer;
 	int lipID;
 
-	float currentHeight;
+	float currentHeightPercent;
 	bool hasSkin;
 
 	int color[3];
@@ -20,6 +20,8 @@ protected:
 		color[0] = r; color[1] = g; color[2] = b;
 	};
 public:
+	inline Wheel() { };
+
 	inline Wheel(float width, float height, int durometer, int lipID, bool hasSkin) {
 		this->width = width;
 		this->height = height;
@@ -30,7 +32,7 @@ public:
 
 	inline float getWidth() { return width; };
 	inline float getHeight() { return height; };
-	inline float getCurrentHeight() { return currentHeight; };
+	inline float getCurrentHeightPercent() { return currentHeightPercent; };
 	inline int getDurometer() { return durometer; };
 	inline int getLipID() { return lipID; };
 	inline bool getHasSkin() { return hasSkin; };
@@ -44,11 +46,31 @@ public:
 	// 0 <-- more grippy
 	inline float getTraction() {
 		float traction;
-		return traction
+		return traction;
 	};
 
 	inline float getRollSpeed() {
 		float speed;
 		return speed;
 	};
-}
+};
+
+#include "wheel_butterballs.h"
+#include "wheel_experimentals.h"
+#include "wheel_snakes.h"
+#include "wheel_stimulus.h"
+#include "wheel_zigzags.h"
+
+enum WHEEL {
+	WHEEL_BUTTERBALLS = 1,
+	WHEEL_EXPERIMENTALS = 2,
+	WHEEL_SNAKES = 3,
+	WHEEL_STIMULUS = 4,
+	WHEEL_ZIGZAGS = 5
+};
+
+static std::string getWheelName(int wheelID) {
+	std::string wheelNames[] = { "Butterballs", "Experimentals", "Snakes", "Stimulus", "ZigZags" };
+
+	return wheelNames[wheelID - 1];
+};

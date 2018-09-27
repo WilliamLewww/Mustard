@@ -8,6 +8,8 @@ void Joiner::initialize() {
 	boardLength = configuration.getConfigurations()["BoardLength"];
 	boardWidth = configuration.getConfigurations()["BoardWidth"];
 
+	wheelID = 1;
+
 	thaneColor[0] = (float)configuration.getConfigurations()["ThaneColorR"] / 255;
 	thaneColor[1] = (float)configuration.getConfigurations()["ThaneColorG"] / 255;
 	thaneColor[2] = (float)configuration.getConfigurations()["ThaneColorB"] / 255;
@@ -312,20 +314,33 @@ void Joiner::update() {
 	}
 
 	if (showBoardEdit) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(300, 155), ImVec2(300, 155));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(350, 155), ImVec2(350, 155));
 		ImGui::Begin("Edit Board");
+		ImGui::Columns(2);
 		ImGui::PushItemWidth(-175);
+		ImGui::SetColumnWidth(0, 200);
 		ImGui::InputInt("Board Preset", &boardID);
 
 		if (boardID < 1) { boardID = 1; }
 		if (boardID > 3) { boardID = 3; }
 
-		ImGui::TextColored(ImVec4(0,1,1,1), ("Name: " + configuration.getNameConfigurations()[("Board" + std::to_string(boardID) + ("Name")).c_str()]).c_str());
+		ImGui::TextColored(ImVec4(0,1,1,1), configuration.getNameConfigurations()[("Board" + std::to_string(boardID) + ("Name")).c_str()].c_str());
 		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Length: %i", boardLength);
 		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Width: %i", boardWidth);
 
 		boardLength = configuration.getConfigurations()[("Board" + std::to_string(boardID) + ("Length")).c_str()];
 		boardWidth = configuration.getConfigurations()[("Board" + std::to_string(boardID) + ("Width")).c_str()];
+
+		ImGui::NextColumn();
+
+		ImGui::PushItemWidth(-175);
+		ImGui::InputInt("Wheel Preset", &wheelID);
+		if (wheelID < 1) { wheelID = 1; }
+		if (wheelID > 5) { wheelID = 5; }
+
+		ImGui::TextColored(ImVec4(0,1,1,1), getWheelName(wheelID).c_str());
+
+		ImGui::Columns(1);
 
 		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
 

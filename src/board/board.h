@@ -8,6 +8,7 @@
 #include "..\effects\particle_manager.h"
 #include "..\bmp_polygon.h"
 #include "..\camera.h"
+#include "wheel.h"
 
 class Board {
 private:
@@ -53,6 +54,7 @@ private:
 	void linkPolygonWithConfigurations();
 public:
 	BitmapPolygon bitmapPolygon;
+	Wheel wheel;
 
 	inline float getVelocity() { return velocity; };
 	

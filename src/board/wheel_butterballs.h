@@ -3,10 +3,10 @@
 
 class Butterballs : public Wheel {
 public:
-	Butterballs(float currentHeight)
+	Butterballs(float currentHeightPercent)
 		:Wheel(48, 70, 80, false, LIP_ROUND) {
 
-		this->currentHeight = currentHeight;
+		this->currentHeightPercent = currentHeightPercent;
 		setColor(255, 255, 255);
 	};
-}
+};

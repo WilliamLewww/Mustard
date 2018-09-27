@@ -35,6 +35,7 @@ private:
 
 	int selectedRun = 0, leaderboardSelectedRun = 0;
 	int boardID, boardLength, boardWidth;
+	int wheelID;
 	int trackGenerationStyle;
 	float thaneColor[3];
 public:

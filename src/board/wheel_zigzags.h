@@ -3,10 +3,10 @@
 
 class ZigZags : public Wheel {
 public:
-	ZigZags(float currentHeight)
+	ZigZags(float currentHeightPercent)
 		:Wheel(53, 70, 77, true, LIP_SQUARE) {
 
-		this->currentHeight = currentHeight;
+		this->currentHeightPercent = currentHeightPercent;
 		setColor(56, 222, 64);
 	};
-}
+};

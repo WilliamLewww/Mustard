@@ -3,15 +3,15 @@
 
 class Snakes : public Wheel {
 public:
-	Snakes(float currentHeight)
+	Snakes(float currentHeightPercent)
 		:Wheel(48, 66, 75, false, LIP_ROUND) {
 
-		this->currentHeight = currentHeight;
+		this->currentHeightPercent = currentHeightPercent;
 		setColor(255, 107, 95);
 	};
 
 	inline float getTraction() {
 		float traction;
-		return traction
+		return traction;
 	};
-}
+};

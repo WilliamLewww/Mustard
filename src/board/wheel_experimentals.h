@@ -3,10 +3,10 @@
 
 class Experimentals : public Wheel {
 public:
-	Experimentals(float currentHeight)
+	Experimentals(float currentHeightPercent)
 		:Wheel(48, 66, 78, false, LIP_ROUND) {
 
-		this->currentHeight = currentHeight;
+		this->currentHeightPercent = currentHeightPercent;
 		setColor(254, 78, 0);
 	};
-}
+};
