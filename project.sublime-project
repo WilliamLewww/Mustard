@@ -11,6 +11,7 @@
 				"C:/Projects/Thane/build.res",
 				"C:/Projects/Thane/engine.cpp",
 				"C:/Projects/Thane/src/*.cpp",
+				"C:/Projects/Thane/src/board/*.cpp",
 				"C:/Projects/Thane/src/environment/*.cpp",
 				"C:/Projects/Thane/src/effects/*.cpp",
 				"C:/Projects/Thane/src/hud/*.cpp",
@@ -46,6 +47,7 @@
 						"C:/Projects/Thane/build.res",
 						"C:/Projects/Thane/engine.cpp",
 						"C:/Projects/Thane/src/*.cpp",
+						"C:/Projects/Thane/src/board/*.cpp",
 						"C:/Projects/Thane/src/environment/*.cpp",
 						"C:/Projects/Thane/src/effects/*.cpp",
 						"C:/Projects/Thane/src/hud/*.cpp",
@@ -62,7 +64,7 @@
 						"-lmingw32",
 						"-lSDL2main",
 						"-lSDL2",
-						"-lopengl32"
+						"-lopengl32",
 					]
 		        }
 		    ],

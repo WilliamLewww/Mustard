@@ -6,8 +6,8 @@
 #include "hud\hud.h"
 #include "effects\particle_manager.h"
 #include "environment\squirrel.h"
+#include "board\board.h"
 #include "world.h"
-#include "board.h"
 #include "camera.h"
 
 class Joiner {

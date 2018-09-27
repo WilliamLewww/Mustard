@@ -316,12 +316,13 @@ void Joiner::update() {
 		ImGui::Begin("Edit Board");
 		ImGui::PushItemWidth(-175);
 		ImGui::InputInt("Board Preset", &boardID);
-		ImGui::TextColored(ImVec4(0,1,1,1), ("Name: " + configuration.getNameConfigurations()[("Board" + std::to_string(boardID) + ("Name")).c_str()]).c_str());
-		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Length: %i", boardLength);
-		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Width: %i", boardWidth);
 
 		if (boardID < 1) { boardID = 1; }
 		if (boardID > 3) { boardID = 3; }
+
+		ImGui::TextColored(ImVec4(0,1,1,1), ("Name: " + configuration.getNameConfigurations()[("Board" + std::to_string(boardID) + ("Name")).c_str()]).c_str());
+		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Length: %i", boardLength);
+		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Width: %i", boardWidth);
 
 		boardLength = configuration.getConfigurations()[("Board" + std::to_string(boardID) + ("Length")).c_str()];
 		boardWidth = configuration.getConfigurations()[("Board" + std::to_string(boardID) + ("Width")).c_str()];

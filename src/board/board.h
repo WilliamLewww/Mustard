@@ -1,13 +1,13 @@
 #pragma once
 #include <vector>
 #include <string>
-#include "core\input.h"
-#include "core\vector3.h"
-#include "core\timer.h"
-#include "core\configuration.h"
-#include "effects\particle_manager.h"
-#include "bmp_polygon.h"
-#include "camera.h"
+#include "..\core\input.h"
+#include "..\core\vector3.h"
+#include "..\core\timer.h"
+#include "..\core\configuration.h"
+#include "..\effects\particle_manager.h"
+#include "..\bmp_polygon.h"
+#include "..\camera.h"
 
 class Board {
 private:
