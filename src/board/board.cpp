@@ -8,6 +8,7 @@ void Board::initialize() {
 
 void Board::initializeWheel() {
 	wheel = getWheel(configuration.getConfigurations()["WheelID"]);
+	wheel.setID(configuration.getConfigurations()["WheelID"]);
 }
 
 void Board::linkPolygonWithConfigurations() {
@@ -109,6 +110,10 @@ void Board::handleFootBrake() {
 	// }
 }
 
+float Board::getTurnSpeed() {
+	return turnSpeed * wheel.getTraction();
+}
+
 void Board::handleLeftTurn() {
 	if ((input.checkKeyDown(SDLK_LEFT) && !input.checkKeyDown(SDLK_RIGHT)) || input.getControllerPadInput() == 7) {
 		turnLeft = true;
@@ -117,28 +122,28 @@ void Board::handleLeftTurn() {
 			shutdownSlide = true;
 			slide = true;
 
-			bitmapPolygon.setAngle(bitmapPolygon.getAngle() + ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 3));
-			movementAngle += (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds;
+			bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * 3));
+			movementAngle += getTurnSpeed() * elapsedTimeSeconds;
 		}
 		else {
 			if (input.checkKeyDown(SDLK_s) || input.checkButtonDown(0)) {
 				slide = true;
 
 				if (shutdownSlide == true) {
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 5));
-					movementAngle += (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds / 3;
+					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * 5));
+					movementAngle += getTurnSpeed() * elapsedTimeSeconds / 3;
 				}
 				else {
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 6));
-					movementAngle += (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds / 3;
+					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * 6));
+					movementAngle += getTurnSpeed() * elapsedTimeSeconds / 3;
 				}
 			}
 			else {
 				if (input.checkKeyDown(SDLK_a) || input.checkButtonDown(2)) {
 					slide = true;
 
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 3));
-					movementAngle += (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 1.25;
+					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * 3));
+					movementAngle += getTurnSpeed() * elapsedTimeSeconds * 1.25;
 				}
 				else {
 					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (turnSpeed * elapsedTimeSeconds));
@@ -160,28 +165,28 @@ void Board::handleRightTurn() {
 			shutdownSlide = true;
 			slide = true;
 
-			bitmapPolygon.setAngle(bitmapPolygon.getAngle() - ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 3));
-			movementAngle -= (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds;
+			bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 3));
+			movementAngle -= getTurnSpeed() * elapsedTimeSeconds;
 		}
 		else {
 			if (input.checkKeyDown(SDLK_s) || input.checkButtonDown(0)) {
 				slide = true;
 
 				if (shutdownSlide == true) {
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 5));
-					movementAngle -= (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds / 3;
+					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 5));
+					movementAngle -= getTurnSpeed() * elapsedTimeSeconds / 3;
 				}
 				else {
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 6));
-					movementAngle -= (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds / 3;
+					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 6));
+					movementAngle -= getTurnSpeed() * elapsedTimeSeconds / 3;
 				}
 			}
 			else {
 				if (input.checkKeyDown(SDLK_a) || input.checkButtonDown(2)) {
 					slide = true;
 
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 3));
-					movementAngle -= (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 1.25;
+					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 3));
+					movementAngle -= getTurnSpeed() * elapsedTimeSeconds * 1.25;
 				}
 				else {
 					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (turnSpeed * elapsedTimeSeconds));

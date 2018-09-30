@@ -7,6 +7,8 @@ enum {
 
 class Wheel {
 protected:
+	int wheelID;
+
 	float width, height;
 	int durometer;
 	int lipID;
@@ -30,6 +32,9 @@ public:
 		this->hasSkin = hasSkin;
 	};
 
+	inline int getID() { return wheelID; }
+	inline void setID(int wheelID) { this->wheelID = wheelID; }
+
 	inline float getWidth() { return width; };
 	inline float getHeight() { return height; };
 	inline float getCurrentHeightPercent() { return currentHeightPercent; };
@@ -49,8 +54,9 @@ public:
 		traction += ((durometer - 70.0) / 20.0);
 		traction += ((60.0 - width) / 60.0) * 0.55;
 		traction += ((75.0 - (height * currentHeightPercent)) / 75.0) * 0.25;
-		
-		traction *= 2;
+
+		if (hasSkin == true) { traction *= 1.75; }
+		else { traction *= 2; }
 
 		return traction;
 	};
