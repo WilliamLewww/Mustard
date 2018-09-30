@@ -315,7 +315,7 @@ void Joiner::update() {
 	}
 
 	if (showBoardEdit) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 195), ImVec2(380, 195));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 225), ImVec2(380, 225));
 		ImGui::Begin("Edit Board");
 		ImGui::Columns(2);
 		ImGui::PushItemWidth(-175);
@@ -348,8 +348,11 @@ void Joiner::update() {
 		ImGui::TextColored(ImVec4(0.5,0.1,1,1), ("Has Skin? " + getWheelHasSkin(getWheel(wheelID).getHasSkin())).c_str());
 
 		ImGui::Columns(1);
+		ImGui::Spacing();
+		ImGui::TextColored(ImVec4(0,1,0,1), "Base Traction: %f", getWheel(wheelID).getTraction());
+		ImGui::TextColored(ImVec4(0,1,0,1), "Current Traction: %f", board.wheel.getTraction());
 
-		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
+		ImGui::Spacing();
 
 		if (ImGui::Button("Close")) {
 			showBoardEdit = false;
