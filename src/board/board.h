@@ -51,6 +51,7 @@ private:
 	void generateThane(int multiplier);
 	void drawBrakeLines();
 	
+	void initializeWheel();
 	void linkPolygonWithConfigurations();
 public:
 	BitmapPolygon bitmapPolygon;

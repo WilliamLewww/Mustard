@@ -45,7 +45,13 @@ public:
 	// 2 <-- more buttery
 	// 0 <-- more grippy
 	inline float getTraction() {
-		float traction;
+		float traction = 0.00;
+		traction += ((durometer - 70.0) / 20.0);
+		traction += ((60.0 - width) / 60.0) * 0.55;
+		traction += ((75.0 - (height * currentHeightPercent)) / 75.0) * 0.25;
+
+		traction *= 2;
+
 		return traction;
 	};
 
@@ -106,19 +112,19 @@ static Wheel getWheel(int wheelID) {
 
 	switch (wheelID) {
 		case 1:
-			wheel = Butterballs(100);
+			wheel = Butterballs(1);
 			break;
 		case 2:
-			wheel = Experimentals(100);
+			wheel = Experimentals(1);
 			break;
 		case 3:
-			wheel = Snakes(100);
+			wheel = Snakes(1);
 			break;
 		case 4:
-			wheel = Stimulus(100);
+			wheel = Stimulus(1);
 			break;
 		case 5:
-			wheel = ZigZags(100);
+			wheel = ZigZags(1);
 			break;
 	}
 

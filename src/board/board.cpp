@@ -1,8 +1,13 @@
 #include "board.h"
 
 void Board::initialize() {
+	initializeWheel();
 	linkPolygonWithConfigurations();
 	bitmapPolygon.setPosition(Vector2(0, 0));
+}
+
+void Board::initializeWheel() {
+	wheel = getWheel(configuration.getConfigurations()["WheelID"]);
 }
 
 void Board::linkPolygonWithConfigurations() {
@@ -112,28 +117,28 @@ void Board::handleLeftTurn() {
 			shutdownSlide = true;
 			slide = true;
 
-			bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (turnSpeed * elapsedTimeSeconds * 3));
-			movementAngle += turnSpeed * elapsedTimeSeconds;
+			bitmapPolygon.setAngle(bitmapPolygon.getAngle() + ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 3));
+			movementAngle += (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds;
 		}
 		else {
 			if (input.checkKeyDown(SDLK_s) || input.checkButtonDown(0)) {
 				slide = true;
 
 				if (shutdownSlide == true) {
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (turnSpeed * elapsedTimeSeconds * 5));
-					movementAngle += turnSpeed * elapsedTimeSeconds / 3;
+					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 5));
+					movementAngle += (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds / 3;
 				}
 				else {
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (turnSpeed * elapsedTimeSeconds * 6));
-					movementAngle += turnSpeed * elapsedTimeSeconds / 3;
+					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 6));
+					movementAngle += (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds / 3;
 				}
 			}
 			else {
 				if (input.checkKeyDown(SDLK_a) || input.checkButtonDown(2)) {
 					slide = true;
 
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (turnSpeed * elapsedTimeSeconds * 3));
-					movementAngle += turnSpeed * elapsedTimeSeconds * 1.25;
+					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 3));
+					movementAngle += (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 1.25;
 				}
 				else {
 					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (turnSpeed * elapsedTimeSeconds));
@@ -155,28 +160,28 @@ void Board::handleRightTurn() {
 			shutdownSlide = true;
 			slide = true;
 
-			bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (turnSpeed * elapsedTimeSeconds * 3));
-			movementAngle -= turnSpeed * elapsedTimeSeconds;
+			bitmapPolygon.setAngle(bitmapPolygon.getAngle() - ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 3));
+			movementAngle -= (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds;
 		}
 		else {
 			if (input.checkKeyDown(SDLK_s) || input.checkButtonDown(0)) {
 				slide = true;
 
 				if (shutdownSlide == true) {
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (turnSpeed * elapsedTimeSeconds * 5));
-					movementAngle -= turnSpeed * elapsedTimeSeconds / 3;
+					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 5));
+					movementAngle -= (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds / 3;
 				}
 				else {
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (turnSpeed * elapsedTimeSeconds * 6));
-					movementAngle -= turnSpeed * elapsedTimeSeconds / 3;
+					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 6));
+					movementAngle -= (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds / 3;
 				}
 			}
 			else {
 				if (input.checkKeyDown(SDLK_a) || input.checkButtonDown(2)) {
 					slide = true;
 
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (turnSpeed * elapsedTimeSeconds * 3));
-					movementAngle -= turnSpeed * elapsedTimeSeconds * 1.25;
+					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - ((turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 3));
+					movementAngle -= (turnSpeed * wheel.getTraction()) * elapsedTimeSeconds * 1.25;
 				}
 				else {
 					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (turnSpeed * elapsedTimeSeconds));

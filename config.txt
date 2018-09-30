@@ -6,6 +6,7 @@ ScreenHeight 700
 
 #Default
 BoardID 1
+WheelID 1
 BoardLength 40
 BoardWidth 10
 

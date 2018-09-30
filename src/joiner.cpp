@@ -200,6 +200,7 @@ void Joiner::update() {
 	if (ImGui::Button("Apply Changes / Re-Initialize")) {
 		configuration.setConfiguration("TrackGenerationStyle", trackGenerationStyle);
 		configuration.setConfiguration("BoardID", boardID);
+		configuration.setConfiguration("WheelID", wheelID);
 		configuration.setConfiguration("BoardLength", boardLength);
 		configuration.setConfiguration("BoardWidth", boardWidth);
 
