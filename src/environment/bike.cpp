@@ -33,8 +33,8 @@ void Bike::setPathing(std::vector<Vector2> railList) {
 				currentRail = Vector2(railList[currentRailIndex].x, railList[currentRailIndex].y + 25);
 			}
 
-			if (polygon.getCenter().x >= currentRail.x && currentRailIndex < railList.size() - 1) {
-				currentRailIndex += 1;
+			if (polygon.getCenter().x >= currentRail.x && currentRailIndex < railList.size() - 2) {
+				currentRailIndex += 2;
 				currentRail = Vector2(railList[currentRailIndex].x, railList[currentRailIndex].y + 25);
 			}
 		}
@@ -52,8 +52,8 @@ void Bike::setPathing(std::vector<Vector2> railList) {
 				currentRail = Vector2(railList[currentRailIndex].x, railList[currentRailIndex].y - 25);
 			}
 
-			if (polygon.getCenter().x <= currentRail.x + 25 && currentRailIndex > 1) {
-				currentRailIndex -= 1;
+			if (polygon.getCenter().x <= currentRail.x && currentRailIndex > 2) {
+				currentRailIndex -= 2;
 				currentRail = Vector2(railList[currentRailIndex].x, railList[currentRailIndex].y - 25);
 			}
 		}

@@ -18,7 +18,7 @@ void Environment::generateBikes(std::vector<Vector2> rail, int count, bool isLef
 		while (isTooClose == true) {
 			isTooClose = false;
 
-			randomIndex = rand() % (rail.size() - 1 + 1 - 3) + 3;
+			randomIndex = rand() % (rail.size() - 1 + 1 - 5) + 5;
 
 			for (int index : indexList) {
 				if (abs(randomIndex - index) < 5) {
@@ -28,10 +28,10 @@ void Environment::generateBikes(std::vector<Vector2> rail, int count, bool isLef
 		}
 
 		if (isLeft) {
-			bikeList.emplace_back(Vector2(rail[randomIndex].x, rail[randomIndex].y - 25), randomIndex, isLeft);
+			bikeList.emplace_back(Vector2(rail[randomIndex].x, rail[randomIndex].y), randomIndex, isLeft);
 		}
 		else {
-			bikeList.emplace_back(Vector2(rail[randomIndex].x, rail[randomIndex].y + 25), randomIndex, isLeft);
+			bikeList.emplace_back(Vector2(rail[randomIndex].x, rail[randomIndex].y), randomIndex, isLeft);
 		}
 		indexList.emplace_back(randomIndex);
 	}
