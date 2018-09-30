@@ -50,8 +50,12 @@ public:
 			currentHeightPercent -= (angleDifference * speed * 0.00001) * elapsedTimeSeconds;
 		}
 
-		if (currentHeightPercent < 0.97 && hasSkin == true) {
+		if (currentHeightPercent < 0.98 && hasSkin == true) {
 			hasSkin = false;
+		}
+
+		if (currentHeightPercent < 0.89 && lipID == LIP_SQUARE) {
+			lipID = LIP_ROUND;
 		}
 	};
 
@@ -60,12 +64,15 @@ public:
 	// 0 <-- more grippy
 	inline float getTraction() {
 		float traction = 0.00;
+		float multiplier = 2.00;
 		traction += ((durometer - 70.0) / 20.0);
 		traction += ((60.0 - width) / 60.0) * 0.55;
 		traction += ((75.0 - (height * currentHeightPercent)) / 75.0) * 0.25;
 
-		if (hasSkin == true) { traction *= 1.75; }
-		else { traction *= 2; }
+		if (hasSkin == true) { multiplier -= 0.25; }
+		if (lipID == LIP_SQUARE) { multiplier -= 0.12; }
+
+		traction *= multiplier;
 
 		return traction;
 	};
