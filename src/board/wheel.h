@@ -34,6 +34,8 @@ public:
 
 	inline int getID() { return wheelID; }
 	inline void setID(int wheelID) { this->wheelID = wheelID; }
+	
+	inline int* getColor() { return color; }
 
 	inline float getWidth() { return width; };
 	inline float getHeight() { return height; };

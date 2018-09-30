@@ -2,8 +2,10 @@
 
 ParticleManager particleManager;
 
-ParticleManager::ParticleManager() {
-	
+ParticleManager::ParticleManager() { }
+
+void ParticleManager::initialize() {
+	initializeThaneParticles();
 }
 
 void ParticleManager::generateCrashParticles(int count, Vector2 parentPosition) {

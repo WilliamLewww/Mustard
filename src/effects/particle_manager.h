@@ -26,6 +26,8 @@ private:
 public:
 	ParticleManager();
 
+	void initialize();
+	
 	void generateCrashParticles(int count, Vector2 parentPosition);
 	void generateThaneParticles(int count, Vector2 parentPosition, int alpha);
 	void generateSquirrelGibParticles(int count, Vector2 parentPosition, int alpha);

@@ -2,6 +2,7 @@
 #include <vector>
 #include "..\core\drawing.h"
 #include "..\core\vector2.h"
+#include "..\core\configuration.h"
 
 struct ThaneParticles {
 	int particleCount;
@@ -12,5 +13,6 @@ struct ThaneParticles {
 };
 
 ThaneParticles createThaneParticles(int count, Vector2 parentPosition, int alpha);
+void initializeThaneParticles();
 void updateThaneParticles(float elapsedTimeSeconds, ThaneParticles &particles);
 void drawThaneParticles(ThaneParticles particles);

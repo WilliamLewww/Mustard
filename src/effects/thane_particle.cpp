@@ -1,6 +1,6 @@
 #include "thane_particle.h"
 
-int thaneParticlesColor[3] = { 255, 255, 255 };
+int thaneParticlesColor[3];
 
 ThaneParticles createThaneParticles(int count, Vector2 parentPosition, int alpha) {
 	ThaneParticles particles = { count };
@@ -12,6 +12,12 @@ ThaneParticles createThaneParticles(int count, Vector2 parentPosition, int alpha
 	}
 
 	return particles;
+}
+
+void initializeThaneParticles() {
+	thaneParticlesColor[0] = configuration.getConfigurations()["ThaneColorR"];
+	thaneParticlesColor[1] = configuration.getConfigurations()["ThaneColorG"];
+	thaneParticlesColor[2] = configuration.getConfigurations()["ThaneColorB"];
 }
 
 void updateThaneParticles(float elapsedTimeSeconds, ThaneParticles &particles) {

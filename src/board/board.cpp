@@ -9,12 +9,18 @@ void Board::initialize() {
 void Board::initializeWheel() {
 	wheel = getWheel(configuration.getConfigurations()["WheelID"]);
 	wheel.setID(configuration.getConfigurations()["WheelID"]);
+
+	configuration.setConfiguration("ThaneColorR", wheel.getColor()[0]);
+	configuration.setConfiguration("ThaneColorG", wheel.getColor()[1]);
+	configuration.setConfiguration("ThaneColorB", wheel.getColor()[2]);
+
+	particleManager.initialize();
 }
 
 void Board::linkPolygonWithConfigurations() {
-	thaneColor[0] = configuration.getConfigurations()["ThaneColorR"];
-	thaneColor[1] = configuration.getConfigurations()["ThaneColorG"];
-	thaneColor[2] = configuration.getConfigurations()["ThaneColorB"];
+	thaneColor[0] = wheel.getColor()[0];
+	thaneColor[1] = wheel.getColor()[1];
+	thaneColor[2] = wheel.getColor()[2];
 	
 	bitmapPolygon.setColor(configuration.getConfigurations()[("Board" + std::to_string(configuration.getConfigurations()["BoardID"]) + ("ColorR")).c_str()], 
 		configuration.getConfigurations()[("Board" + std::to_string(configuration.getConfigurations()["BoardID"]) + ("ColorG")).c_str()], 

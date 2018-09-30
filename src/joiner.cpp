@@ -204,10 +204,6 @@ void Joiner::update() {
 		configuration.setConfiguration("BoardLength", boardLength);
 		configuration.setConfiguration("BoardWidth", boardWidth);
 
-		configuration.setConfiguration("ThaneColorR", thaneColor[0] * 255);
-		configuration.setConfiguration("ThaneColorG", thaneColor[1] * 255);
-		configuration.setConfiguration("ThaneColorB", thaneColor[2] * 255);
-
 		if (randomTrackSeed == true) {
 			joiner.seed = time(NULL);
 		}
