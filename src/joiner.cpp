@@ -315,7 +315,7 @@ void Joiner::update() {
 	}
 
 	if (showBoardEdit) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 225), ImVec2(380, 225));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 250), ImVec2(380, 250));
 		ImGui::Begin("Edit Board");
 		ImGui::Columns(2);
 		ImGui::PushItemWidth(-175);
@@ -351,6 +351,8 @@ void Joiner::update() {
 		ImGui::Spacing();
 		ImGui::TextColored(ImVec4(0,1,0,1), "Base Traction: %f", getWheel(wheelID).getTraction());
 		ImGui::TextColored(ImVec4(0,1,0,1), "Current Traction: %f", board.wheel.getTraction());
+		ImGui::Spacing();
+		ImGui::TextColored(ImVec4(0.59,0.75,1,1), "Thane Left to Core: %.2f%%", board.wheel.getCurrentHeightPercent() * 100);
 
 		ImGui::Spacing();
 

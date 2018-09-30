@@ -238,6 +238,8 @@ void Board::handleSlideRight(double difference) {
 			movementAngle -= 180;
 			flipped = !flipped;
 		}
+
+		wheel.decayWheel(elapsedTimeSeconds, difference, velocity);
 	}
 }
 
@@ -272,6 +274,8 @@ void Board::handleSlideLeft(double difference) {
 			movementAngle += 180;
 			flipped = !flipped;
 		}
+
+		wheel.decayWheel(elapsedTimeSeconds, difference, velocity);
 	}
 }
 

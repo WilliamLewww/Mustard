@@ -42,8 +42,17 @@ public:
 	inline int getLipID() {  return lipID; };
 	inline bool getHasSkin() { return hasSkin; };
 
-	inline void decayWheel(float angleDifference, float speed) {
+	inline void decayWheel(float elapsedTimeSeconds, float angleDifference, float speed) {
+		if (currentHeightPercent - (angleDifference * speed * 0.00001) * elapsedTimeSeconds < 0) {
+			currentHeightPercent = 0.00;
+		}
+		else {
+			currentHeightPercent -= (angleDifference * speed * 0.00001) * elapsedTimeSeconds;
+		}
 
+		if (currentHeightPercent < 0.97 && hasSkin == true) {
+			hasSkin = false;
+		}
 	};
 
 	// between 0 and 2 exclusive
