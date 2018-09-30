@@ -234,7 +234,7 @@ void Board::handleSlideRight(double difference) {
 			bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (20 * elapsedTimeSeconds));  
 		}
 
-		if (movementAngle - bitmapPolygon.getAngle() > 90) {
+		if (movementAngle - bitmapPolygon.getAngle() > 60) {
 			movementAngle -= 180;
 			flipped = !flipped;
 		}
@@ -270,7 +270,7 @@ void Board::handleSlideLeft(double difference) {
 			bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (20 * elapsedTimeSeconds));  
 		}
 
-		if (bitmapPolygon.getAngle() - movementAngle > 90) {
+		if (bitmapPolygon.getAngle() - movementAngle > 60) {
 			movementAngle += 180;
 			flipped = !flipped;
 		}
