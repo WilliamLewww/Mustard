@@ -183,7 +183,7 @@ void Joiner::update() {
 
 	}
 
-	ImGui::SetNextWindowSizeConstraints(ImVec2(230, 155), ImVec2(230, 155));
+	ImGui::SetNextWindowSizeConstraints(ImVec2(230, 175), ImVec2(230, 175));
 	ImGui::Begin("Main Menu");
 
 	ImGui::Columns(2);
@@ -224,6 +224,7 @@ void Joiner::update() {
 	}
 	ImGui::Columns(1);
 	ImGui::Checkbox("Display Session Stats", &showSessionStats);
+	ImGui::Checkbox("Display Wheel Stats", &showWheelStats);
 	ImGui::Text("%.1f FPS", ImGui::GetIO().Framerate);
 	ImGui::End();
 
@@ -283,6 +284,15 @@ void Joiner::update() {
 	   		ImGui::SetScrollHere(1);
 		}
 		ImGui::EndChild();
+		ImGui::End();
+	}
+
+	if (showWheelStats) {
+		ImGui::SetNextWindowSizeConstraints(ImVec2(240, 80), ImVec2(240, 80));
+		ImGui::Begin("Wheel Stats");
+		ImGui::TextColored(ImVec4(0,1,0,1), "Current Traction: x%.03f", (2.00 - board.wheel.getTraction()));
+		ImGui::TextColored(ImVec4(1,0,1,1), "Current Speed: x%.03f", board.wheel.getRollSpeed());
+		ImGui::TextColored(ImVec4(0.59,0.75,1,1), "Thane Left Till Core: %.2f%%", board.wheel.getCurrentHeightPercent() * 100);
 		ImGui::End();
 	}
 
@@ -348,8 +358,8 @@ void Joiner::update() {
 		ImGui::Spacing();
 
 		ImGui::Columns(2);
-		ImGui::TextColored(ImVec4(1,0,1,1), "Base Traction: x%.03f", getWheel(wheelID).getTraction());
-		ImGui::TextColored(ImVec4(0,1,0,1), "Current Traction: x%.03f", board.wheel.getTraction());
+		ImGui::TextColored(ImVec4(1,0,1,1), "Base Traction: x%.03f", (2.00 - getWheel(wheelID).getTraction()));
+		ImGui::TextColored(ImVec4(0,1,0,1), "Current Traction: x%.03f", (2.00 - board.wheel.getTraction()));
 		ImGui::NextColumn();
 		ImGui::TextColored(ImVec4(1,0,1,1), "Base Speed: x%.03f", getWheel(wheelID).getRollSpeed());
 		ImGui::TextColored(ImVec4(0,1,0,1), "Current Speed: x%.03f", board.wheel.getRollSpeed());

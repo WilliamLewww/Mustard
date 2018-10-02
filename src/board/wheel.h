@@ -88,10 +88,10 @@ public:
 	inline float getRollSpeed() {
 		float speed = 0.00;
 		float multiplier = 2.00;
-		speed += ((width - 40) / 40.0) * 0.12;
-		speed += ((height - 60.0) / 15.0) * 0.38;
+		speed += ((width - 40) / 40.0) * 0.27;
+		speed += ((height + 8 - 60.0) / 15.0) * 0.38;
 		speed += ((durometer - 70.0) / 30) * 0.17;
-		speed += (currentHeightPercent + 0.25) * 0.21;
+		speed += (currentHeightPercent) * 0.08;
 
 		if (hasSkin == true) { multiplier += 0.16; }
 		if (lipID == LIP_SQUARE) { multiplier -= 0.08; }

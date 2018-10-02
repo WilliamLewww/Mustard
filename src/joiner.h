@@ -30,7 +30,7 @@ private:
 	bool stillShowBoard = false;
 	
 	bool showBuyMenu = true;
-	bool showBoardEdit, showTrackEdit, showSessionStats = true, showLeaderboards = false;
+	bool showBoardEdit, showTrackEdit, showSessionStats = true, showLeaderboards = false, showWheelStats = true;
 	bool randomTrackSeed = false;
 
 	int selectedRun = 0, leaderboardSelectedRun = 0;
