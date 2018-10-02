@@ -62,6 +62,8 @@ public:
 
 	inline float getVelocity() { return velocity; };
 	
+	void addSpeedExternal(float speed);
+	
 	void initialize();
 	void update(int speedZone, int trackDirection);
 	void reset();

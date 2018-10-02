@@ -36,9 +36,9 @@ void Board::update(int speedZone, int trackDirection) {
 	elapsedTimeSeconds = timer.getTimeSeconds();
 
 	addSpeedFromHill(speedZone, trackDirection);
-	handlePushTuck();
 	handleLeftTurn();
 	handleRightTurn();
+	handlePushTuck();
 
 	double difference = getAngleDifference();
 	handleSlideRight(difference);
@@ -67,6 +67,15 @@ void Board::drawBrakeLines() {
 
 float Board::getRollSpeed() {
 	return rollSpeed * wheel.getRollSpeed();
+}
+
+void Board::addSpeedExternal(float speed) {
+	if (velocity - speed < 0) {
+		velocity = 0;
+	}
+	else {
+		velocity -= speed;
+	}
 }
 
 void Board::addSpeedFromHill(int speedZone, int trackDirection) {
@@ -257,7 +266,7 @@ void Board::handleSlideRight(double difference) {
 			}
 		}
 
-		wheel.decayWheel(elapsedTimeSeconds, difference, velocity);
+		wheel.decayWheel(elapsedTimeSeconds, difference, velocity, shutdownSlide);
 	}
 }
 
@@ -301,7 +310,7 @@ void Board::handleSlideLeft(double difference) {
 			}
 		}
 		
-		wheel.decayWheel(elapsedTimeSeconds, difference, velocity);
+		wheel.decayWheel(elapsedTimeSeconds, difference, velocity, shutdownSlide);
 	}
 }
 

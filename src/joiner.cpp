@@ -24,9 +24,7 @@ void Joiner::reset(bool crashed, bool crashedParticles = true) {
 		if (crashedParticles) {
 			particleManager.generateCrashParticles(20, board.bitmapPolygon.getCenter());
 		}
-		else {
-			stillShowBoard = true;
-		}
+		else { stillShowBoard = true; }
 	}
 	else {
 		stillShowBoard = false;
@@ -145,6 +143,8 @@ void Joiner::update() {
 
 		for (Squirrel& squirrel : world.environment.squirrelList) {
 			if (board.handleCollision(squirrel.polygon)) {
+				if (!squirrel.getDead()) { board.addSpeedExternal(-75); }
+
 				squirrel.kill();
 			}
 		}
@@ -164,9 +164,9 @@ void Joiner::update() {
 		
 		for (Bike& bike : world.environment.bikeList) {
 			if (board.handleCollision(bike.polygon) && !isCrashed) {
-				if (board.getVelocity() < 200) {
-					reset(true);
-				}
+				if (!bike.getDead()) { board.addSpeedExternal(-100); }
+				if (board.getVelocity() < 200) { reset(true); }
+
 				bike.kill();
 			}
 		}
@@ -288,11 +288,13 @@ void Joiner::update() {
 	}
 
 	if (showWheelStats) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(240, 80), ImVec2(240, 80));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(240, 105), ImVec2(240, 105));
 		ImGui::Begin("Wheel Stats");
-		ImGui::TextColored(ImVec4(0,1,0,1), "Current Traction: x%.03f", (2.00 - board.wheel.getTraction()));
-		ImGui::TextColored(ImVec4(1,0,1,1), "Current Speed: x%.03f", board.wheel.getRollSpeed());
+		ImGui::TextColored(ImVec4(0,1,0,1), "Traction Multiplier: x%.03f", (2.00 - board.wheel.getTraction()));
+		ImGui::TextColored(ImVec4(1,0,1,1), "Speed Multiplier: x%.03f", board.wheel.getRollSpeed());
 		ImGui::TextColored(ImVec4(0.59,0.75,1,1), "Thane Left Till Core: %.2f%%", board.wheel.getCurrentHeightPercent() * 100);
+		ImGui::Spacing();
+		ImGui::TextColored(ImVec4(0.96,0.57,0.26,1), "Velocity: %.2f", board.getVelocity());
 		ImGui::End();
 	}
 
@@ -321,7 +323,7 @@ void Joiner::update() {
 	}
 
 	if (showBoardEdit) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 265), ImVec2(380, 265));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 245), ImVec2(380, 245));
 		ImGui::Begin("Edit Board");
 		ImGui::Columns(2);
 		ImGui::PushItemWidth(-175);
@@ -351,23 +353,12 @@ void Joiner::update() {
 		ImGui::TextColored(ImVec4(0.8,0.4,1,1), "Duro: %ia", getWheel(wheelID).getDurometer());
 		ImGui::TextColored(ImVec4(1,0.6,1,1), "Strength: %i", getWheel(wheelID).getStrength());
 		ImGui::Spacing();
-		ImGui::TextColored(ImVec4(0.5,0.1,1,1), ("Lip Profile: " + getWheelLipProfile(getWheel(wheelID).getLipID())).c_str());
-		ImGui::TextColored(ImVec4(0.5,0.1,1,1), ("Has Skin? " + getWheelHasSkin(getWheel(wheelID).getHasSkin())).c_str());
-
-		ImGui::Columns(1);
+		ImGui::TextColored(ImVec4(0.7,0.3,1,1), ("Lip Profile: " + getWheelLipProfile(getWheel(wheelID).getLipID())).c_str());
+		ImGui::TextColored(ImVec4(0.7,0.3,1,1), ("Has Skin? " + getWheelHasSkin(getWheel(wheelID).getHasSkin())).c_str());
 		ImGui::Spacing();
-
-		ImGui::Columns(2);
-		ImGui::TextColored(ImVec4(1,0,1,1), "Base Traction: x%.03f", (2.00 - getWheel(wheelID).getTraction()));
-		ImGui::TextColored(ImVec4(0,1,0,1), "Current Traction: x%.03f", (2.00 - board.wheel.getTraction()));
-		ImGui::NextColumn();
+		ImGui::TextColored(ImVec4(0,1,0,1), "Base Traction: x%.03f", (2.00 - getWheel(wheelID).getTraction()));
 		ImGui::TextColored(ImVec4(1,0,1,1), "Base Speed: x%.03f", getWheel(wheelID).getRollSpeed());
-		ImGui::TextColored(ImVec4(0,1,0,1), "Current Speed: x%.03f", board.wheel.getRollSpeed());
 		ImGui::Columns(1);
-
-		ImGui::Spacing();
-		ImGui::TextColored(ImVec4(0.59,0.75,1,1), "Thane Left Till Core: %.2f%%", board.wheel.getCurrentHeightPercent() * 100);
-
 		ImGui::Spacing();
 
 		if (ImGui::Button("Close")) {

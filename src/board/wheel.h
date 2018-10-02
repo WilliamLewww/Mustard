@@ -51,22 +51,20 @@ public:
 	inline int getLipID() {  return lipID; };
 	inline bool getHasSkin() { return hasSkin; };
 
-	inline void decayWheel(float elapsedTimeSeconds, float angleDifference, float speed) {
-		float rate = (angleDifference * speed * 0.0001 * ((100.0 - strength) / 100)) * elapsedTimeSeconds;
-		if (currentHeightPercent - rate < 0) {
-			currentHeightPercent = 0.00;
+	inline void decayWheel(float elapsedTimeSeconds, float angleDifference, float speed, bool shutdownSlide) {
+		float rate;
+		if (shutdownSlide) {
+			rate = (angleDifference * speed * 0.0001 * ((100.0 - (strength * (9.0 / 10.0))) / 100)) * elapsedTimeSeconds;
 		}
 		else {
-			currentHeightPercent -= rate;
+			rate = (angleDifference * speed * 0.0001 * ((100.0 - strength) / 100)) * elapsedTimeSeconds;
 		}
 
-		if (currentHeightPercent < 0.98 && hasSkin == true) {
-			hasSkin = false;
-		}
+		if (currentHeightPercent - rate < 0) { currentHeightPercent = 0.00; }
+		else { currentHeightPercent -= rate; }
 
-		if (currentHeightPercent < 0.89 && lipID == LIP_SQUARE) {
-			lipID = LIP_ROUND;
-		}
+		if (currentHeightPercent < 0.98 && hasSkin == true) { hasSkin = false; }
+		if (currentHeightPercent < 0.89 && lipID == LIP_SQUARE) { lipID = LIP_ROUND; }
 	};
 	
 	inline float getTraction() {
@@ -125,11 +123,8 @@ static std::string getWheelName(int wheelID) {
 static std::string getWheelLipProfile(int lipID) {
 	std::string lipProfile;
 	switch (lipID) {
-		case 1:
-			lipProfile = "Square";
-			break;
-		case 2:
-			lipProfile = "Round";
+		case 1: lipProfile = "Square"; break;
+		case 2: lipProfile = "Round"; break;
 	}
 
 	return lipProfile;
@@ -138,11 +133,8 @@ static std::string getWheelLipProfile(int lipID) {
 static std::string getWheelHasSkin(bool hasSkin) {
 	std::string skin;
 	switch (hasSkin) {
-		case true:
-			skin = "True";
-			break;
-		case false:
-			skin = "False";
+		case true: skin = "True"; break;
+		case false: skin = "False"; break;
 	}
 
 	return skin;
