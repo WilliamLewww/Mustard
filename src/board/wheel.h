@@ -89,7 +89,7 @@ public:
 		speed += ((width - 40) / 40.0) * 0.27;
 		speed += ((height + 8 - 60.0) / 15.0) * 0.38;
 		speed += ((durometer - 70.0) / 30) * 0.17;
-		speed += (currentHeightPercent) * 0.08;
+		speed += (currentHeightPercent) * 0.11;
 
 		if (hasSkin == true) { multiplier += 0.16; }
 		if (lipID == LIP_SQUARE) { multiplier -= 0.08; }

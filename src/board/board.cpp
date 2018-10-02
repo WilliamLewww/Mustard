@@ -69,7 +69,7 @@ float Board::getRollSpeed() {
 	return rollSpeed * wheel.getRollSpeed();
 }
 
-void Board::addSpeedExternal(float speed) {
+void Board::subtractSpeedExternal(float speed) {
 	if (velocity - speed < 0) {
 		velocity = 0;
 	}

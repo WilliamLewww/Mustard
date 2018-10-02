@@ -143,7 +143,7 @@ void Joiner::update() {
 
 		for (Squirrel& squirrel : world.environment.squirrelList) {
 			if (board.handleCollision(squirrel.polygon)) {
-				if (!squirrel.getDead()) { board.addSpeedExternal(-75); }
+				if (!squirrel.getDead()) { board.subtractSpeedExternal(50); }
 
 				squirrel.kill();
 			}
@@ -164,7 +164,7 @@ void Joiner::update() {
 		
 		for (Bike& bike : world.environment.bikeList) {
 			if (board.handleCollision(bike.polygon) && !isCrashed) {
-				if (!bike.getDead()) { board.addSpeedExternal(-100); }
+				if (!bike.getDead()) { board.subtractSpeedExternal(100); }
 				if (board.getVelocity() < 200) { reset(true); }
 
 				bike.kill();
@@ -299,17 +299,16 @@ void Joiner::update() {
 	}
 
 	if (showTrackEdit) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(275, 150), ImVec2(275, 150));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(275, 155), ImVec2(275, 155));
 		ImGui::Begin("Edit Track");
-		ImGui::PushItemWidth(-100);
+		ImGui::PushItemWidth(-200);
 		ImGui::InputInt("Style", &trackGenerationStyle);
 		if (trackGenerationStyle < 0) { trackGenerationStyle = 0; }
 		if (trackGenerationStyle > 2) { trackGenerationStyle = 2; }
 
+		ImGui::TextColored(ImVec4(0,1,1,1), configuration.getNameConfigurations()[("TrackStyle" + std::to_string(trackGenerationStyle)).c_str()].c_str());
 
 		ImGui::PushItemWidth((ImGui::GetWindowWidth() / 2) - 15);
-
-		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
 		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
 
 		ImGui::Checkbox("Random Seed", &randomTrackSeed);

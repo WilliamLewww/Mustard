@@ -57,3 +57,7 @@ Board3Width 10
 Board3ColorR 125
 Board3ColorG 104
 Board3ColorB 221
+
+@TrackStyle0 Mountain Road
+@TrackStyle1 Smooth Track (Under Construction)
+@TrackStyle2 Narrow Mountain Road
