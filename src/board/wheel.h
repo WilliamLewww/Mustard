@@ -108,6 +108,14 @@ public:
 #include "wheel_stimulus.h"
 #include "wheel_zigzags.h"
 
+enum {
+	WHEEL_BUTTERBALLS = 1,
+	WHEEL_EXPERIMENTALS = 2,
+	WHEEL_SNAKES = 3,
+	WHEEL_STIMULUS = 4,
+	WHEEL_ZIGZAGS = 5
+};
+
 static std::string getWheelName(int wheelID) {
 	std::string wheelNames[] = { "Butterballs", "Experimentals", "Snakes", "Stimulus", "ZigZags" };
 
@@ -144,11 +152,11 @@ static Wheel getWheel(int wheelID) {
 	Wheel wheel;
 
 	switch (wheelID) {
-		case 1: wheel = Butterballs(1); break;
-		case 2: wheel = Experimentals(1); break;
-		case 3: wheel = Snakes(1); break;
-		case 4: wheel = Stimulus(1); break;
-		case 5: wheel = ZigZags(1); break;			
+		case WHEEL_BUTTERBALLS: wheel = Butterballs(1); break;
+		case WHEEL_EXPERIMENTALS: wheel = Experimentals(1); break;
+		case WHEEL_SNAKES: wheel = Snakes(1); break;
+		case WHEEL_STIMULUS: wheel = Stimulus(1); break;
+		case WHEEL_ZIGZAGS: wheel = ZigZags(1); break;			
 	}
 
 	return wheel;
