@@ -108,14 +108,6 @@ public:
 #include "wheel_stimulus.h"
 #include "wheel_zigzags.h"
 
-enum WHEEL {
-	WHEEL_BUTTERBALLS = 1,
-	WHEEL_EXPERIMENTALS = 2,
-	WHEEL_SNAKES = 3,
-	WHEEL_STIMULUS = 4,
-	WHEEL_ZIGZAGS = 5
-};
-
 static std::string getWheelName(int wheelID) {
 	std::string wheelNames[] = { "Butterballs", "Experimentals", "Snakes", "Stimulus", "ZigZags" };
 
