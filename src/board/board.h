@@ -36,6 +36,7 @@ private:
 	void handlePushTuck();
 	void handleFootBrake();
 
+	float getRollSpeed();
 	float getTurnSpeed();
 	
 	void handleLeftTurn();

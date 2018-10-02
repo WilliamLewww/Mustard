@@ -520,64 +520,10 @@
 	"buffers":
 	[
 		{
-			"file": "src/board/wheel_snakes.h",
+			"file": "src/environment/environment.cpp",
 			"settings":
 			{
-				"buffer_size": 234,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/board/wheel.h",
-			"settings":
-			{
-				"buffer_size": 3187,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/joiner.cpp",
-			"settings":
-			{
-				"buffer_size": 11336,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "README.md",
-			"settings":
-			{
-				"buffer_size": 4185,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/board/board.cpp",
-			"settings":
-			{
-				"buffer_size": 11786,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/effects/thane_particle.cpp",
-			"settings":
-			{
-				"buffer_size": 1330,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/effects/particle_manager.cpp",
-			"settings":
-			{
-				"buffer_size": 3600,
+				"buffer_size": 5171,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -592,19 +538,19 @@
 			}
 		},
 		{
-			"file": "src/effects/thane_particle.h",
+			"file": "src/environment/bike.h",
 			"settings":
 			{
-				"buffer_size": 537,
+				"buffer_size": 644,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/board/board.h",
+			"file": "src/environment/bike.cpp",
 			"settings":
 			{
-				"buffer_size": 1628,
+				"buffer_size": 3153,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -975,10 +921,23 @@
 		"/C/Projects/Thane/src",
 		"/C/Projects/Thane/src/board",
 		"/C/Projects/Thane/src/core",
-		"/C/Projects/Thane/src/effects"
+		"/C/Projects/Thane/src/effects",
+		"/C/Projects/Thane/src/environment"
 	],
 	"file_history":
 	[
+		"/C/Users/William/Desktop/internship.dat",
+		"/C/Projects/Thane/project.sublime-project",
+		"/C/Projects/Thane/src/effects/bike_giblets_particle.cpp",
+		"/C/Projects/Thane/src/board/board.h",
+		"/C/Projects/Thane/src/effects/thane_particle.h",
+		"/C/Projects/Thane/src/effects/particle_manager.h",
+		"/C/Projects/Thane/src/effects/particle_manager.cpp",
+		"/C/Projects/Thane/src/effects/thane_particle.cpp",
+		"/C/Projects/Thane/src/board/board.cpp",
+		"/C/Projects/Thane/README.md",
+		"/C/Projects/Thane/src/board/wheel_snakes.h",
+		"/C/Projects/Thane/src/board/wheel.h",
 		"/C/Projects/Thane/src/joiner.cpp",
 		"/C/Projects/Thane/src/joiner.h",
 		"/C/Projects/Thane/src/board/wheel_butterballs.h",
@@ -986,21 +945,15 @@
 		"/C/Projects/Thane/src/board/wheel_zigzags.h",
 		"/C/Projects/Thane/src/board/wheel_stimulus.h",
 		"/C/Projects/Thane/config.txt",
-		"/C/Users/William/Desktop/internship.dat",
 		"/D/###/Cereal/cereal.py",
 		"/D/###/Cereal/cereal_nodiv.py",
 		"/C/Projects/Thane/src/board/wheel.cpp",
 		"/C/Projects/Thane/src/bmp_polygon.cpp",
-		"/C/Projects/Thane/src/board/wheel_snakes.h",
 		"/C/Projects/Thane/src/board/butterballs_wheel.h",
 		"/C/Projects/Thane/src/board/zigzags_wheel.h",
 		"/C/Projects/Thane/src/world.h",
-		"/C/Projects/Thane/src/board/board.h",
 		"/C/Projects/Thane/src/board/experimentals_wheel.h",
 		"/C/Projects/Thane/src/board/stimulus_wheel.h",
-		"/C/Projects/Thane/src/board/wheel.h",
-		"/C/Projects/Thane/src/board/board.cpp",
-		"/C/Projects/Thane/project.sublime-project",
 		"/C/Projects/Thane/src/world.cpp",
 		"/C/Projects/Thane/src/board.h",
 		"/C/Projects/Thane/src/board.cpp",
@@ -1013,15 +966,11 @@
 		"/C/Projects/Thane/src/wheels/main_wheel.h",
 		"/C/Projects/Thane/src/core/configuration.h",
 		"/C/Projects/Help/CSC340 A1/Main.java",
-		"/C/Projects/Thane/src/effects/bike_giblets_particle.cpp",
 		"/C/Projects/Thane/src/effects/bike_giblets_particle.h",
-		"/C/Projects/Thane/README.md",
-		"/C/Projects/Thane/src/effects/particle_manager.cpp",
 		"/C/Projects/Thane/src/environment/squirrel.cpp",
 		"/C/Projects/Thane/src/environment/squirrel.h",
 		"/C/Users/William/Desktop/Record.txt",
 		"/C/Projects/Thane/src/effects/crash_particle.cpp",
-		"/C/Projects/Thane/src/effects/particle_manager.h",
 		"/C/Projects/Thane/src/environment/bike.h",
 		"/C/Projects/Thane/src/environment/bike.cpp",
 		"/C/Projects/Thane/src/environment/car.cpp",
@@ -1039,7 +988,6 @@
 		"/C/Users/William/Desktop/pj1_F2018_stud/Readme.txt",
 		"/C/Users/William/Desktop/pj1_F2018_stud/PJ1/MixedNumber.java",
 		"/C/Users/William/Desktop/pj1_F2018_stud/PJ1/MixedNumberInterface.java",
-		"/C/Projects/Thane/src/effects/thane_particle.h",
 		"/C/Projects/Thane/src/environment/guard_rail.h",
 		"/C/Projects/Thane/src/environment/guard_rail.cpp",
 		"/C/Projects/Thane/src/hud/splits_display.cpp",
@@ -1068,7 +1016,6 @@
 		"/C/Projects/Thane/src/environment/chunder.h",
 		"/C/Projects/Thane/src/environment/chunder.cpp",
 		"/C/Projects/Thane/src/core/file_manager.h",
-		"/C/Projects/Thane/src/effects/thane_particle.cpp",
 		"/C/Projects/Thane/src/hud/hud.cpp",
 		"/C/Projects/Thane/src/hud/minimap.h",
 		"/C/Projects/Thane/src/hud/hud.h",
@@ -1110,7 +1057,7 @@
 	],
 	"find":
 	{
-		"height": 40.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -1272,198 +1219,53 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/board/wheel_snakes.h",
+					"file": "src/environment/environment.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 234,
+						"buffer_size": 5171,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								126,
-								126
+								755,
+								755
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/board/wheel.h",
+					"file": "src/effects/particle_manager.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3187,
+						"buffer_size": 1188,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								651,
-								651
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 141.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/joiner.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11336,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10544,
-								10544
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 4105.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "README.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4185,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1819,
-								1819
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 260.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/board/board.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11786,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2139,
-								2139
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/effects/thane_particle.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1330,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1330,
-								1330
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 55.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/effects/particle_manager.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3600,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								139,
-								127
+								1087,
+								1087
 							]
 						],
 						"settings":
@@ -1479,77 +1281,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "src/effects/particle_manager.h",
+					"buffer": 2,
+					"file": "src/environment/bike.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1188,
+						"buffer_size": 644,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								702,
-								702
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "src/effects/thane_particle.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 537,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								406,
-								406
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "src/board/board.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1628,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								277,
-								277
+								439,
+								439
 							]
 						],
 						"settings":
@@ -1565,11 +1310,46 @@
 					"type": "text"
 				}
 			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "src/environment/bike.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3153,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								489,
+								489
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 203.0
+		"height": 22.0
 	},
 	"input":
 	{
@@ -1584,11 +1364,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -1610,7 +1397,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 72.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":

@@ -345,8 +345,15 @@ void Joiner::update() {
 
 		ImGui::Columns(1);
 		ImGui::Spacing();
-		ImGui::TextColored(ImVec4(0,1,0,1), "Base Traction: x%.03f", getWheel(wheelID).getTraction());
+
+		ImGui::Columns(2);
+		ImGui::TextColored(ImVec4(0,0,1,1), "Base Traction: x%.03f", getWheel(wheelID).getTraction());
 		ImGui::TextColored(ImVec4(0,1,0,1), "Current Traction: x%.03f", board.wheel.getTraction());
+		ImGui::NextColumn();
+		ImGui::TextColored(ImVec4(0,0,1,1), "Base Speed: x%.03f", getWheel(wheelID).getRollSpeed());
+		ImGui::TextColored(ImVec4(0,1,0,1), "Current Speed: x%.03f", board.wheel.getRollSpeed());
+		ImGui::Columns(1);
+
 		ImGui::Spacing();
 		ImGui::TextColored(ImVec4(0.59,0.75,1,1), "Thane Left Till Core: %.2f%%", board.wheel.getCurrentHeightPercent() * 100);
 

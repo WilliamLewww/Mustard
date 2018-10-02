@@ -65,22 +65,26 @@ void Board::drawBrakeLines() {
 	//for (Vector2 line : brakeLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawing.drawPoint(line, board.shoe.breakColor); }}
 }
 
+float Board::getRollSpeed() {
+	return rollSpeed * wheel.getRollSpeed();
+}
+
 void Board::addSpeedFromHill(int speedZone, int trackDirection) {
 	if (bitmapPolygon.getAngle() > trackDirection - 30 && bitmapPolygon.getAngle() < trackDirection + 30) {
 		if (bitmapPolygon.getAngle() > trackDirection - 15 && bitmapPolygon.getAngle() < trackDirection + 15) {
 			if (bitmapPolygon.getAngle() > trackDirection - 10 && bitmapPolygon.getAngle() < trackDirection + 10) {
-				velocity += (rollSpeed + speedZone) * 1.2 * elapsedTimeSeconds;
+				velocity += (getRollSpeed() + speedZone) * 1.2 * elapsedTimeSeconds;
 			}
 			else {
-				velocity += (rollSpeed + speedZone) * 1.0 * elapsedTimeSeconds;
+				velocity += (getRollSpeed() + speedZone) * 1.0 * elapsedTimeSeconds;
 			}
 		}
 		else {
-			velocity += (rollSpeed + speedZone) * 0.8 * elapsedTimeSeconds;
+			velocity += (getRollSpeed() + speedZone) * 0.8 * elapsedTimeSeconds;
 		}
 	}
 	else {
-		velocity += (rollSpeed + speedZone) * 0.5 * elapsedTimeSeconds;
+		velocity += (getRollSpeed() + speedZone) * 0.5 * elapsedTimeSeconds;
 	}
 }
 
