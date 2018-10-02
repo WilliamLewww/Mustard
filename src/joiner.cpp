@@ -311,7 +311,7 @@ void Joiner::update() {
 	}
 
 	if (showBoardEdit) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 250), ImVec2(380, 250));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 265), ImVec2(380, 265));
 		ImGui::Begin("Edit Board");
 		ImGui::Columns(2);
 		ImGui::PushItemWidth(-175);
@@ -339,6 +339,7 @@ void Joiner::update() {
 		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Height: %imm", (int)getWheel(wheelID).getHeight());
 		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Width: %imm", (int)getWheel(wheelID).getWidth());
 		ImGui::TextColored(ImVec4(0.8,0.4,1,1), "Duro: %ia", getWheel(wheelID).getDurometer());
+		ImGui::TextColored(ImVec4(1,0.6,1,1), "Strength: %i", getWheel(wheelID).getStrength());
 		ImGui::Spacing();
 		ImGui::TextColored(ImVec4(0.5,0.1,1,1), ("Lip Profile: " + getWheelLipProfile(getWheel(wheelID).getLipID())).c_str());
 		ImGui::TextColored(ImVec4(0.5,0.1,1,1), ("Has Skin? " + getWheelHasSkin(getWheel(wheelID).getHasSkin())).c_str());
@@ -347,10 +348,10 @@ void Joiner::update() {
 		ImGui::Spacing();
 
 		ImGui::Columns(2);
-		ImGui::TextColored(ImVec4(0,0,1,1), "Base Traction: x%.03f", getWheel(wheelID).getTraction());
+		ImGui::TextColored(ImVec4(1,0,1,1), "Base Traction: x%.03f", getWheel(wheelID).getTraction());
 		ImGui::TextColored(ImVec4(0,1,0,1), "Current Traction: x%.03f", board.wheel.getTraction());
 		ImGui::NextColumn();
-		ImGui::TextColored(ImVec4(0,0,1,1), "Base Speed: x%.03f", getWheel(wheelID).getRollSpeed());
+		ImGui::TextColored(ImVec4(1,0,1,1), "Base Speed: x%.03f", getWheel(wheelID).getRollSpeed());
 		ImGui::TextColored(ImVec4(0,1,0,1), "Current Speed: x%.03f", board.wheel.getRollSpeed());
 		ImGui::Columns(1);
 

@@ -13,6 +13,8 @@ protected:
 	int durometer;
 	int lipID;
 
+	int strength;
+
 	float currentHeightPercent;
 	bool hasSkin;
 
@@ -24,10 +26,12 @@ protected:
 public:
 	inline Wheel() { };
 
-	inline Wheel(float width, float height, int durometer, int lipID, bool hasSkin) {
+	inline Wheel(float width, float height, int durometer, int strength, int lipID, bool hasSkin) {
 		this->width = width;
 		this->height = height;
 		this->durometer = durometer;
+		this->strength = strength;
+
 		this->lipID = lipID;
 		this->hasSkin = hasSkin;
 	};
@@ -40,16 +44,20 @@ public:
 	inline float getWidth() { return width; };
 	inline float getHeight() { return height; };
 	inline float getCurrentHeightPercent() { return currentHeightPercent; };
+
 	inline int getDurometer() { return durometer; };
+	inline int getStrength() { return strength; };
+
 	inline int getLipID() {  return lipID; };
 	inline bool getHasSkin() { return hasSkin; };
 
 	inline void decayWheel(float elapsedTimeSeconds, float angleDifference, float speed) {
-		if (currentHeightPercent - (angleDifference * speed * 0.00001) * elapsedTimeSeconds < 0) {
+		float rate = (angleDifference * speed * 0.0001 * ((100.0 - strength) / 100)) * elapsedTimeSeconds;
+		if (currentHeightPercent - rate < 0) {
 			currentHeightPercent = 0.00;
 		}
 		else {
-			currentHeightPercent -= (angleDifference * speed * 0.00001) * elapsedTimeSeconds;
+			currentHeightPercent -= rate;
 		}
 
 		if (currentHeightPercent < 0.98 && hasSkin == true) {
@@ -60,16 +68,14 @@ public:
 			lipID = LIP_ROUND;
 		}
 	};
-
-	// between 0 and 2 exclusive
-	// 2 <-- more buttery
-	// 0 <-- more grippy
+	
 	inline float getTraction() {
 		float traction = 0.00;
 		float multiplier = 2.00;
 		traction += ((durometer - 70.0) / 20.0);
 		traction += ((60.0 - width) / 60.0) * 0.55;
-		traction += ((75.0 - (height * currentHeightPercent)) / 75.0) * 0.25;
+		traction += ((75.0 - height) / 75.0) * 0.25;
+		traction += (1.00 - currentHeightPercent) * 0.01;
 
 		if (hasSkin == true) { multiplier -= 0.25; }
 		if (lipID == LIP_SQUARE) { multiplier -= 0.12; }
@@ -80,13 +86,14 @@ public:
 	};
 
 	inline float getRollSpeed() {
-		float speed;
+		float speed = 0.00;
 		float multiplier = 2.00;
-		speed += ((height - 60.0) / 15.0) * 0.49;
-		speed += ((durometer - 70.0) / 30) * 0.15;
-		speed += (currentHeightPercent) * 0.25;
+		speed += ((width - 40) / 40.0) * 0.12;
+		speed += ((height - 60.0) / 15.0) * 0.38;
+		speed += ((durometer - 70.0) / 30) * 0.17;
+		speed += (currentHeightPercent + 0.25) * 0.21;
 
-		if (hasSkin == true) { multiplier += 0.23; }
+		if (hasSkin == true) { multiplier += 0.16; }
 		if (lipID == LIP_SQUARE) { multiplier -= 0.08; }
 
 		speed *= multiplier;
@@ -145,21 +152,11 @@ static Wheel getWheel(int wheelID) {
 	Wheel wheel;
 
 	switch (wheelID) {
-		case 1:
-			wheel = Butterballs(1);
-			break;
-		case 2:
-			wheel = Experimentals(1);
-			break;
-		case 3:
-			wheel = Snakes(1);
-			break;
-		case 4:
-			wheel = Stimulus(1);
-			break;
-		case 5:
-			wheel = ZigZags(1);
-			break;
+		case 1: wheel = Butterballs(1); break;
+		case 2: wheel = Experimentals(1); break;
+		case 3: wheel = Snakes(1); break;
+		case 4: wheel = Stimulus(1); break;
+		case 5: wheel = ZigZags(1); break;			
 	}
 
 	return wheel;

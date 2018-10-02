@@ -547,10 +547,46 @@
 			}
 		},
 		{
-			"file": "src/environment/bike.cpp",
+			"file": "src/board/board.cpp",
 			"settings":
 			{
-				"buffer_size": 3153,
+				"buffer_size": 11878,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/board/board.h",
+			"settings":
+			{
+				"buffer_size": 1651,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/board/wheel.h",
+			"settings":
+			{
+				"buffer_size": 3402,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "config.txt",
+			"settings":
+			{
+				"buffer_size": 861,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/joiner.cpp",
+			"settings":
+			{
+				"buffer_size": 11592,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -917,15 +953,14 @@
 	"expanded_folders":
 	[
 		"/C/Projects/Thane",
-		"/C/Projects/Thane/res",
 		"/C/Projects/Thane/src",
 		"/C/Projects/Thane/src/board",
 		"/C/Projects/Thane/src/core",
-		"/C/Projects/Thane/src/effects",
-		"/C/Projects/Thane/src/environment"
+		"/C/Projects/Thane/src/effects"
 	],
 	"file_history":
 	[
+		"/C/Projects/Thane/src/environment/bike.cpp",
 		"/C/Users/William/Desktop/internship.dat",
 		"/C/Projects/Thane/project.sublime-project",
 		"/C/Projects/Thane/src/effects/bike_giblets_particle.cpp",
@@ -972,7 +1007,6 @@
 		"/C/Users/William/Desktop/Record.txt",
 		"/C/Projects/Thane/src/effects/crash_particle.cpp",
 		"/C/Projects/Thane/src/environment/bike.h",
-		"/C/Projects/Thane/src/environment/bike.cpp",
 		"/C/Projects/Thane/src/environment/car.cpp",
 		"/C/Projects/Thane/src/environment/car.h",
 		"/C/Projects/Thane/src/environment/environment.h",
@@ -1074,6 +1108,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"RollSpeed",
+			"rollSpeed",
 			"(turnSpeed * wheel.getTraction())",
 			"(turnSpeed * wheel.getTraction()",
 			"((turnSpeed * wheel.getTraction())",
@@ -1199,9 +1235,7 @@
 			"randomTrackSeed",
 			"trackseed",
 			"trackseet",
-			"seed",
-			"radius",
-			"elapsedTime"
+			"seed"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1219,7 +1253,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -1248,7 +1282,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -1277,7 +1311,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1306,30 +1340,88 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
+				},
 				{
 					"buffer": 3,
-					"file": "src/environment/bike.cpp",
+					"file": "src/board/board.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3153,
+						"buffer_size": 11878,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								489,
-								489
+								7217,
+								7217
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2577.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/board/board.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1651,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								851,
+								851
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 34.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 5,
+					"file": "src/board/wheel.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3402,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								998,
+								998
 							]
 						],
 						"settings":
@@ -1341,7 +1433,64 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "config.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 861,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								473,
+								473
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/joiner.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11592,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10800,
+								10800
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 41.0,
+						"translation.y": 3988.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1387,7 +1536,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 96.0
+		"height": 111.0
 	},
 	"output.find_results":
 	{

@@ -33,6 +33,7 @@ DrawTrackDetails 1
 #Draw Minimap
 DrawMinimap 1
 
+#DO NOT CHANGE PRESETS
 #Preset 1
 @Board1Name Landyachtz Switchblade
 Board1Length 40

@@ -23,9 +23,9 @@ void Board::linkPolygonWithConfigurations() {
 	thaneColor[2] = wheel.getColor()[2];
 	
 	bitmapPolygon.setColor(configuration.getConfigurations()[("Board" + std::to_string(configuration.getConfigurations()["BoardID"]) + ("ColorR")).c_str()], 
-		configuration.getConfigurations()[("Board" + std::to_string(configuration.getConfigurations()["BoardID"]) + ("ColorG")).c_str()], 
-		configuration.getConfigurations()[("Board" + std::to_string(configuration.getConfigurations()["BoardID"]) + ("ColorB")).c_str()], 
-		configuration.getConfigurations()["BoardColorA"]);
+	configuration.getConfigurations()[("Board" + std::to_string(configuration.getConfigurations()["BoardID"]) + ("ColorG")).c_str()], 
+	configuration.getConfigurations()[("Board" + std::to_string(configuration.getConfigurations()["BoardID"]) + ("ColorB")).c_str()], 
+	configuration.getConfigurations()["BoardColorA"]);
 
 	bitmapPolygon.setSize(configuration.getConfigurations()["BoardLength"], configuration.getConfigurations()["BoardWidth"]);
 	std::string boardFileName = "board_" + std::to_string(configuration.getConfigurations()["BoardID"]) + ".txt";
