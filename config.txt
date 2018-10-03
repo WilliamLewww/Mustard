@@ -5,21 +5,8 @@ ScreenWidth 1000
 ScreenHeight 700
 
 #Default
-BoardID 1
+DeckID 1
 WheelID 1
-BoardLength 40
-BoardWidth 10
-
-#Board Alpha
-BoardColorA 255
-
-#ThaneColorR 246
-#ThaneColorG 171
-#ThaneColorB 176
-
-ThaneColorR 255
-ThaneColorG 255
-ThaneColorB 255
 
 #Track Speed Spacing
 TrackSpeedSpacing 15
@@ -32,31 +19,6 @@ DrawTrackDetails 1
 
 #Draw Minimap
 DrawMinimap 1
-
-#DO NOT CHANGE PRESETS
-#Preset 1
-@Board1Name Landyachtz Switchblade
-Board1Length 40
-Board1Width 10
-Board1ColorR 103
-Board1ColorG 156
-Board1ColorB 192
-
-#Preset 2
-@Board2Name Moonshine Rum Runner Carbon
-Board2Length 36
-Board2Width 9
-Board2ColorR 155
-Board2ColorG 24
-Board2ColorB 24
-
-#Preset 3
-@Board3Name Landyachtz Wolfshark Mini
-Board3Length 32
-Board3Width 10
-Board3ColorR 125
-Board3ColorG 104
-Board3ColorB 221
 
 @TrackStyle0 Mountain Road
 @TrackStyle1 Smooth Track (Under Construction)

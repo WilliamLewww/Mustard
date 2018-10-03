@@ -1,11 +1,20 @@
 #include "board.h"
 
 void Board::initialize() {
+	initializeDeck();
 	initializeWheel();
 	linkPolygonWithConfigurations();
 	bitmapPolygon.setPosition(Vector2(0, 0));
 
 	particleManager.initialize();
+}
+
+void Board::initializeDeck() {
+	deck = getDeck(configuration.getConfigurations()["DeckID"]);
+
+	configuration.setConfiguration("BoardColorR", deck.getColor()[0]);
+	configuration.setConfiguration("BoardColorG", deck.getColor()[1]);
+	configuration.setConfiguration("BoardColorB", deck.getColor()[2]);
 }
 
 void Board::initializeWheel() {
@@ -22,17 +31,10 @@ void Board::linkPolygonWithConfigurations() {
 	thaneColor[1] = wheel.getColor()[1];
 	thaneColor[2] = wheel.getColor()[2];
 	
-	bitmapPolygon.setColor(configuration.getConfigurations()[("Board" + std::to_string(configuration.getConfigurations()["BoardID"]) + ("ColorR")).c_str()], 
-	configuration.getConfigurations()[("Board" + std::to_string(configuration.getConfigurations()["BoardID"]) + ("ColorG")).c_str()], 
-	configuration.getConfigurations()[("Board" + std::to_string(configuration.getConfigurations()["BoardID"]) + ("ColorB")).c_str()], 
-	configuration.getConfigurations()["BoardColorA"]);
-
-	configuration.setConfiguration("BoardColorR", bitmapPolygon.getColor(0));
-	configuration.setConfiguration("BoardColorG", bitmapPolygon.getColor(1));
-	configuration.setConfiguration("BoardColorB", bitmapPolygon.getColor(2));
-
-	bitmapPolygon.setSize(configuration.getConfigurations()["BoardLength"], configuration.getConfigurations()["BoardWidth"]);
-	std::string boardFileName = "board_" + std::to_string(configuration.getConfigurations()["BoardID"]) + ".txt";
+	bitmapPolygon.setColor(deck.getColor()[0], deck.getColor()[1], deck.getColor()[2], 255);
+	
+	bitmapPolygon.setSize(deck.getLength(), deck.getWidth());
+	std::string boardFileName = "board_" + std::to_string(configuration.getConfigurations()["DeckID"]) + ".txt";
 	bitmapPolygon.setVertices(boardFileName.c_str());
 }
 
@@ -65,9 +67,9 @@ void Board::drawThaneLines() {
 	}
 }
 
-void Board::drawBrakeLines() {
+// void Board::drawBrakeLines() {
 	//for (Vector2 line : brakeLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawing.drawPoint(line, board.shoe.breakColor); }}
-}
+// }
 
 float Board::getRollSpeed() {
 	return rollSpeed * wheel.getRollSpeed();
@@ -119,7 +121,7 @@ void Board::handlePushTuck() {
 	}
 }
 
-void Board::handleFootBrake() {
+// void Board::handleFootBrake() {
 	// if (std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) != keyList.end() && slide == false) {
 	// 	if (board.shoe.left - (board.velocity * deltaTimeS) / board.shoe.strength < 0) { board.shoe.left = 0; }
 	// 	else { board.shoe.left -= (board.velocity * deltaTimeS) / board.shoe.strength; }
@@ -131,7 +133,7 @@ void Board::handleFootBrake() {
 	// 		brakeLines.push_back(board.rectangle.bottomLeft());
 	// 	}
 	// }
-}
+// }
 
 float Board::getTurnSpeed() {
 	return turnSpeed * wheel.getTraction();

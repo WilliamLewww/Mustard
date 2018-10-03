@@ -8,6 +8,7 @@
 #include "..\effects\particle_manager.h"
 #include "..\bmp_polygon.h"
 #include "..\camera.h"
+#include "deck.h"
 #include "wheel.h"
 
 class Board {
@@ -34,7 +35,7 @@ private:
 
 	void addSpeedFromHill(int speedZone, int trackDirection);
 	void handlePushTuck();
-	void handleFootBrake();
+	// void handleFootBrake();
 
 	float getRollSpeed();
 	float getTurnSpeed();
@@ -52,12 +53,14 @@ private:
 	void refreshSlide();
 
 	void generateThane(int multiplier);
-	void drawBrakeLines();
+	// void drawBrakeLines();
 	
+	void initializeDeck();
 	void initializeWheel();
 	void linkPolygonWithConfigurations();
 public:
 	BitmapPolygon bitmapPolygon;
+	Deck deck;
 	Wheel wheel;
 
 	inline float getVelocity() { return velocity; };

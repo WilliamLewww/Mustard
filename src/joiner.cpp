@@ -4,15 +4,9 @@ Joiner joiner;
 
 void Joiner::initialize() {
 	trackGenerationStyle = configuration.getConfigurations()["TrackGenerationStyle"];
-	boardID = configuration.getConfigurations()["BoardID"];
-	boardLength = configuration.getConfigurations()["BoardLength"];
-	boardWidth = configuration.getConfigurations()["BoardWidth"];
 
-	wheelID = 1;
-
-	thaneColor[0] = (float)configuration.getConfigurations()["ThaneColorR"] / 255;
-	thaneColor[1] = (float)configuration.getConfigurations()["ThaneColorG"] / 255;
-	thaneColor[2] = (float)configuration.getConfigurations()["ThaneColorB"] / 255;
+	deckID = configuration.getConfigurations()["DeckID"];
+	wheelID = configuration.getConfigurations()["WheelID"];
 
 	initializeWorld();
 }
@@ -204,10 +198,8 @@ void Joiner::update() {
 	
 	if (ImGui::Button("Apply Changes / Re-Initialize")) {
 		configuration.setConfiguration("TrackGenerationStyle", trackGenerationStyle);
-		configuration.setConfiguration("BoardID", boardID);
+		configuration.setConfiguration("DeckID", deckID);
 		configuration.setConfiguration("WheelID", wheelID);
-		configuration.setConfiguration("BoardLength", boardLength);
-		configuration.setConfiguration("BoardWidth", boardWidth);
 
 		if (randomTrackSeed == true) {
 			joiner.seed = time(NULL);
@@ -321,17 +313,13 @@ void Joiner::update() {
 		ImGui::Columns(2);
 		ImGui::PushItemWidth(-175);
 		ImGui::SetColumnWidth(0, 200);
-		ImGui::InputInt("Board Preset", &boardID);
+		ImGui::InputInt("Board Preset", &deckID);
+		if (deckID < 1) { deckID = 1; }
+		if (deckID > 3) { deckID = 3; }
 
-		if (boardID < 1) { boardID = 1; }
-		if (boardID > 3) { boardID = 3; }
-
-		ImGui::TextColored(ImVec4(0,1,1,1), configuration.getNameConfigurations()[("Board" + std::to_string(boardID) + ("Name")).c_str()].c_str());
-		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Length: %i\"", boardLength);
-		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Width: %i\"", boardWidth);
-
-		boardLength = configuration.getConfigurations()[("Board" + std::to_string(boardID) + ("Length")).c_str()];
-		boardWidth = configuration.getConfigurations()[("Board" + std::to_string(boardID) + ("Width")).c_str()];
+		ImGui::TextColored(ImVec4(0,1,1,1), getDeck(deckID).getName().c_str());
+		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Length: %i\"", getDeck(deckID).getLength());
+		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Width: %i\"", getDeck(deckID).getWidth());
 
 		ImGui::NextColumn();
 
@@ -340,7 +328,7 @@ void Joiner::update() {
 		if (wheelID < 1) { wheelID = 1; }
 		if (wheelID > 5) { wheelID = 5; }
 
-		ImGui::TextColored(ImVec4(0,1,1,1), getWheelName(wheelID).c_str());
+		ImGui::TextColored(ImVec4(0,1,1,1), getWheel(wheelID).getName().c_str());
 		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Height: %imm", (int)getWheel(wheelID).getHeight());
 		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Width: %imm", (int)getWheel(wheelID).getWidth());
 		ImGui::TextColored(ImVec4(0.8,0.4,1,1), "Duro: %ia", getWheel(wheelID).getDurometer());

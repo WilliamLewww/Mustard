@@ -7,6 +7,8 @@ enum {
 
 class Wheel {
 protected:
+	std::string name;
+
 	int wheelID;
 
 	float width, height;
@@ -26,7 +28,8 @@ protected:
 public:
 	inline Wheel() { };
 
-	inline Wheel(float width, float height, int durometer, int strength, int lipID, bool hasSkin) {
+	inline Wheel(std::string name, float width, float height, int durometer, int strength, int lipID, bool hasSkin) {
+		this->name = name;
 		this->width = width;
 		this->height = height;
 		this->durometer = durometer;
@@ -35,6 +38,8 @@ public:
 		this->lipID = lipID;
 		this->hasSkin = hasSkin;
 	};
+
+	inline std::string getName() { return name; }
 
 	inline int getID() { return wheelID; }
 	inline void setID(int wheelID) { this->wheelID = wheelID; }
@@ -100,11 +105,7 @@ public:
 	};
 };
 
-#include "wheel_butterballs.h"
-#include "wheel_experimentals.h"
-#include "wheel_snakes.h"
-#include "wheel_stimulus.h"
-#include "wheel_zigzags.h"
+#include "wheel_presets.h"
 
 enum {
 	WHEEL_BUTTERBALLS = 1,
@@ -112,12 +113,6 @@ enum {
 	WHEEL_SNAKES = 3,
 	WHEEL_STIMULUS = 4,
 	WHEEL_ZIGZAGS = 5
-};
-
-static std::string getWheelName(int wheelID) {
-	std::string wheelNames[] = { "Butterballs", "Experimentals", "Snakes", "Stimulus", "ZigZags" };
-
-	return wheelNames[wheelID - 1];
 };
 
 static std::string getWheelLipProfile(int lipID) {
