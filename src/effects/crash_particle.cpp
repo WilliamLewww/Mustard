@@ -1,6 +1,12 @@
 #include "crash_particle.h"
 
-int crashParticlesColor[3] = { 103, 156, 192 };
+int crashParticlesColor[3];
+
+void initializeCrashParticles() {
+	crashParticlesColor[0] = configuration.getConfigurations()["BoardColorR"];
+	crashParticlesColor[1] = configuration.getConfigurations()["BoardColorG"];
+	crashParticlesColor[2] = configuration.getConfigurations()["BoardColorB"];
+}
 
 CrashParticles createCrashParticles(int count, Vector2 parentPosition) {
 	CrashParticles particles = { count, parentPosition };

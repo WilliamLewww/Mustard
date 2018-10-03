@@ -20,5 +20,6 @@ struct CrashParticles {
 };
 
 CrashParticles createCrashParticles(int count, Vector2 parentPosition);
+void initializeCrashParticles();
 void updateCrashParticles(float elapsedTimeSeconds, CrashParticles& particles);
 void drawCrashParticles(CrashParticles particles);

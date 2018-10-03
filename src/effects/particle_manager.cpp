@@ -6,6 +6,7 @@ ParticleManager::ParticleManager() { }
 
 void ParticleManager::initialize() {
 	initializeThaneParticles();
+	initializeCrashParticles();
 }
 
 void ParticleManager::generateCrashParticles(int count, Vector2 parentPosition) {

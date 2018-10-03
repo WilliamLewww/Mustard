@@ -4,6 +4,8 @@ void Board::initialize() {
 	initializeWheel();
 	linkPolygonWithConfigurations();
 	bitmapPolygon.setPosition(Vector2(0, 0));
+
+	particleManager.initialize();
 }
 
 void Board::initializeWheel() {
@@ -13,8 +15,6 @@ void Board::initializeWheel() {
 	configuration.setConfiguration("ThaneColorR", wheel.getColor()[0]);
 	configuration.setConfiguration("ThaneColorG", wheel.getColor()[1]);
 	configuration.setConfiguration("ThaneColorB", wheel.getColor()[2]);
-
-	particleManager.initialize();
 }
 
 void Board::linkPolygonWithConfigurations() {
@@ -26,6 +26,10 @@ void Board::linkPolygonWithConfigurations() {
 	configuration.getConfigurations()[("Board" + std::to_string(configuration.getConfigurations()["BoardID"]) + ("ColorG")).c_str()], 
 	configuration.getConfigurations()[("Board" + std::to_string(configuration.getConfigurations()["BoardID"]) + ("ColorB")).c_str()], 
 	configuration.getConfigurations()["BoardColorA"]);
+
+	configuration.setConfiguration("BoardColorR", bitmapPolygon.getColor(0));
+	configuration.setConfiguration("BoardColorG", bitmapPolygon.getColor(1));
+	configuration.setConfiguration("BoardColorB", bitmapPolygon.getColor(2));
 
 	bitmapPolygon.setSize(configuration.getConfigurations()["BoardLength"], configuration.getConfigurations()["BoardWidth"]);
 	std::string boardFileName = "board_" + std::to_string(configuration.getConfigurations()["BoardID"]) + ".txt";

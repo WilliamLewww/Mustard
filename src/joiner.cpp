@@ -183,10 +183,11 @@ void Joiner::update() {
 
 	}
 
-	ImGui::SetNextWindowSizeConstraints(ImVec2(230, 175), ImVec2(230, 175));
+	ImGui::SetNextWindowSizeConstraints(ImVec2(230, 165), ImVec2(230, 165));
 	ImGui::Begin("Main Menu");
 
 	ImGui::Columns(2);
+	ImGui::SetColumnWidth(0, 90);
 	if (ImGui::Button("Edit Track")) {
 		showTrackEdit = !showTrackEdit;
 	}
@@ -196,6 +197,10 @@ void Joiner::update() {
 	}
 
 	ImGui::Columns(1);
+
+	if (ImGui::Button("Leaderboards")) {
+		showLeaderboards = !showLeaderboards;
+	}
 	
 	if (ImGui::Button("Apply Changes / Re-Initialize")) {
 		configuration.setConfiguration("TrackGenerationStyle", trackGenerationStyle);
@@ -212,17 +217,6 @@ void Joiner::update() {
 		resetFull();
 	}
 
-	ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
-
-	ImGui::Columns(2);
-	if (ImGui::Button("Clear Thane")) {
-		board.clearLines();
-	}
-	ImGui::NextColumn();
-	if (ImGui::Button("Leaderboards")) {
-		showLeaderboards = !showLeaderboards;
-	}
-	ImGui::Columns(1);
 	ImGui::Checkbox("Display Session Stats", &showSessionStats);
 	ImGui::Checkbox("Display Wheel Stats", &showWheelStats);
 	ImGui::Text("%.1f FPS", ImGui::GetIO().Framerate);
