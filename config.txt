@@ -21,5 +21,5 @@ DrawTrackDetails 1
 DrawMinimap 1
 
 @TrackStyle0 Mountain Road
-@TrackStyle1 Smooth Track (Under Construction)
+@TrackStyle1 Smooth Track (W.I.P.)
 @TrackStyle2 Narrow Mountain Road

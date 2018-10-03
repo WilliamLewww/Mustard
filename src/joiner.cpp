@@ -285,7 +285,7 @@ void Joiner::update() {
 	}
 
 	if (showTrackEdit) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(250, 155), ImVec2(250, 155));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(200, 155), ImVec2(200, 155));
 		ImGui::Begin("Edit Track");
 		ImGui::PushItemWidth(-250);
 		ImGui::InputInt("Style", &trackGenerationStyle);
@@ -298,6 +298,7 @@ void Joiner::update() {
 		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
 
 		ImGui::Checkbox("Random Seed", &randomTrackSeed);
+		ImGui::PushItemWidth(150);
 		ImGui::InputInt("Seed", &seed);
 
 		if (ImGui::Button("Close")) {
@@ -320,6 +321,8 @@ void Joiner::update() {
 		ImGui::TextColored(ImVec4(0,1,1,1), getDeck(deckID).getName().c_str());
 		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Length: %i\"", getDeck(deckID).getLength());
 		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Width: %i\"", getDeck(deckID).getWidth());
+		ImGui::Spacing();
+		ImGui::TextColored(ImVec4(0.8,0.4,1,1), "Turn Radius: x%.03f", getDeck(deckID).getTurnRadius());
 
 		ImGui::NextColumn();
 
