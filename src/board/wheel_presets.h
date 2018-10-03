@@ -1,6 +1,17 @@
 #pragma once
 #include "wheel.h"
 
+class Mids : public Wheel {
+public:
+	Mids(float currentHeightPercent)
+		:Wheel("Mids", 50, 68, 77, 50, LIP_ROUND, false) {
+
+		this->currentHeightPercent = currentHeightPercent;
+		setColor(204, 204, 204);
+	};
+};
+
+
 class Butterballs : public Wheel {
 public:
 	Butterballs(float currentHeightPercent)

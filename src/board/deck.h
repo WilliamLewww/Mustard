@@ -16,13 +16,17 @@ public:
 		this->name = name;
 		this->length = length;
 		this->width = width;
-	}
+	};
 
-	inline std::string getName() { return name; }
-	inline int getLength() { return length; }
-	inline int getWidth() { return width; }
+	inline std::string getName() { return name; };
+	inline int getLength() { return length; };
+	inline int getWidth() { return width; };
 
-	inline int* getColor() { return color; }
+	inline int* getColor() { return color; };
+
+	inline float getTurnRadius() {
+		return ((45.0 - length) / 7.0);
+	};
 };
 
 #include "deck_presets.h"

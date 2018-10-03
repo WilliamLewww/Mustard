@@ -4,12 +4,12 @@
 		"selected_items":
 		[
 			[
-				"LI",
-				"LIP_ROUND"
+				"whee",
+				"wheel"
 			],
 			[
-				"whee",
-				"wheelID"
+				"LI",
+				"LIP_ROUND"
 			],
 			[
 				"wh",
@@ -520,64 +520,10 @@
 	"buffers":
 	[
 		{
-			"file": "src/environment/environment.cpp",
+			"file": "src/bmp_polygon.h",
 			"settings":
 			{
-				"buffer_size": 5171,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/effects/particle_manager.h",
-			"settings":
-			{
-				"buffer_size": 1188,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/environment/bike.h",
-			"settings":
-			{
-				"buffer_size": 687,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/board/board.cpp",
-			"settings":
-			{
-				"buffer_size": 12040,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/environment/squirrel.h",
-			"settings":
-			{
-				"buffer_size": 674,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/board/board.h",
-			"settings":
-			{
-				"buffer_size": 1695,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/board/wheel.h",
-			"settings":
-			{
-				"buffer_size": 3776,
+				"buffer_size": 3083,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -586,17 +532,42 @@
 			"file": "src/joiner.cpp",
 			"settings":
 			{
-				"buffer_size": 12142,
+				"buffer_size": 11291,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/joiner.h",
+			"file": "src/board/deck.h",
 			"settings":
 			{
-				"buffer_size": 1110,
+				"buffer_size": 938,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/board/wheel.h",
+			"settings":
+			{
+				"buffer_size": 3647,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/bmp_polygon.cpp",
+			"settings":
+			{
+				"buffer_size": 3528,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/board/board.h",
+			"settings":
+			{
+				"buffer_size": 1802,
 				"line_ending": "Windows"
 			}
 		}
@@ -970,36 +941,46 @@
 	],
 	"file_history":
 	[
+		"/C/Users/William/Desktop/internship.dat",
+		"/C/Projects/Help/CSC220_A1/PJ1/MixedNumber.java",
+		"/C/Projects/Thane/src/effects/thane_particle.h",
+		"/C/Projects/Thane/src/board/board.h",
+		"/C/Projects/Thane/src/board/wheel_presets.h",
+		"/C/Projects/Thane/src/board/wheel.h",
+		"/C/Projects/Thane/src/board/deck_presets.h",
+		"/C/Projects/Thane/src/environment/squirrel.h",
+		"/C/Projects/Thane/src/board/board.cpp",
+		"/C/Projects/Thane/src/environment/bike.h",
+		"/C/Projects/Thane/src/bmp_polygon.h",
+		"/C/Projects/Thane/src/world.h",
+		"/C/Projects/Thane/src/board/deck.h",
 		"/C/Projects/Thane/config.txt",
+		"/C/Projects/Thane/src/joiner.h",
+		"/C/Projects/Thane/src/joiner.cpp",
 		"/C/Projects/Thane/src/board/wheel_butterballs.h",
+		"/C/Projects/Thane/src/effects/thane_particle.cpp",
+		"/C/Projects/Thane/src/effects/crash_particle.h",
+		"/C/Projects/Thane/src/world.cpp",
+		"/C/Projects/Thane/src/effects/particle_manager.cpp",
+		"/C/Projects/Thane/src/effects/crash_particle.cpp",
+		"/C/Projects/Thane/src/environment/environment.cpp",
+		"/C/Projects/Thane/src/effects/particle_manager.h",
 		"/C/Projects/Thane/src/board/wheel_experimentals.h",
 		"/C/Projects/Thane/src/board/wheel_stimulus.h",
 		"/C/Projects/Thane/src/board/wheel_snakes.h",
 		"/C/Projects/Thane/src/board/wheel_zigzags.h",
 		"/C/Projects/Thane/src/environment/bike.cpp",
-		"/C/Users/William/Desktop/internship.dat",
 		"/C/Projects/Thane/project.sublime-project",
 		"/C/Projects/Thane/src/effects/bike_giblets_particle.cpp",
-		"/C/Projects/Thane/src/board/board.h",
-		"/C/Projects/Thane/src/effects/thane_particle.h",
-		"/C/Projects/Thane/src/effects/particle_manager.h",
-		"/C/Projects/Thane/src/effects/particle_manager.cpp",
-		"/C/Projects/Thane/src/effects/thane_particle.cpp",
-		"/C/Projects/Thane/src/board/board.cpp",
 		"/C/Projects/Thane/README.md",
-		"/C/Projects/Thane/src/board/wheel.h",
-		"/C/Projects/Thane/src/joiner.cpp",
-		"/C/Projects/Thane/src/joiner.h",
 		"/D/###/Cereal/cereal.py",
 		"/D/###/Cereal/cereal_nodiv.py",
 		"/C/Projects/Thane/src/board/wheel.cpp",
 		"/C/Projects/Thane/src/bmp_polygon.cpp",
 		"/C/Projects/Thane/src/board/butterballs_wheel.h",
 		"/C/Projects/Thane/src/board/zigzags_wheel.h",
-		"/C/Projects/Thane/src/world.h",
 		"/C/Projects/Thane/src/board/experimentals_wheel.h",
 		"/C/Projects/Thane/src/board/stimulus_wheel.h",
-		"/C/Projects/Thane/src/world.cpp",
 		"/C/Projects/Thane/src/board.h",
 		"/C/Projects/Thane/src/board.cpp",
 		"/C/Projects/Thane/src/track.h",
@@ -1013,15 +994,10 @@
 		"/C/Projects/Help/CSC340 A1/Main.java",
 		"/C/Projects/Thane/src/effects/bike_giblets_particle.h",
 		"/C/Projects/Thane/src/environment/squirrel.cpp",
-		"/C/Projects/Thane/src/environment/squirrel.h",
 		"/C/Users/William/Desktop/Record.txt",
-		"/C/Projects/Thane/src/effects/crash_particle.cpp",
-		"/C/Projects/Thane/src/environment/bike.h",
 		"/C/Projects/Thane/src/environment/car.cpp",
 		"/C/Projects/Thane/src/environment/car.h",
 		"/C/Projects/Thane/src/environment/environment.h",
-		"/C/Projects/Thane/src/environment/environment.cpp",
-		"/C/Projects/Thane/src/bmp_polygon.h",
 		"/C/Projects/Thane/src/effects/squirrel_giblets_particle.cpp",
 		"/C/Projects/Thane/src/effects/squirrel_giblets_particle.h",
 		"/C/Projects/Thane/src/environment/gravel.cpp",
@@ -1035,7 +1011,6 @@
 		"/C/Projects/Thane/src/environment/guard_rail.h",
 		"/C/Projects/Thane/src/environment/guard_rail.cpp",
 		"/C/Projects/Thane/src/hud/splits_display.cpp",
-		"/C/Projects/Thane/src/effects/crash_particle.h",
 		"/C/Projects/Thane/src/hud/splits_display.h",
 		"/C/Projects/Thane/main.cpp",
 		"/C/Projects/Thane/src/environment/pinecone.cpp",
@@ -1093,11 +1068,7 @@
 		"/C/Projects/Thane/src/camera.cpp",
 		"/C/Projects/Thane/src/World.h",
 		"/C/Projects/Thane/src/drawing.h",
-		"/C/Projects/Thane/src/configuration.h",
-		"/C/Projects/Thane/src/configuration.cpp",
-		"/C/Projects/Thane/src/input.cpp",
-		"/C/Projects/Thane/src/input.h",
-		"/C/Projects/Thane/src/engine.cpp"
+		"/C/Projects/Thane/src/configuration.h"
 	],
 	"find":
 	{
@@ -1118,6 +1089,23 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"std::cout",
+			"color",
+			"wheel",
+			"boardID",
+			"color",
+			"boardLength",
+			"BoardLength",
+			"boardLength",
+			"board",
+			"BoardID",
+			"boardID",
+			"Wolfshark",
+			"wheel",
+			"particleManager.initialize()",
+			"initializeWorld",
+			"initialize",
+			"thaneParticlesColor",
 			"clear",
 			"handlePushTuck",
 			"WHEEL",
@@ -1228,24 +1216,7 @@
 			"position.x",
 			"100",
 			"topRail",
-			"50",
-			"5",
-			"topRail",
-			"x",
-			"bottomRail",
-			"decisionTimer",
-			"5",
-			"elapsedTime",
-			"elapsed",
-			"elapsedTime",
-			"elapsed",
-			"reset",
-			"seed",
-			"joiner",
-			"splits",
-			"input",
-			"splitHistory",
-			"splitList"
+			"50"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1263,24 +1234,24 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/environment/environment.cpp",
+					"file": "src/bmp_polygon.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5171,
+						"buffer_size": 3083,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								857,
-								857
+								695,
+								695
 							]
 						],
 						"settings":
@@ -1292,204 +1263,53 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/effects/particle_manager.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1188,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1087,
-								1087
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/environment/bike.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 687,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								110,
-								110
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/board/board.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12040,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2420,
-								2441
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 25.0,
-						"translation.y": 599.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/environment/squirrel.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 674,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								513,
-								473
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/board/board.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1695,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								486,
-								486
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 482.5,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 6,
-					"file": "src/board/wheel.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3776,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2557,
-								2557
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 714.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
 					"file": "src/joiner.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12142,
+						"buffer_size": 11291,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								959,
-								959
+								7731,
+								7731
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 127.0,
+						"translation.y": 3276.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/board/deck.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 938,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								938,
+								938
 							]
 						],
 						"settings":
@@ -1505,20 +1325,55 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "src/joiner.h",
-					"semi_transient": false,
+					"buffer": 3,
+					"file": "src/board/wheel.h",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1110,
+						"buffer_size": 3647,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								567,
-								567
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 703.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "src/bmp_polygon.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3528,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								499,
+								499
 							]
 						],
 						"settings":
@@ -1530,7 +1385,36 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/board/board.h",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1802,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								413,
+								413
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1538,7 +1422,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 22.0
+		"height": 24.0
 	},
 	"input":
 	{
@@ -1576,7 +1460,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 111.0
+		"height": 88.0
 	},
 	"output.find_results":
 	{
@@ -1586,7 +1470,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1628,7 +1512,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},

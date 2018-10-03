@@ -21,7 +21,7 @@ public:
 	bool isLeft = false;
 	BitmapPolygon polygon;
 
-	inline bool getDead() { return isDead; }
+	inline bool getDead() { return isDead; };
 
 	Bike(Vector2 position, int railIndex, bool isLeft);
 

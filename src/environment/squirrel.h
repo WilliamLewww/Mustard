@@ -22,7 +22,7 @@ private:
 public:
 	BitmapPolygon polygon;
 
-	inline bool getDead() { return isDead; }
+	inline bool getDead() { return isDead; };
 
 	Squirrel(Vector2 position, Vector2 bottomRail, Vector2 topRail, int width, int height);
 	void update(float elapsedTimeSeconds);

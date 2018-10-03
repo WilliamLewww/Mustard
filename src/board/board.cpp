@@ -67,21 +67,9 @@ void Board::drawThaneLines() {
 	}
 }
 
-// void Board::drawBrakeLines() {
-	//for (Vector2 line : brakeLines) { if (line.x < visibleFrame.sRight() && line.x > visibleFrame.sLeft()) { drawing.drawPoint(line, board.shoe.breakColor); }}
-// }
-
-float Board::getRollSpeed() {
-	return rollSpeed * wheel.getRollSpeed();
-}
-
 void Board::subtractSpeedExternal(float speed) {
-	if (velocity - speed < 0) {
-		velocity = 0;
-	}
-	else {
-		velocity -= speed;
-	}
+	if (velocity - speed < 0) { velocity = 0; }
+	else { velocity -= speed; }
 }
 
 void Board::addSpeedFromHill(int speedZone, int trackDirection) {
@@ -121,24 +109,6 @@ void Board::handlePushTuck() {
 	}
 }
 
-// void Board::handleFootBrake() {
-	// if (std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) != keyList.end() && slide == false) {
-	// 	if (board.shoe.left - (board.velocity * deltaTimeS) / board.shoe.strength < 0) { board.shoe.left = 0; }
-	// 	else { board.shoe.left -= (board.velocity * deltaTimeS) / board.shoe.strength; }
-
-	// 	if (board.shoe.left > 0) {
-	// 		if (board.velocity - (board.shoe.strength * 15) * deltaTimeS <= 0) { board.velocity = 0; }
-	// 		else { board.velocity -= (board.shoe.strength * 15) * deltaTimeS; }
-
-	// 		brakeLines.push_back(board.rectangle.bottomLeft());
-	// 	}
-	// }
-// }
-
-float Board::getTurnSpeed() {
-	return turnSpeed * wheel.getTraction();
-}
-
 void Board::handleLeftTurn() {
 	if ((input.checkKeyDown(SDLK_LEFT) && !input.checkKeyDown(SDLK_RIGHT)) || input.getControllerPadInput() == 7) {
 		turnLeft = true;
@@ -171,8 +141,8 @@ void Board::handleLeftTurn() {
 					movementAngle += getTurnSpeed() * elapsedTimeSeconds * 1.25;
 				}
 				else {
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (turnSpeed * elapsedTimeSeconds));
-					movementAngle += turnSpeed * elapsedTimeSeconds;
+					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnRadius() * elapsedTimeSeconds));
+					movementAngle += getTurnRadius() * elapsedTimeSeconds;
 				}	
 			}
 		}
@@ -214,8 +184,8 @@ void Board::handleRightTurn() {
 					movementAngle -= getTurnSpeed() * elapsedTimeSeconds * 1.25;
 				}
 				else {
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (turnSpeed * elapsedTimeSeconds));
-					movementAngle -= turnSpeed * elapsedTimeSeconds;
+					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnRadius() * elapsedTimeSeconds));
+					movementAngle -= getTurnRadius() * elapsedTimeSeconds;
 				}
 			}
 		}

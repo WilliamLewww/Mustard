@@ -39,12 +39,12 @@ public:
 		this->hasSkin = hasSkin;
 	};
 
-	inline std::string getName() { return name; }
+	inline std::string getName() { return name; };
 
-	inline int getID() { return wheelID; }
-	inline void setID(int wheelID) { this->wheelID = wheelID; }
+	inline int getID() { return wheelID; };
+	inline void setID(int wheelID) { this->wheelID = wheelID; };
 	
-	inline int* getColor() { return color; }
+	inline int* getColor() { return color; };
 
 	inline float getWidth() { return width; };
 	inline float getHeight() { return height; };
@@ -57,7 +57,7 @@ public:
 	inline bool getHasSkin() { return hasSkin; };
 
 	inline void decayWheel(float elapsedTimeSeconds, float angleDifference, float speed, bool shutdownSlide) {
-		float rate;
+		float rate = 0.00;
 		if (shutdownSlide) {
 			rate = (angleDifference * speed * 0.0001 * ((100.0 - (strength * (9.0 / 10.0))) / 100)) * elapsedTimeSeconds;
 		}
@@ -108,11 +108,12 @@ public:
 #include "wheel_presets.h"
 
 enum {
-	WHEEL_BUTTERBALLS = 1,
-	WHEEL_EXPERIMENTALS = 2,
-	WHEEL_SNAKES = 3,
-	WHEEL_STIMULUS = 4,
-	WHEEL_ZIGZAGS = 5
+	WHEEL_MIDS = 1,
+	WHEEL_BUTTERBALLS = 2,
+	WHEEL_EXPERIMENTALS = 3,
+	WHEEL_SNAKES = 4,
+	WHEEL_STIMULUS = 5,
+	WHEEL_ZIGZAGS = 6
 };
 
 static std::string getWheelLipProfile(int lipID) {
@@ -139,6 +140,7 @@ static Wheel getWheel(int wheelID) {
 	Wheel wheel;
 
 	switch (wheelID) {
+		case WHEEL_MIDS: wheel = Mids(1); break;
 		case WHEEL_BUTTERBALLS: wheel = Butterballs(1); break;
 		case WHEEL_EXPERIMENTALS: wheel = Experimentals(1); break;
 		case WHEEL_SNAKES: wheel = Snakes(1); break;

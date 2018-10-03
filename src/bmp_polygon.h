@@ -40,7 +40,7 @@ public:
 	inline double getHeight() { return height; };
 	inline double getAngle() { return angle; };
 
-	inline int getColor(int index) { return color[index]; }
+	inline int getColor(int index) { return color[index]; };
 
 	inline Vector2 getCenter() {
 		return Vector2(position.x + (width / 2), position.y + (height / 2));

@@ -22,7 +22,9 @@ private:
 
 	double pushInterval = 0.7, pushSpeed = 35, pushTimer = 0, pushMax = 150;
 	double tuckSpeed = 8;
+
 	double turnSpeed = 50;
+	double additionalTurnSpeed = 10.0;
 
 	bool slide = false, shutdownSlide = false;
 	bool turnLeft = false, turnRight = false;
@@ -33,12 +35,22 @@ private:
 	std::vector<Vector3> thaneLines;
 	std::vector<Vector2> brakeLines;
 
+	inline float getRollSpeed() { return rollSpeed * wheel.getRollSpeed(); };
+	inline float getTurnSpeed() { return turnSpeed * wheel.getTraction(); };
+	inline float getTurnRadius() { 
+		float radius = (additionalTurnSpeed * deck.getTurnRadius()) - additionalTurnSpeed;
+		if (radius > additionalTurnSpeed) { return turnSpeed + additionalTurnSpeed; }
+		if (radius < -additionalTurnSpeed) { return turnSpeed - additionalTurnSpeed; }
+
+		return turnSpeed + radius;
+	};
+
+	void initializeDeck();
+	void initializeWheel();
+	void linkPolygonWithConfigurations();
+
 	void addSpeedFromHill(int speedZone, int trackDirection);
 	void handlePushTuck();
-	// void handleFootBrake();
-
-	float getRollSpeed();
-	float getTurnSpeed();
 	
 	void handleLeftTurn();
 	void handleRightTurn();
@@ -53,11 +65,6 @@ private:
 	void refreshSlide();
 
 	void generateThane(int multiplier);
-	// void drawBrakeLines();
-	
-	void initializeDeck();
-	void initializeWheel();
-	void linkPolygonWithConfigurations();
 public:
 	BitmapPolygon bitmapPolygon;
 	Deck deck;

@@ -285,9 +285,9 @@ void Joiner::update() {
 	}
 
 	if (showTrackEdit) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(275, 155), ImVec2(275, 155));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(250, 155), ImVec2(250, 155));
 		ImGui::Begin("Edit Track");
-		ImGui::PushItemWidth(-200);
+		ImGui::PushItemWidth(-250);
 		ImGui::InputInt("Style", &trackGenerationStyle);
 		if (trackGenerationStyle < 0) { trackGenerationStyle = 0; }
 		if (trackGenerationStyle > 2) { trackGenerationStyle = 2; }
