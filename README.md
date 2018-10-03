@@ -35,7 +35,7 @@ Thane (short for polyurethane) lines are the skid marks produced when a skateboa
 | ------------- | ------------- |
 
 ## Release History
-- 1.8.0
+- 1.8.1
   - added turn radius property to deck class
   - added labels to track style in GUI
   - shutdown slides now decay wheels faster
