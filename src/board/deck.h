@@ -34,8 +34,14 @@ public:
 enum {
 	DECK_SWITCHBLADE = 1,
 	DECK_RUMRUNNERCARBON = 2,
-	DECK_WOLFSHARKMINI = 3
+	DECK_WOLFSHARKMINI = 3,
+
+	DECK_COUNT = 3
 };
+
+static int getDeckCount() {
+	return DECK_COUNT;
+}
 
 static Deck getDeck(int deckID) {
 	Deck deck;

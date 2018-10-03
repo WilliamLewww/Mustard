@@ -113,8 +113,14 @@ enum {
 	WHEEL_EXPERIMENTALS = 3,
 	WHEEL_SNAKES = 4,
 	WHEEL_STIMULUS = 5,
-	WHEEL_ZIGZAGS = 6
+	WHEEL_ZIGZAGS = 6,
+
+	WHEEL_COUNT = 6
 };
+
+static int getWheelCount() {
+	return WHEEL_COUNT;
+}
 
 static std::string getWheelLipProfile(int lipID) {
 	std::string lipProfile;

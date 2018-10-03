@@ -316,7 +316,7 @@ void Joiner::update() {
 		ImGui::SetColumnWidth(0, 200);
 		ImGui::InputInt("Board Preset", &deckID);
 		if (deckID < 1) { deckID = 1; }
-		if (deckID > 3) { deckID = 3; }
+		if (deckID > getDeckCount()) { deckID = getDeckCount(); }
 
 		ImGui::TextColored(ImVec4(0,1,1,1), getDeck(deckID).getName().c_str());
 		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Length: %i\"", getDeck(deckID).getLength());
@@ -329,7 +329,7 @@ void Joiner::update() {
 		ImGui::PushItemWidth(-175);
 		ImGui::InputInt("Wheel Preset", &wheelID);
 		if (wheelID < 1) { wheelID = 1; }
-		if (wheelID > 5) { wheelID = 5; }
+		if (wheelID > getWheelCount()) { wheelID = getWheelCount(); }
 
 		ImGui::TextColored(ImVec4(0,1,1,1), getWheel(wheelID).getName().c_str());
 		ImGui::TextColored(ImVec4(0.6,0.6,1,1), "Height: %imm", (int)getWheel(wheelID).getHeight());
