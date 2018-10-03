@@ -7,7 +7,7 @@ public:
 		:Wheel("Mids", 50, 68, 77, 50, LIP_ROUND, false) {
 
 		this->currentHeightPercent = currentHeightPercent;
-		setColor(204, 204, 204);
+		setColor(170, 140, 255);
 	};
 };
 
