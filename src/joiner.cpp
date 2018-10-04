@@ -136,16 +136,20 @@ void Joiner::update() {
 		}
 
 		for (Squirrel& squirrel : world.environment.squirrelList) {
-			if (board.handleCollision(squirrel.polygon)) {
-				if (!squirrel.getDead()) { board.subtractSpeedExternal(50); }
+			if (board.bitmapPolygon.getPosition().x + 100 > squirrel.polygon.getPosition().x && board.bitmapPolygon.getPosition().x < squirrel.polygon.getPosition().x + 100) {
+				if (board.handleCollision(squirrel.polygon)) {
+					if (!squirrel.getDead()) { board.subtractSpeedExternal(50); }
 
-				squirrel.kill();
+					squirrel.kill();
+				}
 			}
 		}
 
 		for (Car car : world.environment.carList) {
-			if (board.handleCollision(car.polygon) && !isCrashed) {
-				reset(true);
+			if (board.bitmapPolygon.getPosition().x + 100 > car.polygon.getPosition().x && board.bitmapPolygon.getPosition().x < car.polygon.getPosition().x + 100) {
+				if (board.handleCollision(car.polygon) && !isCrashed) {
+					reset(true);
+				}
 			}
 
 			//Frame Killer
@@ -157,11 +161,13 @@ void Joiner::update() {
 		}
 		
 		for (Bike& bike : world.environment.bikeList) {
-			if (board.handleCollision(bike.polygon) && !isCrashed) {
-				if (!bike.getDead()) { board.subtractSpeedExternal(100); }
-				if (board.getVelocity() < 200) { reset(true); }
+			if (board.bitmapPolygon.getPosition().x + 100 > bike.polygon.getPosition().x && board.bitmapPolygon.getPosition().x < bike.polygon.getPosition().x + 100) {
+				if (board.handleCollision(bike.polygon) && !isCrashed) {
+					if (!bike.getDead()) { board.subtractSpeedExternal(100); }
+					if (board.getVelocity() < 200) { reset(true); }
 
-				bike.kill();
+					bike.kill();
+				}
 			}
 		}
 

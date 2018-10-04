@@ -134,7 +134,7 @@ void Board::handleLeftTurn() {
 				}
 			}
 			else {
-				if (input.checkKeyDown(SDLK_a) || input.checkButtonDown(2)) {
+				if (input.checkKeyDown(SDLK_a) || input.checkButtonDown(2) || forcedSlide) {
 					slide = true;
 
 					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * 3));
@@ -177,7 +177,7 @@ void Board::handleRightTurn() {
 				}
 			}
 			else {
-				if (input.checkKeyDown(SDLK_a) || input.checkButtonDown(2)) {
+				if (input.checkKeyDown(SDLK_a) || input.checkButtonDown(2) || forcedSlide) {
 					slide = true;
 
 					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 3));
@@ -303,6 +303,7 @@ void Board::moveInDirection(Vector2 direction) {
 
 void Board::refreshSlide() {
 	slide = false;
+	forcedSlide = false;
 }
 
 void Board::generateThane(int multiplier) {
