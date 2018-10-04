@@ -157,11 +157,18 @@ void Board::handleRightTurn() {
 		turnRight = true;
 
 		if (input.checkKeyDown(SDLK_d) || input.checkButtonDown(1)) {
-			shutdownSlide = true;
 			slide = true;
 
-			bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 3));
-			movementAngle -= getTurnSpeed() * elapsedTimeSeconds;
+			if (forcedSlide) {
+				bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 4));
+				movementAngle -= getTurnSpeed() * elapsedTimeSeconds / 2;
+			}
+			else {
+				shutdownSlide = true;
+				
+				bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 3));
+				movementAngle -= getTurnSpeed() * elapsedTimeSeconds;
+			}
 		}
 		else {
 			if (input.checkKeyDown(SDLK_s) || input.checkButtonDown(0)) {
@@ -180,8 +187,14 @@ void Board::handleRightTurn() {
 				if (input.checkKeyDown(SDLK_a) || input.checkButtonDown(2) || forcedSlide) {
 					slide = true;
 
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 3));
-					movementAngle -= getTurnSpeed() * elapsedTimeSeconds * 1.25;
+					if (forcedSlide && (input.checkKeyDown(SDLK_a) || input.checkButtonDown(2))) {
+						bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 4));
+						movementAngle -= getTurnSpeed() * elapsedTimeSeconds / 2;
+					}
+					else {
+						bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 3));
+						movementAngle -= getTurnSpeed() * elapsedTimeSeconds * 1.25;
+					}
 				}
 				else {
 					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnRadius() * elapsedTimeSeconds));
@@ -347,7 +360,7 @@ void Board::reset() {
 bool Board::handleCollision(Vector2 position, int width, int height) {
 	if (bitmapPolygon.getCenter().x > position.x && bitmapPolygon.getCenter().x < position.x + width &&
 		bitmapPolygon.getCenter().y > position.y && bitmapPolygon.getCenter().y < position.y + height) {
-		
+
 		return true;
 	}
 
