@@ -71,7 +71,7 @@ public:
 	Deck deck;
 	Wheel wheel;
 
-	inline void setForcedSlide(bool forcedSlide) { this->forcedSlide = forcedSlide; }
+	inline void forceSlide() { forcedSlide = true; }
 	inline float getVelocity() { return velocity; };
 	
 	void subtractSpeedExternal(float speed);
@@ -84,6 +84,7 @@ public:
 
 	void clearLines();
 
+	bool handleCollision(Vector2 position, int width, int height);
 	bool handleCollision(BitmapPolygon polygon);
 	bool handleCollision(Vector2* wall);
 	bool handleCollision(Vector2 pointA, Vector2 pointB);

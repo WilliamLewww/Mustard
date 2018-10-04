@@ -12,8 +12,6 @@
 
 class Environment {
 private:
-	Gravel gravel;
-
 	std::vector<GuardRail> guardRailList;
 	std::vector<std::vector<Tree>> treeList;
 	
@@ -23,6 +21,7 @@ private:
 
 	float elapsedTimeSeconds;
 public:
+	Gravel gravel;
 	std::vector<Car> carList;
 	std::vector<Bike> bikeList;
 	std::vector<Squirrel> squirrelList;

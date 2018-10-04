@@ -9,15 +9,20 @@ void Gravel::generate(Vector2 rail, bool isTop, int minPebbleCount, int maxPebbl
 
 	int randomPebbleCount = rand() % (maxPebbleCount + 1 - minPebbleCount) + minPebbleCount;
 
+	GravelRectangle rectangle;
+
 	for (int x = 0; x < randomPebbleCount; x++) {
 		if (isTop) {
+			rectangle = { Vector2(rail.x, rail.y + 25 + offsetY), spread, spread };
 			pebblePosition[pebblePosition.size() - 1].emplace_back(rail.x + (rand() % spread), rail.y + 25 + offsetY + (rand() % spread));
 		}
 		else {
+			rectangle = { Vector2(rail.x, rail.y + offsetY - spread), spread + 25, spread };
 			pebblePosition[pebblePosition.size() - 1].emplace_back(rail.x + (rand() % (spread + 25)), rail.y + offsetY - (rand() % spread));
 		}
 	}
 
+	gravelRectangleList.emplace_back(rectangle);
 	colorList.push_back(rand() % (150 + 1 - 25) + 25);
 }
 

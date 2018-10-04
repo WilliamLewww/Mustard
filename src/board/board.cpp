@@ -344,6 +344,16 @@ void Board::reset() {
 	flipped = false;
 }
 
+bool Board::handleCollision(Vector2 position, int width, int height) {
+	if (bitmapPolygon.getCenter().x > position.x && bitmapPolygon.getCenter().x < position.x + width &&
+		bitmapPolygon.getCenter().y > position.y && bitmapPolygon.getCenter().y < position.y + height) {
+		
+		return true;
+	}
+
+	return false;
+}
+
 bool Board::handleCollision(BitmapPolygon polygon) {
 	if (bitmapPolygon.checkCollision(polygon) == true) {
 		return true;

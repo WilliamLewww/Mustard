@@ -135,6 +135,14 @@ void Joiner::update() {
 			}
 		}
 
+		for (GravelRectangle& gravelRectangle : world.environment.gravel.gravelRectangleList) {
+			if (board.bitmapPolygon.getPosition().x + 100 > gravelRectangle.position.x && board.bitmapPolygon.getPosition().x < gravelRectangle.position.x + 100) {
+				if (board.handleCollision(gravelRectangle.position, gravelRectangle.width, gravelRectangle.height)) {
+					board.forceSlide();
+				}
+			}
+		}
+
 		for (Squirrel& squirrel : world.environment.squirrelList) {
 			if (board.bitmapPolygon.getPosition().x + 100 > squirrel.polygon.getPosition().x && board.bitmapPolygon.getPosition().x < squirrel.polygon.getPosition().x + 100) {
 				if (board.handleCollision(squirrel.polygon)) {
