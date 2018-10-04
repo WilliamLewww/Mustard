@@ -42,6 +42,11 @@ void Joiner::resetFull() {
 	initializeWorld();
 	particleManager.clearAllParticles();
 
+	isCrashed = false;
+	allowRestartAfterCrash = false;
+	isKeyStart = false;
+	allowKeyStart = false;
+
 	showBoardEdit = false;
 	showTrackEdit = false;
 }

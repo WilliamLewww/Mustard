@@ -1,10 +1,8 @@
 #include "pinecone.h"
 
-Vector2 pineconeSegments[15] = { Vector2(0,0), Vector2(0,-1), Vector2(-1,-0.5),
-						 Vector2(0,-1), Vector2(1,-0.5), Vector2(0,-1),
-						 Vector2(0,-2), Vector2(-1,-1.5), Vector2(0,-2),
-						 Vector2(1,-1.5),Vector2(0,-2), Vector2(0,-3),
-						 Vector2(-1,-2.5), Vector2(0,-3), Vector2(1, -2.5)
+Vector2 pineconeSegments[11] = { Vector2(-0.5,0), Vector2(0.5,0), Vector2(0,0), Vector2(0,-0.5),
+								 Vector2(0,0.5), Vector2(0,0), Vector2(-0.5,-0.5), Vector2(0.5, 0.5),
+								 Vector2(0,0), Vector2(0.5,-0.5), Vector2(-0.5,0.5)
 };
 
 Pinecone::Pinecone(Vector2 position, float scale) {
@@ -22,5 +20,5 @@ void Pinecone::kill() {
 }
 
 void Pinecone::draw() {
-	drawing.drawLineStrip(pineconeSegments, 15, position, scale, color);
+	drawing.drawLineStrip(pineconeSegments, 11, position, scale, color);
 }

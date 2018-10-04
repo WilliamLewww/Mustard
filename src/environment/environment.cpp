@@ -5,7 +5,7 @@ void Environment::generatePinecones(std::vector<Vector2> rail, int concentration
 
 	for (int x = 0; x < rail.size(); x++) {
 		if (rand() % concentration == 0) {
-			pineconeList.emplace_back(Vector2(rail[x].x, rail[x].y - 25 - (rand() % 100)), rand() % (scaleMax + 1 - scaleMin) + scaleMin);
+			pineconeList.emplace_back(Vector2(rail[x].x, rail[x].y - 25 - (rand() % 70)), rand() % (scaleMax + 1 - scaleMin) + scaleMin);
 		}
 	}
 }
@@ -128,6 +128,7 @@ void Environment::resetVisibleRange() {
 	visibleTreeRange = Vector2(0, 0);
 	visibleSquirrelRange = Vector2(0, 0);
 	visibleGuardRailRange = Vector2(0, 0);
+	visiblePineconeRange = Vector2(0, 0);
 }
 
 void Environment::update(std::vector<std::vector<Vector2>> rail) {
