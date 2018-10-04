@@ -171,8 +171,11 @@ void Joiner::update() {
 		for (Bike& bike : world.environment.bikeList) {
 			if (board.bitmapPolygon.getPosition().x + 100 > bike.polygon.getPosition().x && board.bitmapPolygon.getPosition().x < bike.polygon.getPosition().x + 100) {
 				if (board.handleCollision(bike.polygon) && !isCrashed) {
-					if (!bike.getDead()) { board.subtractSpeedExternal(100); }
-					if (board.getVelocity() < 200) { reset(true); }
+					if (!bike.getDead()) { 
+						if (board.getVelocity() < 200) { reset(true); }
+						board.subtractSpeedExternal(100); 
+					}
+					
 
 					bike.kill();
 				}
