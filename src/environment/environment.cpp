@@ -1,5 +1,15 @@
 #include "environment.h"
 
+void Environment::generatePinecones(std::vector<Vector2> rail, int concentration, int scaleMin, int scaleMax) {
+	visiblePineconeRange = Vector2(0,0);
+
+	for (int x = 0; x < rail.size(); x++) {
+		if (rand() % concentration == 0) {
+			pineconeList.emplace_back(Vector2(rail[x].x, rail[x].y - 25 - (rand() % 100)), rand() % (scaleMax + 1 - scaleMin) + scaleMin);
+		}
+	}
+}
+
 void Environment::generateGravel(std::vector<std::vector<Vector2>> railList, int concentration) {
 	for (int x = 0; x < railList[0].size(); x++) {
 		if (rand() % concentration == 0) { gravel.generate(railList[1][x], false, concentration + 50, concentration + 150); }
@@ -166,11 +176,22 @@ void Environment::draw() {
 		visibleGuardRailRange.y += 1;
 	}
 
+	while (pineconeList[visiblePineconeRange.x].getPosition().x < camera.getBoundaryLeft()) {
+		visiblePineconeRange.x += 1;
+	}
+	while (pineconeList[visiblePineconeRange.y].getPosition().x < camera.getBoundaryRight()) {
+		visiblePineconeRange.y += 1;
+	}
+
 	for (std::vector<Tree> treeListTotal : treeList) {
 		for (int x = visibleTreeRange.x; x < visibleTreeRange.y; x++) {
 			treeListTotal[x].draw();
 		}
 	}
+
+	for (int x = visiblePineconeRange.x; x < visiblePineconeRange.y; x++) {
+			pineconeList[x].draw();
+		}
 
 	for (int x = visibleGuardRailRange.x; x < visibleGuardRailRange.y; x++) {
 		guardRailList[x].draw();

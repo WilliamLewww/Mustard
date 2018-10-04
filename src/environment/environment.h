@@ -9,15 +9,18 @@
 #include "guard_rail.h"
 #include "car.h"
 #include "bike.h"
+#include "pinecone.h"
 
 class Environment {
 private:
 	std::vector<GuardRail> guardRailList;
+	std::vector<Pinecone> pineconeList;
 	std::vector<std::vector<Tree>> treeList;
 	
 	Vector2 visibleGuardRailRange;
 	Vector2 visibleTreeRange;
 	Vector2 visibleSquirrelRange;
+	Vector2 visiblePineconeRange;
 
 	float elapsedTimeSeconds;
 public:
@@ -32,6 +35,7 @@ public:
 	void generateBikes(std::vector<Vector2> rail, int count, bool isLeft);
 	void generateGuardRails(std::vector<Vector2> rail, int spacing, int chainMin, int chainMax, int concentration);
 	void generateGravel(std::vector<std::vector<Vector2>> rail, int concentration);
+	void generatePinecones(std::vector<Vector2> rail, int concentration, int scaleMin, int scaleMax);
 	void generateTrees(std::vector<Vector2> rail, int concentration, int offsetY, int scaleMin, int scaleMax);
 	void generateSquirrels(std::vector<std::vector<Vector2>> rail, int concentration, int scaleMin, int scaleMax);
 

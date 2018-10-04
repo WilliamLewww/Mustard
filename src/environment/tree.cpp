@@ -1,6 +1,6 @@
 #include "tree.h"
 
-Vector2 segments[15] = { Vector2(0,0), Vector2(0,-1), Vector2(-1,-0.5),
+Vector2 treeSegments[15] = { Vector2(0,0), Vector2(0,-1), Vector2(-1,-0.5),
 						 Vector2(0,-1), Vector2(1,-0.5), Vector2(0,-1),
 						 Vector2(0,-2), Vector2(-1,-1.5), Vector2(0,-2),
 						 Vector2(1,-1.5),Vector2(0,-2), Vector2(0,-3),
@@ -13,5 +13,5 @@ Tree::Tree(Vector2 position, float scale) {
 };
 
 void Tree::draw() {
-	drawing.drawLineStrip(segments, 15, position, scale, color);
+	drawing.drawLineStrip(treeSegments, 15, position, scale, color);
 };
