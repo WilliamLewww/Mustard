@@ -35,10 +35,10 @@ private:
 	std::vector<Vector3> thaneLines;
 	std::vector<Vector2> brakeLines;
 
-	inline float getRollSpeed() { return rollSpeed * wheel.getRollSpeed(); };
-	inline float getTurnSpeed() { return turnSpeed * wheel.getTraction(); };
+	inline float getRollSpeed() { return rollSpeed * wheel->getRollSpeed(); };
+	inline float getTurnSpeed() { return turnSpeed * wheel->getTraction(); };
 	inline float getTurnRadius() { 
-		float radius = (additionalTurnSpeed * deck.getTurnRadius()) - additionalTurnSpeed;
+		float radius = (additionalTurnSpeed * deck->getTurnRadius()) - additionalTurnSpeed;
 		if (radius > additionalTurnSpeed) { return turnSpeed + additionalTurnSpeed; }
 		if (radius < -additionalTurnSpeed) { return turnSpeed - additionalTurnSpeed; }
 
@@ -67,8 +67,8 @@ private:
 	void generateThane(int multiplier);
 public:
 	BitmapPolygon bitmapPolygon;
-	Deck deck;
-	Wheel wheel;
+	Deck* deck;
+	Wheel* wheel;
 
 	inline void forceSlide() { forcedSlide = true; }
 	inline float getVelocity() { return velocity; };

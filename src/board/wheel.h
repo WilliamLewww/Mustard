@@ -9,8 +9,6 @@ class Wheel {
 protected:
 	std::string name;
 
-	int wheelID;
-
 	float width, height;
 	int durometer;
 	int lipID;
@@ -41,9 +39,6 @@ public:
 	};
 
 	inline std::string getName() { return name; };
-
-	inline int getID() { return wheelID; };
-	inline void setID(int wheelID) { this->wheelID = wheelID; };
 	
 	inline int* getColor() { return color; };
 

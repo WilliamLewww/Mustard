@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include <vector>
 #include "wheel.h"
 #include "deck.h"
@@ -11,12 +12,15 @@ private:
 	std::vector<Deck> deckList;
 	std::vector<std::string> deckNameList;
 
-	float score;
+	float score = 100;
 public:
-	inline Profile() { 
-		addWheel(1);
-		addDeck(1);
-	 };
+	inline void initialize() { addWheel(1); addDeck(1); };
+
+	inline Wheel* getWheelFromList(int ID) { return &wheelList[ID]; };
+	inline Deck* getDeckFromList(int ID) { return &deckList[ID]; };
+
+	inline std::vector<Wheel> getWheelList() { return wheelList; };
+	inline std::vector<Deck> getDeckList() { return deckList; };
 
 	inline void addScore(float score) { this->score += score; };
 	inline void setScore(float score) { this->score = score; };
@@ -25,15 +29,11 @@ public:
 	inline std::vector<std::string>& getWheelNameList() { return wheelNameList; };
 	inline std::vector<std::string>& getDeckNameList() { return deckNameList; };
 
-	inline void addWheel(int wheelID) {
-		wheelList.push_back(getWheel(wheelID));
-		wheelNameList.push_back(getWheel(wheelID).getName());
-	}
+	void addWheel(int wheelID);
+	bool buyWheel(int wheelID);
 
-	inline void addDeck(int deckID) {
-		deckList.push_back(getDeck(deckID));
-		deckNameList.push_back(getDeck(deckID).getName());
-	}
+	void addDeck(int deckID);
+	bool buyDeck(int deckID);
 };
 
 extern Profile profile;

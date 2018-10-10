@@ -7,6 +7,8 @@ protected:
 
 	int price;
 
+	int ID;
+
 	int color[3];
 
 	inline void setColor(int r, int g, int b) {
@@ -14,11 +16,14 @@ protected:
 	};
 public:
 	inline Deck() { };
-	inline Deck(std::string name, int length, int width) {
+	inline Deck(std::string name, int ID, int length, int width) {
 		this->name = name;
+		this->ID = ID;
 		this->length = length;
 		this->width = width;
 	};
+
+	inline int getID() { return ID; };
 
 	inline std::string getName() { return name; };
 	inline int getLength() { return length; };

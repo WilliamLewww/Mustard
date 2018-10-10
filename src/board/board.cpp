@@ -10,31 +10,30 @@ void Board::initialize() {
 }
 
 void Board::initializeDeck() {
-	deck = getDeck(configuration.getConfigurations()["DeckID"]);
+	deck = profile.getDeckFromList(configuration.getConfigurations()["SelectedDeck"]);
 
-	configuration.setConfiguration("BoardColorR", deck.getColor()[0]);
-	configuration.setConfiguration("BoardColorG", deck.getColor()[1]);
-	configuration.setConfiguration("BoardColorB", deck.getColor()[2]);
+	configuration.setConfiguration("BoardColorR", deck->getColor()[0]);
+	configuration.setConfiguration("BoardColorG", deck->getColor()[1]);
+	configuration.setConfiguration("BoardColorB", deck->getColor()[2]);
 }
 
 void Board::initializeWheel() {
-	wheel = getWheel(configuration.getConfigurations()["WheelID"]);
-	wheel.setID(configuration.getConfigurations()["WheelID"]);
+	wheel = profile.getWheelFromList(configuration.getConfigurations()["SelectedWheel"]);
 
-	configuration.setConfiguration("ThaneColorR", wheel.getColor()[0]);
-	configuration.setConfiguration("ThaneColorG", wheel.getColor()[1]);
-	configuration.setConfiguration("ThaneColorB", wheel.getColor()[2]);
+	configuration.setConfiguration("ThaneColorR", wheel->getColor()[0]);
+	configuration.setConfiguration("ThaneColorG", wheel->getColor()[1]);
+	configuration.setConfiguration("ThaneColorB", wheel->getColor()[2]);
 }
 
 void Board::linkPolygonWithConfigurations() {
-	thaneColor[0] = wheel.getColor()[0];
-	thaneColor[1] = wheel.getColor()[1];
-	thaneColor[2] = wheel.getColor()[2];
+	thaneColor[0] = wheel->getColor()[0];
+	thaneColor[1] = wheel->getColor()[1];
+	thaneColor[2] = wheel->getColor()[2];
 	
-	bitmapPolygon.setColor(deck.getColor()[0], deck.getColor()[1], deck.getColor()[2], 255);
+	bitmapPolygon.setColor(deck->getColor()[0], deck->getColor()[1], deck->getColor()[2], 255);
 	
-	bitmapPolygon.setSize(deck.getLength(), deck.getWidth());
-	std::string boardFileName = "board_" + std::to_string(configuration.getConfigurations()["DeckID"]) + ".txt";
+	bitmapPolygon.setSize(deck->getLength(), deck->getWidth());
+	std::string boardFileName = "board_" + std::to_string(deck->getID()) + ".txt";
 	bitmapPolygon.setVertices(boardFileName.c_str());
 }
 
@@ -268,7 +267,7 @@ void Board::handleSlideRight(double difference) {
 			}
 		}
 
-		wheel.decayWheel(elapsedTimeSeconds, difference, velocity, shutdownSlide);
+		wheel->decayWheel(elapsedTimeSeconds, difference, velocity, shutdownSlide);
 	}
 }
 
@@ -312,7 +311,7 @@ void Board::handleSlideLeft(double difference) {
 			}
 		}
 		
-		wheel.decayWheel(elapsedTimeSeconds, difference, velocity, shutdownSlide);
+		wheel->decayWheel(elapsedTimeSeconds, difference, velocity, shutdownSlide);
 	}
 }
 

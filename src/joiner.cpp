@@ -22,12 +22,10 @@ namespace ImGui {
 
 }
 
-Profile profile;
 Joiner joiner;
 
 void Joiner::initialize() {
-	profile = Profile();
-
+	profile.initialize();
 	trackGenerationStyle = configuration.getConfigurations()["TrackGenerationStyle"];
 
 	deckID = configuration.getConfigurations()["DeckID"];
@@ -57,6 +55,18 @@ void Joiner::reset(bool crashed, bool crashedParticles = true) {
 }
 
 void Joiner::resetFull() {
+	configuration.setConfiguration("TrackGenerationStyle", trackGenerationStyle);
+	configuration.setConfiguration("DeckID", deckID);
+	configuration.setConfiguration("WheelID", wheelID);
+	configuration.setConfiguration("SelectedDeck", selectedDeck);
+	configuration.setConfiguration("SelectedWheel", selectedWheel);
+
+	if (randomTrackSeed == true) {
+		joiner.seed = time(NULL);
+	}
+
+	srand(seed);
+
 	selectedRun = 0; 
 	leaderboardSelectedRun = 0;
 
@@ -266,15 +276,6 @@ void Joiner::update() {
 	}
 	
 	if (ImGui::Button("Apply Changes / Re-Initialize")) {
-		configuration.setConfiguration("TrackGenerationStyle", trackGenerationStyle);
-		configuration.setConfiguration("DeckID", deckID);
-		configuration.setConfiguration("WheelID", wheelID);
-
-		if (randomTrackSeed == true) {
-			joiner.seed = time(NULL);
-		}
-
-		srand(seed);
 		resetFull();
 	}
 
@@ -325,8 +326,7 @@ void Joiner::update() {
 		if (selectedRun != hud.splitsDisplay.splitList.size() - 1) {
 			selectedRun = hud.splitsDisplay.splitList.size() - 1;
 		}
-		ImGui::TextColored(ImVec4(1,0.74,0.15,1), "Score: %.02f", profile.getScore());
-		ImGui::TextColored(ImVec4(0,1,1,1), "Current Run: %i", selectedRun);
+		ImGui::TextColored(ImVec4(1,0.74,0.15,1), "Money: $%.02f", profile.getScore());
 		ImGui::TextColored(ImVec4(1,0,0,1), "Final: %f", hud.splitsDisplay.finalTimeList[selectedRun]);
 		ImGui::Spacing();
 		ImGui::TextColored(ImVec4(1,1,0,1), "Splits");
@@ -340,12 +340,14 @@ void Joiner::update() {
 	}
 
 	if (showWheelStats) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(240, 105), ImVec2(240, 105));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(145, 120), ImVec2(145, 120));
 		ImGui::Begin("Wheel Stats", &showWheelStats, ImGuiWindowFlags_NoResize);
-		ImGui::TextColored(ImVec4(0,1,0,1), "Traction Multiplier: x%.03f", (2.00 - board.wheel.getTraction()));
-		ImGui::TextColored(ImVec4(1,0,1,1), "Speed Multiplier: x%.03f", board.wheel.getRollSpeed());
-		ImGui::TextColored(ImVec4(0.59,0.75,1,1), "Thane Left Till Core: %.2f%%", board.wheel.getCurrentHeightPercent() * 100);
-		ImGui::Spacing();
+
+		ImGui::TextColored(ImVec4(0,1,1,1), board.wheel->getName().c_str());
+
+		ImGui::TextColored(ImVec4(0,1,0,1), "Traction: x%.03f", (2.00 - board.wheel->getTraction()));
+		ImGui::TextColored(ImVec4(1,0,1,1), "Speed: x%.03f", board.wheel->getRollSpeed());
+		ImGui::TextColored(ImVec4(0.59,0.75,1,1), "Thane: %.2f%%", board.wheel->getCurrentHeightPercent() * 100);
 		ImGui::TextColored(ImVec4(0.96,0.57,0.26,1), "Velocity: %.2f", board.getVelocity());
 		ImGui::End();
 	}
@@ -408,27 +410,33 @@ void Joiner::update() {
 		ImGui::Spacing();
 
 		ImGui::Columns(2);
-		if (profile.getScore() > getDeck(deckID).getPrice()) {
+		if (profile.getScore() >= getDeck(deckID).getPrice()) {
 			ImGui::TextColored(ImVec4(0,1,0,1), "Price: $%i", getDeck(deckID).getPrice());
 		}
 		else {
 			ImGui::TextColored(ImVec4(1,0,0,1), "Price: $%i", getDeck(deckID).getPrice());
 		}
 
-		if (ImGui::Button("Buy Deck")) {
-
+		if (ImGui::Button("Buy Deck")) { 
+			if (profile.buyDeck(deckID)) { 
+				selectedDeck = profile.getDeckList().size() - 1; 
+				resetFull(); 
+			}
 		}
 
 		ImGui::NextColumn();
-		if (profile.getScore() > getWheel(wheelID).getPrice()) {
+		if (profile.getScore() >= getWheel(wheelID).getPrice()) {
 			ImGui::TextColored(ImVec4(0,1,0,1), "Price: $%i", getWheel(wheelID).getPrice());
 		}
 		else {
 			ImGui::TextColored(ImVec4(1,0,0,1), "Price: $%i", getWheel(wheelID).getPrice());
 		}
 
-		if (ImGui::Button("Buy Wheels")) {
-
+		if (ImGui::Button("Buy Wheels")) { 
+			if (profile.buyWheel(wheelID)) {
+				selectedWheel = profile.getWheelList().size() - 1; 
+				resetFull(); 
+			}
 		}
 		ImGui::Columns(1);
 

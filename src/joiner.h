@@ -7,13 +7,11 @@
 #include "effects\particle_manager.h"
 #include "environment\squirrel.h"
 #include "board\board.h"
-#include "board\profile.h"
 #include "world.h"
 #include "camera.h"
 
 class Joiner {
 private:
-	Profile profile;
 	World world;
 	Board board;
 	HUD hud;
