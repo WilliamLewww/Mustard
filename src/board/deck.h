@@ -5,6 +5,8 @@ protected:
 	std::string name;
 	int length, width;
 
+	int price;
+
 	int color[3];
 
 	inline void setColor(int r, int g, int b) {
@@ -21,6 +23,8 @@ public:
 	inline std::string getName() { return name; };
 	inline int getLength() { return length; };
 	inline int getWidth() { return width; };
+
+	inline int getPrice() { return price; };
 
 	inline int* getColor() { return color; };
 

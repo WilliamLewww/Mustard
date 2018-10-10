@@ -7,11 +7,13 @@
 #include "effects\particle_manager.h"
 #include "environment\squirrel.h"
 #include "board\board.h"
+#include "board\profile.h"
 #include "world.h"
 #include "camera.h"
 
 class Joiner {
 private:
+	Profile profile;
 	World world;
 	Board board;
 	HUD hud;
@@ -29,12 +31,12 @@ private:
 
 	bool stillShowBoard = false;
 	
-	bool showBuyMenu = true;
-	bool showBoardEdit, showTrackEdit, showSessionStats = true, showLeaderboards = false, showWheelStats = true;
+	bool showBoardEdit, showTrackEdit, showInventory, showSessionStats = true, showLeaderboards = false, showWheelStats = true;
 	bool randomTrackSeed = false;
 
 	int selectedRun = 0, leaderboardSelectedRun = 0;
 	int deckID, wheelID;
+	int selectedDeck = 0, selectedWheel = 0;
 	int trackGenerationStyle;
 public:
 	int seed;

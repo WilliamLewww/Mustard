@@ -14,7 +14,6 @@
 class Environment {
 private:
 	std::vector<GuardRail> guardRailList;
-	std::vector<Pinecone> pineconeList;
 	std::vector<std::vector<Tree>> treeList;
 	
 	Vector2 visibleGuardRailRange;
@@ -28,6 +27,7 @@ public:
 	std::vector<Car> carList;
 	std::vector<Bike> bikeList;
 	std::vector<Squirrel> squirrelList;
+	std::vector<Pinecone> pineconeList;
 	
 	void resetVisibleRange();
 

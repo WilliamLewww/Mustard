@@ -8,6 +8,7 @@ public:
 
 		this->currentHeightPercent = currentHeightPercent;
 		setColor(170, 140, 255);
+		this->price = 50;
 	};
 };
 
@@ -19,6 +20,7 @@ public:
 
 		this->currentHeightPercent = currentHeightPercent;
 		setColor(255, 255, 255);
+		this->price = 40;
 	};
 };
 
@@ -29,6 +31,7 @@ public:
 
 		this->currentHeightPercent = currentHeightPercent;
 		setColor(254, 78, 0);
+		this->price = 60;
 	};
 };
 
@@ -39,6 +42,7 @@ public:
 
 		this->currentHeightPercent = currentHeightPercent;
 		setColor(255, 107, 95);
+		this->price = 80;
 	};
 };
 
@@ -49,6 +53,7 @@ public:
 
 		this->currentHeightPercent = currentHeightPercent;
 		setColor(255, 95, 59);
+		this->price = 100;
 	};
 };
 
@@ -59,5 +64,6 @@ public:
 
 		this->currentHeightPercent = currentHeightPercent;
 		setColor(56, 222, 64);
+		this->price = 75;
 	};
 };

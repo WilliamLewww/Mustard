@@ -17,6 +17,7 @@ protected:
 
 	int strength;
 
+	int price;
 	float currentHeightPercent;
 	bool hasSkin;
 
@@ -52,6 +53,8 @@ public:
 
 	inline int getDurometer() { return durometer; };
 	inline int getStrength() { return strength; };
+
+	inline int getPrice() { return price; };
 
 	inline int getLipID() {  return lipID; };
 	inline bool getHasSkin() { return hasSkin; };

@@ -1,8 +1,33 @@
 #include "joiner.h"
 
+namespace ImGui {
+	static auto vector_getter = [](void* vec, int idx, const char** out_text) {
+	    auto& vector = *static_cast<std::vector<std::string>*>(vec);
+	    if (idx < 0 || idx >= static_cast<int>(vector.size())) { return false; }
+	    *out_text = vector.at(idx).c_str();
+	    return true;
+	};
+
+	bool Combo(const char* label, int* currIndex, std::vector<std::string>& values) {
+	    if (values.empty()) { return false; }
+	    return Combo(label, currIndex, vector_getter,
+	        static_cast<void*>(&values), values.size());
+	}
+
+	bool ListBox(const char* label, int* currIndex, std::vector<std::string>& values) {
+	    if (values.empty()) { return false; }
+	    return ListBox(label, currIndex, vector_getter,
+	        static_cast<void*>(&values), values.size());
+	}
+
+}
+
+Profile profile;
 Joiner joiner;
 
 void Joiner::initialize() {
+	profile = Profile();
+
 	trackGenerationStyle = configuration.getConfigurations()["TrackGenerationStyle"];
 
 	deckID = configuration.getConfigurations()["DeckID"];
@@ -67,13 +92,20 @@ void Joiner::update() {
 	// if (input.checkKeyDown(SDLK_f)) { isPaused = true; }
 	// else { isPaused = false; }
 
-	if (allowKeyStart && input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
+	if (input.checkKeyDown(SDLK_ESCAPE)) {
+		showBoardEdit = false;
+		showTrackEdit = false;
+		showLeaderboards = false;
+		showInventory = false;
+	}
+
+	if (!input.checkKeyDown(SDLK_ESCAPE) && allowKeyStart && input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
 		isKeyStart = true;
 	}
 
 	if (!isKeyStart) {
 		if (allowKeyStart) {
-			if (input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
+			if (!input.checkKeyDown(SDLK_ESCAPE) && input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
 				isKeyStart = true;
 				allowKeyStart = false;
 			}
@@ -87,7 +119,7 @@ void Joiner::update() {
 
 	if (isCrashed) {
 		if (allowRestartAfterCrash) {
-			if (input.getKeyListSize() > 0) {
+			if (!input.checkKeyDown(SDLK_ESCAPE) && input.getKeyListSize() > 0) {
 				isCrashed = false;
 				allowRestartAfterCrash = false;
 				reset(false);
@@ -187,6 +219,16 @@ void Joiner::update() {
 			}
 		}
 
+		for (Pinecone& pinecone : world.environment.pineconeList) {
+			if (board.bitmapPolygon.getPosition().x + 100 > pinecone.getPosition().x && board.bitmapPolygon.getPosition().x < pinecone.getPosition().x + 100) {
+				if (!pinecone.getDead()) {
+					if (board.handleCollision(pinecone.polygon) && !isCrashed) {
+						profile.addScore(pinecone.kill(board.getVelocity()));
+					}
+				}
+			}
+		}
+
 		if (board.bitmapPolygon.getPosition().x > hud.splitsDisplay.checkpointList[hud.splitsDisplay.checkpointList.size() - 1]) {
 			hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());
 			particleManager.generateFinishParticles(2, board.bitmapPolygon.getCenter());
@@ -202,14 +244,19 @@ void Joiner::update() {
 	ImGui::SetNextWindowSizeConstraints(ImVec2(230, 165), ImVec2(230, 165));
 	ImGui::Begin("Main Menu");
 
-	ImGui::Columns(2);
+	ImGui::Columns(3);
 	ImGui::SetColumnWidth(0, 90);
 	if (ImGui::Button("Edit Track")) {
 		showTrackEdit = !showTrackEdit;
 	}
 	ImGui::NextColumn();
-	if (ImGui::Button("Edit Board")) {
+	ImGui::SetColumnWidth(1, 50);
+	if (ImGui::Button("Shop")) {
 		showBoardEdit = !showBoardEdit;
+	}
+	ImGui::NextColumn();
+	if (ImGui::Button("Inventory")) {
+		showInventory = !showInventory;
 	}
 
 	ImGui::Columns(1);
@@ -238,7 +285,7 @@ void Joiner::update() {
 
 	if (showLeaderboards) {
 		ImGui::SetNextWindowSizeConstraints(ImVec2(225, 350), ImVec2(225, 350));
-		ImGui::Begin("Leaderboards");
+		ImGui::Begin("Leaderboards", &showLeaderboards, ImGuiWindowFlags_NoResize);
 
 		ImGui::Columns(2);
 		ImGui::SetColumnWidth(0, 115);
@@ -262,10 +309,6 @@ void Joiner::update() {
 		}
 		ImGui::Columns(1);
 
-		if (ImGui::Button("Close")) {
-			showLeaderboards = false;
-		}
-
 		ImGui::TextColored(ImVec4(1,0,0,1), "Final: %f", hud.splitsDisplay.finalTimeList[leaderboardSelectedRun]);
 		ImGui::TextColored(ImVec4(1,1,0,1), "Splits");
 		ImGui::BeginChild("Scrolling");
@@ -277,11 +320,12 @@ void Joiner::update() {
 	}
 
 	if (showSessionStats) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(125, 250), ImVec2(125, 250));
-		ImGui::Begin("Session Stats");
+		ImGui::SetNextWindowSizeConstraints(ImVec2(135, 250), ImVec2(135, 250));
+		ImGui::Begin("Session Stats" , &showSessionStats, ImGuiWindowFlags_NoResize);
 		if (selectedRun != hud.splitsDisplay.splitList.size() - 1) {
 			selectedRun = hud.splitsDisplay.splitList.size() - 1;
 		}
+		ImGui::TextColored(ImVec4(1,0.74,0.15,1), "Score: %.02f", profile.getScore());
 		ImGui::TextColored(ImVec4(0,1,1,1), "Current Run: %i", selectedRun);
 		ImGui::TextColored(ImVec4(1,0,0,1), "Final: %f", hud.splitsDisplay.finalTimeList[selectedRun]);
 		ImGui::Spacing();
@@ -297,7 +341,7 @@ void Joiner::update() {
 
 	if (showWheelStats) {
 		ImGui::SetNextWindowSizeConstraints(ImVec2(240, 105), ImVec2(240, 105));
-		ImGui::Begin("Wheel Stats");
+		ImGui::Begin("Wheel Stats", &showWheelStats, ImGuiWindowFlags_NoResize);
 		ImGui::TextColored(ImVec4(0,1,0,1), "Traction Multiplier: x%.03f", (2.00 - board.wheel.getTraction()));
 		ImGui::TextColored(ImVec4(1,0,1,1), "Speed Multiplier: x%.03f", board.wheel.getRollSpeed());
 		ImGui::TextColored(ImVec4(0.59,0.75,1,1), "Thane Left Till Core: %.2f%%", board.wheel.getCurrentHeightPercent() * 100);
@@ -308,7 +352,7 @@ void Joiner::update() {
 
 	if (showTrackEdit) {
 		ImGui::SetNextWindowSizeConstraints(ImVec2(200, 155), ImVec2(200, 155));
-		ImGui::Begin("Edit Track");
+		ImGui::Begin("Edit Track", &showTrackEdit, ImGuiWindowFlags_NoResize);
 		ImGui::PushItemWidth(-250);
 		ImGui::InputInt("Style", &trackGenerationStyle);
 		if (trackGenerationStyle < 0) { trackGenerationStyle = 0; }
@@ -323,16 +367,12 @@ void Joiner::update() {
 		ImGui::PushItemWidth(150);
 		ImGui::InputInt("Seed", &seed);
 
-		if (ImGui::Button("Close")) {
-			showTrackEdit = false;
-		}
-
 		ImGui::End();
 	}
 
 	if (showBoardEdit) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 245), ImVec2(380, 245));
-		ImGui::Begin("Edit Board");
+		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 260), ImVec2(380, 260));
+		ImGui::Begin("Board Shop", &showBoardEdit, ImGuiWindowFlags_NoResize);
 		ImGui::Columns(2);
 		ImGui::PushItemWidth(-175);
 		ImGui::SetColumnWidth(0, 200);
@@ -367,9 +407,46 @@ void Joiner::update() {
 		ImGui::Columns(1);
 		ImGui::Spacing();
 
-		if (ImGui::Button("Close")) {
-			showBoardEdit = false;
+		ImGui::Columns(2);
+		if (profile.getScore() > getDeck(deckID).getPrice()) {
+			ImGui::TextColored(ImVec4(0,1,0,1), "Price: $%i", getDeck(deckID).getPrice());
 		}
+		else {
+			ImGui::TextColored(ImVec4(1,0,0,1), "Price: $%i", getDeck(deckID).getPrice());
+		}
+
+		if (ImGui::Button("Buy Deck")) {
+
+		}
+
+		ImGui::NextColumn();
+		if (profile.getScore() > getWheel(wheelID).getPrice()) {
+			ImGui::TextColored(ImVec4(0,1,0,1), "Price: $%i", getWheel(wheelID).getPrice());
+		}
+		else {
+			ImGui::TextColored(ImVec4(1,0,0,1), "Price: $%i", getWheel(wheelID).getPrice());
+		}
+
+		if (ImGui::Button("Buy Wheels")) {
+
+		}
+		ImGui::Columns(1);
+
+		ImGui::End();
+	}
+
+	if (showInventory) {
+		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 245), ImVec2(380, 245));
+		ImGui::Begin("Inventory", &showInventory, ImGuiWindowFlags_NoResize);
+		// ImGui::Columns(2);
+
+		ImGui::ListBox("Decks", &selectedDeck, profile.getDeckNameList());
+
+		// ImGui::NextColumn();
+
+		ImGui::ListBox("Wheels", &selectedWheel, profile.getWheelNameList());
+
+		// ImGui::Columns(1);
 		ImGui::End();
 	}
 }

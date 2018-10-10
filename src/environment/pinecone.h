@@ -11,11 +11,12 @@ private:
 	int color[3];
 public:
 	BitmapPolygon polygon;
-
+	
 	inline Vector2 getPosition() { return position; };
+	inline bool getDead() { return isDead; };
 
 	Pinecone(Vector2 position, float scale);
 
-	void kill();
+	float kill(float velocity);
 	void draw();
 };

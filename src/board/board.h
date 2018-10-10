@@ -8,8 +8,7 @@
 #include "..\effects\particle_manager.h"
 #include "..\bmp_polygon.h"
 #include "..\camera.h"
-#include "deck.h"
-#include "wheel.h"
+#include "profile.h"
 
 class Board {
 private:

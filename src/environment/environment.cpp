@@ -191,8 +191,8 @@ void Environment::draw() {
 	}
 
 	for (int x = visiblePineconeRange.x; x < visiblePineconeRange.y; x++) {
-			pineconeList[x].draw();
-		}
+		pineconeList[x].draw();
+	}
 
 	for (int x = visibleGuardRailRange.x; x < visibleGuardRailRange.y; x++) {
 		guardRailList[x].draw();

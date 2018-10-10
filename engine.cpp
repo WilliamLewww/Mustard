@@ -102,7 +102,7 @@ void Engine::updateAndRender() {
 }
 
 void Engine::update() {
-	handleEscapeKey();
+	//handleEscapeKey();
 	timer.setTime(deltaTime);
 	joiner.update();
 }
