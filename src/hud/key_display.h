@@ -15,9 +15,9 @@ private:
 
 	float scale;
 
-	int alpha = 255;
-	int releaseColor[3] = { 255, 255, 255 };
-	int pressColor[3] = { 150, 150, 150 };
+	int alpha = 150;
+	int releaseColor[3] = { 130, 130, 130 };
+	int pressColor[3] = { 102, 153, 153 };
 public:
 	KeyDisplay(Vector2 position, float scale);
 

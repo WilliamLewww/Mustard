@@ -157,6 +157,26 @@ void Drawing::drawRect(Vector2 position, int width, int height, int color[3]) {
 	glEnd();
 }
 
+void Drawing::drawRect(Vector2 position, int width, int height, int color[3], int alpha) {
+	Vector2 vectors[4]{
+		Vector2(0, 0),
+		Vector2(1, 0),
+		Vector2(1, 1),
+		Vector2(0, 1)
+	};
+
+	glBegin(GL_QUADS);
+	glColor4f(convertColorFloatToRGB(color[0]), convertColorFloatToRGB(color[1]), convertColorFloatToRGB(color[2]), convertColorFloatToRGB(alpha));
+	for (int x = 0; x < 4; x++) {
+		vectors[x].x *= width;
+		vectors[x].y *= height;
+		vectors[x] += Vector2(position.x, position.y);
+		vectors[x] -= Vector2(configuration.getScreenWidth() / 2, configuration.getScreenHeight() / 2);
+
+		glVertex2d(vectors[x].x, vectors[x].y);
+	}
+	glEnd();
+}
 
 void Drawing::drawLine(Vector2 a, Vector2 b) {
 	glBegin(GL_LINES);
