@@ -12,7 +12,7 @@ private:
 	std::vector<Deck> deckList;
 	std::vector<std::string> deckNameList;
 
-	float score = 100;
+	float score = 30;
 public:
 	inline void initialize() { addWheel(1); addDeck(1); };
 
@@ -34,6 +34,8 @@ public:
 
 	void addDeck(int deckID);
 	bool buyDeck(int deckID);
+
+	void setWheelName(int index);
 };
 
 extern Profile profile;

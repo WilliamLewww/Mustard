@@ -4,19 +4,26 @@ Profile profile;
 
 void Profile::addWheel(int wheelID) {
 	wheelList.push_back(getWheel(wheelID));
-	wheelNameList.push_back(getWheel(wheelID).getName());
+	wheelNameList.push_back("");
+	setWheelName(wheelNameList.size() - 1);
 }
 
 bool Profile::buyWheel(int wheelID) {
 	if (getWheel(wheelID).getPrice() <= score) {
 		wheelList.push_back(getWheel(wheelID));
-		wheelNameList.push_back(getWheel(wheelID).getName());
+		wheelNameList.push_back("");
+		setWheelName(wheelNameList.size() - 1);
 		score -= getWheel(wheelID).getPrice();
 
 		return true;
 	}
 
 	return false;
+}
+
+void Profile::setWheelName(int index) {
+	std::string tempString = std::to_string(wheelList[index].getCurrentHeightPercent() * 100.0);
+	wheelNameList[index] = wheelList[index].getName() + " - " + tempString.substr(0, tempString.find_first_of('.') + 3) + "%";
 }
 
 void Profile::addDeck(int deckID) {

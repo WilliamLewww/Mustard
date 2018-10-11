@@ -3,10 +3,12 @@
 #include "..\core\configuration.h"
 #include "minimap.h"
 #include "splits_display.h"
+#include "key_display.h"
 
 class HUD {
 private:
 	Minimap minimap = Minimap(Vector2(0, 0), 200, 200);
+	KeyDisplay keyDisplay = KeyDisplay(Vector2(550, 500), 1);
 public:
 	SplitsDisplay splitsDisplay = SplitsDisplay(Vector2(0, 0), 500, 25);
 	
@@ -17,4 +19,4 @@ public:
 	void updateMinimap(Vector2 position, double angle);
 	void resetMinimap();
 	void draw();
-};   
+};

@@ -6,6 +6,7 @@ void HUD::draw() {
 	}
 
 	splitsDisplay.draw();
+	keyDisplay.draw();
 }
 
 void HUD::initializeSplitsDisplay(int checkpointCount, Vector2 firstRail, Vector2 lastRail) {

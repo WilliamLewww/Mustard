@@ -276,6 +276,7 @@ void Joiner::update() {
 	}
 	
 	if (ImGui::Button("Apply Changes / Re-Initialize")) {
+		profile.setWheelName(selectedWheel);
 		resetFull();
 	}
 
@@ -326,7 +327,7 @@ void Joiner::update() {
 		if (selectedRun != hud.splitsDisplay.splitList.size() - 1) {
 			selectedRun = hud.splitsDisplay.splitList.size() - 1;
 		}
-		ImGui::TextColored(ImVec4(1,0.74,0.15,1), "Money: $%.02f", profile.getScore());
+		ImGui::TextColored(ImVec4(1,0.74,0.15,1), "$%.02f", profile.getScore());
 		ImGui::TextColored(ImVec4(1,0,0,1), "Final: %f", hud.splitsDisplay.finalTimeList[selectedRun]);
 		ImGui::Spacing();
 		ImGui::TextColored(ImVec4(1,1,0,1), "Splits");
@@ -434,6 +435,7 @@ void Joiner::update() {
 
 		if (ImGui::Button("Buy Wheels")) { 
 			if (profile.buyWheel(wheelID)) {
+				profile.setWheelName(selectedWheel);
 				selectedWheel = profile.getWheelList().size() - 1; 
 				resetFull(); 
 			}
@@ -444,17 +446,12 @@ void Joiner::update() {
 	}
 
 	if (showInventory) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 245), ImVec2(380, 245));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(325, 245), ImVec2(325, 245));
 		ImGui::Begin("Inventory", &showInventory, ImGuiWindowFlags_NoResize);
-		// ImGui::Columns(2);
-
+		ImGui::PushItemWidth(ImGui::GetWindowWidth() - 75);
 		ImGui::ListBox("Decks", &selectedDeck, profile.getDeckNameList());
-
-		// ImGui::NextColumn();
-
+		ImGui::Spacing();
 		ImGui::ListBox("Wheels", &selectedWheel, profile.getWheelNameList());
-
-		// ImGui::Columns(1);
 		ImGui::End();
 	}
 }
