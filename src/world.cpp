@@ -91,7 +91,7 @@ void World::generateWorld() {
 	environment.generateGuardRails(track.railList[0], 2, 5, 15, 25);
 	environment.generateTrees(track.railList[1], 5, 10, 5, 15);
 	environment.generatePinecones(track.railList[1], 12, 6, 10);
-	environment.generateSquirrels(track.railList, 15, 5, 7);
+	environment.generateSquirrels(track.railList, 20, 5, 7);
 	environment.generateGravel(track.railList, 35);
 	environment.generateCars(track.railList[1], 8);
 	environment.generateBikes(track.railList[0], 6, false);
