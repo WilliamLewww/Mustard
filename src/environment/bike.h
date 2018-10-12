@@ -13,7 +13,7 @@ private:
 	Vector2 currentRail;
 	int currentRailIndex;
 
-	float speed = 50, turnSpeed = 150;
+	float speed = 50, turnSpeed = 250;
 
 	int colorIndex;
 	bool isDead = false;
