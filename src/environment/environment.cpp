@@ -3,7 +3,7 @@
 void Environment::generatePinecones(std::vector<Vector2> rail, int concentration, int scaleMin, int scaleMax) {
 	visiblePineconeRange = Vector2(0,0);
 
-	for (int x = 0; x < rail.size(); x++) {
+	for (int x = 10; x < rail.size(); x++) {
 		if (rand() % concentration == 0) {
 			pineconeList.emplace_back(Vector2(rail[x].x, rail[x].y - 25 - (rand() % 70)), rand() % (scaleMax + 1 - scaleMin) + scaleMin);
 		}

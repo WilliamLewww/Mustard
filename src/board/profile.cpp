@@ -26,6 +26,12 @@ void Profile::setWheelName(int index) {
 	wheelNameList[index] = wheelList[index].getName() + " - " + tempString.substr(0, tempString.find_first_of('.') + 3) + "%";
 }
 
+void Profile::setAllWheelNames() {
+	for (int x = 0; x < wheelNameList.size(); x++) {
+		setWheelName(x);
+	}
+}
+
 void Profile::addDeck(int deckID) {
 	deckList.push_back(getDeck(deckID));
 	deckNameList.push_back(getDeck(deckID).getName());

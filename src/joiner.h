@@ -29,13 +29,18 @@ private:
 
 	bool stillShowBoard = false;
 	
-	bool showBoardEdit, showTrackEdit, showInventory, showSessionStats = true, showLeaderboards = false, showWheelStats = true;
+	bool showHUDEdit, showTrackEdit, showBoardEdit;
+	bool showSplitsHUD = true, showKeyPressHUD = false, showMinimap = true;
+
+	bool showInventory, showSessionStats = true, showLeaderboards = false, showWheelStats = true;
 	bool randomTrackSeed = false;
 
 	int selectedRun = 0, leaderboardSelectedRun = 0;
 	int deckID, wheelID;
 	int selectedDeck = 0, selectedWheel = 0;
 	int trackGenerationStyle;
+
+	void hideEditWindows();
 public:
 	int seed;
 

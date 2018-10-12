@@ -36,6 +36,7 @@ public:
 	bool buyDeck(int deckID);
 
 	void setWheelName(int index);
+	void setAllWheelNames();
 };
 
 extern Profile profile;

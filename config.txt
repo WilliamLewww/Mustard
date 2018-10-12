@@ -17,9 +17,6 @@ TrackGenerationStyle 0
 #Draw Lines/Guides on Track
 DrawTrackDetails 1
 
-#Draw Minimap
-DrawMinimap 1
-
 @TrackStyle0 Mountain Road
 @TrackStyle1 Smooth Track (W.I.P.)
 @TrackStyle2 Narrow Mountain Road

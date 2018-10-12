@@ -54,6 +54,14 @@ void Joiner::reset(bool crashed, bool crashedParticles = true) {
 	}
 }
 
+void Joiner::hideEditWindows() {
+	showHUDEdit = false;
+	showBoardEdit = false;
+	showTrackEdit = false;
+	showLeaderboards = false;
+	showInventory = false;
+}
+
 void Joiner::resetFull() {
 	configuration.setConfiguration("TrackGenerationStyle", trackGenerationStyle);
 	configuration.setConfiguration("DeckID", deckID);
@@ -82,8 +90,7 @@ void Joiner::resetFull() {
 	isKeyStart = false;
 	allowKeyStart = false;
 
-	showBoardEdit = false;
-	showTrackEdit = false;
+	hideEditWindows();
 }
 
 void Joiner::initializeWorld() {
@@ -92,7 +99,7 @@ void Joiner::initializeWorld() {
 	
 	world.generateWorld();
 
-	if (configuration.getConfigurations()["DrawMinimap"] == 1) {
+	if (showMinimap) {
 		hud.initializeMinimap(world.track.railList, Vector2(0, 0), Vector2(0, 0), configuration.getScreenWidth() / 5, configuration.getScreenHeight() / 3);
 	}
 	hud.initializeSplitsDisplay(checkpointCount, world.track.railList[0][0], world.track.railList[0][world.track.railList[0].size() - 1]);
@@ -103,10 +110,7 @@ void Joiner::update() {
 	// else { isPaused = false; }
 
 	if (input.checkKeyDown(SDLK_ESCAPE)) {
-		showBoardEdit = false;
-		showTrackEdit = false;
-		showLeaderboards = false;
-		showInventory = false;
+		hideEditWindows();
 	}
 
 	if (!input.checkKeyDown(SDLK_ESCAPE) && allowKeyStart && input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
@@ -150,7 +154,7 @@ void Joiner::update() {
 		particleManager.update();
 		world.update();
 
-		if (configuration.getConfigurations()["DrawMinimap"] == 1) {
+		if (showMinimap) {
 			hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle());
 		}
 
@@ -266,17 +270,23 @@ void Joiner::update() {
 	}
 	ImGui::NextColumn();
 	if (ImGui::Button("Inventory")) {
+		if (!showInventory) { profile.setAllWheelNames(); }
 		showInventory = !showInventory;
 	}
 
 	ImGui::Columns(1);
 
+	ImGui::Columns(2);
 	if (ImGui::Button("Leaderboards")) {
 		showLeaderboards = !showLeaderboards;
 	}
+	ImGui::NextColumn();
+	if (ImGui::Button("Edit HUD")) {
+		showHUDEdit = !showHUDEdit;
+	}
+	ImGui::Columns(1);
 	
 	if (ImGui::Button("Apply Changes / Re-Initialize")) {
-		profile.setWheelName(selectedWheel);
 		resetFull();
 	}
 
@@ -350,6 +360,15 @@ void Joiner::update() {
 		ImGui::TextColored(ImVec4(1,0,1,1), "Speed: x%.03f", board.wheel->getRollSpeed());
 		ImGui::TextColored(ImVec4(0.59,0.75,1,1), "Thane: %.2f%%", board.wheel->getCurrentHeightPercent() * 100);
 		ImGui::TextColored(ImVec4(0.96,0.57,0.26,1), "Velocity: %.2f", board.getVelocity());
+		ImGui::End();
+	}
+
+	if (showHUDEdit) {
+		ImGui::SetNextWindowSizeConstraints(ImVec2(150, 100), ImVec2(150, 100));
+		ImGui::Begin("Edit HUD", &showHUDEdit, ImGuiWindowFlags_NoResize);
+		ImGui::Checkbox("Minimap", &showMinimap);
+		ImGui::Checkbox("Splits HUD", &showSplitsHUD);
+		ImGui::Checkbox("Key Press HUD", &showKeyPressHUD);
 		ImGui::End();
 	}
 
@@ -435,7 +454,6 @@ void Joiner::update() {
 
 		if (ImGui::Button("Buy Wheels")) { 
 			if (profile.buyWheel(wheelID)) {
-				profile.setWheelName(selectedWheel);
 				selectedWheel = profile.getWheelList().size() - 1; 
 				resetFull(); 
 			}
@@ -465,5 +483,5 @@ void Joiner::draw() {
 	particleManager.draw();
 	glPopMatrix();
 
-	hud.draw();
+	hud.draw(showSplitsHUD, showKeyPressHUD, showMinimap);
 }

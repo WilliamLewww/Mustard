@@ -1,12 +1,9 @@
 #include "hud.h"
 
-void HUD::draw() {
-	if (configuration.getConfigurations()["DrawMinimap"] == 1) {
-		minimap.draw();
-	}
-
-	splitsDisplay.draw();
-	keyDisplay.draw();
+void HUD::draw(bool showSplitsHUD, bool showKeyPressHUD, bool showMinimap) {
+	if (showMinimap) { minimap.draw(); }
+	if (showSplitsHUD) { splitsDisplay.draw(); }
+	if (showKeyPressHUD) { keyDisplay.draw(); }
 }
 
 void HUD::initializeSplitsDisplay(int checkpointCount, Vector2 firstRail, Vector2 lastRail) {
