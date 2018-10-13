@@ -63,7 +63,7 @@ void Environment::generateCars(std::vector<Vector2> rail, int count) {
 			randomIndex = rand() % (rail.size() - spacing + 1 - 3) + 3;
 
 			for (int index : indexList) {
-				if (abs(randomIndex - index) < 15) {
+				if (abs(randomIndex - index) < 20) {
 					isTooClose = true;
 				}
 			}

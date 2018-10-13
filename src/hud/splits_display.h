@@ -2,6 +2,7 @@
 #include "..\core\vector2.h"
 #include "..\core\drawing.h"
 #include "..\core\timer.h"
+#include "..\board\profile.h"
 
 class SplitsDisplay {
 private:

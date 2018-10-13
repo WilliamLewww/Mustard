@@ -62,10 +62,10 @@ void SplitsDisplay::update(Vector2 bPosition) {
 	else {
 		if (currentCheckpointIndex == checkpointList.size() && finalTimeList[currentRun] == 0) {
 			float totalTime = 0;
-			for (float time : splitList[currentRun]) {
-				totalTime += time;
-			}
+			for (float time : splitList[currentRun]) { totalTime += time; }
 
+			float tempScore = 1.00 - ((totalTime - 100) / 75);
+			if (tempScore > 0) { profile.addScore(tempScore * 500); }
 			finalTimeList[currentRun] = totalTime;
 		}
 	}
