@@ -7,7 +7,7 @@ public:
 		:Deck("Landyachtz Switchblade", 1, 40, 10) { 
 
 		setColor(103, 156, 192);
-		this->price = 225;
+		this->price = 139;
 	};
 };
 
@@ -17,7 +17,7 @@ public:
 		:Deck("Moonshine Rum Runner Carbon", 2, 36, 9) { 
 
 		setColor(155, 24, 24);
-		this->price = 200;
+		this->price = 246;
 	};
 };
 
@@ -27,6 +27,6 @@ public:
 		:Deck("Landyachtz Wolfshark Mini", 3, 32, 10) { 
 
 		setColor(125, 104, 221);
-		this->price = 300;
+		this->price = 200;
 	};
 };
