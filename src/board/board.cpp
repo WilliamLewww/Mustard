@@ -369,7 +369,15 @@ void Board::reset() {
 	flipped = false;
 }
 
-bool Board::handleCollision(Vector2 position, int width, int height) {
+bool Board::checkProximity(Vector2 position) {
+	if (bitmapPolygon.getPosition().x + 50 > position.x && bitmapPolygon.getPosition().x < position.x + 50) {
+		return true;
+	}
+
+	return false;
+}
+
+bool Board::checkCollision(Vector2 position, int width, int height) {
 	if (bitmapPolygon.getCenter().x > position.x && bitmapPolygon.getCenter().x < position.x + width &&
 		bitmapPolygon.getCenter().y > position.y && bitmapPolygon.getCenter().y < position.y + height) {
 
@@ -379,7 +387,7 @@ bool Board::handleCollision(Vector2 position, int width, int height) {
 	return false;
 }
 
-bool Board::handleCollision(BitmapPolygon polygon) {
+bool Board::checkCollision(BitmapPolygon polygon) {
 	if (bitmapPolygon.checkCollision(polygon) == true) {
 		return true;
 	}
@@ -387,7 +395,7 @@ bool Board::handleCollision(BitmapPolygon polygon) {
 	return false;
 }
 
-bool Board::handleCollision(Vector2* wall) {
+bool Board::checkCollision(Vector2* wall) {
 	if (bitmapPolygon.checkCollision(wall) == true) {
 		return true;
 	}
@@ -395,7 +403,7 @@ bool Board::handleCollision(Vector2* wall) {
 	return false;
 }
 
-bool Board::handleCollision(Vector2 pointA, Vector2 pointB) {
+bool Board::checkCollision(Vector2 pointA, Vector2 pointB) {
 	Vector2 tempVector[] = { pointA, pointB };
 	if (bitmapPolygon.checkCollision(tempVector) == true) {
 		return true;

@@ -69,22 +69,12 @@ void Bike::update(float elapsedTimeSeconds) {
 		projectedPoint = polygon.getCenter() + (directionVector * distanceToNode);
 
 		if (!isLeft) {
-			if (projectedPoint.y <= currentRail.y + 5) {
-				polygon.addAngle(-turnSpeed * elapsedTimeSeconds);
-			}
-
-			if (projectedPoint.y >= currentRail.y - 5) {
-				polygon.addAngle(turnSpeed * elapsedTimeSeconds);
-			}
+			if (projectedPoint.y <= currentRail.y + 5) { polygon.addAngle(-turnSpeed * elapsedTimeSeconds); }
+			if (projectedPoint.y >= currentRail.y - 5) { polygon.addAngle(turnSpeed * elapsedTimeSeconds); }
 		}
 		else {
-			if (projectedPoint.y <= currentRail.y + 5) {
-				polygon.addAngle(turnSpeed * elapsedTimeSeconds);
-			}
-
-			if (projectedPoint.y >= currentRail.y - 5) {
-				polygon.addAngle(-turnSpeed * elapsedTimeSeconds);
-			}
+			if (projectedPoint.y <= currentRail.y + 5) { polygon.addAngle(turnSpeed * elapsedTimeSeconds); }
+			if (projectedPoint.y >= currentRail.y - 5) { polygon.addAngle(-turnSpeed * elapsedTimeSeconds); }
 		}
 
 		polygon.setPosition(polygon.getPosition() - ((directionVector * elapsedTimeSeconds) * speed));

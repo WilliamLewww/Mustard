@@ -106,13 +106,78 @@ void Joiner::initializeWorld() {
 }
 
 void Joiner::update() {
-	// if (input.checkKeyDown(SDLK_f)) { isPaused = true; }
-	// else { isPaused = false; }
-
 	if (input.checkKeyDown(SDLK_ESCAPE)) {
 		hideEditWindows();
 	}
 
+	handleStartInput();
+
+	if (isPaused == false && isKeyStart == true) {
+		if (!isCrashed) { board.update(speedZone, trackDirection); }
+		particleManager.update();
+		world.update();
+
+		if (showMinimap) {
+			hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle());
+		}
+
+		if (!isCrashed) {
+			hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());
+		}
+
+		for (Vector2 speed : world.track.speedZones) {
+			if (board.bitmapPolygon.getPosition().x > world.track.railList[0][speed.x].x) {
+				speedZone = speed.y;
+			}
+		}
+
+		for (Vector2 direction : world.track.trackDirection) {
+			if (board.bitmapPolygon.getPosition().x > direction.x) {
+				trackDirection = direction.y;
+			}
+		}
+
+		handleBoardCollision();
+
+		if (board.bitmapPolygon.getPosition().x > hud.splitsDisplay.checkpointList[hud.splitsDisplay.checkpointList.size() - 1]) {
+			hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());
+			particleManager.generateFinishParticles(2, board.bitmapPolygon.getCenter());
+			reset(true, false);
+		}
+
+		if (input.checkKeyDown(SDLK_r) && !isCrashed) {
+			reset(true);
+		}
+
+	}
+
+	handleMainMenu();
+	handleLeaderboards();
+	handleStats();
+	handleHUDEdit();
+	handleTrackEdit();
+	handleBoardEdit();
+	handleInventory();
+}
+
+void Joiner::draw() {
+	glPushMatrix();
+	glTranslatef(-camera.getPosition().x + (configuration.getScreenWidth() / 2) - (board.bitmapPolygon.getWidth() / 2), -camera.getPosition().y + (configuration.getScreenHeight() / 2) - (board.bitmapPolygon.getHeight() / 2), 0);
+	world.draw();
+	board.drawThaneLines();
+	if (!isCrashed || stillShowBoard) { board.draw(); }
+	particleManager.draw();
+	glPopMatrix();
+
+	hud.draw(showSplitsHUD, showKeyPressHUD, showMinimap);
+}
+
+void Joiner::handleDevMode() {
+	if (input.checkKeyDown(SDLK_f)) { isPaused = true; }
+	else { isPaused = false; }
+}
+
+void Joiner::handleStartInput() {
 	if (!input.checkKeyDown(SDLK_ESCAPE) && allowKeyStart && input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
 		isKeyStart = true;
 	}
@@ -145,116 +210,69 @@ void Joiner::update() {
 			}
 		}
 	}
+}
 
-	if (isPaused == false && isKeyStart == true) {
-		if (!isCrashed) {
-			board.update(speedZone, trackDirection);
-		}
-
-		particleManager.update();
-		world.update();
-
-		if (showMinimap) {
-			hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle());
-		}
-
-		if (!isCrashed) {
-			hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());
-		}
-
-		for (Vector2 speed : world.track.speedZones) {
-			if (board.bitmapPolygon.getPosition().x > world.track.railList[0][speed.x].x) {
-				speedZone = speed.y;
+void Joiner::handleBoardCollision() {
+	for (GravelRectangle& gravelRectangle : world.environment.gravel.gravelRectangleList) {
+		if (!isCrashed && board.checkProximity(gravelRectangle.position)) {
+			if (board.checkCollision(gravelRectangle.position, gravelRectangle.width, gravelRectangle.height)) {
+				board.forceSlide();
 			}
 		}
+	}
 
-		for (Vector2 direction : world.track.trackDirection) {
-			if (board.bitmapPolygon.getPosition().x > direction.x) {
-				trackDirection = direction.y;
-			}
+	for (Squirrel& squirrel : world.environment.squirrelList) {
+		if (!isCrashed && board.checkProximity(squirrel.polygon.getPosition()) && board.checkCollision(squirrel.polygon)) {
+			if (!squirrel.getDead()) { board.subtractSpeedExternal(50); }
+
+			squirrel.kill();
 		}
+	}
 
-		for (std::vector<Vector2> rail : world.track.railList) {
-			for (int x = 0; x < rail.size(); x++) {
-				if (board.bitmapPolygon.getPosition().x + 100 > rail[x].x && board.bitmapPolygon.getPosition().x < rail[x].x + 100) {
-					hud.resetMinimap();
-					
-					if (board.handleCollision(rail[x], rail[x + 1]) && !isCrashed) {
-						reset(true);
-					}
-				}
-			}
-		}
-
-		for (GravelRectangle& gravelRectangle : world.environment.gravel.gravelRectangleList) {
-			if (board.bitmapPolygon.getPosition().x + 100 > gravelRectangle.position.x && board.bitmapPolygon.getPosition().x < gravelRectangle.position.x + 100) {
-				if (board.handleCollision(gravelRectangle.position, gravelRectangle.width, gravelRectangle.height)) {
-					board.forceSlide();
-				}
-			}
-		}
-
-		for (Squirrel& squirrel : world.environment.squirrelList) {
-			if (board.bitmapPolygon.getPosition().x + 100 > squirrel.polygon.getPosition().x && board.bitmapPolygon.getPosition().x < squirrel.polygon.getPosition().x + 100) {
-				if (board.handleCollision(squirrel.polygon)) {
-					if (!squirrel.getDead()) { board.subtractSpeedExternal(50); }
-
-					squirrel.kill();
-				}
-			}
-		}
-
-		for (Car car : world.environment.carList) {
-			if (board.bitmapPolygon.getPosition().x + 100 > car.polygon.getPosition().x && board.bitmapPolygon.getPosition().x < car.polygon.getPosition().x + 100) {
-				if (board.handleCollision(car.polygon) && !isCrashed) {
-					reset(true);
-				}
-			}
-
-			//Frame Killer
-			// for (Squirrel& squirrel : world.environment.squirrelList) {
-			// 	if (car.handleCollision(squirrel.polygon)) {
-			// 		squirrel.kill();
-			// 	}
-			// }
-		}
-		
-		for (Bike& bike : world.environment.bikeList) {
-			if (board.bitmapPolygon.getPosition().x + 100 > bike.polygon.getPosition().x && board.bitmapPolygon.getPosition().x < bike.polygon.getPosition().x + 100) {
-				if (board.handleCollision(bike.polygon) && !isCrashed) {
-					if (!bike.getDead()) { 
-						if (board.getVelocity() < 200) { reset(true); }
-						board.subtractSpeedExternal(100); 
-					}
-					
-
-					bike.kill();
-				}
-			}
-		}
-
-		for (Pinecone& pinecone : world.environment.pineconeList) {
-			if (board.bitmapPolygon.getPosition().x + 100 > pinecone.getPosition().x && board.bitmapPolygon.getPosition().x < pinecone.getPosition().x + 100) {
-				if (!pinecone.getDead()) {
-					if (board.handleCollision(pinecone.polygon) && !isCrashed) {
-						profile.addScore(pinecone.kill(board.getVelocity()));
-					}
-				}
-			}
-		}
-
-		if (board.bitmapPolygon.getPosition().x > hud.splitsDisplay.checkpointList[hud.splitsDisplay.checkpointList.size() - 1]) {
-			hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());
-			particleManager.generateFinishParticles(2, board.bitmapPolygon.getCenter());
-			reset(true, false);
-		}
-
-		if (input.checkKeyDown(SDLK_r) && !isCrashed) {
+	for (Car car : world.environment.carList) {
+		if (!isCrashed && board.checkProximity(car.polygon.getPosition()) && board.checkCollision(car.polygon)) {
 			reset(true);
 		}
 
+		//Frame Killer
+		// for (Squirrel& squirrel : world.environment.squirrelList) {
+		// 	if (car.checkCollision(squirrel.polygon)) {
+		// 		squirrel.kill();
+		// 	}
+		// }
+	}
+	
+	for (Bike& bike : world.environment.bikeList) {
+		if (!isCrashed && board.checkProximity(bike.polygon.getPosition()) && board.checkCollision(bike.polygon)) {
+			if (!bike.getDead()) { 
+				if (board.getVelocity() < 200) { reset(true); }
+				board.subtractSpeedExternal(100); 
+			}
+			
+			bike.kill();
+		}
 	}
 
+	for (Pinecone& pinecone : world.environment.pineconeList) {
+		if (!isCrashed && !pinecone.getDead() && board.checkProximity(pinecone.polygon.getPosition()) && board.checkCollision(pinecone.polygon) ) {
+			profile.addScore(pinecone.kill(board.getVelocity()));
+		}
+	}
+
+	for (std::vector<Vector2> rail : world.track.railList) {
+		for (int x = 0; x < rail.size(); x++) {
+			if (!isCrashed && board.checkProximity(rail[x])) {
+				hud.resetMinimap();
+				
+				if (board.checkCollision(rail[x], rail[x + 1])) {
+					reset(true);
+				}
+			}
+		}
+	}
+}
+
+void Joiner::handleMainMenu() {
 	ImGui::SetNextWindowSizeConstraints(ImVec2(230, 165), ImVec2(230, 165));
 	ImGui::Begin("Main Menu");
 
@@ -294,7 +312,9 @@ void Joiner::update() {
 	ImGui::Checkbox("Display Wheel Stats", &showWheelStats);
 	ImGui::Text("%.1f FPS", ImGui::GetIO().Framerate);
 	ImGui::End();
+}
 
+void Joiner::handleLeaderboards() {
 	if (showLeaderboards) {
 		ImGui::SetNextWindowSizeConstraints(ImVec2(225, 350), ImVec2(225, 350));
 		ImGui::Begin("Leaderboards", &showLeaderboards, ImGuiWindowFlags_NoResize);
@@ -330,6 +350,21 @@ void Joiner::update() {
 		ImGui::EndChild();
 		ImGui::End();
 	}
+}
+
+void Joiner::handleStats() {
+	if (showWheelStats) {
+		ImGui::SetNextWindowSizeConstraints(ImVec2(145, 120), ImVec2(145, 120));
+		ImGui::Begin("Wheel Stats", &showWheelStats, ImGuiWindowFlags_NoResize);
+
+		ImGui::TextColored(ImVec4(0,1,1,1), board.wheel->getName().c_str());
+
+		ImGui::TextColored(ImVec4(0,1,0,1), "Traction: x%.03f", (2.00 - board.wheel->getTraction()));
+		ImGui::TextColored(ImVec4(1,0,1,1), "Speed: x%.03f", board.wheel->getRollSpeed());
+		ImGui::TextColored(ImVec4(0.59,0.75,1,1), "Thane: %.2f%%", board.wheel->getCurrentHeightPercent() * 100);
+		ImGui::TextColored(ImVec4(0.96,0.57,0.26,1), "Velocity: %.2f", board.getVelocity());
+		ImGui::End();
+	}
 
 	if (showSessionStats) {
 		ImGui::SetNextWindowSizeConstraints(ImVec2(135, 250), ImVec2(135, 250));
@@ -349,20 +384,9 @@ void Joiner::update() {
 		ImGui::EndChild();
 		ImGui::End();
 	}
+}
 
-	if (showWheelStats) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(145, 120), ImVec2(145, 120));
-		ImGui::Begin("Wheel Stats", &showWheelStats, ImGuiWindowFlags_NoResize);
-
-		ImGui::TextColored(ImVec4(0,1,1,1), board.wheel->getName().c_str());
-
-		ImGui::TextColored(ImVec4(0,1,0,1), "Traction: x%.03f", (2.00 - board.wheel->getTraction()));
-		ImGui::TextColored(ImVec4(1,0,1,1), "Speed: x%.03f", board.wheel->getRollSpeed());
-		ImGui::TextColored(ImVec4(0.59,0.75,1,1), "Thane: %.2f%%", board.wheel->getCurrentHeightPercent() * 100);
-		ImGui::TextColored(ImVec4(0.96,0.57,0.26,1), "Velocity: %.2f", board.getVelocity());
-		ImGui::End();
-	}
-
+void Joiner::handleHUDEdit() {
 	if (showHUDEdit) {
 		ImGui::SetNextWindowSizeConstraints(ImVec2(150, 100), ImVec2(150, 100));
 		ImGui::Begin("Edit HUD", &showHUDEdit, ImGuiWindowFlags_NoResize);
@@ -371,7 +395,9 @@ void Joiner::update() {
 		ImGui::Checkbox("Key Press HUD", &showKeyPressHUD);
 		ImGui::End();
 	}
+}
 
+void Joiner::handleTrackEdit() {
 	if (showTrackEdit) {
 		ImGui::SetNextWindowSizeConstraints(ImVec2(200, 155), ImVec2(200, 155));
 		ImGui::Begin("Edit Track", &showTrackEdit, ImGuiWindowFlags_NoResize);
@@ -391,7 +417,9 @@ void Joiner::update() {
 
 		ImGui::End();
 	}
+}
 
+void Joiner::handleBoardEdit() {
 	if (showBoardEdit) {
 		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 260), ImVec2(380, 260));
 		ImGui::Begin("Board Shop", &showBoardEdit, ImGuiWindowFlags_NoResize);
@@ -462,7 +490,9 @@ void Joiner::update() {
 
 		ImGui::End();
 	}
+}
 
+void Joiner::handleInventory() {
 	if (showInventory) {
 		ImGui::SetNextWindowSizeConstraints(ImVec2(325, 245), ImVec2(325, 245));
 		ImGui::Begin("Inventory", &showInventory, ImGuiWindowFlags_NoResize);
@@ -472,16 +502,4 @@ void Joiner::update() {
 		ImGui::ListBox("Wheels", &selectedWheel, profile.getWheelNameList());
 		ImGui::End();
 	}
-}
-
-void Joiner::draw() {
-	glPushMatrix();
-	glTranslatef(-camera.getPosition().x + (configuration.getScreenWidth() / 2) - (board.bitmapPolygon.getWidth() / 2), -camera.getPosition().y + (configuration.getScreenHeight() / 2) - (board.bitmapPolygon.getHeight() / 2), 0);
-	world.draw();
-	board.drawThaneLines();
-	if (!isCrashed || stillShowBoard) { board.draw(); }
-	particleManager.draw();
-	glPopMatrix();
-
-	hud.draw(showSplitsHUD, showKeyPressHUD, showMinimap);
 }

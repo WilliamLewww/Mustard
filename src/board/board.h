@@ -83,8 +83,10 @@ public:
 
 	void clearLines();
 
-	bool handleCollision(Vector2 position, int width, int height);
-	bool handleCollision(BitmapPolygon polygon);
-	bool handleCollision(Vector2* wall);
-	bool handleCollision(Vector2 pointA, Vector2 pointB);
+	bool checkProximity(Vector2 position);
+
+	bool checkCollision(Vector2 position, int width, int height);
+	bool checkCollision(BitmapPolygon polygon);
+	bool checkCollision(Vector2* wall);
+	bool checkCollision(Vector2 pointA, Vector2 pointB);
 };

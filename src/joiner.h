@@ -41,6 +41,19 @@ private:
 	int trackGenerationStyle;
 
 	void hideEditWindows();
+
+	void handleDevMode();
+	void handleStartInput();
+
+	void handleBoardCollision();
+
+	void handleMainMenu();
+	void handleLeaderboards();
+	void handleStats();
+	void handleHUDEdit();
+	void handleTrackEdit();
+	void handleBoardEdit();
+	void handleInventory();
 public:
 	int seed;
 
