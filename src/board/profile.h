@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "..\core\file.h"
 #include "wheel.h"
 #include "deck.h"
 
@@ -12,9 +13,16 @@ private:
 	std::vector<Deck> deckList;
 	std::vector<std::string> deckNameList;
 
+	std::vector<std::vector<Vector2>> deckModelList;
+
 	float score = 30;
 public:
-	inline void initialize() { addWheel(1); addDeck(1); };
+	inline void initialize() { 
+		deckModelList = file.getVerticesFromFileFull("board.data");
+		addWheel(1); addDeck(1); 
+	};
+
+	inline std::vector<Vector2> getDeckModel(int ID) { return deckModelList[ID - 1]; };
 
 	inline Wheel* getWheelFromList(int ID) { return &wheelList[ID]; };
 	inline Deck* getDeckFromList(int ID) { return &deckList[ID]; };

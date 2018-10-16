@@ -71,6 +71,7 @@ public:
 	void setSize(int width, int height);
 	void setColor(int red, int green, int blue, int alpha);
 	void setVertices(const char* filename);
+	void setVertices(std::vector<Vector2> vertexList);
 
 	void drawOutline();
 };

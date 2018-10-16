@@ -16,6 +16,10 @@ void BitmapPolygon::setVertices(const char* filename) {
 	vertices = file.getVerticesFromFile(filename);
 };
 
+void BitmapPolygon::setVertices(std::vector<Vector2> vertexList) {
+	vertices = vertexList;
+};
+
 void BitmapPolygon::drawOutline() {
 	drawing.drawLineStrip(position, width, height, vertices, angle, color);
 };

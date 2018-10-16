@@ -31,10 +31,8 @@ void Board::linkPolygonWithConfigurations() {
 	thaneColor[2] = wheel->getColor()[2];
 	
 	bitmapPolygon.setColor(deck->getColor()[0], deck->getColor()[1], deck->getColor()[2], 255);
-	
 	bitmapPolygon.setSize(deck->getLength(), deck->getWidth());
-	std::string boardFileName = "board_" + std::to_string(deck->getID()) + ".txt";
-	bitmapPolygon.setVertices(boardFileName.c_str());
+	bitmapPolygon.setVertices(profile.getDeckModel(deck->getID()));
 }
 
 void Board::update(int speedZone, int trackDirection) {

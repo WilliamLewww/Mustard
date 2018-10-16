@@ -31,6 +31,45 @@ std::vector<Vector2> File::getVerticesFromFile(const char* filename) {
 	return vertices;
 }
 
+std::vector<std::vector<Vector2>> File::getVerticesFromFileFull(const char* filename) {
+	std::vector<std::vector<Vector2>> fullList;
+	std::vector<Vector2> vertexList;
+
+	Vector2 temp_vertex;
+
+	std::ifstream configFile(filename);
+	std::string lineFromFile;
+
+	std::string tempInt = "";
+
+	while (std::getline(configFile, lineFromFile)) {
+		temp_vertex = Vector2(-1, -1);
+
+		for (char ch : lineFromFile) {
+			if (ch != ' ') {
+				tempInt += ch;
+			}
+			else {
+				if (temp_vertex.y != -1) { vertexList.push_back(temp_vertex); temp_vertex = Vector2(-1, -1); }
+				if (temp_vertex.x == -1) { temp_vertex.x = std::stoi(tempInt); }
+				else { temp_vertex.y = std::stoi(tempInt); }
+
+				tempInt = "";
+			}
+		}
+
+		if (temp_vertex.x != -1 && temp_vertex.y != -1) {
+			vertexList.push_back(temp_vertex);
+		}
+
+		fullList.push_back(vertexList);
+		vertexList.clear();
+	}
+
+	configFile.close();
+	return fullList;
+}
+
 std::map<std::string, int> File::getConfigurationFromFile(const char* filename) {
 	std::map<std::string, int> configurations;
 
@@ -42,6 +81,8 @@ std::map<std::string, int> File::getConfigurationFromFile(const char* filename) 
 				= atoi(lineFromFile.substr(lineFromFile.find(" ") + 1, lineFromFile.length()).c_str());
 		}
 	}
+
+	configFile.close();
 
 	return configurations;
 }
@@ -57,6 +98,8 @@ std::map<std::string, std::string> File::getNameConfigurationFromFile(const char
 				= lineFromFile.substr(lineFromFile.find(" ") + 1, lineFromFile.length()).c_str();
 		}
 	}
+
+	configFile.close();
 
 	return configurations;
 }
