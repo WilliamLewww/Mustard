@@ -51,7 +51,7 @@ Thane (short for polyurethane) lines are the skid marks produced when a skateboa
   - added different wheels that have different properties on the road
 - 1.7.1
   - added bikes to the road
-- 1.7.0 (Motor vehicle Update)
+- 1.7.0 (Motor Vehicle Update)
   - added cars to the road
 - 1.6.13
   - added particle effect to finish
