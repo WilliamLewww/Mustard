@@ -35,6 +35,8 @@ private:
 	bool showInventory, showSessionStats = true, showLeaderboards = false, showWheelStats = true;
 	bool randomTrackSeed = false;
 
+	bool devMode = false;
+
 	int selectedRun = 0, leaderboardSelectedRun = 0;
 	int deckID, wheelID;
 	int selectedDeck = 0, selectedWheel = 0;

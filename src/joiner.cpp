@@ -106,9 +106,9 @@ void Joiner::initializeWorld() {
 }
 
 void Joiner::update() {
-	if (input.checkKeyDown(SDLK_ESCAPE)) {
-		hideEditWindows();
-	}
+	if (input.checkKeyDown(SDLK_ESCAPE)) { hideEditWindows();}
+	if (input.checkKeyDown(SDLK_c) && input.checkKeyDown(SDLK_b) && input.checkKeyDown(SDLK_p)) { devMode = true; }
+	if (devMode) { handleDevMode(); }
 
 	handleStartInput();
 
@@ -175,6 +175,8 @@ void Joiner::draw() {
 void Joiner::handleDevMode() {
 	if (input.checkKeyDown(SDLK_f)) { isPaused = true; }
 	else { isPaused = false; }
+
+	if (input.checkKeyDown(SDLK_h)) { profile.addScore(5); }
 }
 
 void Joiner::handleStartInput() {
@@ -245,7 +247,12 @@ void Joiner::handleBoardCollision() {
 	for (Bike& bike : world.environment.bikeList) {
 		if (!isCrashed && board.checkProximity(bike.polygon.getPosition()) && board.checkCollision(bike.polygon)) {
 			if (!bike.getDead()) { 
-				if (board.getVelocity() < 200) { reset(true); }
+				if (board.getVelocity() < 200) { 
+					if (!devMode || !input.checkKeyDown(SDLK_g)) {
+						reset(true); 
+					}
+				}
+
 				board.subtractSpeedExternal(100); 
 			}
 			
@@ -263,9 +270,11 @@ void Joiner::handleBoardCollision() {
 		for (int x = 0; x < rail.size(); x++) {
 			if (!isCrashed && board.checkProximity(rail[x])) {
 				hud.resetMinimap();
-				
-				if (board.checkCollision(rail[x], rail[x + 1])) {
-					reset(true);
+
+				if (!devMode || !input.checkKeyDown(SDLK_g)) {
+					if (board.checkCollision(rail[x], rail[x + 1])) {
+						reset(true);
+					}
 				}
 			}
 		}

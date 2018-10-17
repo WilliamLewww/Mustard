@@ -38,11 +38,12 @@ void Environment::generateBikes(std::vector<Vector2> rail, int count, bool isLef
 		}
 
 		if (isLeft) {
-			bikeList.emplace_back(Vector2(rail[randomIndex].x, rail[randomIndex].y), randomIndex, isLeft);
+			bikeList.emplace_back(Vector2(rail[randomIndex].x, rail[randomIndex].y), randomIndex - 1, isLeft);
 		}
 		else {
-			bikeList.emplace_back(Vector2(rail[randomIndex].x, rail[randomIndex].y), randomIndex, isLeft);
+			bikeList.emplace_back(Vector2(rail[randomIndex].x, rail[randomIndex].y), randomIndex + 1, isLeft);
 		}
+		
 		indexList.emplace_back(randomIndex);
 	}
 }
