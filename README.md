@@ -35,6 +35,7 @@ Thane (short for polyurethane) lines are the skid marks produced when a skateboa
   - cleaned up board model system
   - updated board proximity detection
   - added speed wobbles
+  - speed wobbles can be countered by tucking, turning, or sliding
 - 1.9.1
   - added finish reward
   - updated price of each deck
