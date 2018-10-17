@@ -519,13 +519,14 @@ void Joiner::handleBoardEdit() {
 void Joiner::handleInventory() {
 	if (showInventory) {
 		isPaused = true;
-		ImGui::SetNextWindowSizeConstraints(ImVec2(325, 245), ImVec2(325, 245));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(350, 245), ImVec2(350, 245));
 		ImGui::Begin("Inventory", &showInventory, ImGuiWindowFlags_NoResize);
 		ImGui::PushItemWidth(ImGui::GetWindowWidth() - 75);
 		ImGui::ListBox("Decks", &selectedDeck, profile.getDeckNameList());
 		ImGui::Spacing();
 		ImGui::ListBox("Wheels", &selectedWheel, profile.getWheelNameList());
 		ImGui::Columns(2);
+		ImGui::SetColumnWidth(0, 90);
 		if (ImGui::Button("Trash Deck")) { 
 			if (profile.getDeckList().size() > 1) {
 				profile.removeDeckFromList(selectedDeck);
