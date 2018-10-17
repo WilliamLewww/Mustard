@@ -14,7 +14,7 @@ private:
 	std::vector<std::string> deckNameList;
 
 	std::vector<std::vector<Vector2>> deckModelList;
-
+	
 	float score = 30;
 public:
 	inline void initialize() { 
@@ -45,6 +45,9 @@ public:
 
 	void setWheelName(int index);
 	void setAllWheelNames();
+
+	void setDeckName(int index);
+	void setAllDeckNames();
 };
 
 extern Profile profile;

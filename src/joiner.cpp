@@ -54,14 +54,6 @@ void Joiner::reset(bool crashed, bool crashedParticles = true) {
 	}
 }
 
-void Joiner::hideEditWindows() {
-	showHUDEdit = false;
-	showBoardEdit = false;
-	showTrackEdit = false;
-	showLeaderboards = false;
-	showInventory = false;
-}
-
 void Joiner::resetFull() {
 	configuration.setConfiguration("TrackGenerationStyle", trackGenerationStyle);
 	configuration.setConfiguration("DeckID", deckID);
@@ -151,6 +143,7 @@ void Joiner::update() {
 
 	}
 
+	isPaused = false;
 	handleMainMenu();
 	handleLeaderboards();
 	handleStats();
@@ -174,7 +167,6 @@ void Joiner::draw() {
 
 void Joiner::handleDevMode() {
 	if (input.checkKeyDown(SDLK_f)) { isPaused = true; }
-	else { isPaused = false; }
 
 	if (input.checkKeyDown(SDLK_h)) { profile.addScore(5); }
 }
@@ -233,7 +225,10 @@ void Joiner::handleBoardCollision() {
 
 	for (Car car : world.environment.carList) {
 		if (!isCrashed && board.checkProximity(car.polygon.getPosition()) && board.checkCollision(car.polygon)) {
-			reset(true);
+			if (!devMode || !input.checkKeyDown(SDLK_g)) {
+				profile.getDeckFromList(selectedDeck)->damage(3);
+				reset(true);
+			}
 		}
 
 		//Frame Killer
@@ -249,6 +244,7 @@ void Joiner::handleBoardCollision() {
 			if (!bike.getDead()) { 
 				if (board.getVelocity() < 200) { 
 					if (!devMode || !input.checkKeyDown(SDLK_g)) {
+						profile.getDeckFromList(selectedDeck)->damage(2);
 						reset(true); 
 					}
 				}
@@ -273,12 +269,21 @@ void Joiner::handleBoardCollision() {
 
 				if (!devMode || !input.checkKeyDown(SDLK_g)) {
 					if (board.checkCollision(rail[x], rail[x + 1])) {
+						profile.getDeckFromList(selectedDeck)->damage(1);
 						reset(true);
 					}
 				}
 			}
 		}
 	}
+}
+
+void Joiner::hideEditWindows() {
+	showHUDEdit = false;
+	showBoardEdit = false;
+	showTrackEdit = false;
+	showLeaderboards = false;
+	showInventory = false;
 }
 
 void Joiner::handleMainMenu() {
@@ -297,7 +302,10 @@ void Joiner::handleMainMenu() {
 	}
 	ImGui::NextColumn();
 	if (ImGui::Button("Inventory")) {
-		if (!showInventory) { profile.setAllWheelNames(); }
+		if (!showInventory) { 
+			profile.setAllWheelNames(); 
+			profile.setAllDeckNames(); 
+		}
 		showInventory = !showInventory;
 	}
 
@@ -397,6 +405,7 @@ void Joiner::handleStats() {
 
 void Joiner::handleHUDEdit() {
 	if (showHUDEdit) {
+		isPaused = true;
 		ImGui::SetNextWindowSizeConstraints(ImVec2(150, 100), ImVec2(150, 100));
 		ImGui::Begin("Edit HUD", &showHUDEdit, ImGuiWindowFlags_NoResize);
 		ImGui::Checkbox("Minimap", &showMinimap);
@@ -408,6 +417,7 @@ void Joiner::handleHUDEdit() {
 
 void Joiner::handleTrackEdit() {
 	if (showTrackEdit) {
+		isPaused = true;
 		ImGui::SetNextWindowSizeConstraints(ImVec2(200, 155), ImVec2(200, 155));
 		ImGui::Begin("Edit Track", &showTrackEdit, ImGuiWindowFlags_NoResize);
 		ImGui::PushItemWidth(-250);
@@ -430,6 +440,7 @@ void Joiner::handleTrackEdit() {
 
 void Joiner::handleBoardEdit() {
 	if (showBoardEdit) {
+		isPaused = true;
 		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 260), ImVec2(380, 260));
 		ImGui::Begin("Board Shop", &showBoardEdit, ImGuiWindowFlags_NoResize);
 		ImGui::Columns(2);
@@ -503,6 +514,7 @@ void Joiner::handleBoardEdit() {
 
 void Joiner::handleInventory() {
 	if (showInventory) {
+		isPaused = true;
 		ImGui::SetNextWindowSizeConstraints(ImVec2(325, 245), ImVec2(325, 245));
 		ImGui::Begin("Inventory", &showInventory, ImGuiWindowFlags_NoResize);
 		ImGui::PushItemWidth(ImGui::GetWindowWidth() - 75);

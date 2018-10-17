@@ -71,6 +71,8 @@ public:
 	};
 	
 	inline float getTraction() {
+		if (getCurrentHeightPercent() == 0) { return 3.0; }
+
 		float traction = 0.00;
 		float multiplier = 2.00;
 		traction += ((durometer - 70.0) / 20.0);
@@ -87,6 +89,8 @@ public:
 	};
 
 	inline float getRollSpeed() {
+		if (getCurrentHeightPercent() == 0) { return 0.5; }
+
 		float speed = 0.00;
 		float multiplier = 2.00;
 		speed += ((width - 40) / 40.0) * 0.27;

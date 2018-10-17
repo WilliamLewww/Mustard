@@ -6,8 +6,10 @@ protected:
 	int length, width;
 
 	int price;
-
 	int ID;
+
+	int life;
+	int currentLife;
 
 	int color[3];
 
@@ -23,6 +25,9 @@ public:
 		this->width = width;
 	};
 
+	inline int getLife() { return life; };
+	inline int getCurrentLife() { return currentLife; };
+
 	inline int getID() { return ID; };
 
 	inline std::string getName() { return name; };
@@ -34,8 +39,14 @@ public:
 	inline int* getColor() { return color; };
 
 	inline float getTurnRadius() {
+		if (currentLife == 0) { return 0.5; }
 		return ((45.0 - length) / 7.0);
 	};
+
+	inline void damage(int amount) { 
+		if (currentLife - amount < 0) { currentLife = 0; }
+		else { currentLife -= amount; }
+	}
 };
 
 #include "deck_presets.h"
@@ -56,9 +67,9 @@ static Deck getDeck(int deckID) {
 	Deck deck;
 
 	switch (deckID) {
-		case DECK_SWITCHBLADE: deck = Switchblade(); break;
-		case DECK_RUMRUNNERCARBON: deck = RumRunnerCarbon(); break;
-		case DECK_WOLFSHARKMINI: deck = WolfsharkMini(); break;	
+		case DECK_SWITCHBLADE: deck = Switchblade(15); break;
+		case DECK_RUMRUNNERCARBON: deck = RumRunnerCarbon(30); break;
+		case DECK_WOLFSHARKMINI: deck = WolfsharkMini(10); break;	
 	}
 
 	return deck;

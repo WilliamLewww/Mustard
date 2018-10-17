@@ -32,6 +32,17 @@ void Profile::setAllWheelNames() {
 	}
 }
 
+void Profile::setDeckName(int index) {
+	std::string tempString = std::to_string(deckList[index].getCurrentLife()) + "/" + std::to_string(deckList[index].getLife());
+	deckNameList[index] = deckList[index].getName() + " - " + tempString;
+}
+
+void Profile::setAllDeckNames() {
+	for (int x = 0; x < deckNameList.size(); x++) {
+		setDeckName(x);
+	}
+}
+
 void Profile::addDeck(int deckID) {
 	deckList.push_back(getDeck(deckID));
 	deckNameList.push_back(getDeck(deckID).getName());
