@@ -14,7 +14,7 @@ private:
 	std::vector<std::string> deckNameList;
 
 	std::vector<std::vector<Vector2>> deckModelList;
-	
+
 	float score = 30;
 public:
 	inline void initialize() { 
@@ -24,8 +24,19 @@ public:
 
 	inline std::vector<Vector2> getDeckModel(int ID) { return deckModelList[ID - 1]; };
 
-	inline Wheel* getWheelFromList(int ID) { return &wheelList[ID]; };
-	inline Deck* getDeckFromList(int ID) { return &deckList[ID]; };
+	inline Wheel* getWheelFromList(int index) { return &wheelList[index]; };
+	inline Deck* getDeckFromList(int index) { return &deckList[index]; };
+
+	inline int removeWheelFromList(int index) { 
+		wheelList.erase(wheelList.begin() + index); 
+		wheelNameList.erase(wheelNameList.begin() + index);
+		return index;
+	}
+	inline int removeDeckFromList(int index) { 
+		deckList.erase(deckList.begin() + index); 
+		deckNameList.erase(deckNameList.begin() + index); 
+		return index;
+	}
 
 	inline std::vector<Wheel> getWheelList() { return wheelList; };
 	inline std::vector<Deck> getDeckList() { return deckList; };

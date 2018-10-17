@@ -55,16 +55,9 @@ void Joiner::reset(bool crashed, bool crashedParticles = true) {
 }
 
 void Joiner::resetFull() {
-	configuration.setConfiguration("TrackGenerationStyle", trackGenerationStyle);
-	configuration.setConfiguration("DeckID", deckID);
-	configuration.setConfiguration("WheelID", wheelID);
-	configuration.setConfiguration("SelectedDeck", selectedDeck);
-	configuration.setConfiguration("SelectedWheel", selectedWheel);
+	pushConfigurations();
 
-	if (randomTrackSeed == true) {
-		joiner.seed = time(NULL);
-	}
-
+	if (randomTrackSeed == true) { joiner.seed = time(NULL); }
 	srand(seed);
 
 	selectedRun = 0; 
@@ -83,6 +76,15 @@ void Joiner::resetFull() {
 	allowKeyStart = false;
 
 	hideEditWindows();
+}
+
+void Joiner::pushConfigurations() {
+	configuration.setConfiguration("TrackGenerationStyle", trackGenerationStyle);
+	configuration.setConfiguration("DeckID", deckID);
+	configuration.setConfiguration("WheelID", wheelID);
+	configuration.setConfiguration("SelectedDeck", selectedDeck);
+	configuration.setConfiguration("SelectedWheel", selectedWheel);
+	board.initialize();
 }
 
 void Joiner::initializeWorld() {
@@ -488,7 +490,8 @@ void Joiner::handleBoardEdit() {
 		if (ImGui::Button("Buy Deck")) { 
 			if (profile.buyDeck(deckID)) { 
 				selectedDeck = profile.getDeckList().size() - 1; 
-				resetFull(); 
+				if (isKeyStart) { resetFull(); }
+				else { pushConfigurations(); }
 			}
 		}
 
@@ -503,7 +506,8 @@ void Joiner::handleBoardEdit() {
 		if (ImGui::Button("Buy Wheels")) { 
 			if (profile.buyWheel(wheelID)) {
 				selectedWheel = profile.getWheelList().size() - 1; 
-				resetFull(); 
+				if (isKeyStart) { resetFull(); }
+				else { pushConfigurations(); }
 			}
 		}
 		ImGui::Columns(1);
@@ -521,6 +525,27 @@ void Joiner::handleInventory() {
 		ImGui::ListBox("Decks", &selectedDeck, profile.getDeckNameList());
 		ImGui::Spacing();
 		ImGui::ListBox("Wheels", &selectedWheel, profile.getWheelNameList());
+		ImGui::Columns(2);
+		if (ImGui::Button("Trash Deck")) { 
+			if (profile.getDeckList().size() > 1) {
+				profile.removeDeckFromList(selectedDeck);
+
+				if (selectedDeck != 0) { selectedDeck -= 1; } 
+				if (isKeyStart) { resetFull(); }
+				else { pushConfigurations(); }
+			}
+		}
+		ImGui::NextColumn();
+		if (ImGui::Button("Trash Wheels")) { 
+			if (profile.getWheelList().size() > 1) {
+				profile.removeWheelFromList(selectedWheel);
+
+				if (selectedWheel != 0) { selectedWheel -= 1; }
+				if (isKeyStart) { resetFull(); }
+				else { pushConfigurations(); }
+			}
+		}
+		ImGui::Columns(1);
 		ImGui::End();
 	}
 }
