@@ -34,6 +34,7 @@ private:
 
 	float wobbleMagnitude = 0;
 	float wobbleCycle = 0;
+	float wobbleCancel = 0;
 
 	std::vector<Vector3> thaneLines;
 	std::vector<Vector2> brakeLines;

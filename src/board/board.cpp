@@ -90,14 +90,29 @@ void Board::addSpeedFromHill(int speedZone, int trackDirection) {
 }
 
 void Board::handleWobble() {
-	if (velocity > 250 && !input.checkKeyDown(SDLK_SPACE) && !turnLeft && !turnRight && !slide) {
+	if (velocity > 250 && !slide) {
+		if (input.checkKeyDown(SDLK_SPACE)) { wobbleCancel += 3; }
+		if (turnLeft || turnRight) { wobbleCancel += 2; }
+
 		if (wobbleCycle >= 0) {
-			bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (wobbleMagnitude * elapsedTimeSeconds));
-			movementAngle += wobbleMagnitude * elapsedTimeSeconds;
+			if (wobbleCancel > 0) {
+				bitmapPolygon.setAngle(bitmapPolygon.getAngle() + ((wobbleMagnitude / wobbleCancel) * elapsedTimeSeconds));
+				movementAngle += (wobbleMagnitude / wobbleCancel) * elapsedTimeSeconds;
+			}
+			else {
+				bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (wobbleMagnitude * elapsedTimeSeconds));
+				movementAngle += wobbleMagnitude * elapsedTimeSeconds;
+			}
 		}
 		else {
-			bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (wobbleMagnitude * elapsedTimeSeconds));
-			movementAngle -= wobbleMagnitude * elapsedTimeSeconds;
+			if (wobbleCancel > 0) {
+				bitmapPolygon.setAngle(bitmapPolygon.getAngle() - ((wobbleMagnitude / wobbleCancel) * elapsedTimeSeconds));
+				movementAngle -= (wobbleMagnitude / wobbleCancel) * elapsedTimeSeconds;
+			}
+			else {
+				bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (wobbleMagnitude * elapsedTimeSeconds));
+				movementAngle -= wobbleMagnitude * elapsedTimeSeconds;
+			}
 		}
 
 		if (wobbleCycle >= 10) {
@@ -106,7 +121,7 @@ void Board::handleWobble() {
 
 		wobbleCycle += (25 + (wobbleMagnitude * 0.85)) * elapsedTimeSeconds;
 		wobbleMagnitude += (velocity / 1500.0);
-
+		wobbleCancel = 0;
 	}
 	else {
 		wobbleMagnitude = velocity - 225;
