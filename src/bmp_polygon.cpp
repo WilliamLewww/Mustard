@@ -14,15 +14,15 @@ void BitmapPolygon::setColor(int red, int green, int blue, int alpha) {
 
 void BitmapPolygon::setVertices(const char* filename) {
 	vertices = file.getVerticesFromFile(filename);
-};
+}
 
 void BitmapPolygon::setVertices(std::vector<Vector2> vertexList) {
 	vertices = vertexList;
-};
+}
 
 void BitmapPolygon::drawOutline() {
 	drawing.drawLineStrip(position, width, height, vertices, angle, color);
-};
+}
 
 bool BitmapPolygon::checkCollision(BitmapPolygon rectangle) {
 	std::vector<double> productsA, productsB;

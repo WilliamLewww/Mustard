@@ -32,18 +32,18 @@ void Minimap::setVisibleRange() {
 		if (railList[0][x].x < (position.x + width) + (boardPosition.x - boardInitialPosition.x)) { visibleRange.y = x; }
 		else { break; }
 	}
-};
+}
 
 std::vector<Vector2> Minimap::getVisibleRail(int index) {
 	if (visibleRange.x == 0) {
 		return std::vector<Vector2>(railList[index].begin() + visibleRange.x + 1, railList[index].begin() + visibleRange.y);
 	}
 	return std::vector<Vector2>(railList[index].begin() + visibleRange.x, railList[index].begin() + visibleRange.y);
-};
+}
 
 void Minimap::resetVisibleRange() { 
 	visibleRange = Vector2(0,0);
-};
+}
 
 void Minimap::draw() {
 	setVisibleRange();
@@ -56,11 +56,11 @@ void Minimap::draw() {
 	drawing.drawLineStrip(getVisibleRail(0), railColor, alpha);
 	drawing.drawLineStrip(getVisibleRail(1), railColor, alpha);
 	glPopMatrix();
-};
+}
 
 void Minimap::update(Vector2 bPosition, double bAngle) { 
 	boardPosition = bPosition;
 	boardPosition.shrink(scaleFactor, scaleFactor);
 
 	boardAngle = bAngle;
-};
+}
