@@ -42,6 +42,7 @@ void Board::update(int speedZone, int trackDirection) {
 	handleLeftTurn();
 	handleRightTurn();
 	handlePushTuck();
+	handleWobble();
 
 	double difference = getAngleDifference();
 	handleSlideRight(difference);
@@ -85,6 +86,30 @@ void Board::addSpeedFromHill(int speedZone, int trackDirection) {
 	}
 	else {
 		velocity += (getRollSpeed() + speedZone) * 0.5 * elapsedTimeSeconds;
+	}
+}
+
+void Board::handleWobble() {
+	if (velocity > 250 && !input.checkKeyDown(SDLK_SPACE) && !turnLeft && !turnRight && !slide) {
+		if (wobbleCycle >= 0) {
+			bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (wobbleMagnitude * elapsedTimeSeconds));
+			movementAngle += wobbleMagnitude * elapsedTimeSeconds;
+		}
+		else {
+			bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (wobbleMagnitude * elapsedTimeSeconds));
+			movementAngle -= wobbleMagnitude * elapsedTimeSeconds;
+		}
+
+		if (wobbleCycle >= 10) {
+			wobbleCycle = -10;
+		}
+
+		wobbleCycle += (25 + (wobbleMagnitude * 0.85)) * elapsedTimeSeconds;
+		wobbleMagnitude += (velocity / 1500.0);
+
+	}
+	else {
+		wobbleMagnitude = velocity - 225;
 	}
 }
 

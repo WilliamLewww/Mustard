@@ -32,6 +32,9 @@ private:
 	double movementAngle = 0;
 	bool flipped = false;
 
+	float wobbleMagnitude = 0;
+	float wobbleCycle = 0;
+
 	std::vector<Vector3> thaneLines;
 	std::vector<Vector2> brakeLines;
 
@@ -50,6 +53,9 @@ private:
 	void linkPolygonWithConfigurations();
 
 	void addSpeedFromHill(int speedZone, int trackDirection);
+
+	void handleWobble();
+
 	void handlePushTuck();
 	
 	void handleLeftTurn();
