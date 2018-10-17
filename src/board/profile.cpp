@@ -46,12 +46,14 @@ void Profile::setAllDeckNames() {
 void Profile::addDeck(int deckID) {
 	deckList.push_back(getDeck(deckID));
 	deckNameList.push_back(getDeck(deckID).getName());
+	setDeckName(deckNameList.size() - 1);
 }
 
 bool Profile::buyDeck(int deckID) {
 	if (getDeck(deckID).getPrice() <= score) {
 		deckList.push_back(getDeck(deckID));
 		deckNameList.push_back(getDeck(deckID).getName());
+		setDeckName(deckNameList.size() - 1);
 		score -= getDeck(deckID).getPrice();
 
 		return true;
