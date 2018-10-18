@@ -81,7 +81,13 @@ void Environment::generateGuardRails(std::vector<Vector2> rail, int spacing, int
 	int chainSize;
 	int currentChainSize = 0;
 
-	for (int x = 0; x < rail.size() - spacing; x += spacing) {
+	guardRailList.emplace_back(rail[0], rail[1]);
+	guardRailList.emplace_back(rail[1], rail[2]);
+	guardRailList.emplace_back(rail[2], rail[3]);
+	guardRailList.emplace_back(rail[3], rail[4]);
+	guardRailList.emplace_back(rail[4], rail[5]);
+
+	for (int x = 5; x < rail.size() - spacing; x += spacing) {
 		if (rand() % concentration == 0 && createChain == false) {
 			chainSize = rand() % (chainMax + 1 - chainMin) + chainMin;
 			currentChainSize = 0;
