@@ -37,6 +37,8 @@ Thane (short for polyurethane) lines are the skid marks produced when a skateboa
   - pause when any edit window is open
   - fixed cyclists again
   - added trash wheels/deck in inventory GUI
+  - added guard rails on the start of all tracks
+  - added general screen filter
 - 1.9.2
   - cleaned up board model system
   - updated board proximity detection

@@ -140,6 +140,8 @@ void Environment::resetVisibleRange() {
 
 void Environment::update(std::vector<std::vector<Vector2>> rail) {
 	elapsedTimeSeconds = timer.getTimeSeconds();
+
+	if (isRaining) { rain.update(rail); }
 	
 	for (int x = visibleSquirrelRange.x; x < visibleSquirrelRange.y; x++) {
 		squirrelList[x].update(elapsedTimeSeconds);
@@ -151,45 +153,23 @@ void Environment::update(std::vector<std::vector<Vector2>> rail) {
 	}
 
 	for (Bike& bike : bikeList) {
-		if (!bike.isLeft) {
-			bike.setPathing(rail[0]);
-		}
-		else {
-			bike.setPathing(rail[1]);
-		}
+		if (!bike.isLeft) { bike.setPathing(rail[0]); }
+		else { bike.setPathing(rail[1]); }
 		bike.update(elapsedTimeSeconds);
 	}
 }
 
 void Environment::draw() {
-	while (treeList[0][visibleTreeRange.x].position.x < camera.getBoundaryLeft()) {
-		visibleTreeRange.x += 1;
-	}
-	while (treeList[0][visibleTreeRange.y].position.x < camera.getBoundaryRight()) {
-		visibleTreeRange.y += 1;
-	}
+	while (treeList[0][visibleTreeRange.x].position.x < camera.getBoundaryLeft()) { visibleTreeRange.x += 1; }
+	while (treeList[0][visibleTreeRange.y].position.x < camera.getBoundaryRight()) { visibleTreeRange.y += 1; }
+	while (squirrelList[visibleSquirrelRange.x].polygon.getX() < camera.getBoundaryLeft()) { visibleSquirrelRange.x += 1; }
+	while (squirrelList[visibleSquirrelRange.y].polygon.getX() < camera.getBoundaryRight()) { visibleSquirrelRange.y += 1; }
+	while (guardRailList[visibleGuardRailRange.x].nodeA.x < camera.getBoundaryLeft()) { visibleGuardRailRange.x += 1; }
+	while (guardRailList[visibleGuardRailRange.y].nodeB.x < camera.getBoundaryRight()) { visibleGuardRailRange.y += 1; }
+	while (pineconeList[visiblePineconeRange.x].getPosition().x < camera.getBoundaryLeft()) { visiblePineconeRange.x += 1; }
+	while (pineconeList[visiblePineconeRange.y].getPosition().x < camera.getBoundaryRight()) { visiblePineconeRange.y += 1; }
 
-	while (squirrelList[visibleSquirrelRange.x].polygon.getX() < camera.getBoundaryLeft()) {
-		visibleSquirrelRange.x += 1;
-	}
-
-	while (squirrelList[visibleSquirrelRange.y].polygon.getX() < camera.getBoundaryRight()) {
-		visibleSquirrelRange.y += 1;
-	}
-
-	while (guardRailList[visibleGuardRailRange.x].nodeA.x < camera.getBoundaryLeft()) {
-		visibleGuardRailRange.x += 1;
-	}
-	while (guardRailList[visibleGuardRailRange.y].nodeB.x < camera.getBoundaryRight()) {
-		visibleGuardRailRange.y += 1;
-	}
-
-	while (pineconeList[visiblePineconeRange.x].getPosition().x < camera.getBoundaryLeft()) {
-		visiblePineconeRange.x += 1;
-	}
-	while (pineconeList[visiblePineconeRange.y].getPosition().x < camera.getBoundaryRight()) {
-		visiblePineconeRange.y += 1;
-	}
+	if (isRaining) { rain.draw(); }
 
 	for (std::vector<Tree> treeListTotal : treeList) {
 		for (int x = visibleTreeRange.x; x < visibleTreeRange.y; x++) {
@@ -197,25 +177,11 @@ void Environment::draw() {
 		}
 	}
 
-	for (int x = visiblePineconeRange.x; x < visiblePineconeRange.y; x++) {
-		pineconeList[x].draw();
-	}
-
-	for (int x = visibleGuardRailRange.x; x < visibleGuardRailRange.y; x++) {
-		guardRailList[x].draw();
-	}
-
-	for (int x = visibleSquirrelRange.x; x < visibleSquirrelRange.y; x++) {
-		squirrelList[x].draw();
-	}
-
-	for (Car car : carList) {
-		car.draw();
-	}
-
-	for (Bike bike : bikeList) {
-		bike.draw();
-	}
+	for (int x = visiblePineconeRange.x; x < visiblePineconeRange.y; x++) { pineconeList[x].draw(); }
+	for (int x = visibleGuardRailRange.x; x < visibleGuardRailRange.y; x++) { guardRailList[x].draw(); }
+	for (int x = visibleSquirrelRange.x; x < visibleSquirrelRange.y; x++) { squirrelList[x].draw();}
+	for (Car car : carList) { car.draw();}
+	for (Bike bike : bikeList) { bike.draw();}
 }
 
 void Environment::drawUnderMountain() {

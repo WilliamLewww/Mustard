@@ -5,6 +5,7 @@
 #include "core\file.h"
 #include "hud\hud.h"
 #include "effects\particle_manager.h"
+#include "effects\screen_filter.h"
 #include "environment\squirrel.h"
 #include "board\board.h"
 #include "world.h"
@@ -34,6 +35,7 @@ private:
 
 	bool showInventory, showSessionStats = true, showLeaderboards = false, showWheelStats = true;
 	bool randomTrackSeed = false;
+	bool toggleRain = false;
 
 	bool devMode = false;
 

@@ -10,9 +10,12 @@
 #include "car.h"
 #include "bike.h"
 #include "pinecone.h"
+#include "rain.h"
 
 class Environment {
 private:
+	Rain rain;
+
 	std::vector<GuardRail> guardRailList;
 	std::vector<std::vector<Tree>> treeList;
 	
@@ -22,6 +25,8 @@ private:
 	Vector2 visiblePineconeRange;
 
 	float elapsedTimeSeconds;
+
+	bool isRaining = true;
 public:
 	Gravel gravel;
 	std::vector<Car> carList;

@@ -91,8 +91,8 @@ void Board::addSpeedFromHill(int speedZone, int trackDirection) {
 
 void Board::handleWobble() {
 	if (velocity > 250 && !slide) {
-		if (input.checkKeyDown(SDLK_SPACE)) { wobbleCancel += 3; }
-		if (turnLeft || turnRight) { wobbleCancel += 2; }
+		if (input.checkKeyDown(SDLK_SPACE)) { wobbleCancel += 5; }
+		if (turnLeft || turnRight) { wobbleCancel += 3; }
 
 		if (wobbleCycle >= 0) {
 			if (wobbleCancel > 0) {

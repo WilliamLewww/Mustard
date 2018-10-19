@@ -153,6 +153,8 @@ void Joiner::update() {
 	handleTrackEdit();
 	handleBoardEdit();
 	handleInventory();
+
+	screenFilter.update();
 }
 
 void Joiner::draw() {
@@ -164,6 +166,7 @@ void Joiner::draw() {
 	particleManager.draw();
 	glPopMatrix();
 
+	screenFilter.draw();
 	hud.draw(showSplitsHUD, showKeyPressHUD, showMinimap);
 }
 
@@ -428,10 +431,10 @@ void Joiner::handleTrackEdit() {
 		if (trackGenerationStyle > 2) { trackGenerationStyle = 2; }
 
 		ImGui::TextColored(ImVec4(0,1,1,1), configuration.getNameConfigurations()[("TrackStyle" + std::to_string(trackGenerationStyle)).c_str()].c_str());
-
 		ImGui::PushItemWidth((ImGui::GetWindowWidth() / 2) - 15);
 		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
 
+		ImGui::Checkbox("Toggle Rain", &toggleRain);
 		ImGui::Checkbox("Random Seed", &randomTrackSeed);
 		ImGui::PushItemWidth(150);
 		ImGui::InputInt("Seed", &seed);
