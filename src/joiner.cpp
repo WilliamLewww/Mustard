@@ -32,6 +32,17 @@ void Joiner::initialize() {
 	wheelID = configuration.getConfigurations()["WheelID"];
 
 	initializeWorld();
+
+	if (configuration.getConfigurations()["StartMinimal"] == 1) {
+		showKeyPressHUD = true;
+
+		showMainMenu = false;
+		showSplitsHUD = false;
+		showMinimap = false;
+
+		showSessionStats = false;
+		showWheelStats = false;
+	}
 }
 
 void Joiner::reset(bool crashed, bool crashedParticles = true) {
