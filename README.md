@@ -27,7 +27,7 @@ Thane (short for polyurethane) lines are the skid marks produced when a skateboa
 
 ## Videos
 
-| [![Video](https://img.youtube.com/vi/D287WBQES-M/maxresdefault.jpg)](https://www.youtube.com/watch?v=D287WBQES-M)  | [![Video](https://img.youtube.com/vi/vRrIBMhBG30/0.jpg)](https://www.youtube.com/watch?v=vRrIBMhBG30) |
+| [![Video](https://img.youtube.com/vi/KkX7oh7vJrk/maxresdefault.jpg)](https://www.youtube.com/watch?v=KkX7oh7vJrk)  | [![Video](https://img.youtube.com/vi/vRrIBMhBG30/0.jpg)](https://www.youtube.com/watch?v=vRrIBMhBG30) |
 | ------------- | ------------- |
 
 ## Release History
