@@ -8,10 +8,10 @@ class ScreenFilter {
 private:
 	int color[3] = { 86, 111, 151 };
 	
-	int alpha = 0;
+	int alpha = 80;
 	int waveAlpha;
 
-	bool isWaveringA = false;
+	bool isWaveringA = true;
 
 	bool flipWaveA = false;
 	float currentWaveA = 0;

@@ -30,6 +30,7 @@ private:
 
 	bool stillShowBoard = false;
 	
+	bool showMainMenu = true;
 	bool showHUDEdit, showTrackEdit, showBoardEdit;
 	bool showSplitsHUD = true, showKeyPressHUD = false, showMinimap = true;
 

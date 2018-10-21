@@ -101,7 +101,7 @@ void Joiner::initializeWorld() {
 
 void Joiner::update() {
 	if (input.checkKeyDown(SDLK_ESCAPE)) { hideEditWindows();}
-	if (input.checkKeyDown(SDLK_c) && input.checkKeyDown(SDLK_b) && input.checkKeyDown(SDLK_p)) { devMode = true; }
+	if (input.checkKeyDown(SDLK_c) && input.checkKeyDown(SDLK_b) && input.checkKeyDown(SDLK_m)) { devMode = true; }
 	if (devMode) { handleDevMode(); }
 
 	handleStartInput();
@@ -292,48 +292,53 @@ void Joiner::hideEditWindows() {
 }
 
 void Joiner::handleMainMenu() {
-	ImGui::SetNextWindowSizeConstraints(ImVec2(230, 165), ImVec2(230, 165));
-	ImGui::Begin("Main Menu");
+	if (input.checkKeyDown(SDLK_o)) { showMainMenu = false; }
+	if (input.checkKeyDown(SDLK_p)) { showMainMenu = true; }
 
-	ImGui::Columns(3);
-	ImGui::SetColumnWidth(0, 90);
-	if (ImGui::Button("Edit Track")) {
-		showTrackEdit = !showTrackEdit;
-	}
-	ImGui::NextColumn();
-	ImGui::SetColumnWidth(1, 50);
-	if (ImGui::Button("Shop")) {
-		showBoardEdit = !showBoardEdit;
-	}
-	ImGui::NextColumn();
-	if (ImGui::Button("Inventory")) {
-		if (!showInventory) { 
-			profile.setAllWheelNames(); 
-			profile.setAllDeckNames(); 
+	if (showMainMenu) {
+		ImGui::SetNextWindowSizeConstraints(ImVec2(230, 165), ImVec2(230, 165));
+		ImGui::Begin("Main Menu");
+
+		ImGui::Columns(3);
+		ImGui::SetColumnWidth(0, 90);
+		if (ImGui::Button("Edit Track")) {
+			showTrackEdit = !showTrackEdit;
 		}
-		showInventory = !showInventory;
-	}
+		ImGui::NextColumn();
+		ImGui::SetColumnWidth(1, 50);
+		if (ImGui::Button("Shop")) {
+			showBoardEdit = !showBoardEdit;
+		}
+		ImGui::NextColumn();
+		if (ImGui::Button("Inventory")) {
+			if (!showInventory) { 
+				profile.setAllWheelNames(); 
+				profile.setAllDeckNames(); 
+			}
+			showInventory = !showInventory;
+		}
 
-	ImGui::Columns(1);
+		ImGui::Columns(1);
 
-	ImGui::Columns(2);
-	if (ImGui::Button("Leaderboards")) {
-		showLeaderboards = !showLeaderboards;
-	}
-	ImGui::NextColumn();
-	if (ImGui::Button("Edit HUD")) {
-		showHUDEdit = !showHUDEdit;
-	}
-	ImGui::Columns(1);
-	
-	if (ImGui::Button("Apply Changes / Re-Initialize")) {
-		resetFull();
-	}
+		ImGui::Columns(2);
+		if (ImGui::Button("Leaderboards")) {
+			showLeaderboards = !showLeaderboards;
+		}
+		ImGui::NextColumn();
+		if (ImGui::Button("Edit HUD")) {
+			showHUDEdit = !showHUDEdit;
+		}
+		ImGui::Columns(1);
+		
+		if (ImGui::Button("Apply Changes / Re-Initialize")) {
+			resetFull();
+		}
 
-	ImGui::Checkbox("Display Session Stats", &showSessionStats);
-	ImGui::Checkbox("Display Wheel Stats", &showWheelStats);
-	ImGui::Text("%.1f FPS", ImGui::GetIO().Framerate);
-	ImGui::End();
+		ImGui::Checkbox("Display Session Stats", &showSessionStats);
+		ImGui::Checkbox("Display Wheel Stats", &showWheelStats);
+		ImGui::Text("%.1f FPS", ImGui::GetIO().Framerate);
+		ImGui::End();
+	}
 }
 
 void Joiner::handleLeaderboards() {
