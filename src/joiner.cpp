@@ -26,12 +26,21 @@ Joiner joiner;
 
 void Joiner::initialize() {
 	profile.initialize();
+	handleConfig();
+
 	trackGenerationStyle = configuration.getConfigurations()["TrackGenerationStyle"];
 
 	deckID = configuration.getConfigurations()["DeckID"];
 	wheelID = configuration.getConfigurations()["WheelID"];
 
 	initializeWorld();
+}
+
+void Joiner::handleConfig() {
+	if (configuration.getConfigurations()["UnlockEverything"] == 1) {
+		profile.addDeck(2); profile.addDeck(3);
+		profile.addWheel(2); profile.addWheel(3); profile.addWheel(4); profile.addWheel(5); profile.addWheel(6);
+	}
 
 	if (configuration.getConfigurations()["StartMinimal"] == 1) {
 		showKeyPressHUD = true;
@@ -39,6 +48,28 @@ void Joiner::initialize() {
 		showMainMenu = false;
 		showSplitsHUD = false;
 		showMinimap = false;
+
+		showSessionStats = false;
+		showWheelStats = false;
+	}
+
+	if (configuration.getConfigurations()["StartMinimal"] == 2) {
+		showKeyPressHUD = true;
+		showSplitsHUD = true;
+		showMinimap = true;
+
+		showSessionStats = false;
+		showWheelStats = false;
+
+		showMainMenu = false;
+	}
+
+	if (configuration.getConfigurations()["StartMinimal"] == 3) {
+		showKeyPressHUD = true;
+		showSplitsHUD = true;
+		showMinimap = true;
+
+		showMainMenu = true;
 
 		showSessionStats = false;
 		showWheelStats = false;
@@ -112,7 +143,7 @@ void Joiner::initializeWorld() {
 
 void Joiner::update() {
 	if (input.checkKeyDown(SDLK_ESCAPE)) { hideEditWindows();}
-	if (input.checkKeyDown(SDLK_c) && input.checkKeyDown(SDLK_b) && input.checkKeyDown(SDLK_m)) { devMode = true; }
+	if (input.checkKeyDown(SDLK_7) && input.checkKeyDown(SDLK_8) && input.checkKeyDown(SDLK_9)) { devMode = true; }
 	if (devMode) { handleDevMode(); }
 
 	handleStartInput();
@@ -150,10 +181,7 @@ void Joiner::update() {
 			reset(true, false);
 		}
 
-		if (input.checkKeyDown(SDLK_r) && !isCrashed) {
-			reset(true);
-		}
-
+		if (input.checkKeyDown(SDLK_r) && !isCrashed) { reset(true); }
 	}
 
 	isPaused = false;
@@ -164,6 +192,8 @@ void Joiner::update() {
 	handleTrackEdit();
 	handleBoardEdit();
 	handleInventory();
+
+	if (input.checkKeyDown(SDLK_RETURN)) { resetFull(); }
 
 	screenFilter.update();
 }
@@ -303,8 +333,8 @@ void Joiner::hideEditWindows() {
 }
 
 void Joiner::handleMainMenu() {
-	if (input.checkKeyDown(SDLK_o)) { showMainMenu = false; }
-	if (input.checkKeyDown(SDLK_p)) { showMainMenu = true; }
+	if (input.checkKeyDown(SDLK_2)) { showMainMenu = false; }
+	if (input.checkKeyDown(SDLK_1)) { showMainMenu = true; }
 
 	if (showMainMenu) {
 		ImGui::SetNextWindowSizeConstraints(ImVec2(230, 165), ImVec2(230, 165));
@@ -460,9 +490,10 @@ void Joiner::handleTrackEdit() {
 }
 
 void Joiner::handleBoardEdit() {
+	if (input.checkKeyDown(SDLK_3)) { showBoardEdit = true; }
 	if (showBoardEdit) {
 		isPaused = true;
-		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 260), ImVec2(380, 260));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 280), ImVec2(380, 280));
 		ImGui::Begin("Board Shop", &showBoardEdit, ImGuiWindowFlags_NoResize);
 		ImGui::Columns(2);
 		ImGui::PushItemWidth(-175);
@@ -531,11 +562,18 @@ void Joiner::handleBoardEdit() {
 		}
 		ImGui::Columns(1);
 
+		ImGui::TextColored(ImVec4(1,0.74,0.15,1), "$%.02f", profile.getScore());
+
 		ImGui::End();
 	}
 }
 
 void Joiner::handleInventory() {
+	if (input.checkKeyDown(SDLK_4)) { 
+		profile.setAllWheelNames(); 
+		profile.setAllDeckNames(); 
+		showInventory = true; 
+	}
 	if (showInventory) {
 		isPaused = true;
 		ImGui::SetNextWindowSizeConstraints(ImVec2(350, 245), ImVec2(350, 245));

@@ -6,9 +6,9 @@
 
 class ScreenFilter {
 private:
-	int color[3] = { 86, 111, 151 };
+	int color[3] = { 106, 131, 171 };
 	
-	int alpha = 80;
+	int alpha = 40;
 	int waveAlpha;
 
 	bool isWaveringA = true;

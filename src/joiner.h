@@ -45,6 +45,8 @@ private:
 	int selectedDeck = 0, selectedWheel = 0;
 	int trackGenerationStyle;
 
+	void handleConfig();
+
 	void pushConfigurations();
 
 	void hideEditWindows();
