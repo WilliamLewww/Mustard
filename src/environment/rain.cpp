@@ -11,12 +11,28 @@ void Rain::generate() {
 void Rain::update(std::vector<std::vector<Vector2>> rail) {
 	elapsedTimeSeconds = timer.getTimeSeconds();
 
-	for (Vector2 &position : dropPositionList) {
-		position.x -= 250 * elapsedTimeSeconds;
-		position.y += 500 * elapsedTimeSeconds;
+	for (int x = 0; x < dropPositionList.size(); x++) {
+		dropPositionList[x].x -= 250 * elapsedTimeSeconds;
 
-		if (position.x < 0) { position.x = configuration.getScreenWidth(); }
-		if (position.y > configuration.getScreenHeight()) { position.y = 0; }
+		if (x % 2 == 0) {
+			dropPositionList[x].x -= 25 * elapsedTimeSeconds;
+			dropPositionList[x].y += 100 * elapsedTimeSeconds;
+		}
+
+		if (x % 3 == 0) {
+			dropPositionList[x].x -= 50 * elapsedTimeSeconds;
+			dropPositionList[x].y += 200 * elapsedTimeSeconds;
+		}
+
+		if (x % 5 == 0) {
+			dropPositionList[x].x -= 75 * elapsedTimeSeconds;
+			dropPositionList[x].y += 250 * elapsedTimeSeconds;
+		}
+
+		dropPositionList[x].y += 300 * elapsedTimeSeconds;
+
+		if (dropPositionList[x].x < 0) { dropPositionList[x].x = configuration.getScreenWidth(); }
+		if (dropPositionList[x].y > configuration.getScreenHeight()) { dropPositionList[x].y = 0; }
 	}
 }
 

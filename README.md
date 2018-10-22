@@ -53,6 +53,7 @@ Thane (short for polyurethane) lines are the skid marks produced when a skateboa
   - added new hotkeys to open menus
   - added options to start in minimal display
   - added option to unlock everything on start
+  - added rain
 - 1.9.3
   - added dev move
   - added deck life
