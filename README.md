@@ -26,19 +26,19 @@ Thane (short for polyurethane) lines are the skid marks produced when a skateboa
 - Turn Keys + D = Shutdown Slide
 
 ### Hotkeys
-- 1 - Open Main Menu
-- 2 - Hide Main Menu
-- 3 - Open Shop
-- 4 - Open Inventory
+- 1 = Open Main Menu
+- 2 = Hide Main Menu
+- 3 = Open Shop
+- 4 = Open Inventory
 
-- R - Destroy Board
-- Enter - Reset World
-- Escape - Exit Menus
+- R = Destroy Board
+- Enter = Reset World
+- Escape = Exit Menus
 
-- 7 + 8 + 9 - Enter Dev Mode
-- F (in dev mode) - Pause Loop
-- G (in dev mode) - Disable Collision
-- H (in dev mode) - Add 5 Score
+- 7 + 8 + 9 = Enter Dev Mode
+- F (in dev mode) = Pause Loop
+- G (in dev mode) = Disable Collision
+- H (in dev mode) = Add 5 Score
 
 ## Videos
 
