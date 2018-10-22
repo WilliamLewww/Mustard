@@ -6,9 +6,9 @@
 
 class ScreenFilter {
 private:
-	int color[3] = { 106, 131, 171 };
+	int color[3] = { 66, 91, 131 };
 	
-	int alpha = 40;
+	int alpha = 80;
 	int waveAlpha;
 
 	bool isWaveringA = true;
@@ -19,7 +19,11 @@ private:
 	float waveSpeedA = 15;
 
 	float elapsedTimeSeconds;
+
+	bool show = false;
 public:
+	inline void setShow(bool show) { this->show = show; };
+
 	inline void setR(int r) { this->color[0] = r; };
 	inline void setG(int g) { this->color[1] = g; };
 	inline void setB(int b) { this->color[2] = b; };

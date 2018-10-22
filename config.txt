@@ -1,6 +1,10 @@
+# 0 or 1
 ShowTutorial 1
+
+# 0, 1, 2 or 3
 StartMinimal 1
 
+# 0 or 1
 UnlockEverything 1
 
 #Window Resolution (Default = 1000x600)

@@ -35,6 +35,7 @@ public:
 	void generateWorld();
 	void update();
 	void draw();
+	void drawStatic();
 	void reset();
 	void generateMountainPolygons();
 };

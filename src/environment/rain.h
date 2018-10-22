@@ -3,6 +3,7 @@
 #include "..\core\vector2.h"
 #include "..\core\timer.h"
 #include "..\core\drawing.h"
+#include "..\core\configuration.h"
 #include "..\camera.h"
 
 struct Puddle {
@@ -23,6 +24,7 @@ private:
 
 	float elapsedTimeSeconds;
 public:
+	void generate();
 	void update(std::vector<std::vector<Vector2>> rail);
 	void draw();
 };

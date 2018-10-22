@@ -10,14 +10,12 @@ namespace ImGui {
 
 	bool Combo(const char* label, int* currIndex, std::vector<std::string>& values) {
 	    if (values.empty()) { return false; }
-	    return Combo(label, currIndex, vector_getter,
-	        static_cast<void*>(&values), values.size());
+	    return Combo(label, currIndex, vector_getter, static_cast<void*>(&values), values.size());
 	}
 
 	bool ListBox(const char* label, int* currIndex, std::vector<std::string>& values) {
 	    if (values.empty()) { return false; }
-	    return ListBox(label, currIndex, vector_getter,
-	        static_cast<void*>(&values), values.size());
+	    return ListBox(label, currIndex, vector_getter, static_cast<void*>(&values), values.size());
 	}
 
 }
@@ -65,11 +63,11 @@ void Joiner::handleConfig() {
 	}
 
 	if (configuration.getConfigurations()["StartMinimal"] == 3) {
-		showKeyPressHUD = true;
 		showSplitsHUD = true;
 		showMinimap = true;
-
 		showMainMenu = true;
+
+		showKeyPressHUD = false;
 
 		showSessionStats = false;
 		showWheelStats = false;
@@ -207,6 +205,7 @@ void Joiner::draw() {
 	particleManager.draw();
 	glPopMatrix();
 
+	world.drawStatic();
 	screenFilter.draw();
 	hud.draw(showSplitsHUD, showKeyPressHUD, showMinimap);
 }

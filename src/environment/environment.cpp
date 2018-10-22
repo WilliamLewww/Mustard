@@ -1,5 +1,12 @@
 #include "environment.h"
 
+void Environment::generateRain() {
+	screenFilter.setShow(true);
+	isRaining = true;
+
+	rain.generate();
+}
+
 void Environment::generatePinecones(std::vector<Vector2> rail, int concentration, int scaleMin, int scaleMax) {
 	visiblePineconeRange = Vector2(0,0);
 
@@ -169,8 +176,6 @@ void Environment::draw() {
 	while (pineconeList[visiblePineconeRange.x].getPosition().x < camera.getBoundaryLeft()) { visiblePineconeRange.x += 1; }
 	while (pineconeList[visiblePineconeRange.y].getPosition().x < camera.getBoundaryRight()) { visiblePineconeRange.y += 1; }
 
-	if (isRaining) { rain.draw(); }
-
 	for (std::vector<Tree> treeListTotal : treeList) {
 		for (int x = visibleTreeRange.x; x < visibleTreeRange.y; x++) {
 			treeListTotal[x].draw();
@@ -186,4 +191,8 @@ void Environment::draw() {
 
 void Environment::drawUnderMountain() {
 	gravel.draw();
+}
+
+void Environment::drawStatic() {
+	if (isRaining) { rain.draw(); }
 }

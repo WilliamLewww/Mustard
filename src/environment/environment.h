@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <stdlib.h>
+#include "..\effects\screen_filter.h"
 #include "..\core\timer.h"
 #include "..\camera.h"
 #include "tree.h"
@@ -26,7 +27,7 @@ private:
 
 	float elapsedTimeSeconds;
 
-	bool isRaining = true;
+	bool isRaining = false;
 public:
 	Gravel gravel;
 	std::vector<Car> carList;
@@ -36,6 +37,7 @@ public:
 	
 	void resetVisibleRange();
 
+	void generateRain();
 	void generateCars(std::vector<Vector2> rail, int count);
 	void generateBikes(std::vector<Vector2> rail, int count, bool isLeft);
 	void generateGuardRails(std::vector<Vector2> rail, int spacing, int chainMin, int chainMax, int concentration);
@@ -47,4 +49,5 @@ public:
 	void update(std::vector<std::vector<Vector2>> rail);
 	void draw();
 	void drawUnderMountain();
+	void drawStatic();
 };

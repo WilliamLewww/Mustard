@@ -32,6 +32,10 @@ void World::draw() {
 	environment.draw();
 }
 
+void World::drawStatic() {
+	environment.drawStatic();
+}
+
 void World::drawMountainOutline() {
 	drawing.drawLineStrip(track.getVisibleRail(0), -50, mountainOutlineColor, 255);
 	drawing.drawLineStrip(track.getVisibleRail(0), -48, mountainOutlineColor, 255);
@@ -96,6 +100,7 @@ void World::generateWorld() {
 	environment.generateCars(track.railList[1], 8);
 	environment.generateBikes(track.railList[0], 6, false);
 	environment.generateBikes(track.railList[1], 6, true);
+	environment.generateRain();
 }
 
 void World::generateSpeedZones() {
