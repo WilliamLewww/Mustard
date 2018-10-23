@@ -1,10 +1,10 @@
 #include "environment.h"
 
-void Environment::generateRain() {
+void Environment::generateRain(std::vector<Vector2> rail, int concentration) {
 	screenFilter.setShow(true);
 	isRaining = true;
 
-	rain.generate();
+	rain.generate(rail, concentration);
 }
 
 void Environment::generatePinecones(std::vector<Vector2> rail, int concentration, int scaleMin, int scaleMax) {
@@ -18,7 +18,7 @@ void Environment::generatePinecones(std::vector<Vector2> rail, int concentration
 }
 
 void Environment::generateGravel(std::vector<std::vector<Vector2>> railList, int concentration) {
-	for (int x = 0; x < railList[0].size(); x++) {
+	for (int x = 15; x < railList[0].size(); x++) {
 		if (rand() % concentration == 0) { gravel.generate(railList[1][x], false, concentration + 50, concentration + 150); }
 	}
 }
@@ -148,7 +148,7 @@ void Environment::resetVisibleRange() {
 void Environment::update(std::vector<std::vector<Vector2>> rail) {
 	elapsedTimeSeconds = timer.getTimeSeconds();
 
-	if (isRaining) { rain.update(rail); }
+	if (isRaining) { rain.update(); }
 	
 	for (int x = visibleSquirrelRange.x; x < visibleSquirrelRange.y; x++) {
 		squirrelList[x].update(elapsedTimeSeconds);
@@ -190,9 +190,10 @@ void Environment::draw() {
 }
 
 void Environment::drawUnderMountain() {
+	if (isRaining) { rain.draw(); }
 	gravel.draw();
 }
 
 void Environment::drawStatic() {
-	if (isRaining) { rain.draw(); }
+	if (isRaining) { rain.drawStatic(); }
 }

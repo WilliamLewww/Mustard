@@ -37,7 +37,7 @@ public:
 	
 	void resetVisibleRange();
 
-	void generateRain();
+	void generateRain(std::vector<Vector2> rail, int concentration);
 	void generateCars(std::vector<Vector2> rail, int count);
 	void generateBikes(std::vector<Vector2> rail, int count, bool isLeft);
 	void generateGuardRails(std::vector<Vector2> rail, int spacing, int chainMin, int chainMax, int concentration);

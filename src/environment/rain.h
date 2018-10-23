@@ -6,25 +6,20 @@
 #include "..\core\configuration.h"
 #include "..\camera.h"
 
-struct Puddle {
-	Vector2 position;
-	int width, height;
-
-	int model;
-};
-
 class Rain {
 private:
+	std::vector<std::vector<Vector2>> puddleVertexList;
+	int puddleColor[3] = { 23, 94, 255 };
+	int puddleAlpha = 100;
+
 	std::vector<Vector2> dropPositionList;
 	int dropLength = 10, dropWidth = 2;
-
 	int dropColor[3] = { 3, 74, 236 };
-
-	std::vector<Puddle> puddlePosition;
 
 	float elapsedTimeSeconds;
 public:
-	void generate();
-	void update(std::vector<std::vector<Vector2>> rail);
+	void generate(std::vector<Vector2> rail, int concentration);
+	void update();
+	void drawStatic();
 	void draw();
 };

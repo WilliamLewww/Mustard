@@ -100,7 +100,7 @@ void World::generateWorld() {
 	environment.generateCars(track.railList[1], 8);
 	environment.generateBikes(track.railList[0], 6, false);
 	environment.generateBikes(track.railList[1], 6, true);
-	environment.generateRain();
+	environment.generateRain(track.railList[1], 25);
 }
 
 void World::generateSpeedZones() {

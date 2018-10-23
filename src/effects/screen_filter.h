@@ -8,14 +8,14 @@ class ScreenFilter {
 private:
 	int color[3] = { 66, 91, 131 };
 	
-	int alpha = 80;
+	int alpha = 40;
 	int waveAlpha;
 
 	bool isWaveringA = true;
 
 	bool flipWaveA = false;
 	float currentWaveA = 0;
-	int waverMinA = -20, waverMaxA = 20;
+	int waverMinA = -20, waverMaxA = 40;
 	float waveSpeedA = 15;
 
 	float elapsedTimeSeconds;
