@@ -105,7 +105,15 @@ void Joiner::resetFull() {
 
 	isKeyStart = false;
 	board = Board();
+
 	world = World();
+
+	srand(time(NULL));
+	if (rand() % 5 == 0) { world.environment.setRaining(true); }
+	else { world.environment.setRaining(false); }
+
+	srand(seed);
+
 	hud = HUD();
 	initializeWorld();
 	particleManager.clearAllParticles();
@@ -191,9 +199,9 @@ void Joiner::update() {
 	handleBoardEdit();
 	handleInventory();
 
-	if (input.checkKeyDown(SDLK_RETURN)) { resetFull(); }
+	if (input.checkKeyDown(SDLK_RETURN) && allowKeyStart) { resetFull(); }
 
-	screenFilter.update();
+	if (world.environment.getRaining()) { screenFilter.update(); }
 }
 
 void Joiner::draw() {
@@ -206,7 +214,9 @@ void Joiner::draw() {
 	glPopMatrix();
 
 	world.drawStatic();
-	screenFilter.draw();
+
+	if (world.environment.getRaining()) { screenFilter.draw(); }
+
 	hud.draw(showSplitsHUD, showKeyPressHUD, showMinimap);
 }
 
@@ -252,10 +262,10 @@ void Joiner::handleStartInput() {
 }
 
 void Joiner::handleBoardCollision() {
-	if (world.environment.isRaining) {
+	if (world.environment.getRaining()) {
 		for (std::vector<Vector2> vertexList : world.environment.rain.puddleVertexList) {
 			if (!isCrashed && board.checkProximity(vertexList[0])) {
-				if (board.checkCollision(Vector2(vertexList[0].x - 25, vertexList[0].y - 105), 115, 85)) {
+				if (board.checkCollision(Vector2(vertexList[0].x - 30, vertexList[0].y - 105), 125, 85)) {
 					board.forceSlide(3);
 				}
 			}

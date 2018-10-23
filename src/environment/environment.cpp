@@ -2,8 +2,6 @@
 
 void Environment::generateRain(std::vector<Vector2> rail, int concentration) {
 	screenFilter.setShow(true);
-	isRaining = true;
-
 	rain.generate(rail, concentration);
 }
 

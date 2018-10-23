@@ -24,9 +24,11 @@ private:
 	Vector2 visiblePineconeRange;
 
 	float elapsedTimeSeconds;
+	bool isRaining;
 public:
-	bool isRaining = false;
-	
+	inline void setRaining(bool isRaining) { this->isRaining = isRaining; };
+	inline bool getRaining() { return isRaining; };
+
 	Rain rain;
 	Gravel gravel;
 	std::vector<Car> carList;
