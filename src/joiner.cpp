@@ -252,10 +252,20 @@ void Joiner::handleStartInput() {
 }
 
 void Joiner::handleBoardCollision() {
+	if (world.environment.isRaining) {
+		for (std::vector<Vector2> vertexList : world.environment.rain.puddleVertexList) {
+			if (!isCrashed && board.checkProximity(vertexList[0])) {
+				if (board.checkCollision(Vector2(vertexList[0].x - 25, vertexList[0].y - 105), 115, 85)) {
+					board.forceSlide(3);
+				}
+			}
+		}
+	}
+
 	for (GravelRectangle& gravelRectangle : world.environment.gravel.gravelRectangleList) {
 		if (!isCrashed && board.checkProximity(gravelRectangle.position)) {
 			if (board.checkCollision(gravelRectangle.position, gravelRectangle.width, gravelRectangle.height)) {
-				board.forceSlide();
+				board.forceSlide(1);
 			}
 		}
 	}

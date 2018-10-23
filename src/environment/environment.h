@@ -15,8 +15,6 @@
 
 class Environment {
 private:
-	Rain rain;
-
 	std::vector<GuardRail> guardRailList;
 	std::vector<std::vector<Tree>> treeList;
 	
@@ -26,9 +24,10 @@ private:
 	Vector2 visiblePineconeRange;
 
 	float elapsedTimeSeconds;
-
-	bool isRaining = false;
 public:
+	bool isRaining = false;
+	
+	Rain rain;
 	Gravel gravel;
 	std::vector<Car> carList;
 	std::vector<Bike> bikeList;

@@ -25,6 +25,7 @@ private:
 	double turnSpeed = 50;
 	double additionalTurnSpeed = 10.0;
 
+	int forcedSlideMag = 0;
 	bool forcedSlide = false;
 	bool slide = false, shutdownSlide = false;
 	bool turnLeft = false, turnRight = false;
@@ -77,7 +78,7 @@ public:
 	Deck* deck;
 	Wheel* wheel;
 
-	inline void forceSlide() { forcedSlide = true; }
+	inline void forceSlide(int mag) { forcedSlide = true; forcedSlideMag = mag; }
 	inline float getVelocity() { return velocity; };
 	
 	void subtractSpeedExternal(float speed);

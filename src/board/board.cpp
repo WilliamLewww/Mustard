@@ -154,8 +154,8 @@ void Board::handleLeftTurn() {
 			slide = true;
 
 			if (forcedSlide) {
-				bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * 4));
-				movementAngle += getTurnSpeed() * elapsedTimeSeconds / 2;
+				bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * (3 + forcedSlideMag)));
+				movementAngle += getTurnSpeed() * elapsedTimeSeconds / (1 + forcedSlideMag);
 			}
 			else {
 				shutdownSlide = true;
@@ -182,8 +182,8 @@ void Board::handleLeftTurn() {
 					slide = true;
 
 					if (forcedSlide && (input.checkKeyDown(SDLK_a) || input.checkButtonDown(2))) {
-						bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * 4));
-						movementAngle += getTurnSpeed() * elapsedTimeSeconds / 2;
+						bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * (3 + forcedSlideMag)));
+						movementAngle += getTurnSpeed() * elapsedTimeSeconds / (1 + forcedSlideMag);
 					}
 					else {
 						bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * 3));
@@ -210,8 +210,8 @@ void Board::handleRightTurn() {
 			slide = true;
 
 			if (forcedSlide) {
-				bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 4));
-				movementAngle -= getTurnSpeed() * elapsedTimeSeconds / 2;
+				bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * (3 + forcedSlideMag)));
+				movementAngle -= getTurnSpeed() * elapsedTimeSeconds / (1 + forcedSlideMag);
 			}
 			else {
 				shutdownSlide = true;
@@ -238,8 +238,8 @@ void Board::handleRightTurn() {
 					slide = true;
 
 					if (forcedSlide && (input.checkKeyDown(SDLK_a) || input.checkButtonDown(2))) {
-						bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 4));
-						movementAngle -= getTurnSpeed() * elapsedTimeSeconds / 2;
+						bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * (3 + forcedSlideMag)));
+						movementAngle -= getTurnSpeed() * elapsedTimeSeconds / (1 + forcedSlideMag);
 					}
 					else {
 						bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 3));
@@ -426,26 +426,17 @@ bool Board::checkCollision(Vector2 position, int width, int height) {
 }
 
 bool Board::checkCollision(BitmapPolygon polygon) {
-	if (bitmapPolygon.checkCollision(polygon) == true) {
-		return true;
-	}
-
+	if (bitmapPolygon.checkCollision(polygon) == true) { return true; }
 	return false;
 }
 
 bool Board::checkCollision(Vector2* wall) {
-	if (bitmapPolygon.checkCollision(wall) == true) {
-		return true;
-	}
-
+	if (bitmapPolygon.checkCollision(wall) == true) { return true;}
 	return false;
 }
 
 bool Board::checkCollision(Vector2 pointA, Vector2 pointB) {
 	Vector2 tempVector[] = { pointA, pointB };
-	if (bitmapPolygon.checkCollision(tempVector) == true) {
-		return true;
-	}
-
+	if (bitmapPolygon.checkCollision(tempVector) == true) { return true; }
 	return false;
 }
