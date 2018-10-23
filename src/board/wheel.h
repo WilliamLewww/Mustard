@@ -71,7 +71,7 @@ public:
 	};
 	
 	inline float getTraction() {
-		if (getCurrentHeightPercent() == 0) { return 3.0; }
+		if (getCurrentHeightPercent() == 0) { return 4.0; }
 
 		float traction = 0.00;
 		float multiplier = 2.00;
@@ -89,7 +89,7 @@ public:
 	};
 
 	inline float getRollSpeed() {
-		if (getCurrentHeightPercent() == 0) { return 0.5; }
+		if (getCurrentHeightPercent() == 0) { return 0.25; }
 
 		float speed = 0.00;
 		float multiplier = 2.00;

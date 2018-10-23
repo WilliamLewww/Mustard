@@ -6,9 +6,15 @@
 
 class ScreenFilter {
 private:
+	int flashColor[3] = { 255, 255, 255 };
+	float flashTimer = 0;
+	float flashInterval = 50;
+	float flashAlpha = 0;
+
+	bool isFlashing = true;
+
 	int color[3] = { 66, 91, 131 };
-	
-	int alpha = 40;
+	int alpha = 60;
 	int waveAlpha;
 
 	bool isWaveringA = true;

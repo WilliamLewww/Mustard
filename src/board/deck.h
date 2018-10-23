@@ -39,7 +39,7 @@ public:
 	inline int* getColor() { return color; };
 
 	inline float getTurnRadius() {
-		if (currentLife == 0) { return 0.5; }
+		if (currentLife == 0) { return 0.05; }
 		return ((45.0 - length) / 7.0);
 	};
 

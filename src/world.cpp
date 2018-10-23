@@ -101,6 +101,7 @@ void World::generateWorld() {
 	environment.generateBikes(track.railList[0], 6, false);
 	environment.generateBikes(track.railList[1], 6, true);
 	if (environment.getRaining()) { environment.generateRain(track.railList[1], 25); }
+	environment.generateBoulders(track.railList[1], 10);
 }
 
 void World::generateSpeedZones() {

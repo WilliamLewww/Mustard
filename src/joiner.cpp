@@ -109,7 +109,7 @@ void Joiner::resetFull() {
 	world = World();
 
 	srand(time(NULL));
-	if (rand() % 5 == 0) { world.environment.setRaining(true); }
+	if (rand() % 4 == 0) { world.environment.setRaining(true); }
 	else { world.environment.setRaining(false); }
 
 	srand(seed);
@@ -159,24 +159,15 @@ void Joiner::update() {
 		particleManager.update();
 		world.update();
 
-		if (showMinimap) {
-			hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle());
-		}
-
-		if (!isCrashed) {
-			hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());
-		}
+		if (showMinimap) { hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle()); }
+		if (!isCrashed) { hud.updateSplitsDisplay(board.bitmapPolygon.getPosition()); }
 
 		for (Vector2 speed : world.track.speedZones) {
-			if (board.bitmapPolygon.getPosition().x > world.track.railList[0][speed.x].x) {
-				speedZone = speed.y;
-			}
+			if (board.bitmapPolygon.getPosition().x > world.track.railList[0][speed.x].x) { speedZone = speed.y; }
 		}
 
 		for (Vector2 direction : world.track.trackDirection) {
-			if (board.bitmapPolygon.getPosition().x > direction.x) {
-				trackDirection = direction.y;
-			}
+			if (board.bitmapPolygon.getPosition().x > direction.x) { trackDirection = direction.y; }
 		}
 
 		handleBoardCollision();
@@ -187,7 +178,7 @@ void Joiner::update() {
 			reset(true, false);
 		}
 
-		if (input.checkKeyDown(SDLK_r) && !isCrashed) { reset(true); }
+		if (input.checkKeyDown(SDLK_r) && !isCrashed) { profile.getDeckFromList(selectedDeck)->damage(1); reset(true); }
 	}
 
 	isPaused = false;
@@ -200,7 +191,6 @@ void Joiner::update() {
 	handleInventory();
 
 	if (input.checkKeyDown(SDLK_RETURN) && allowKeyStart) { resetFull(); }
-
 	if (world.environment.getRaining()) { screenFilter.update(); }
 }
 
@@ -214,7 +204,6 @@ void Joiner::draw() {
 	glPopMatrix();
 
 	world.drawStatic();
-
 	if (world.environment.getRaining()) { screenFilter.draw(); }
 
 	hud.draw(showSplitsHUD, showKeyPressHUD, showMinimap);
@@ -222,7 +211,6 @@ void Joiner::draw() {
 
 void Joiner::handleDevMode() {
 	if (input.checkKeyDown(SDLK_f)) { isPaused = true; }
-
 	if (input.checkKeyDown(SDLK_h)) { profile.addScore(5); }
 }
 
@@ -239,9 +227,7 @@ void Joiner::handleStartInput() {
 			}
 		}
 		else {
-			if (input.getKeyListSize() == 0) {
-				allowKeyStart = true;
-			}
+			if (input.getKeyListSize() == 0) { allowKeyStart = true; }
 		}
 	}
 
@@ -254,9 +240,7 @@ void Joiner::handleStartInput() {
 			}
 		}
 		else {
-			if (input.getKeyListSize() == 0) {
-				allowRestartAfterCrash = true;
-			}
+			if (input.getKeyListSize() == 0) { allowRestartAfterCrash = true; }
 		}
 	}
 }
@@ -265,7 +249,7 @@ void Joiner::handleBoardCollision() {
 	if (world.environment.getRaining()) {
 		for (std::vector<Vector2> vertexList : world.environment.rain.puddleVertexList) {
 			if (!isCrashed && board.checkProximity(vertexList[0])) {
-				if (board.checkCollision(Vector2(vertexList[0].x - 30, vertexList[0].y - 105), 125, 85)) {
+				if (board.checkCollision(Vector2(vertexList[0].x - 30, vertexList[0].y - 95), 125, 80)) {
 					board.forceSlide(3);
 				}
 			}
@@ -313,10 +297,8 @@ void Joiner::handleBoardCollision() {
 						reset(true); 
 					}
 				}
-
 				board.subtractSpeedExternal(100); 
 			}
-			
 			bike.kill();
 		}
 	}
@@ -361,14 +343,10 @@ void Joiner::handleMainMenu() {
 
 		ImGui::Columns(3);
 		ImGui::SetColumnWidth(0, 90);
-		if (ImGui::Button("Edit Track")) {
-			showTrackEdit = !showTrackEdit;
-		}
+		if (ImGui::Button("Edit Track")) { showTrackEdit = !showTrackEdit; }
 		ImGui::NextColumn();
 		ImGui::SetColumnWidth(1, 50);
-		if (ImGui::Button("Shop")) {
-			showBoardEdit = !showBoardEdit;
-		}
+		if (ImGui::Button("Shop")) { showBoardEdit = !showBoardEdit; }
 		ImGui::NextColumn();
 		if (ImGui::Button("Inventory")) {
 			if (!showInventory) { 
@@ -381,18 +359,12 @@ void Joiner::handleMainMenu() {
 		ImGui::Columns(1);
 
 		ImGui::Columns(2);
-		if (ImGui::Button("Leaderboards")) {
-			showLeaderboards = !showLeaderboards;
-		}
+		if (ImGui::Button("Leaderboards")) { showLeaderboards = !showLeaderboards; }
 		ImGui::NextColumn();
-		if (ImGui::Button("Edit HUD")) {
-			showHUDEdit = !showHUDEdit;
-		}
+		if (ImGui::Button("Edit HUD")) { showHUDEdit = !showHUDEdit; }
 		ImGui::Columns(1);
 		
-		if (ImGui::Button("Apply Changes / Re-Initialize")) {
-			resetFull();
-		}
+		if (ImGui::Button("Apply Changes / Re-Initialize")) { resetFull(); }
 
 		ImGui::Checkbox("Display Session Stats", &showSessionStats);
 		ImGui::Checkbox("Display Wheel Stats", &showWheelStats);
@@ -412,20 +384,14 @@ void Joiner::handleLeaderboards() {
 			file.exportSplits(seed, hud.splitsDisplay.splitList[leaderboardSelectedRun], hud.splitsDisplay.finalTimeList[leaderboardSelectedRun]);
 		}
 		ImGui::InputInt("Run #", &leaderboardSelectedRun);
-		if (leaderboardSelectedRun < 0) {
-			leaderboardSelectedRun = 0;
-		}
+		if (leaderboardSelectedRun < 0) { leaderboardSelectedRun = 0; }
 		if (leaderboardSelectedRun > hud.splitsDisplay.splitList.size() - 1) {
 			leaderboardSelectedRun = hud.splitsDisplay.splitList.size() - 1;
 		}
 		ImGui::NextColumn();
 		ImGui::SetColumnWidth(1, 150);
-		if (ImGui::Button("Remove Run")) {
-			hud.splitsDisplay.removeRun(leaderboardSelectedRun);
-		}
-		if (ImGui::Button("Best Time")) {
-			leaderboardSelectedRun = hud.splitsDisplay.getBestTimeIndex();
-		}
+		if (ImGui::Button("Remove Run")) { hud.splitsDisplay.removeRun(leaderboardSelectedRun); }
+		if (ImGui::Button("Best Time")) { leaderboardSelectedRun = hud.splitsDisplay.getBestTimeIndex(); }
 		ImGui::Columns(1);
 
 		ImGui::TextColored(ImVec4(1,0,0,1), "Final: %f", hud.splitsDisplay.finalTimeList[leaderboardSelectedRun]);
@@ -580,9 +546,7 @@ void Joiner::handleBoardEdit() {
 			}
 		}
 		ImGui::Columns(1);
-
 		ImGui::TextColored(ImVec4(1,0.74,0.15,1), "$%.02f", profile.getScore());
-
 		ImGui::End();
 	}
 }

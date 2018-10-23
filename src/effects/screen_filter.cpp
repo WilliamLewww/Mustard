@@ -6,6 +6,26 @@ void ScreenFilter::update() {
 	if (show) {
 		elapsedTimeSeconds = timer.getTimeSeconds();
 
+		if (isFlashing) {
+			if (flashTimer >= flashInterval) {
+				flashAlpha = 255;
+				flashTimer = 0;
+				flashInterval = rand() % (200 + 1 - 150) + 150;
+			}
+			else {
+				flashTimer += 15.0 * elapsedTimeSeconds;
+			}
+
+			if (flashAlpha > 0) {
+				if (flashAlpha - (300.0 * elapsedTimeSeconds) <= 0) {
+					flashAlpha = 0;
+				}
+				else {
+					flashAlpha -= (300.0 * elapsedTimeSeconds);
+				}
+			}
+		}
+
 		if (isWaveringA) {
 			if (!flipWaveA) {
 				if (currentWaveA + (waveSpeedA * elapsedTimeSeconds) <= waverMaxA) {
@@ -44,6 +64,10 @@ void ScreenFilter::draw() {
 		}
 		else {
 			drawing.drawRect(Vector2(0, 0), configuration.getScreenWidth(), configuration.getScreenHeight(), color, alpha);	
+		}
+
+		if (isFlashing) {
+			drawing.drawRect(Vector2(0, 0), configuration.getScreenWidth(), configuration.getScreenHeight(), flashColor, flashAlpha);	
 		}
 	}
 }

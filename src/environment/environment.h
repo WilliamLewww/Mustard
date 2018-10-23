@@ -12,16 +12,19 @@
 #include "bike.h"
 #include "pinecone.h"
 #include "rain.h"
+#include "boulder.h"
 
 class Environment {
 private:
 	std::vector<GuardRail> guardRailList;
 	std::vector<std::vector<Tree>> treeList;
+	std::vector<Boulder> boulderList;
 	
 	Vector2 visibleGuardRailRange;
 	Vector2 visibleTreeRange;
 	Vector2 visibleSquirrelRange;
 	Vector2 visiblePineconeRange;
+	Vector2 visibleBoulderRange;
 
 	float elapsedTimeSeconds;
 	bool isRaining;
@@ -46,6 +49,7 @@ public:
 	void generatePinecones(std::vector<Vector2> rail, int concentration, int scaleMin, int scaleMax);
 	void generateTrees(std::vector<Vector2> rail, int concentration, int offsetY, int scaleMin, int scaleMax);
 	void generateSquirrels(std::vector<std::vector<Vector2>> rail, int concentration, int scaleMin, int scaleMax);
+	void generateBoulders(std::vector<Vector2> rail, int concentration);
 
 	void update(std::vector<std::vector<Vector2>> rail);
 	void draw();

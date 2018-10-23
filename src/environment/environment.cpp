@@ -5,6 +5,16 @@ void Environment::generateRain(std::vector<Vector2> rail, int concentration) {
 	rain.generate(rail, concentration);
 }
 
+void Environment::generateBoulders(std::vector<Vector2> rail, int concentration) {
+	visibleBoulderRange = Vector2(0, 0);
+
+	for (int x = 3; x < rail.size(); x++) {
+		if (rand() % concentration == 0) {
+			boulderList.emplace_back(Vector2(rail[x].x - 50, rail[x].y + 75));
+		}
+	}
+}
+
 void Environment::generatePinecones(std::vector<Vector2> rail, int concentration, int scaleMin, int scaleMax) {
 	visiblePineconeRange = Vector2(0,0);
 
@@ -173,6 +183,10 @@ void Environment::draw() {
 	while (guardRailList[visibleGuardRailRange.y].nodeB.x < camera.getBoundaryRight()) { visibleGuardRailRange.y += 1; }
 	while (pineconeList[visiblePineconeRange.x].getPosition().x < camera.getBoundaryLeft()) { visiblePineconeRange.x += 1; }
 	while (pineconeList[visiblePineconeRange.y].getPosition().x < camera.getBoundaryRight()) { visiblePineconeRange.y += 1; }
+	while (boulderList[visibleBoulderRange.x].position.x < camera.getBoundaryLeft()) { visibleBoulderRange.x += 1; }
+	while (boulderList[visibleBoulderRange.y].position.x < camera.getBoundaryRight()) { visibleBoulderRange.y += 1; }
+
+	for (int x = visibleBoulderRange.x; x < visibleBoulderRange.y; x++) { boulderList[x].draw(); }
 
 	for (std::vector<Tree> treeListTotal : treeList) {
 		for (int x = visibleTreeRange.x; x < visibleTreeRange.y; x++) {
