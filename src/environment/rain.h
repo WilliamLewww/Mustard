@@ -10,7 +10,7 @@ class Rain {
 private:
 	std::vector<std::vector<Vector2>> puddleVertexList;
 	int puddleColor[3] = { 23, 94, 255 };
-	int puddleAlpha = 100;
+	int puddleAlpha = 80;
 
 	std::vector<Vector2> dropPositionList;
 	int dropLength = 10, dropWidth = 2;

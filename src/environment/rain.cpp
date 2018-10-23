@@ -12,9 +12,9 @@ void Rain::generate(std::vector<Vector2> rail, int concentration) {
 	std::vector<Vector2> vertexList;
 	for (int x = 15; x < rail.size(); x++) {
 		if (rand() % concentration == 0) {
-			vertexList.push_back(Vector2(rail[x].x + (rand() % 15), rail[x].y - 40 - (rand() % 15)));
-			vertexList.push_back(Vector2(rail[x].x + 50 + (rand() % 15), rail[x].y - 40 - (rand() % 15)));
-			vertexList.push_back(Vector2(rail[x].x + 75 + (rand() % 15), rail[x].y - 65 - (rand() % 15)));
+			vertexList.push_back(Vector2(rail[x].x + (rand() % 15), rail[x].y - 20 - (rand() % 15)));
+			vertexList.push_back(Vector2(rail[x].x + 50 + (rand() % 15), rail[x].y - 20 - (rand() % 15)));
+			vertexList.push_back(Vector2(rail[x].x + 75 + (rand() % 15), rail[x].y - 45 - (rand() % 15)));
 			vertexList.push_back(Vector2(rail[x].x + 50 + (rand() % 15), rail[x].y - 90 - (rand() % 15)));
 			vertexList.push_back(Vector2(rail[x].x + (rand() % 15), rail[x].y - 90 - (rand() % 15)));
 			vertexList.push_back(Vector2(rail[x].x - 25 + (rand() % 15), rail[x].y - 65 - (rand() % 15)));
