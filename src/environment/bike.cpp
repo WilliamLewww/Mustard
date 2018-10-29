@@ -86,7 +86,7 @@ void Bike::draw() {
 		drawing.drawRect(polygon.getPosition(), polygon.getWidth(), polygon.getHeight(), polygon.getAngle(), bikeColor[colorIndex]);
 	}
 	else {
-
+		
 	}
 	//drawing.drawLine(polygon.getCenter(), projectedPoint);
 }

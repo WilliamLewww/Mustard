@@ -27,10 +27,7 @@ private:
 	Vector2 visibleBoulderRange;
 
 	float elapsedTimeSeconds;
-	bool isRaining;
 public:
-	inline void setRaining(bool isRaining) { this->isRaining = isRaining; };
-	inline bool getRaining() { return isRaining; };
 
 	Rain rain;
 	Gravel gravel;

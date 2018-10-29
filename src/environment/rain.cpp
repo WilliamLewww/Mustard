@@ -12,12 +12,14 @@ void Rain::generate(std::vector<Vector2> rail, int concentration) {
 	std::vector<Vector2> vertexList;
 	for (int x = 15; x < rail.size(); x++) {
 		if (rand() % concentration == 0) {
-			vertexList.push_back(Vector2(rail[x].x + (rand() % 15), rail[x].y - 20 - (rand() % 15)));
-			vertexList.push_back(Vector2(rail[x].x + 50 + (rand() % 15), rail[x].y - 20 - (rand() % 15)));
-			vertexList.push_back(Vector2(rail[x].x + 75 + (rand() % 15), rail[x].y - 45 - (rand() % 15)));
-			vertexList.push_back(Vector2(rail[x].x + 50 + (rand() % 15), rail[x].y - 90 - (rand() % 15)));
-			vertexList.push_back(Vector2(rail[x].x + (rand() % 15), rail[x].y - 90 - (rand() % 15)));
-			vertexList.push_back(Vector2(rail[x].x - 25 + (rand() % 15), rail[x].y - 65 - (rand() % 15)));
+			int randomTop = rand() % (20 + 1 - 10) + 10;
+
+			vertexList.push_back(Vector2(rail[x].x + (rand() % 15), rail[x].y - randomTop - 10 - (rand() % 15)));
+			vertexList.push_back(Vector2(rail[x].x + 50 + (rand() % 15), rail[x].y - randomTop - 10 - (rand() % 15)));
+			vertexList.push_back(Vector2(rail[x].x + 75 + (rand() % 15), rail[x].y - randomTop - 35 - (rand() % 15)));
+			vertexList.push_back(Vector2(rail[x].x + 50 + (rand() % 15), rail[x].y - randomTop - 80 - (rand() % 15)));
+			vertexList.push_back(Vector2(rail[x].x + (rand() % 15), rail[x].y - randomTop - 80 - (rand() % 15)));
+			vertexList.push_back(Vector2(rail[x].x - 25 + (rand() % 15), rail[x].y - randomTop - 55 - (rand() % 15)));
 
 			puddleVertexList.push_back(vertexList);
 			vertexList.clear();

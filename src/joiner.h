@@ -37,6 +37,7 @@ private:
 	bool showInventory, showSessionStats = true, showLeaderboards = false, showWheelStats = true;
 	bool randomTrackSeed = false;
 	bool toggleRain = false;
+	bool isRaining = false;
 
 	bool devMode = false;
 

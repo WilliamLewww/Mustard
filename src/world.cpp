@@ -100,7 +100,7 @@ void World::generateWorld() {
 	environment.generateCars(track.railList[1], 8);
 	environment.generateBikes(track.railList[0], 6, false);
 	environment.generateBikes(track.railList[1], 6, true);
-	if (environment.getRaining()) { environment.generateRain(track.railList[1], 25); }
+	if (configuration.getConfigurations()["IsRaining"]) { environment.generateRain(track.railList[1], 25); }
 	environment.generateBoulders(track.railList[1], 10);
 }
 

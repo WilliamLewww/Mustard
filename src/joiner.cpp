@@ -30,7 +30,8 @@ void Joiner::initialize() {
 
 	deckID = configuration.getConfigurations()["DeckID"];
 	wheelID = configuration.getConfigurations()["WheelID"];
-
+	
+	screenFilter.initialize();
 	initializeWorld();
 }
 
@@ -109,8 +110,8 @@ void Joiner::resetFull() {
 	world = World();
 
 	srand(time(NULL));
-	if (rand() % 4 == 0) { world.environment.setRaining(true); }
-	else { world.environment.setRaining(false); }
+	if (toggleRain || rand() % 4 == 0) { isRaining = true; }
+	else { isRaining = false; }
 
 	srand(seed);
 
@@ -132,7 +133,23 @@ void Joiner::pushConfigurations() {
 	configuration.setConfiguration("WheelID", wheelID);
 	configuration.setConfiguration("SelectedDeck", selectedDeck);
 	configuration.setConfiguration("SelectedWheel", selectedWheel);
+	configuration.setConfiguration("IsRaining", isRaining);
+
+	if (isRaining) {
+		screenFilter.setFlashing(true);
+		screenFilter.setAlpha(75);
+		screenFilter.setColor(66, 91, 131);
+		screenFilter.setShow(true);
+	}
+	else {
+		screenFilter.setFlashing(false);
+		screenFilter.setAlpha(30);
+		screenFilter.setColor(66, 91, 131);
+		screenFilter.setShow(true);
+	}
+
 	board.initialize();
+	screenFilter.initialize();
 }
 
 void Joiner::initializeWorld() {
@@ -156,6 +173,7 @@ void Joiner::update() {
 
 	if (isPaused == false && isKeyStart == true) {
 		if (!isCrashed) { board.update(speedZone, trackDirection); }
+		screenFilter.update();
 		particleManager.update();
 		world.update();
 
@@ -191,7 +209,6 @@ void Joiner::update() {
 	handleInventory();
 
 	if (input.checkKeyDown(SDLK_RETURN) && allowKeyStart) { resetFull(); }
-	if (world.environment.getRaining()) { screenFilter.update(); }
 }
 
 void Joiner::draw() {
@@ -204,7 +221,7 @@ void Joiner::draw() {
 	glPopMatrix();
 
 	world.drawStatic();
-	if (world.environment.getRaining()) { screenFilter.draw(); }
+	screenFilter.draw();
 
 	hud.draw(showSplitsHUD, showKeyPressHUD, showMinimap);
 }
@@ -246,7 +263,7 @@ void Joiner::handleStartInput() {
 }
 
 void Joiner::handleBoardCollision() {
-	if (world.environment.getRaining()) {
+	if (configuration.getConfigurations()["IsRaining"]) {
 		for (std::vector<Vector2> vertexList : world.environment.rain.puddleVertexList) {
 			if (!isCrashed && board.checkProximity(vertexList[0])) {
 				if (board.checkCollision(Vector2(vertexList[0].x - 30, vertexList[0].y - 95), 125, 80)) {

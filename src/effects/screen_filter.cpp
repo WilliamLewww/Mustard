@@ -2,6 +2,11 @@
 
 ScreenFilter screenFilter;
 
+void ScreenFilter::initialize() {
+	waveAlpha = alpha;
+	currentWaveA = 0;
+}
+
 void ScreenFilter::update() {
 	if (show) {
 		elapsedTimeSeconds = timer.getTimeSeconds();

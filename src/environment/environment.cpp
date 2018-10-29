@@ -1,7 +1,6 @@
 #include "environment.h"
 
 void Environment::generateRain(std::vector<Vector2> rail, int concentration) {
-	screenFilter.setShow(true);
 	rain.generate(rail, concentration);
 }
 
@@ -156,7 +155,7 @@ void Environment::resetVisibleRange() {
 void Environment::update(std::vector<std::vector<Vector2>> rail) {
 	elapsedTimeSeconds = timer.getTimeSeconds();
 
-	if (isRaining) { rain.update(); }
+	if (configuration.getConfigurations()["IsRaining"]) { rain.update(); }
 	
 	for (int x = visibleSquirrelRange.x; x < visibleSquirrelRange.y; x++) {
 		squirrelList[x].update(elapsedTimeSeconds);
@@ -202,10 +201,10 @@ void Environment::draw() {
 }
 
 void Environment::drawUnderMountain() {
-	if (isRaining) { rain.draw(); }
+	if (configuration.getConfigurations()["IsRaining"]) { rain.draw(); }
 	gravel.draw();
 }
 
 void Environment::drawStatic() {
-	if (isRaining) { rain.drawStatic(); }
+	if (configuration.getConfigurations()["IsRaining"]) { rain.drawStatic(); }
 }

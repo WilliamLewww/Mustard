@@ -11,10 +11,10 @@ private:
 	float flashInterval = 50;
 	float flashAlpha = 0;
 
-	bool isFlashing = true;
+	bool isFlashing = false;
 
 	int color[3] = { 66, 91, 131 };
-	int alpha = 60;
+	int alpha = 30;
 	int waveAlpha;
 
 	bool isWaveringA = true;
@@ -26,8 +26,9 @@ private:
 
 	float elapsedTimeSeconds;
 
-	bool show = false;
+	bool show = true;
 public:
+	inline void setFlashing(bool isFlashing) { this->isFlashing = isFlashing; };
 	inline void setShow(bool show) { this->show = show; };
 
 	inline void setR(int r) { this->color[0] = r; };
@@ -39,6 +40,7 @@ public:
 
 	inline void setAlpha(int a) { this->alpha = a; }
 
+	void initialize();
 	void update();
 	void draw();
 };

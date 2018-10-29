@@ -259,9 +259,11 @@ void Board::handleRightTurn() {
 }
 
 double Board::getAngleDifference() {
-	if (shutdownSlide) { return abs(bitmapPolygon.getAngle() - movementAngle) * 3 * elapsedTimeSeconds; }
-	else { return abs(bitmapPolygon.getAngle() - movementAngle) * 1.5 * elapsedTimeSeconds; }
-
+	if (forcedSlide) { return abs(bitmapPolygon.getAngle() - movementAngle) * elapsedTimeSeconds; }
+	else {
+		if (shutdownSlide) { return abs(bitmapPolygon.getAngle() - movementAngle) * 3 * elapsedTimeSeconds; }
+		else { return abs(bitmapPolygon.getAngle() - movementAngle) * 1.5 * elapsedTimeSeconds; }
+	}
 }
 
 void Board::handleSlideRight(double difference) {
