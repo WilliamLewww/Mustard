@@ -283,8 +283,10 @@ void Board::handleSlideRight(double difference) {
 				velocity -= difference;
 			}
 
-			if (shutdownSlide) { generateThane(255); }
-			else { generateThane(100); }
+			if (velocity > 25) {
+				if (shutdownSlide) { generateThane(255); }
+				else { generateThane(100); }
+			}
 		}
 		else {
 			shutdownSlide = false;
@@ -307,7 +309,9 @@ void Board::handleSlideRight(double difference) {
 			}
 		}
 
-		wheel->decayWheel(elapsedTimeSeconds, difference, velocity, shutdownSlide);
+		if (velocity > 25) {
+			wheel->decayWheel(elapsedTimeSeconds, difference, velocity, shutdownSlide);
+		}
 	}
 }
 
@@ -327,8 +331,10 @@ void Board::handleSlideLeft(double difference) {
 				velocity -= difference;
 			}
 
-			if (shutdownSlide) { generateThane(255); }
-			else { generateThane(100); }
+			if (velocity > 25) {
+				if (shutdownSlide) { generateThane(255); }
+				else { generateThane(100); }
+			}
 		}
 		else {
 			shutdownSlide = false;
@@ -351,7 +357,9 @@ void Board::handleSlideLeft(double difference) {
 			}
 		}
 		
-		wheel->decayWheel(elapsedTimeSeconds, difference, velocity, shutdownSlide);
+		if (velocity > 25) {
+			wheel->decayWheel(elapsedTimeSeconds, difference, velocity, shutdownSlide);
+		}
 	}
 }
 

@@ -21,7 +21,7 @@ class Ocean {
 private:
 	std::vector<Wave> waveList;
 	int waveLength = 2;
-	double fadeSpeed = 125.0;
+	double fadeSpeed = 100.0;
 
 	float elapsedTimeSeconds;
 public:	

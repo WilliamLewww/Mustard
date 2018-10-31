@@ -6,7 +6,7 @@ void Ocean::generateWaves() {
 	for (int x = 0; x < configuration.getScreenWidth(); x += 5) {
 		for (int y = 0; y < configuration.getScreenHeight(); y += 5) {
 			if (rand() % 100 == 0) {
-				waveList.push_back({Vector2(x, y), rand() % (100 + 1 - 75) + 75, rand() % 3, (double)(rand() % 126), rand() % 2, rand() % 2});
+				waveList.push_back({Vector2(x, y), rand() % (100 + 1 - 75) + 75, rand() % 3, (double)(rand() % 100), rand() % 2, rand() % 2});
 			}
 		}
 	}
@@ -17,8 +17,8 @@ void Ocean::update() {
 
 	for (Wave& wave : waveList) {
 		if (wave.fadeIn) {
-			if (wave.alpha + (fadeSpeed * elapsedTimeSeconds) >= 125) {
-				wave.alpha = 125;
+			if (wave.alpha + (fadeSpeed * elapsedTimeSeconds) >= 100) {
+				wave.alpha = 100;
 				wave.direction = !wave.direction;
 				wave.fadeIn = false;
 			}
