@@ -1,4 +1,5 @@
 #pragma once
+#include "..\effects\particle_manager.h"
 #include "..\bmp_polygon.h"
 
 class Pinecone {

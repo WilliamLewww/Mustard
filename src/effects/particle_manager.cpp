@@ -9,6 +9,10 @@ void ParticleManager::initialize() {
 	initializeCrashParticles();
 }
 
+void ParticleManager::generatePineconeGibParticles(int count, Vector2 parentPosition) {
+	pineconeGibParticlesList.push_back(createPineconeGibParticles(count, parentPosition));
+}
+
 void ParticleManager::generateCrashParticles(int count, Vector2 parentPosition) {
 	crashParticlesList.push_back(createCrashParticles(count, parentPosition));
 }
@@ -50,12 +54,17 @@ void ParticleManager::removeOldParticles() {
 	if (crashParticlesList.size() > MaxParticleCount::Crash) {
 		crashParticlesList.erase(crashParticlesList.begin(), crashParticlesList.begin() + (crashParticlesList.size() - MaxParticleCount::Crash));
 	}
+
+	if (pineconeGibParticlesList.size() > MaxParticleCount::PineconeGib) {
+		pineconeGibParticlesList.erase(pineconeGibParticlesList.begin(), pineconeGibParticlesList.begin() + (pineconeGibParticlesList.size() - MaxParticleCount::PineconeGib));
+	}
 }
 
 void ParticleManager::clearAllParticles() {
 	thaneParticlesList.clear();
 	squirrelGibParticlesList.clear();
 	bikeGibParticlesList.clear();
+	pineconeGibParticlesList.clear();
 	finishParticlesList.clear();
 	crashParticlesList.clear();
 }
@@ -63,47 +72,21 @@ void ParticleManager::clearAllParticles() {
 void ParticleManager::update() {
 	elapsedTimeSeconds = timer.getTimeSeconds();
 
-	for (ThaneParticles &particles : thaneParticlesList) {
-		updateThaneParticles(elapsedTimeSeconds, particles);
-	}
-
-	for (SquirrelGibParticles &particles : squirrelGibParticlesList) {
-		updateSquirrelGibParticles(elapsedTimeSeconds, particles);
-	}
-
-	for (BikeGibParticles &particles : bikeGibParticlesList) {
-		updateBikeGibParticles(elapsedTimeSeconds, particles);
-	}
-
-	for (FinishParticles &particles : finishParticlesList) {
-		updateFinishParticles(elapsedTimeSeconds, particles);
-	}
-
-	for (CrashParticles &particles : crashParticlesList) {
-		updateCrashParticles(elapsedTimeSeconds, particles);
-	}
+	for (ThaneParticles &particles : thaneParticlesList) { updateThaneParticles(elapsedTimeSeconds, particles); }
+	for (SquirrelGibParticles &particles : squirrelGibParticlesList) { updateSquirrelGibParticles(elapsedTimeSeconds, particles); }
+	for (BikeGibParticles &particles : bikeGibParticlesList) { updateBikeGibParticles(elapsedTimeSeconds, particles); }
+	for (FinishParticles &particles : finishParticlesList) { updateFinishParticles(elapsedTimeSeconds, particles); }
+	for (CrashParticles &particles : crashParticlesList) { updateCrashParticles(elapsedTimeSeconds, particles); }
+	for (PineconeGibParticles &particles : pineconeGibParticlesList) { updatePineconeGibParticles(elapsedTimeSeconds, particles); }
 
 	removeOldParticles();
 }
 
 void ParticleManager::draw() {
-	for (ThaneParticles particles : thaneParticlesList) {
-		drawThaneParticles(particles);
-	}
-
-	for (SquirrelGibParticles particles : squirrelGibParticlesList) {
-		drawSquirrelGibParticles(particles);
-	}
-
-	for (BikeGibParticles particles : bikeGibParticlesList) {
-		drawBikeGibParticles(particles);
-	}
-
-	for (FinishParticles particles : finishParticlesList) {
-		drawFinishParticles(particles);
-	}
-
-	for (CrashParticles particles : crashParticlesList) {
-		drawCrashParticles(particles);
-	}
+	for (ThaneParticles particles : thaneParticlesList) { drawThaneParticles(particles); }
+	for (SquirrelGibParticles particles : squirrelGibParticlesList) { drawSquirrelGibParticles(particles); }
+	for (BikeGibParticles particles : bikeGibParticlesList) { drawBikeGibParticles(particles); }
+	for (PineconeGibParticles particles : pineconeGibParticlesList) { drawPineconeGibParticles(particles); }
+	for (FinishParticles particles : finishParticlesList) { drawFinishParticles(particles); }
+	for (CrashParticles particles : crashParticlesList) { drawCrashParticles(particles); }
 }

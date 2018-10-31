@@ -30,7 +30,7 @@ void Joiner::initialize() {
 
 	deckID = configuration.getConfigurations()["DeckID"];
 	wheelID = configuration.getConfigurations()["WheelID"];
-	
+
 	screenFilter.initialize();
 	initializeWorld();
 }
@@ -143,7 +143,7 @@ void Joiner::pushConfigurations() {
 	}
 	else {
 		screenFilter.setFlashing(false);
-		screenFilter.setAlpha(30);
+		screenFilter.setAlpha(50);
 		screenFilter.setColor(66, 91, 131);
 		screenFilter.setShow(true);
 	}
@@ -212,6 +212,8 @@ void Joiner::update() {
 }
 
 void Joiner::draw() {
+	world.drawStaticBackground();
+	
 	glPushMatrix();
 	glTranslatef(-camera.getPosition().x + (configuration.getScreenWidth() / 2) - (board.bitmapPolygon.getWidth() / 2), -camera.getPosition().y + (configuration.getScreenHeight() / 2) - (board.bitmapPolygon.getHeight() / 2), 0);
 	world.draw();

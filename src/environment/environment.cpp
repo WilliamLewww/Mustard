@@ -1,5 +1,9 @@
 #include "environment.h"
 
+void Environment::generateWaves() {
+	ocean.generateWaves();
+}
+
 void Environment::generateRain(std::vector<Vector2> rail, int concentration) {
 	rain.generate(rail, concentration);
 }
@@ -155,6 +159,8 @@ void Environment::resetVisibleRange() {
 void Environment::update(std::vector<std::vector<Vector2>> rail) {
 	elapsedTimeSeconds = timer.getTimeSeconds();
 
+	ocean.update();
+
 	if (configuration.getConfigurations()["IsRaining"]) { rain.update(); }
 	
 	for (int x = visibleSquirrelRange.x; x < visibleSquirrelRange.y; x++) {
@@ -207,4 +213,8 @@ void Environment::drawUnderMountain() {
 
 void Environment::drawStatic() {
 	if (configuration.getConfigurations()["IsRaining"]) { rain.drawStatic(); }
+}
+
+void Environment::drawStaticBackground() {
+	ocean.drawStatic();
 }

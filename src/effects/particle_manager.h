@@ -5,6 +5,7 @@
 #include "thane_particle.h"
 #include "squirrel_giblets_particle.h"
 #include "bike_giblets_particle.h"
+#include "pinecone_giblets_particle.h"
 #include "finish_particle.h"
 
 enum MaxParticleCount {
@@ -12,7 +13,8 @@ enum MaxParticleCount {
 	SquirrelGib = 75,
 	Finish = 75,
 	Crash = 4,
-	BikeGib = 5
+	BikeGib = 5,
+	PineconeGib = 12
 };
 
 class ParticleManager {
@@ -23,11 +25,13 @@ private:
 	std::vector<FinishParticles> finishParticlesList;
 	std::vector<SquirrelGibParticles> squirrelGibParticlesList;
 	std::vector<BikeGibParticles> bikeGibParticlesList;
+	std::vector<PineconeGibParticles> pineconeGibParticlesList;
 public:
 	ParticleManager();
 
 	void initialize();
 	
+	void generatePineconeGibParticles(int count, Vector2 parentPosition);
 	void generateCrashParticles(int count, Vector2 parentPosition);
 	void generateThaneParticles(int count, Vector2 parentPosition, int alpha);
 	void generateSquirrelGibParticles(int count, Vector2 parentPosition, int alpha);

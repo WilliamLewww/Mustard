@@ -36,6 +36,7 @@ public:
 	void update();
 	void draw();
 	void drawStatic();
+	void drawStaticBackground();
 	void reset();
 	void generateMountainPolygons();
 };

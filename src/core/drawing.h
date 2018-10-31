@@ -18,6 +18,7 @@ public:
 	void drawRect(Vector2 position, int width, int height);
 	void drawRect(Vector2 position, int width, int height, double angle);
 	void drawRect(Vector2 position, int width, int height, double angle, int color[3]);
+	void drawRect(Vector2 position, int width, int height, double angle, int color[3], int alpha);
 	void drawRect(Vector2 position, int width, int height, int color[3]);
 	void drawRect(Vector2 position, int width, int height, int color[3], int alpha);
 	void drawRect(Vector2 position, int width, int height, int color[3], double alpha);

@@ -13,9 +13,12 @@
 #include "pinecone.h"
 #include "rain.h"
 #include "boulder.h"
+#include "ocean.h"
 
 class Environment {
 private:
+	Ocean ocean;
+
 	std::vector<GuardRail> guardRailList;
 	std::vector<std::vector<Tree>> treeList;
 	std::vector<Boulder> boulderList;
@@ -28,7 +31,6 @@ private:
 
 	float elapsedTimeSeconds;
 public:
-
 	Rain rain;
 	Gravel gravel;
 	std::vector<Car> carList;
@@ -38,6 +40,7 @@ public:
 	
 	void resetVisibleRange();
 
+	void generateWaves();
 	void generateRain(std::vector<Vector2> rail, int concentration);
 	void generateCars(std::vector<Vector2> rail, int count);
 	void generateBikes(std::vector<Vector2> rail, int count, bool isLeft);
@@ -52,4 +55,5 @@ public:
 	void draw();
 	void drawUnderMountain();
 	void drawStatic();
+	void drawStaticBackground();
 };

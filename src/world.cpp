@@ -36,6 +36,10 @@ void World::drawStatic() {
 	environment.drawStatic();
 }
 
+void World::drawStaticBackground() {
+	environment.drawStaticBackground();
+}
+
 void World::drawMountainOutline() {
 	drawing.drawLineStrip(track.getVisibleRail(0), -50, mountainOutlineColor, 255);
 	drawing.drawLineStrip(track.getVisibleRail(0), -48, mountainOutlineColor, 255);
@@ -102,6 +106,7 @@ void World::generateWorld() {
 	environment.generateBikes(track.railList[1], 6, true);
 	if (configuration.getConfigurations()["IsRaining"]) { environment.generateRain(track.railList[1], 25); }
 	environment.generateBoulders(track.railList[1], 10);
+	environment.generateWaves();
 }
 
 void World::generateSpeedZones() {

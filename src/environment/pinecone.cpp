@@ -20,6 +20,7 @@ Pinecone::Pinecone(Vector2 position, float scale) {
 
 float Pinecone::kill(float velocity) {
 	isDead = true;
+	particleManager.generatePineconeGibParticles(5, position);
 
 	return sqrt(velocity);
 }
