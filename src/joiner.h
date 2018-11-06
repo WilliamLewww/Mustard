@@ -3,6 +3,7 @@
 #include "core\configuration.h"
 #include "core\gui.h"
 #include "core\file.h"
+#include "core\network.h"
 #include "hud\hud.h"
 #include "effects\particle_manager.h"
 #include "effects\screen_filter.h"
@@ -12,10 +13,13 @@
 #include "camera.h"
 
 class Joiner {
-private:
+private:	
 	World world;
 	Board board;
 	HUD hud;
+
+	bool netStart = false;
+	char ipAddress[512] = "127.0.0.1";
 
 	int checkpointCount = 15;
 	int tempHUDCheckpoint = 0;
@@ -30,6 +34,7 @@ private:
 
 	bool stillShowBoard = false;
 	
+	bool showNetworkMenu = false;
 	bool showMainMenu = true;
 	bool showHUDEdit, showTrackEdit, showBoardEdit;
 	bool showSplitsHUD = true, showKeyPressHUD = false, showMinimap = true;
@@ -55,6 +60,9 @@ private:
 	void handleDevMode();
 	void handleStartInput();
 
+	void handleNetwork();
+	void initialNetworkMessage();
+
 	void handleBoardCollision();
 
 	void handleMainMenu();
@@ -64,8 +72,9 @@ private:
 	void handleTrackEdit();
 	void handleBoardEdit();
 	void handleInventory();
+	void handleNetworkMenu();
 public:
-	int seed;
+	int seed, rainSeed;
 
 	void reset(bool isCrash, bool crashedParticles);
 	void resetFull();

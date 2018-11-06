@@ -11,6 +11,7 @@ Bike::Bike(Vector2 position, int railIndex, bool isLeft) {
 
 	this->isLeft = isLeft;
 	if (!isLeft) { polygon.setAngle(180); }
+	else { polygon.setAngle(0); }
 }
 
 void Bike::kill() {
@@ -24,6 +25,10 @@ void Bike::kill() {
 void Bike::setPathing(std::vector<Vector2> railList) {
 	if (isDead == false) {
 		if (!isLeft) {
+			if (currentRail.x == 0 && currentRailIndex != 0) {
+				currentRail = Vector2(railList[currentRailIndex].x, railList[currentRailIndex].y + 25);
+			}
+
 			if (currentRailIndex > railList.size() - 1) {
 				polygon.setAngle(180);
 
@@ -85,9 +90,7 @@ void Bike::draw() {
 	if (isDead == false) {
 		drawing.drawRect(polygon.getPosition(), polygon.getWidth(), polygon.getHeight(), polygon.getAngle(), bikeColor[colorIndex]);
 	}
-	else {
-		
-	}
+	
 	//drawing.drawLine(polygon.getCenter(), projectedPoint);
 }
 
