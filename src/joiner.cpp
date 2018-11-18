@@ -105,7 +105,6 @@ void Joiner::resetFull() {
 
 	isKeyStart = false;
 	board = Board();
-
 	world = World();
 
 	if (netConnected) { srand(rainSeed); }
@@ -172,6 +171,8 @@ void Joiner::update() {
 
 	handleStartInput();
 	handleNetwork();
+
+	//std::cout << netConnected << ":" << netStart << std::endl;
 
 	if ((!isPaused && isKeyStart && !netConnected) || (netConnected && netStart)) {
 		if (!isCrashed) { board.update(speedZone, trackDirection); }
@@ -417,9 +418,6 @@ void Joiner::handleNetworkMenu() {
 				netConnected = false;
 			}
 		}
-		if (ImGui::Button("Send Message")) {
-			sendMessage((char *)"Test Message");
-		}
 		ImGui::End();
 	}
 }
@@ -454,17 +452,24 @@ void Joiner::handleNetwork() {
 			}
 
 			if (replyList[0].substr(0, 10).compare("reset_full") == 0) {
+				netStart = false;
 				resetFull();
 				replyList.erase(replyList.begin());
 			}
 		}
 
 		if (advertList.size() > 0) {
+			if (advertList[0].substr(0, 9).compare("rain_seed") == 0) {
+				rainSeed = std::stoi(advertList[0].substr(advertList[0].find(':') + 1));
+				advertList.erase(advertList.begin());
+			}
+
 			if (advertList[0].substr(0, 10).compare("new_client") == 0) {
 				advertList.erase(advertList.begin());
 			}
 
 			if (advertList[0].substr(0, 10).compare("reset_full") == 0) {
+				netStart = false;
 				resetFull();
 				advertList.erase(advertList.begin());
 			}

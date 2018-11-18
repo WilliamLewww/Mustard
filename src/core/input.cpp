@@ -50,16 +50,16 @@ void Input::getKeyTrigger(SDL_Event event) {
 
 	if (event.type == SDL_JOYHATMOTION) {
 		switch (event.jhat.value) {
-		case SDL_HAT_UP: controllerPad = 1; break;
-		case SDL_HAT_RIGHTUP: controllerPad = 2; break;
-		case SDL_HAT_RIGHT: controllerPad = 3; break;
-		case SDL_HAT_RIGHTDOWN: controllerPad = 4; break;
-		case SDL_HAT_DOWN: controllerPad = 5; break;
-		case SDL_HAT_LEFTDOWN: controllerPad = 6; break;
-		case SDL_HAT_LEFT: controllerPad = 7; break;
-		case SDL_HAT_LEFTUP: controllerPad = 8; break;
-		case SDL_HAT_CENTERED: controllerPad = 0; break;
-		default: break;
+			case SDL_HAT_UP: controllerPad = 1; break;
+			case SDL_HAT_RIGHTUP: controllerPad = 2; break;
+			case SDL_HAT_RIGHT: controllerPad = 3; break;
+			case SDL_HAT_RIGHTDOWN: controllerPad = 4; break;
+			case SDL_HAT_DOWN: controllerPad = 5; break;
+			case SDL_HAT_LEFTDOWN: controllerPad = 6; break;
+			case SDL_HAT_LEFT: controllerPad = 7; break;
+			case SDL_HAT_LEFTUP: controllerPad = 8; break;
+			case SDL_HAT_CENTERED: controllerPad = 0; break;
+			default: break;
 		}
 	}
 

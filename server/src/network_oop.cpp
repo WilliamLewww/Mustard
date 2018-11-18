@@ -1,23 +1,23 @@
-#include "network.h"
+#include "network_oop.h"
 
-void networkInitialize() {
-	networkInitializeWinsock();
-	networkCreateSocket();
-	networkBindSocket();
-    networkGenerateSeed();
+void Network::initialize() {
+	initializeWinsock();
+	createSocket();
+	bindSocket();
+    generateSeed();
 }
 
-void networkGenerateSeed() {
+void Network::generateSeed() {
     seed = time(NULL);
 }
 
-void networkInitializeWinsock() {
+void Network::initializeWinsock() {
 	printf("\nInitializing Winsock...\n");
 	slen = sizeof(tempClient.addrLength);
 	WSAStartup(MAKEWORD(2,2),&wsa);
 }
 
-void networkCreateSocket() {
+void Network::createSocket() {
 	printf("Creating Socket...\n");
 	server.sin_family = AF_INET;
     server.sin_addr.s_addr = INADDR_ANY;
@@ -26,14 +26,14 @@ void networkCreateSocket() {
     s = socket(AF_INET , SOCK_DGRAM , 0);
 }
 
-void networkBindSocket() {
+void Network::bindSocket() {
 	printf("Binding Socket...\n");
     bind(s ,(struct sockaddr*)&server , sizeof(server));
     printf("Complete\n\n");
     printf("Listening for Messages:\n");
 }
 
-void networkListen() {
+void Network::listen() {
     fflush(stdout);
     memset(buf,'\0', BUFLEN);
      
@@ -41,8 +41,7 @@ void networkListen() {
     newestMessage = buf;
 
     if (newestMessage == "connect") {
-        networkStartUpdate();
-
+        start = false;
         clientListSize += 1;
         clientList.push_back({tempClient.address, tempClient.addrLength, clientListSize});
 
@@ -78,41 +77,28 @@ void networkListen() {
     printf("%s\n" , buf);
 }
 
-void networkStartUpdate() {
-	HANDLE thread;  
-    unsigned threadID;
-    thread = (HANDLE)_beginthreadex(NULL, 0, updateThread, 0, 0, &threadID);
+void Network::updateThread() {
+    if (!start && clientListSize > 0) {
+        std::clock_t initial;
+        if (startTimer = -1) { startTimer = std::clock(); }
+
+        if ((std::clock() - initial) / (double)CLOCKS_PER_SEC > 5) {
+            startTimer = -1;
+            start = true;
+
+            for (Client client : clientList) {
+                str = "advert->start";
+                sendMessage(&str[0u], client);
+            }
+        }
+    }
 }
 
-unsigned __stdcall updateThread(void* data) {
-	std::clock_t initial = std::clock();
-	double duration = 0;
-	int tempSize = clientListSize;
-
-	start = false;
-
-	while (tempSize == clientListSize) {
-		if (!start) {
-			duration = (std::clock() - initial) / (double)CLOCKS_PER_SEC;
-			if (duration > 5) {
-				start = true;
-				for (Client client : clientList) {
-					str = "advert->start";
-	                sendMessage(&str[0u], client);
-	            }
-			}
-		}
-	}
-
-    _endthreadex(0);
-	return 0;
-}
-
-void networkClose() {
+void Network::close() {
 	closesocket(s);
     WSACleanup();
 }
 
-void sendMessage(char message[], Client client) {
+void Network::sendMessage(char message[], Client client) {
     sendto(s, message, strlen(message), 0, (struct sockaddr *) &client.address, client.addrLength);
 }

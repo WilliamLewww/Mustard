@@ -5,6 +5,7 @@
 #include <string>
 #include <stdio.h>
 #include <winsock2.h>
+#include <process.h>
 #include "client.h"
 
 #pragma comment(lib,"ws2_32.lib")
@@ -12,33 +13,35 @@
 #define BUFLEN 512
 #define PORT 8888
 
-class Network {
-private:
-	bool start = false;
-	
-	int seed;
-	Client tempClient;
-	std::vector<Client> clientList;
-	int clientListSize = 0;
+static HANDLE thread;
 
-	std::string newestMessage;
+static std::string str;
 
-	SOCKET s;
-	struct sockaddr_in server, si_other;
-	int slen , recv_len;
-	char buf[BUFLEN];
-	WSADATA wsa;
+static bool start = false;
+static int seed;
 
-	void initializeWinsock();
-	void createSocket();
-	void bindSocket();
-	void generateSeed();
-	
-	void processMessage(std::string message);
+static Client tempClient;
+static std::vector<Client> clientList;
+static int clientListSize = 0;
 
-	void sendMessage(char message[], Client client);
-public:
-	void initialize();
-	void listen();
-	void close();
-};
+static std::string newestMessage;
+
+static SOCKET s;
+static struct sockaddr_in server, si_other;
+static int slen , recv_len;
+static char buf[BUFLEN];
+static WSADATA wsa;
+
+void networkInitializeWinsock();
+void networkCreateSocket();
+void networkBindSocket();
+void networkGenerateSeed();
+
+void networkStartUpdate();
+unsigned __stdcall updateThread(void* data);
+
+void networkInitialize();
+void networkListen();
+void networkClose();
+
+void sendMessage(char message[], Client client);
