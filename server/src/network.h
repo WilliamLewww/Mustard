@@ -15,7 +15,7 @@
 
 static HANDLE thread;
 
-static std::string str;
+static std::string sendStr;
 
 static bool start = false;
 static int seed;
@@ -39,6 +39,8 @@ void networkGenerateSeed();
 
 void networkStartUpdate();
 unsigned __stdcall updateThread(void* data);
+
+Client *getClientFromID(int ID);
 
 void networkInitialize();
 void networkListen();

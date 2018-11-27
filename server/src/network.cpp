@@ -43,39 +43,68 @@ void networkListen() {
     if (newestMessage == "connect") {
         networkStartUpdate();
 
+        tempClient.uniqueID = clientListSize;
         clientListSize += 1;
-        clientList.push_back({tempClient.address, tempClient.addrLength, clientListSize});
+        clientList.emplace_back(tempClient);
 
         sendMessage((char*)"connect", tempClient);
 
-        str = "reply->seed:" + std::to_string(seed);
-        sendMessage(&str[0u], tempClient);
+        sendStr = "reply->unique_id:" + std::to_string(tempClient.uniqueID);
+        sendMessage(&sendStr[0u], tempClient);
 
-        str = "reply->rain_seed:" + std::to_string(time(NULL));
-        sendMessage(&str[0u], tempClient);
+        sendStr = "reply->seed:" + std::to_string(seed);
+        sendMessage(&sendStr[0u], tempClient);
 
-        str = "reply->player_count:" + std::to_string(clientListSize);
-        sendMessage(&str[0u], tempClient);
-
-        str = "reply->reset_full";
-        sendMessage(&str[0u], tempClient);
+        sendStr = "reply->rain_seed:" + std::to_string(time(NULL));
+        sendMessage(&sendStr[0u], tempClient);
 
         for (Client client : clientList) {
             if (!clientEquals(tempClient, client)) {
-                str = "advert->new_client:" + std::to_string(clientListSize);
-                sendMessage(&str[0u], client);
+                sendStr = "advert->new_client:" + std::to_string(client.uniqueID);
+                sendMessage(&sendStr[0u], tempClient);
 
-                str = "advert->rain_seed:" + std::to_string(time(NULL));
-                sendMessage(&str[0u], tempClient);
+                sendStr = "advert->new_client:" + std::to_string(tempClient.uniqueID);
+                sendMessage(&sendStr[0u], client);
 
-                str = "advert->reset_full";
-                sendMessage(&str[0u], client);
+                sendStr = "advert->rain_seed:" + std::to_string(time(NULL));
+                sendMessage(&sendStr[0u], client);
+
+                sendStr = "advert->reset_full";
+                sendMessage(&sendStr[0u], client);
             }
         }
+
+        sendStr = "reply->reset_full";
+        sendMessage(&sendStr[0u], tempClient);
+    }
+
+    if (newestMessage.substr(0, 10).compare("board_data") == 0) {
+        std::string tempMessage(newestMessage.substr(newestMessage.find(':') + 1));
+
+        int id = std::stoi(newestMessage.substr(newestMessage.find(':') + 1));
+        newestMessage = newestMessage.substr(newestMessage.find(':') + 1);
+
+        getClientFromID(id)->position.x = std::stod(newestMessage.substr(newestMessage.find(':') + 1));
+        newestMessage = newestMessage.substr(newestMessage.find(':') + 1);
+
+        getClientFromID(id)->position.y = std::stod(newestMessage.substr(newestMessage.find(':') + 1));
+        newestMessage = newestMessage.substr(newestMessage.find(':') + 1);
+
+        getClientFromID(id)->angle = std::stod(newestMessage.substr(newestMessage.find(':') + 1));
     }
      
     printf("%s:%d: ", inet_ntoa(tempClient.address.sin_addr), ntohs(tempClient.address.sin_port));
     printf("%s\n" , buf);
+}
+
+Client *getClientFromID(int ID) {
+    for (Client &client : clientList) {
+        if (client.uniqueID == ID) {
+            return &client;
+        }
+    }
+
+    return nullptr;
 }
 
 void networkStartUpdate() {
@@ -97,8 +126,8 @@ unsigned __stdcall updateThread(void* data) {
 			if (duration > 5) {
 				start = true;
 				for (Client client : clientList) {
-					str = "advert->start";
-	                sendMessage(&str[0u], client);
+					sendStr = "advert->start";
+	                sendMessage(&sendStr[0u], client);
 	            }
 			}
 		}

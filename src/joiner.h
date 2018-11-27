@@ -3,7 +3,7 @@
 #include "core\configuration.h"
 #include "core\gui.h"
 #include "core\file.h"
-#include "core\network.h"
+#include "network\n_joiner.h"
 #include "hud\hud.h"
 #include "effects\particle_manager.h"
 #include "effects\screen_filter.h"
@@ -18,8 +18,7 @@ private:
 	Board board;
 	HUD hud;
 
-	bool netStart = false;
-	char ipAddress[512] = "127.0.0.1";
+	NJoiner nJoiner;
 
 	int checkpointCount = 15;
 	int tempHUDCheckpoint = 0;
@@ -59,9 +58,6 @@ private:
 
 	void handleDevMode();
 	void handleStartInput();
-
-	void handleNetwork();
-	void initialNetworkMessage();
 
 	void handleBoardCollision();
 

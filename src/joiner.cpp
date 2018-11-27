@@ -22,6 +22,7 @@ namespace ImGui {
 Joiner joiner;
 
 void Joiner::initialize() {
+	nJoiner.linkBoard(&board);
 	profile.initialize();
 	handleConfig();
 
@@ -170,11 +171,11 @@ void Joiner::update() {
 	if (devMode) { handleDevMode(); }
 
 	handleStartInput();
-	handleNetwork();
+	if (nJoiner.handleNetwork(seed, rainSeed)) { resetFull(); }
 
 	//std::cout << netConnected << ":" << netStart << std::endl;
 
-	if ((!isPaused && isKeyStart && !netConnected) || (netConnected && netStart)) {
+	if ((!isPaused && isKeyStart && !netConnected) || (netConnected && nJoiner.netStart)) {
 		if (!isCrashed) { board.update(speedZone, trackDirection); }
 		screenFilter.update();
 		particleManager.update();
@@ -222,6 +223,7 @@ void Joiner::draw() {
 	glTranslatef(-camera.getPosition().x + (configuration.getScreenWidth() / 2) - (board.bitmapPolygon.getWidth() / 2), -camera.getPosition().y + (configuration.getScreenHeight() / 2) - (board.bitmapPolygon.getHeight() / 2), 0);
 	world.draw();
 	board.drawThaneLines();
+	nJoiner.draw();
 	if (!isCrashed || stillShowBoard) { board.draw(); }
 	particleManager.draw();
 	glPopMatrix();
@@ -403,13 +405,13 @@ void Joiner::handleNetworkMenu() {
 		isPaused = true;
 		ImGui::SetNextWindowSizeConstraints(ImVec2(250, 155), ImVec2(250, 155));
 		ImGui::Begin("Network", &showTrackEdit, ImGuiWindowFlags_NoResize);
-		ImGui::InputText("IP Address", ipAddress, IM_ARRAYSIZE(ipAddress));
+		ImGui::InputText("IP Address", nJoiner.ipAddress, IM_ARRAYSIZE(nJoiner.ipAddress));
 		if (netConnected) { ImGui::TextColored(ImVec4(0,1,0,1), "Connected"); }
 		else { ImGui::TextColored(ImVec4(1,0,0,1), "Disconnected"); }
 
 		if (!netConnected) {
 			if (ImGui::Button("Connect")) {
-				initialNetworkMessage();
+				nJoiner.initialNetworkMessage();
 			}
 		}
 		else {
@@ -419,66 +421,6 @@ void Joiner::handleNetworkMenu() {
 			}
 		}
 		ImGui::End();
-	}
-}
-
-void Joiner::initialNetworkMessage() {
-	initializeWinsock((char *)ipAddress);
-
-	sendMessage((char *)"connect");
-	receiveInitialMessage();
-	if (replyList[0].compare("connect") == 0) {
-		replyList.erase(replyList.begin());
-		netConnected = true;
-		receiveMessage();
-	}
-}
-
-void Joiner::handleNetwork() {
-	if (netConnected) {
-		if (replyList.size() > 0) {
-			if (replyList[0].substr(0, 4).compare("seed") == 0) {
-				seed = std::stoi(replyList[0].substr(replyList[0].find(':') + 1));
-				replyList.erase(replyList.begin());
-			}
-
-			if (replyList[0].substr(0, 9).compare("rain_seed") == 0) {
-				rainSeed = std::stoi(replyList[0].substr(replyList[0].find(':') + 1));
-				replyList.erase(replyList.begin());
-			}
-
-			if (replyList[0].substr(0, 12).compare("player_count") == 0) {
-				replyList.erase(replyList.begin());
-			}
-
-			if (replyList[0].substr(0, 10).compare("reset_full") == 0) {
-				netStart = false;
-				resetFull();
-				replyList.erase(replyList.begin());
-			}
-		}
-
-		if (advertList.size() > 0) {
-			if (advertList[0].substr(0, 9).compare("rain_seed") == 0) {
-				rainSeed = std::stoi(advertList[0].substr(advertList[0].find(':') + 1));
-				advertList.erase(advertList.begin());
-			}
-
-			if (advertList[0].substr(0, 10).compare("new_client") == 0) {
-				advertList.erase(advertList.begin());
-			}
-
-			if (advertList[0].substr(0, 10).compare("reset_full") == 0) {
-				netStart = false;
-				resetFull();
-				advertList.erase(advertList.begin());
-			}
-
-			if (advertList[0].substr(0, 5).compare("start") == 0) {
-				netStart = true;
-				advertList.erase(advertList.begin());
-			}
-		}
 	}
 }
 
