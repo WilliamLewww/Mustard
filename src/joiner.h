@@ -3,6 +3,7 @@
 #include "core\configuration.h"
 #include "core\gui.h"
 #include "core\file.h"
+#include "core\timer.h"
 #include "network\n_joiner.h"
 #include "hud\hud.h"
 #include "effects\particle_manager.h"
@@ -19,6 +20,7 @@ private:
 	HUD hud;
 
 	NJoiner nJoiner;
+	float netTimer = 0;
 
 	int checkpointCount = 15;
 	int tempHUDCheckpoint = 0;

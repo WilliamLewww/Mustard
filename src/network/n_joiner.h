@@ -18,8 +18,9 @@ public:
 	char ipAddress[512] = "127.0.0.1";
 
 	void linkBoard(Board *board);
+	void update();
 	void draw();
 	void sendPosition();
-	bool handleNetwork(int &seed, int &rainSeed);
+	bool handleNetwork(int *seed, int *rainSeed);
 	void initialNetworkMessage();
 };

@@ -10,6 +10,22 @@ Vector2::Vector2(double xArgs, double yArgs) {
 	y = yArgs;
 }
 
+int Vector2::getSignX() {
+	if (x < 0) {
+		return -1;
+	}
+
+	return 1;
+}
+
+int Vector2::getSignY() {
+	if (y < 0) {
+		return -1;
+	}
+
+	return 1;
+}
+
 Vector2 Vector2::get() {
 	return Vector2(x, y);
 }

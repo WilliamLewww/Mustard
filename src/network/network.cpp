@@ -1,8 +1,8 @@
 #include "network.h"
 
 bool netConnected;
-std::vector<std::string> replyList;
-std::vector<std::string> advertList;
+std::queue<std::string> replyList;
+std::queue<std::string> advertList;
 
 unsigned __stdcall receiveMessageThread(void* data);
 unsigned __stdcall initialMessageTimeout(void* data);
@@ -48,10 +48,11 @@ unsigned __stdcall receiveMessageThread(void* data) {
 		memset(buf, '\0', BUFLEN);
 		recvfrom(s, buf, BUFLEN, 0, (struct sockaddr *) &server, &slen);
 		std::string message(buf);
-		std::cout << message << std::endl;
+		
+		shoutMessage(message);
 
-		if (message.substr(0, 5).compare("reply") == 0) { replyList.push_back(message.substr(message.find('>') + 1)); }
-		else if (message.substr(0, 6).compare("advert") == 0) { advertList.push_back(message.substr(message.find('>') + 1)); }
+		if (message.substr(0, 5).compare("reply") == 0) { replyList.push(message.substr(message.find('>') + 1)); }
+		else if (message.substr(0, 6).compare("advert") == 0) { advertList.push(message.substr(message.find('>') + 1)); }
 	}
 
 	_endthreadex(0);
@@ -60,9 +61,15 @@ unsigned __stdcall receiveMessageThread(void* data) {
 
 unsigned __stdcall initialMessageTimeout(void* data) {
 	recvfrom(s, buf, BUFLEN, 0, (struct sockaddr *)&server, &slen);
-	replyList.push_back(buf);
-	std::cout << replyList[0] << std::endl;
+	replyList.push(buf);
+	std::cout << replyList.front() << std::endl;
 
 	_endthreadex(0);
 	return 0;
+}
+
+void shoutMessage(std::string message) {
+	if (message.substr(0, 19).compare("advert->board_data:") != 0) {
+		std::cout << message << std::endl;
+	}
 }

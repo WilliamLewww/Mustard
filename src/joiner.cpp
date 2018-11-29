@@ -171,11 +171,16 @@ void Joiner::update() {
 	if (devMode) { handleDevMode(); }
 
 	handleStartInput();
-	if (nJoiner.handleNetwork(seed, rainSeed)) { resetFull(); }
-
-	//std::cout << netConnected << ":" << netStart << std::endl;
+	nJoiner.update();
+	if (nJoiner.handleNetwork(&seed, &rainSeed)) { resetFull(); }
 
 	if ((!isPaused && isKeyStart && !netConnected) || (netConnected && nJoiner.netStart)) {
+		if (netTimer > 0.2) {
+			nJoiner.sendPosition();
+			netTimer = 0;
+		}
+		else { netTimer += timer.getTimeSeconds(); }
+
 		if (!isCrashed) { board.update(speedZone, trackDirection); }
 		screenFilter.update();
 		particleManager.update();

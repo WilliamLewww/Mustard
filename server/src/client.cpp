@@ -12,3 +12,7 @@ bool clientEquals(Client a, Client b) {
 
 	return false;
 }
+
+void coutClient(Client client) {
+	std::cout << "Client #" << client.uniqueID << ": [" << client.position << "], " << client.angle << std::endl;
+}

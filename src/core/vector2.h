@@ -9,6 +9,8 @@ public:
 	Vector2(double xArgs, double yArgs);
 	void expand(double xArgs, double yArgs);
 	void shrink(double xArgs, double yArgs);
+	int getSignX();
+	int getSignY();
 	double max();
 	double min();
 	Vector2 get();

@@ -1,6 +1,6 @@
 #pragma once
 #include <winsock2.h>
-#include <vector>
+#include <queue>
 #include <string>
 #include <ctime>
 #include <iostream>
@@ -20,12 +20,13 @@ static char buf[BUFLEN];
 static bool messageReceived;
 
 extern bool netConnected;
-extern std::vector<std::string> replyList;
-extern std::vector<std::string> advertList;
+extern std::queue<std::string> replyList;
+extern std::queue<std::string> advertList;
 
 void initializeWinsock(char IP[]);
 void closeWinsock();
 void sendMessage(char message[]);
+void shoutMessage(std::string message);
 
 void receiveMessage();
 void receiveInitialMessage();

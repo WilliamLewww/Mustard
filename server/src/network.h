@@ -16,6 +16,7 @@
 static HANDLE thread;
 
 static std::string sendStr;
+static std::string threadSendStr;
 
 static bool start = false;
 static int seed;

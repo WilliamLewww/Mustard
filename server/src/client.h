@@ -15,3 +15,5 @@ struct Client {
 
 void setClientData(Client &client, Vector2 position, double angle);
 bool clientEquals(Client a, Client b);
+
+void coutClient(Client client);
