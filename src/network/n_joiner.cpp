@@ -17,7 +17,7 @@ void NJoiner::draw() {
 }
 
 void NJoiner::sendPosition() {
-	sendStr = "board_data:" + std::to_string(uniqueID) + ":";
+	sendStr = "board_data:";
 	sendStr += std::to_string(board->bitmapPolygon.getPosition().x) + ":";
 	sendStr += std::to_string(board->bitmapPolygon.getPosition().y) + ":";
 	sendStr += std::to_string(board->bitmapPolygon.getAngle());

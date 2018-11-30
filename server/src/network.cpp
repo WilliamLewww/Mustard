@@ -34,69 +34,74 @@ void networkBindSocket() {
 }
 
 void networkListen() {
+	bool shoutMessage = true;
+	bool clientExists = false;
+
 	fflush(stdout);
 	memset(buf,'\0', BUFLEN);
 	 
 	recv_len = recvfrom(s, buf, BUFLEN, 0, (struct sockaddr *) &tempClient.address, &tempClient.addrLength);
 	newestMessage = buf;
 
-	bool shoutMessage = true;
-
-	if (newestMessage == "connect") {
-		networkStartUpdate();
-
-		tempClient.uniqueID = clientListSize;
-		clientListSize += 1;
-		clientList.emplace_back(tempClient);
-
-		sendMessage((char*)"connect", tempClient);
-
-		sendStr = "reply->unique_id:" + std::to_string(tempClient.uniqueID);
-		sendMessage(&sendStr[0u], tempClient);
-
-		sendStr = "reply->seed:" + std::to_string(seed);
-		sendMessage(&sendStr[0u], tempClient);
-
-		sendStr = "reply->rain_seed:" + std::to_string(time(NULL));
-		sendMessage(&sendStr[0u], tempClient);
-
-		for (Client client : clientList) {
-			if (!clientEquals(tempClient, client)) {
-				sendStr = "advert->new_client:" + std::to_string(client.uniqueID);
-				sendMessage(&sendStr[0u], tempClient);
-
-				sendStr = "advert->new_client:" + std::to_string(tempClient.uniqueID);
-				sendMessage(&sendStr[0u], client);
-
-				sendStr = "advert->rain_seed:" + std::to_string(time(NULL));
-				sendMessage(&sendStr[0u], client);
-
-				sendStr = "advert->reset_full";
-				sendMessage(&sendStr[0u], client);
-			}
+	for (Client &client : clientList) {
+		if (inet_ntoa(tempClient.address.sin_addr) == inet_ntoa(client.address.sin_addr) &&
+			ntohs(tempClient.address.sin_port) == ntohs(client.address.sin_port)) {
+			knownClient = &client;
+			clientExists = true;
 		}
-
-		sendStr = "reply->reset_full";
-		sendMessage(&sendStr[0u], tempClient);
 	}
 
-	if (newestMessage.substr(0, 10).compare("board_data") == 0) {
-		shoutMessage = false;
-		std::string tempMessage(newestMessage.substr(newestMessage.find(':') + 1));
+	if (clientExists == false) {
+		if (newestMessage == "connect") {
+			networkStartUpdate();
 
-		int id = std::stoi(tempMessage.substr(0, tempMessage.find(':')));
-		tempMessage = tempMessage.substr(tempMessage.find(':') + 1);
+			tempClient.uniqueID = clientListSize;
+			clientListSize += 1;
+			clientList.emplace_back(tempClient);
 
-		for (Client &client : clientList) {
-			if (client.uniqueID == id) {
-				client.position.x = std::stod(tempMessage.substr(0, tempMessage.find(':')));
-				tempMessage = tempMessage.substr(tempMessage.find(':') + 1);
+			sendMessage((char*)"connect", tempClient);
 
-				client.position.y = std::stod(tempMessage.substr(0, tempMessage.find(':')));
-				tempMessage = tempMessage.substr(tempMessage.find(':') + 1);
+			sendStr = "reply->unique_id:" + std::to_string(tempClient.uniqueID);
+			sendMessage(&sendStr[0u], tempClient);
 
-				client.angle = std::stod(tempMessage);
+			sendStr = "reply->seed:" + std::to_string(seed);
+			sendMessage(&sendStr[0u], tempClient);
+
+			sendStr = "reply->rain_seed:" + std::to_string(time(NULL));
+			sendMessage(&sendStr[0u], tempClient);
+
+			for (Client client : clientList) {
+				if (!clientEquals(tempClient, client)) {
+					sendStr = "advert->new_client:" + std::to_string(client.uniqueID);
+					sendMessage(&sendStr[0u], tempClient);
+
+					sendStr = "advert->new_client:" + std::to_string(tempClient.uniqueID);
+					sendMessage(&sendStr[0u], client);
+
+					sendStr = "advert->rain_seed:" + std::to_string(time(NULL));
+					sendMessage(&sendStr[0u], client);
+
+					sendStr = "advert->reset_full";
+					sendMessage(&sendStr[0u], client);
+				}
 			}
+
+			sendStr = "reply->reset_full";
+			sendMessage(&sendStr[0u], tempClient);
+		}
+	}
+	else {
+		if (newestMessage.substr(0, 10).compare("board_data") == 0) {
+			shoutMessage = false;
+			std::string tempMessage(newestMessage.substr(newestMessage.find(':') + 1));
+
+			knownClient->position.x = std::stod(tempMessage.substr(0, tempMessage.find(':')));
+			tempMessage = tempMessage.substr(tempMessage.find(':') + 1);
+
+			knownClient->position.y = std::stod(tempMessage.substr(0, tempMessage.find(':')));
+			tempMessage = tempMessage.substr(tempMessage.find(':') + 1);
+
+			knownClient->angle = std::stod(tempMessage);
 		}
 	}
 	

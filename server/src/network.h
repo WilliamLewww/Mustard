@@ -21,7 +21,7 @@ static std::string threadSendStr;
 static bool start = false;
 static int seed;
 
-static Client tempClient;
+static Client tempClient, *knownClient;
 static std::vector<Client> clientList;
 static int clientListSize = 0;
 
