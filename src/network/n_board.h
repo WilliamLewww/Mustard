@@ -18,6 +18,8 @@ private:
 	double angle;
 	double angleSpeed = 0;
 	std::queue<double> angleList;
+
+	float startTime = 0, endTime = 0;
 public:
 	inline int getID() { return ID; };
 	inline Vector2 getPosition() { return position; };

@@ -38,7 +38,7 @@ void Drawing::drawPoint(Vector2 position, int color[3], int alpha) {
 	glEnd();
 }
 
-void Drawing::drawEdgesOfRect(Vector2 position, int width, int height, double angle, int color[3]) {
+void Drawing::drawRectOutline(Vector2 position, int width, int height, double angle) {
 	Vector2 vectors[4]{
 		Vector2(0, 0),
 		Vector2(1, 0),
@@ -52,7 +52,7 @@ void Drawing::drawEdgesOfRect(Vector2 position, int width, int height, double an
 	glRotatef(-angle, 0, 0, 1);
 	glTranslatef(-(position.x + (width / 2) - (configuration.getScreenWidth() / 2)), -(position.y + (height / 2) - (configuration.getScreenHeight() / 2)), 0);
 	glBegin(GL_POINTS);
-	glColor4f(convertColorFloatToRGB(color[0]), convertColorFloatToRGB(color[1]), convertColorFloatToRGB(color[2]), 1);
+	glColor4f(1, 1, 1, 1);
 	for (int x = 0; x < 4; x++) {
 		vectors[x].x *= width;
 		vectors[x].y *= height;

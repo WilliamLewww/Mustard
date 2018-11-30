@@ -98,6 +98,12 @@ void Joiner::reset(bool crashed, bool crashedParticles = true) {
 void Joiner::resetFull() {
 	pushConfigurations();
 
+	if (netConnected) { srand(rainSeed); }
+	else { srand(time(NULL)); }
+	
+	if (toggleRain || rand() % 4 == 0) { isRaining = true; }
+	else { isRaining = false; }
+
 	if (randomTrackSeed == true) { joiner.seed = time(NULL); }
 	srand(seed);
 
@@ -107,14 +113,6 @@ void Joiner::resetFull() {
 	isKeyStart = false;
 	board = Board();
 	world = World();
-
-	if (netConnected) { srand(rainSeed); }
-	else { srand(time(NULL)); }
-	
-	if (toggleRain || rand() % 4 == 0) { isRaining = true; }
-	else { isRaining = false; }
-
-	srand(seed);
 
 	hud = HUD();
 	initializeWorld();
@@ -175,7 +173,7 @@ void Joiner::update() {
 	if (nJoiner.handleNetwork(&seed, &rainSeed)) { resetFull(); }
 
 	if ((!isPaused && isKeyStart && !netConnected) || (netConnected && nJoiner.netStart)) {
-		if (netTimer > 0.2) {
+		if (netTimer > 0.1) {
 			nJoiner.sendPosition();
 			netTimer = 0;
 		}

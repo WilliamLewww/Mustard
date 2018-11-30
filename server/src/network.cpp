@@ -133,7 +133,7 @@ unsigned __stdcall updateThread(void* data) {
 		else {
 			duration = (std::clock() - initial) / (double)CLOCKS_PER_SEC;
 
-			if (duration > 0.3) {
+			if (duration > 0.2) {
 				for (int x = 0; x < clientList.size(); x++) {
 					for (int y = 0; y < clientList.size(); y++) {
 						if (x != y) {

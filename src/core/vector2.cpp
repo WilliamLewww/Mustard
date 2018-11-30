@@ -93,6 +93,11 @@ Vector2 Vector2::operator*(double value) {
 	return newVector;
 }
 
+Vector2 Vector2::operator/(double value) {
+	Vector2 newVector(x / value, y / value);
+	return newVector;
+}
+
 Vector2 Vector2::operator+(Vector2 vector) {
 	return Vector2(x + vector.x, y + vector.y);
 }

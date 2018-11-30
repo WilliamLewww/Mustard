@@ -4,6 +4,8 @@ NBoard::NBoard(int ID) {
 	this->ID = ID;
 
 	positionSpeed = Vector2(0, 0);
+	startTime = timer.getTotalTimeSeconds();
+	endTime = timer.getTotalTimeSeconds();
 }
 
 void NBoard::addDataFromString(std::string data) {
@@ -18,12 +20,15 @@ void NBoard::addDataFromString(std::string data) {
 
 	positionList.push(tempPosition);
 	angleList.push(std::stod(tempMessage));
+
+	startTime = endTime;
+	endTime = timer.getTotalTimeSeconds();
 }
 
 void NBoard::update() {
 	if (!angleList.empty()) {
 		if (angleSpeed == 0) {
-			angleSpeed = angleList.front() - angle;
+			angleSpeed = (angleList.front() - angle) * (timer.getTimeSeconds() / (endTime - startTime));
 		}
 
 		if ((angle < angleList.front() + 2.5 && angleSpeed <= 0) || (angle > angleList.front() - 2.5 && angleSpeed >= 0)) {
@@ -31,13 +36,13 @@ void NBoard::update() {
 			angleList.pop();
 		}
 		else {
-			angle += (angleSpeed * 4.5) * timer.getTimeSeconds();
+			angle += angleSpeed;
 		}
 	}
 
 	if (!positionList.empty()) {
 		if (positionSpeed.x == 0 && positionSpeed.y == 0) {
-			positionSpeed = positionList.front() - position;
+			positionSpeed = (positionList.front() - position) * (timer.getTimeSeconds() / (endTime - startTime));
 		}
 
 		if (((position.x < positionList.front().x + 2.5 && positionSpeed.x <= 0) || (position.x > positionList.front().x - 2.5 && positionSpeed.x >= 0)) &&
@@ -46,7 +51,7 @@ void NBoard::update() {
 			positionList.pop();
 		}
 		else {
-			position += (positionSpeed * 4.5) * timer.getTimeSeconds();
+			position += positionSpeed;
 		}
 	}
 }
