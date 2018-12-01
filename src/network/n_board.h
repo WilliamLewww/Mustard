@@ -16,21 +16,22 @@ private:
 	std::queue<Vector2> positionList;
 	
 	double angle;
-	double angleSpeed = 0;
+	double angleSpeed;
 	std::queue<double> angleList;
 
 	float startTime = 0, endTime = 0;
+	bool isAlive = false;
 public:
 	inline int getID() { return ID; };
 	inline Vector2 getPosition() { return position; };
 	inline double getAngle() { return angle; };
 	inline int getWidth() { return width; };
 	inline int getHeight() { return height; };
+	inline void setAlive(bool isAlive) { this->isAlive = isAlive; };
 
 	NBoard(int ID);
 
 	void addDataFromString(std::string data);
-
 	void update();
 	void draw();
 };

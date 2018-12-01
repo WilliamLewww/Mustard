@@ -3,7 +3,10 @@
 NBoard::NBoard(int ID) {
 	this->ID = ID;
 
+	position = Vector2(0, 0);
 	positionSpeed = Vector2(0, 0);
+	angle = 0;
+	angleSpeed = 0;
 	startTime = timer.getTotalTimeSeconds();
 	endTime = timer.getTotalTimeSeconds();
 }
@@ -11,18 +14,30 @@ NBoard::NBoard(int ID) {
 void NBoard::addDataFromString(std::string data) {
 	std::string tempMessage(data);
 
-	Vector2 tempPosition;
-	tempPosition.x = std::stod(tempMessage.substr(0, tempMessage.find(':')));
-	tempMessage = tempMessage.substr(tempMessage.find(':') + 1);
+	if (!isAlive) {
+		position = Vector2(0, 0);
+		positionSpeed = Vector2(0, 0);
+		angle = 0;
+		angleSpeed = 0;
+		startTime = timer.getTotalTimeSeconds();
+		endTime = timer.getTotalTimeSeconds();
 
-	tempPosition.y = std::stod(tempMessage.substr(0, tempMessage.find(':')));
-	tempMessage = tempMessage.substr(tempMessage.find(':') + 1);
+		isAlive = true;
+	}
+	else {
+		Vector2 tempPosition;
+		tempPosition.x = std::stod(tempMessage.substr(0, tempMessage.find(':')));
+		tempMessage = tempMessage.substr(tempMessage.find(':') + 1);
 
-	positionList.push(tempPosition);
-	angleList.push(std::stod(tempMessage));
+		tempPosition.y = std::stod(tempMessage.substr(0, tempMessage.find(':')));
+		tempMessage = tempMessage.substr(tempMessage.find(':') + 1);
 
-	startTime = endTime;
-	endTime = timer.getTotalTimeSeconds();
+		positionList.push(tempPosition);
+		angleList.push(std::stod(tempMessage));
+
+		startTime = endTime;
+		endTime = timer.getTotalTimeSeconds();
+	}
 }
 
 void NBoard::update() {

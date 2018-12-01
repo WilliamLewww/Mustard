@@ -93,6 +93,8 @@ void networkListen() {
 	else {
 		if (newestMessage.substr(0, 10).compare("board_data") == 0) {
 			shoutMessage = false;
+
+			knownClient->isAlive = true;
 			std::string tempMessage(newestMessage.substr(newestMessage.find(':') + 1));
 
 			knownClient->position.x = std::stod(tempMessage.substr(0, tempMessage.find(':')));
@@ -102,6 +104,23 @@ void networkListen() {
 			tempMessage = tempMessage.substr(tempMessage.find(':') + 1);
 
 			knownClient->angle = std::stod(tempMessage);
+		}
+
+		if (newestMessage.substr(0, 4).compare("kill") == 0) {
+			knownClient->isAlive = false;
+
+			for (Client client : clientList) {
+				if (!clientEquals(*knownClient, client)) {
+					sendStr = "advert->board_data:" + std::to_string(knownClient->uniqueID) + ":";
+					sendStr += std::to_string(knownClient->position.x) + ":";
+					sendStr += std::to_string(knownClient->position.y) + ":";
+					sendStr += std::to_string(knownClient->angle);
+					sendMessage(&sendStr[0u], client);
+
+					sendStr = "advert->kill:" + std::to_string(knownClient->uniqueID);
+					sendMessage(&sendStr[0u], client);
+				}
+			}
 		}
 	}
 	
@@ -140,14 +159,16 @@ unsigned __stdcall updateThread(void* data) {
 
 			if (duration > 0.2) {
 				for (int x = 0; x < clientList.size(); x++) {
-					for (int y = 0; y < clientList.size(); y++) {
-						if (x != y) {
-							threadSendStr = "advert->board_data:" + std::to_string(clientList[x].uniqueID) + ":";
-							threadSendStr += std::to_string(clientList[x].position.x) + ":";
-							threadSendStr += std::to_string(clientList[x].position.y) + ":";
-							threadSendStr += std::to_string(clientList[x].angle);
+					if (clientList[x].isAlive) {
+						for (int y = 0; y < clientList.size(); y++) {
+							if (x != y) {
+								threadSendStr = "advert->board_data:" + std::to_string(clientList[x].uniqueID) + ":";
+								threadSendStr += std::to_string(clientList[x].position.x) + ":";
+								threadSendStr += std::to_string(clientList[x].position.y) + ":";
+								threadSendStr += std::to_string(clientList[x].angle);
 
-							sendMessage(&threadSendStr[0u], clientList[y]);
+								sendMessage(&threadSendStr[0u], clientList[y]);
+							}
 						}
 					}
 				}

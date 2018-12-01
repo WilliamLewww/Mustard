@@ -13,6 +13,9 @@ private:
 	Board *board;
 	std::string sendStr;
 	std::vector<NBoard> nBoardList;
+
+	bool handleReply(int *seed, int *rainSeed);
+	bool handleAdvert(int *rainSeed);
 public:
 	bool netStart = false;
 	char ipAddress[512] = "127.0.0.1";

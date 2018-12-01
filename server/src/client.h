@@ -11,6 +11,8 @@ struct Client {
 
 	Vector2 position;
 	double angle;
+
+	bool isAlive = false;
 };
 
 void setClientData(Client &client, Vector2 position, double angle);

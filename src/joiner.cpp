@@ -81,6 +81,8 @@ void Joiner::reset(bool crashed, bool crashedParticles = true) {
 
 		if (crashedParticles) {
 			particleManager.generateCrashParticles(20, board.bitmapPolygon.getCenter());
+			nJoiner.sendPosition();
+			sendMessage((char*)"kill");
 		}
 		else { stillShowBoard = true; }
 	}
@@ -173,11 +175,14 @@ void Joiner::update() {
 	if (nJoiner.handleNetwork(&seed, &rainSeed)) { resetFull(); }
 
 	if ((!isPaused && isKeyStart && !netConnected) || (netConnected && nJoiner.netStart)) {
-		if (netTimer > 0.1) {
-			nJoiner.sendPosition();
-			netTimer = 0;
+
+		if (!isCrashed) {
+			if (netTimer > 0.1) {
+				nJoiner.sendPosition();
+				netTimer = 0;
+			}
+			else { netTimer += timer.getTimeSeconds(); }
 		}
-		else { netTimer += timer.getTimeSeconds(); }
 
 		if (!isCrashed) { board.update(speedZone, trackDirection); }
 		screenFilter.update();
