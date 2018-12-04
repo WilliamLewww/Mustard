@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include <vector>
 #include <bass.h>
 #include <bass_fx.h>
@@ -12,10 +13,13 @@ public:
 
 	void playSoundFile(const char* file);
 
-	void playStream(int index);
-	void stopStream(int index);
-	void resetStream(int index);
-	int createStreamFromFile(const char* file);
+	int getStreamIsActive(HSTREAM stream);
+
+	void playStream(HSTREAM stream);
+	void stopStream(HSTREAM stream);
+	void resetStream(HSTREAM stream);
+	void removeStream(HSTREAM stream);
+	HSTREAM* createStreamFromFile(const char* file);
 	void changeStreamPitchSemitone(int index, float amount);
 };
 

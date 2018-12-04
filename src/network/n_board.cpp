@@ -1,5 +1,7 @@
 #include "n_board.h"
 
+int nBoardColor[2][3] = { {0,255,0}, {255,0,0} };
+
 NBoard::NBoard(int ID) {
 	this->ID = ID;
 
@@ -72,5 +74,10 @@ void NBoard::update() {
 }
 
 void NBoard::draw() {
-	drawing.drawRect(position, width, height, angle);
+	if (isAlive) {
+		drawing.drawRect(position, width, height, angle, nBoardColor[0]);
+	}
+	else {
+		drawing.drawRect(position, width, height, angle, nBoardColor[1]);
+	}
 }

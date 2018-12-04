@@ -12,7 +12,7 @@ void NJoiner::update() {
 
 void NJoiner::draw() {
 	for (NBoard nBoard : nBoardList) {
-		drawing.drawRect(nBoard.getPosition(), nBoard.getWidth(), nBoard.getHeight(), nBoard.getAngle());
+		nBoard.draw();
 	}
 }
 

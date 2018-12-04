@@ -12,7 +12,7 @@ void Network::generateSeed() {
 }
 
 void Network::initializeWinsock() {
-	printf("\nInitializing Winsock...\n");
+	printf("Initializing Winsock...\n");
 	slen = sizeof(tempClient.addrLength);
 	WSAStartup(MAKEWORD(2,2),&wsa);
 }
