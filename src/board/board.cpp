@@ -194,7 +194,7 @@ void Board::handleLeftTurn() {
 				shutdownSlide = true;
 
 				bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * 3));
-				movementAngle += getTurnSpeed() * elapsedTimeSeconds;
+				movementAngle += getTurnSpeed() * elapsedTimeSeconds * 0.85;
 			}
 		}
 		else {
@@ -220,7 +220,7 @@ void Board::handleLeftTurn() {
 					}
 					else {
 						bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * 3));
-						movementAngle += getTurnSpeed() * elapsedTimeSeconds * 1.25;
+						movementAngle += getTurnSpeed() * elapsedTimeSeconds;
 					}
 				}
 				else {
@@ -250,7 +250,7 @@ void Board::handleRightTurn() {
 				shutdownSlide = true;
 				
 				bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 3));
-				movementAngle -= getTurnSpeed() * elapsedTimeSeconds;
+				movementAngle -= getTurnSpeed() * elapsedTimeSeconds * 0.85;
 			}
 		}
 		else {
@@ -276,7 +276,7 @@ void Board::handleRightTurn() {
 					}
 					else {
 						bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 3));
-						movementAngle -= getTurnSpeed() * elapsedTimeSeconds * 1.25;
+						movementAngle -= getTurnSpeed() * elapsedTimeSeconds;
 					}
 				}
 				else {
@@ -496,6 +496,7 @@ void Board::reset() {
 	movementAngle = 0;
 	velocity = 0;
 	ridingSwitch = false;
+	canPendy = true, inPendy = false;
 }
 
 bool Board::checkProximity(Vector2 position) {
