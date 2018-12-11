@@ -12,6 +12,7 @@
 
 class Board {
 private:
+	int puckColor[3] = { 0, 179, 0 };
 	int thaneColor[3];
 
 	float elapsedTimeSeconds;
@@ -30,13 +31,13 @@ private:
 	bool slide = false, shutdownSlide = false, handDown = false;
 	bool turnLeft = false, turnRight = false;
 
-	bool canPendy = true;
-	bool inPendy = false;
+	bool canPendy = true, inPendy = false; 
 	bool pendyLeft = false, pendyRight = false;
 	double pendySpeedM = 0, pendySpeedV = 0;
+	double latestAngleM = 0, latestAngleV = 0;
 
 	double movementAngle = 0;
-	bool flipped = false;
+	bool ridingSwitch = false;
 
 	float wobbleMagnitude = 0;
 	float wobbleCycle = 0;
