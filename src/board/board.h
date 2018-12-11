@@ -34,7 +34,6 @@ private:
 	bool canPendy = true, inPendy = false; 
 	bool pendyLeft = false, pendyRight = false;
 	double pendySpeedM = 0, pendySpeedV = 0;
-	double latestAngleM = 0, latestAngleV = 0;
 
 	double movementAngle = 0;
 	bool ridingSwitch = false;

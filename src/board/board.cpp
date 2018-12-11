@@ -189,18 +189,12 @@ void Board::handleLeftTurn() {
 			if (forcedSlide) {
 				bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * (3 + forcedSlideMag)));
 				movementAngle += getTurnSpeed() * elapsedTimeSeconds / (1 + forcedSlideMag);
-
-				latestAngleV = getTurnSpeed() * (3 + forcedSlideMag);
-				latestAngleM = getTurnSpeed() / (1 + forcedSlideMag);
 			}
 			else {
 				shutdownSlide = true;
 
 				bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * 3));
 				movementAngle += getTurnSpeed() * elapsedTimeSeconds;
-
-				latestAngleV = getTurnSpeed() * 3;
-				latestAngleM = getTurnSpeed();
 			}
 		}
 		else {
@@ -210,16 +204,10 @@ void Board::handleLeftTurn() {
 				if (shutdownSlide == true) {
 					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * 5));
 					movementAngle += getTurnSpeed() * elapsedTimeSeconds / 3;
-
-					latestAngleV = getTurnSpeed() * 5;
-					latestAngleM = getTurnSpeed() / 3;
 				}
 				else {
 					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * 6));
 					movementAngle += getTurnSpeed() * elapsedTimeSeconds / 3;
-
-					latestAngleV = getTurnSpeed() * 6;
-					latestAngleM = getTurnSpeed() / 3;
 				}
 			}
 			else {
@@ -229,24 +217,15 @@ void Board::handleLeftTurn() {
 					if (forcedSlide && (input.checkKeyDown(SDLK_a) || input.checkButtonDown(2))) {
 						bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * (3 + forcedSlideMag)));
 						movementAngle += getTurnSpeed() * elapsedTimeSeconds / (1 + forcedSlideMag);
-
-						latestAngleV = getTurnSpeed() * (3 + forcedSlideMag);
-						latestAngleM = getTurnSpeed() / (1 + forcedSlideMag);
 					}
 					else {
 						bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * 3));
 						movementAngle += getTurnSpeed() * elapsedTimeSeconds * 1.25;
-
-						latestAngleV = getTurnSpeed() * 3;
-						latestAngleM = getTurnSpeed() * 1.25;
 					}
 				}
 				else {
 					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnRadius() * elapsedTimeSeconds));
 					movementAngle += getTurnRadius() * elapsedTimeSeconds;
-
-					latestAngleV = getTurnSpeed();
-					latestAngleM = getTurnSpeed();
 				}	
 			}
 		}
@@ -266,18 +245,12 @@ void Board::handleRightTurn() {
 			if (forcedSlide) {
 				bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * (3 + forcedSlideMag)));
 				movementAngle -= getTurnSpeed() * elapsedTimeSeconds / (1 + forcedSlideMag);
-
-				latestAngleV = getTurnSpeed() * (3 + forcedSlideMag);
-				latestAngleM = getTurnSpeed() / (1 + forcedSlideMag);
 			}
 			else {
 				shutdownSlide = true;
 				
 				bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 3));
 				movementAngle -= getTurnSpeed() * elapsedTimeSeconds;
-
-				latestAngleV = getTurnSpeed() * 3;
-				latestAngleM = getTurnSpeed();
 			}
 		}
 		else {
@@ -287,16 +260,10 @@ void Board::handleRightTurn() {
 				if (shutdownSlide == true) {
 					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 5));
 					movementAngle -= getTurnSpeed() * elapsedTimeSeconds / 3;
-
-					latestAngleV = getTurnSpeed() * 5;
-					latestAngleM = getTurnSpeed() / 3;
 				}
 				else {
 					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 6));
 					movementAngle -= getTurnSpeed() * elapsedTimeSeconds / 3;
-
-					latestAngleV = getTurnSpeed() * 6;
-					latestAngleM = getTurnSpeed() / 3;
 				}
 			}
 			else {
@@ -306,24 +273,15 @@ void Board::handleRightTurn() {
 					if (forcedSlide && (input.checkKeyDown(SDLK_a) || input.checkButtonDown(2))) {
 						bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * (3 + forcedSlideMag)));
 						movementAngle -= getTurnSpeed() * elapsedTimeSeconds / (1 + forcedSlideMag);
-
-						latestAngleV = getTurnSpeed() * (3 + forcedSlideMag);
-						latestAngleM = getTurnSpeed() / (1 + forcedSlideMag);
 					}
 					else {
 						bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 3));
 						movementAngle -= getTurnSpeed() * elapsedTimeSeconds * 1.25;
-
-						latestAngleV = getTurnSpeed() * 3;
-						latestAngleM = getTurnSpeed() * 1.25;
 					}
 				}
 				else {
 					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnRadius() * elapsedTimeSeconds));
 					movementAngle -= getTurnRadius() * elapsedTimeSeconds;
-
-					latestAngleV = getTurnSpeed();
-					latestAngleM = getTurnSpeed();
 				}
 			}
 		}
@@ -349,34 +307,34 @@ void Board::handleHandDown(double difference) {
 				pendyRight = true;
 				pendyLeft = false;
 				canPendy = false;
-				pendySpeedM = -latestAngleM; pendySpeedV = -latestAngleV;
+				pendySpeedM = -(getTurnSpeed() / 3); pendySpeedV = -(getTurnSpeed() * 6);
 			}
 			if (movementAngle < bitmapPolygon.getAngle() && abs(bitmapPolygon.getAngle() - movementAngle) > 60) {
 				inPendy = true;
 				pendyLeft = true;
 				pendyRight = false;
 				canPendy = false;
-				pendySpeedM = -latestAngleM; pendySpeedV = -latestAngleV;
+				pendySpeedM = -(getTurnSpeed() / 3.0); pendySpeedV = -(getTurnSpeed() * 6.0);
 			}
 		}
 		else {
 			if (pendyRight) { 
-				pendySpeedM += latestAngleM / 20.0;
-				pendySpeedV += latestAngleV / 30.0;
+				pendySpeedM += (getTurnSpeed() / 3.0) / 15.0;
+				pendySpeedV += (getTurnSpeed() * 6.0) / 30.0;
 
-				if (input.checkKeyDown(SDLK_RIGHT)) { pendySpeedV -= latestAngleV / 240.0; }
-				if (input.checkKeyDown(SDLK_LEFT)) { pendySpeedV += latestAngleV / 60.0; }
+				if (input.checkKeyDown(SDLK_RIGHT)) { pendySpeedV -= (getTurnSpeed() * 6.0) / 240.0; }
+				if (input.checkKeyDown(SDLK_LEFT)) { pendySpeedV += (getTurnSpeed() * 6.0) / 60.0; }
 
 				movementAngle += pendySpeedM * elapsedTimeSeconds;
 				bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (pendySpeedV * elapsedTimeSeconds));
 			}
 
 			if (pendyLeft) {
-				pendySpeedM += latestAngleM / 20.0;
-				pendySpeedV += latestAngleV / 30.0;
+				pendySpeedM += (getTurnSpeed() / 3.0) / 15.0;
+				pendySpeedV += (getTurnSpeed() * 6.0) / 30.0;
 
-				if (input.checkKeyDown(SDLK_LEFT)) { pendySpeedV -= latestAngleV / 240.0; }
-				if (input.checkKeyDown(SDLK_RIGHT)) { pendySpeedV += latestAngleV / 60.0; }
+				if (input.checkKeyDown(SDLK_LEFT)) { pendySpeedV -= (getTurnSpeed() * 6.0) / 240.0; }
+				if (input.checkKeyDown(SDLK_RIGHT)) { pendySpeedV += (getTurnSpeed() * 6.0) / 60.0; }
 
 				movementAngle -= pendySpeedM * elapsedTimeSeconds;
 				bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (pendySpeedV * elapsedTimeSeconds));
