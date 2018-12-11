@@ -319,22 +319,22 @@ void Board::handleHandDown(double difference) {
 		}
 		else {
 			if (pendyRight) { 
-				pendySpeedM += (getTurnSpeed() / 3.0) / 15.0;
+				pendySpeedM += (getTurnSpeed() / 3.0) / 12.0;
 				pendySpeedV += (getTurnSpeed() * 6.0) / 30.0;
 
 				if (input.checkKeyDown(SDLK_RIGHT)) { pendySpeedV -= (getTurnSpeed() * 6.0) / 240.0; }
-				if (input.checkKeyDown(SDLK_LEFT)) { pendySpeedV += (getTurnSpeed() * 6.0) / 60.0; }
+				if (input.checkKeyDown(SDLK_LEFT)) { pendySpeedV += (getTurnSpeed() * 6.0) / 60.0; pendySpeedM += (getTurnSpeed() / 3.0) / 60.0; }
 
 				movementAngle += pendySpeedM * elapsedTimeSeconds;
 				bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (pendySpeedV * elapsedTimeSeconds));
 			}
 
 			if (pendyLeft) {
-				pendySpeedM += (getTurnSpeed() / 3.0) / 15.0;
+				pendySpeedM += (getTurnSpeed() / 3.0) / 12.0;
 				pendySpeedV += (getTurnSpeed() * 6.0) / 30.0;
 
 				if (input.checkKeyDown(SDLK_LEFT)) { pendySpeedV -= (getTurnSpeed() * 6.0) / 240.0; }
-				if (input.checkKeyDown(SDLK_RIGHT)) { pendySpeedV += (getTurnSpeed() * 6.0) / 60.0; }
+				if (input.checkKeyDown(SDLK_RIGHT)) { pendySpeedV += (getTurnSpeed() * 6.0) / 60.0; pendySpeedM += (getTurnSpeed() / 3.0) / 60.0; }
 
 				movementAngle -= pendySpeedM * elapsedTimeSeconds;
 				bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (pendySpeedV * elapsedTimeSeconds));
