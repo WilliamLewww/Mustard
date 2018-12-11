@@ -27,8 +27,13 @@ private:
 
 	int forcedSlideMag = 0;
 	bool forcedSlide = false;
-	bool slide = false, shutdownSlide = false;
+	bool slide = false, shutdownSlide = false, handDown = false;
 	bool turnLeft = false, turnRight = false;
+
+	bool canPendy = true;
+	bool inPendy = false;
+	bool pendyLeft = false, pendyRight = false;
+	double pendySpeedM = 0, pendySpeedV = 0;
 
 	double movementAngle = 0;
 	bool flipped = false;
@@ -64,6 +69,7 @@ private:
 	void handleRightTurn();
 
 	double getAngleDifference();
+	void handleHandDown(double difference);
 	void handleSlideRight(double difference);
 	void handleSlideLeft(double difference);
 
