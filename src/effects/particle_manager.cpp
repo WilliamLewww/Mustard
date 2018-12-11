@@ -21,6 +21,10 @@ void ParticleManager::generateThaneParticles(int count, Vector2 parentPosition, 
 	thaneParticlesList.push_back(createThaneParticles(count, parentPosition, alpha));
 }
 
+void ParticleManager::generatePuckParticles(int count, Vector2 parentPosition, int alpha) {
+	puckParticlesList.push_back(createPuckParticles(count, parentPosition, alpha));
+}
+
 void ParticleManager::generateSquirrelGibParticles(int count, Vector2 parentPosition, int alpha) {
 	squirrelGibParticlesList.push_back(createSquirrelGibParticles(count, parentPosition, alpha));
 }
@@ -58,6 +62,10 @@ void ParticleManager::removeOldParticles() {
 	if (pineconeGibParticlesList.size() > MaxParticleCount::PineconeGib) {
 		pineconeGibParticlesList.erase(pineconeGibParticlesList.begin(), pineconeGibParticlesList.begin() + (pineconeGibParticlesList.size() - MaxParticleCount::PineconeGib));
 	}
+
+	if (puckParticlesList.size() > MaxParticleCount::Puck) {
+		puckParticlesList.erase(puckParticlesList.begin(), puckParticlesList.begin() + (puckParticlesList.size() - MaxParticleCount::Puck));
+	}
 }
 
 void ParticleManager::clearAllParticles() {
@@ -67,6 +75,7 @@ void ParticleManager::clearAllParticles() {
 	pineconeGibParticlesList.clear();
 	finishParticlesList.clear();
 	crashParticlesList.clear();
+	puckParticlesList.clear();
 }
 
 void ParticleManager::update() {
@@ -78,6 +87,7 @@ void ParticleManager::update() {
 	for (FinishParticles &particles : finishParticlesList) { updateFinishParticles(elapsedTimeSeconds, particles); }
 	for (CrashParticles &particles : crashParticlesList) { updateCrashParticles(elapsedTimeSeconds, particles); }
 	for (PineconeGibParticles &particles : pineconeGibParticlesList) { updatePineconeGibParticles(elapsedTimeSeconds, particles); }
+	for (PuckParticles &particles : puckParticlesList) { updatePuckParticles(elapsedTimeSeconds, particles); }
 
 	removeOldParticles();
 }
@@ -89,4 +99,5 @@ void ParticleManager::draw() {
 	for (PineconeGibParticles particles : pineconeGibParticlesList) { drawPineconeGibParticles(particles); }
 	for (FinishParticles particles : finishParticlesList) { drawFinishParticles(particles); }
 	for (CrashParticles particles : crashParticlesList) { drawCrashParticles(particles); }
+	for (PuckParticles particles : puckParticlesList) { drawPuckParticles(particles); }
 }

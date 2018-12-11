@@ -65,27 +65,19 @@ void Board::draw() {
 	bitmapPolygon.drawOutline();
 
 	if (handDown) {
-		if (!input.checkKeyDown(SDLK_RIGHT) && !input.checkKeyDown(SDLK_LEFT)) {
+		if (!input.checkKeyDown(SDLK_RIGHT) && !input.checkKeyDown(SDLK_LEFT) && !pendyLeft && !pendyRight) {
 			drawing.drawCircle(bitmapPolygon.getCenter(), 3, puckColor);
 		}
 
-		if (input.checkKeyDown(SDLK_RIGHT) && !input.checkKeyDown(SDLK_LEFT)) {
-			if (ridingSwitch) {
-				drawing.drawCircle(bitmapPolygon.getTopLeft(), 3, puckColor);
-			}
-			else {
-				drawing.drawCircle(bitmapPolygon.getBottomRight(), 3, puckColor);
-			}
+		if ((input.checkKeyDown(SDLK_RIGHT) && !input.checkKeyDown(SDLK_LEFT) && !pendyLeft) || pendyRight) {
+			if (ridingSwitch) { drawing.drawCircle(bitmapPolygon.getTopLeft(), 3, puckColor); }
+			else { drawing.drawCircle(bitmapPolygon.getBottomRight(), 3, puckColor); }
 			
 		}
 
-		if (input.checkKeyDown(SDLK_LEFT) && !input.checkKeyDown(SDLK_RIGHT)) {
-			if (ridingSwitch) {
-				drawing.drawCircle(bitmapPolygon.getBottomLeft(), 3, puckColor);
-			}
-			else {
-				drawing.drawCircle(bitmapPolygon.getTopRight(), 3, puckColor);
-			}
+		if ((input.checkKeyDown(SDLK_LEFT) && !input.checkKeyDown(SDLK_RIGHT) && !pendyRight) || pendyLeft) {
+			if (ridingSwitch) { drawing.drawCircle(bitmapPolygon.getBottomLeft(), 3, puckColor); }
+			else { drawing.drawCircle(bitmapPolygon.getTopRight(), 3, puckColor); }
 		}
 	}
 }
@@ -327,6 +319,10 @@ void Board::handleHandDown(double difference) {
 
 				movementAngle += pendySpeedM * elapsedTimeSeconds;
 				bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (pendySpeedV * elapsedTimeSeconds));
+
+				if (velocity > 25 && rand() % 3 == 0) {
+					particleManager.generatePuckParticles(1, bitmapPolygon.getBottomRight(), 255);
+				}
 			}
 
 			if (pendyLeft) {
@@ -338,6 +334,10 @@ void Board::handleHandDown(double difference) {
 
 				movementAngle -= pendySpeedM * elapsedTimeSeconds;
 				bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (pendySpeedV * elapsedTimeSeconds));
+
+				if (velocity > 25 && rand() % 3 == 0) {
+					particleManager.generatePuckParticles(1, bitmapPolygon.getTopRight(), 127);
+				}
 			}
 
 			if (velocity > 25) {
@@ -349,7 +349,7 @@ void Board::handleHandDown(double difference) {
 			else { velocity -= (difference * 0.65); }
 
 			if (movementAngle > bitmapPolygon.getAngle() - 5 && movementAngle < bitmapPolygon.getAngle() + 5) {
-				handDown = false; inPendy = false;
+				handDown = false; inPendy = false; pendyLeft = false; pendyRight = false;
 			}
 		}
 	}
@@ -497,6 +497,7 @@ void Board::reset() {
 	velocity = 0;
 	ridingSwitch = false;
 	canPendy = true, inPendy = false;
+	pendyLeft = false; pendyRight = false;
 }
 
 bool Board::checkProximity(Vector2 position) {
@@ -523,7 +524,7 @@ bool Board::checkCollision(BitmapPolygon polygon) {
 }
 
 bool Board::checkCollision(Vector2* wall) {
-	if (bitmapPolygon.checkCollision(wall) == true) { return true;}
+	if (bitmapPolygon.checkCollision(wall) == true) { return true; }
 	return false;
 }
 
