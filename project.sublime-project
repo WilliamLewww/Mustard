@@ -24,7 +24,6 @@
 				"-LC:/Libraries/bass24/c",
 				"-IC:/Libraries/bass_fx24/C",
 				"-LC:/Libraries/bass_fx24/C",
-				"-pthread",
 				"-lbass",
 				"-lbass_fx",
 				"-lmingw32",
@@ -32,6 +31,7 @@
 				"-lSDL2",
 				"-lopengl32",
 				"-lws2_32",
+				"-lSDL2_ttf",
 				"&&",
 				"C:/Projects/Thane/Thane"
 			],
@@ -70,6 +70,7 @@
 						"-lSDL2",
 						"-lopengl32",
 						"-lws2_32",
+						"-lSDL2_ttf",
 					]
 		        },
 		        {
@@ -113,6 +114,7 @@
 						"-lSDL2",
 						"-lopengl32",
 						"-lws2_32",
+						"-lSDL2_ttf",
 						"&&",
 		            	"g++",
 						"C:/Projects/Thane/server/main.cpp",

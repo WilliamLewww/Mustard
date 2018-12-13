@@ -238,6 +238,27 @@ void Joiner::draw() {
 	screenFilter.draw();
 
 	hud.draw(showSplitsHUD, showKeyPressHUD, showMinimap);
+	if (!isKeyStart) {
+		SDL_Color color1 = { 30, 87, 100 };
+		SDL_Color color2 = { 102, 62, 178 };
+		SDL_Color color3 = { 76, 59, 42 };
+
+		drawing.drawText("Thane 10.0.0", Vector2(0, 0), 25, color1);
+		drawing.drawText("Menu Controls:", Vector2(0, 50), 25, color2);
+		drawing.drawText("1 - Show Main Menu", Vector2(25, 75), 25, color3);
+		drawing.drawText("2 - Hide Main Menu", Vector2(25, 100), 25, color3);
+		drawing.drawText("Enter - Reset Environment", Vector2(25, 125), 25, color3);
+
+		drawing.drawText("Basic Movement Controls:", Vector2(0, 175), 25, color2);
+		drawing.drawText("Spacebar - Push/Tuck", Vector2(25, 200), 25, color3);
+		drawing.drawText("Left Arrow & Right Arrow - Carve", Vector2(25, 225), 25, color3);
+
+		drawing.drawText("Slide Controls", Vector2(0, 275), 25, color2);
+		drawing.drawText("Turn Keys + A - Regular Slide", Vector2(25, 300), 25, color3);
+		drawing.drawText("Turn Keys + S - Technical Slide", Vector2(25, 325), 25, color3);
+		drawing.drawText("Turn Keys + D - Shutdown Slide", Vector2(25, 350), 25, color3);
+		drawing.drawText("Any Slide + Down Array - Pendy Slide", Vector2(25, 375), 25, color3);
+	}
 }
 
 void Joiner::handleDevMode() {

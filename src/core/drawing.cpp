@@ -10,6 +10,93 @@ double Drawing::convertColorFloatToRGB(double rgbValue) {
 	return (double)rgbValue / 255;
 }
 
+void Drawing::drawText(const char* message, Vector2 position, int size) {
+	Vector2 vectors[4]{
+		Vector2(0, 0),
+		Vector2(1, 0),
+		Vector2(1, 1),
+		Vector2(0, 1)
+	};
+
+	glEnable(GL_TEXTURE_2D);
+
+	SDL_Color color;
+	color.r = 0; color.g = 0; color.b = 0; color.a = 255;
+	
+	GLuint texture;
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+
+	if (font == nullptr) {
+		 font = TTF_OpenFont("res/Aller_Rg.ttf", size);
+	}
+
+	SDL_Surface *sFont = TTF_RenderText_Blended(font, message, color);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, sFont->w, sFont->h, 0, GL_BGRA, GL_UNSIGNED_BYTE, sFont->pixels);
+
+	int width, height;
+	TTF_SizeText(font, message, &width, &height);
+
+	glBegin(GL_QUADS);
+	for (int x = 0; x < 4; x++) {
+		glTexCoord2d(vectors[x].x, vectors[x].y);
+
+		vectors[x].x *= width;
+		vectors[x].y *= height;
+		vectors[x] += Vector2(position.x, position.y);
+		vectors[x] -= Vector2(configuration.getScreenWidth() / 2, configuration.getScreenHeight() / 2);
+
+		glVertex2d(vectors[x].x, vectors[x].y);
+	}
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+}
+
+void Drawing::drawText(const char* message, Vector2 position, int size, SDL_Color color) {
+	Vector2 vectors[4]{
+		Vector2(0, 0),
+		Vector2(1, 0),
+		Vector2(1, 1),
+		Vector2(0, 1)
+	};
+
+	glEnable(GL_TEXTURE_2D);
+	
+	GLuint texture;
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+
+	if (font == nullptr) {
+		 font = TTF_OpenFont("res/Aller_Rg.ttf", size);
+	}
+
+	SDL_Surface *sFont = TTF_RenderText_Blended(font, message, color);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, sFont->w, sFont->h, 0, GL_BGRA, GL_UNSIGNED_BYTE, sFont->pixels);
+
+	int width, height;
+	TTF_SizeText(font, message, &width, &height);
+
+	glBegin(GL_QUADS);
+	for (int x = 0; x < 4; x++) {
+		glTexCoord2d(vectors[x].x, vectors[x].y);
+
+		vectors[x].x *= width;
+		vectors[x].y *= height;
+		vectors[x] += Vector2(position.x, position.y);
+		vectors[x] -= Vector2(configuration.getScreenWidth() / 2, configuration.getScreenHeight() / 2);
+
+		glVertex2d(vectors[x].x, vectors[x].y);
+	}
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+}
+
 void Drawing::drawPoint(Vector2 position) {
 	glBegin(GL_POINTS);
 	glColor4f(1, 1, 1, 1);

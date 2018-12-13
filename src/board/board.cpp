@@ -39,7 +39,7 @@ void Board::update(int speedZone, int trackDirection) {
 	elapsedTimeSeconds = timer.getTimeSeconds();
 
 	addSpeedFromHill(speedZone, trackDirection);
-	if (!inPendy) {
+	if (!inPendy) { 
 		handleLeftTurn();
 		handleRightTurn();
 	}
@@ -320,8 +320,12 @@ void Board::handleHandDown(double difference) {
 				movementAngle += pendySpeedM * elapsedTimeSeconds;
 				bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (pendySpeedV * elapsedTimeSeconds));
 
-				if (velocity > 25 && rand() % 3 == 0) {
-					particleManager.generatePuckParticles(1, bitmapPolygon.getBottomRight(), 255);
+				if (velocity > 25) {
+					if (rand() % 3 == 0) {
+						particleManager.generatePuckParticles(1, bitmapPolygon.getBottomRight(), 127);
+					}
+
+					wheel->decayWheel(elapsedTimeSeconds, difference, velocity * 0.75, false);
 				}
 			}
 
@@ -335,8 +339,12 @@ void Board::handleHandDown(double difference) {
 				movementAngle -= pendySpeedM * elapsedTimeSeconds;
 				bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (pendySpeedV * elapsedTimeSeconds));
 
-				if (velocity > 25 && rand() % 3 == 0) {
-					particleManager.generatePuckParticles(1, bitmapPolygon.getTopRight(), 127);
+				if (velocity > 25) {
+					if (rand() % 3 == 0) {
+						particleManager.generatePuckParticles(1, bitmapPolygon.getTopRight(), 127);
+					}
+
+					wheel->decayWheel(elapsedTimeSeconds, difference, velocity * 0.75, false);
 				}
 			}
 

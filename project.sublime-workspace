@@ -4,8 +4,24 @@
 		"selected_items":
 		[
 			[
+				"draw",
+				"drawing"
+			],
+			[
+				"font",
+				"fontList"
+			],
+			[
+				"vec",
+				"vectors"
+			],
+			[
 				"pend",
-				"pendySpeedV"
+				"pendyLeft"
+			],
+			[
+				"pendy",
+				"pendyLeft"
 			],
 			[
 				"SDLK_",
@@ -238,10 +254,6 @@
 			[
 				"LI",
 				"LIP_ROUND"
-			],
-			[
-				"draw",
-				"drawMountainOutline"
 			],
 			[
 				"Bike",
@@ -502,28 +514,34 @@
 			[
 				"sca",
 				"scaleMin"
-			],
-			[
-				"board",
-				"boardHeight"
-			],
-			[
-				"boa",
-				"boardID"
-			],
-			[
-				"initia",
-				"initializeMinimap"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "src/board/board.cpp",
+			"file": "src/core/drawing.h",
 			"settings":
 			{
-				"buffer_size": 16958,
+				"buffer_size": 2835,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "engine.cpp",
+			"settings":
+			{
+				"buffer_size": 2585,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "engine.h",
+			"settings":
+			{
+				"buffer_size": 967,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -538,26 +556,27 @@
 			}
 		},
 		{
-			"file": "src/core/drawing.h",
+			"file": "src/joiner.cpp",
 			"settings":
 			{
-				"buffer_size": 2703,
+				"buffer_size": 21260,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/bmp_polygon.h",
+			"file": "README.md",
 			"settings":
 			{
-				"buffer_size": 3135,
+				"buffer_size": 6325,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/board/board.h",
+			"file": "src/core/drawing.cpp",
 			"settings":
 			{
-				"buffer_size": 2703,
+				"buffer_size": 19954,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -887,24 +906,44 @@
 		"selected_items":
 		[
 			[
+				"a",
+				"Arithmetic"
+			],
+			[
+				"colo",
+				"UI: Select Color Scheme"
+			],
+			[
+				"color",
+				"UI: Select Color Scheme"
+			],
+			[
+				"theme",
+				"Colorsublime: Browse Themes Online"
+			],
+			[
+				"ui",
+				"UI: Select Theme"
+			],
+			[
+				"colorsc",
+				"UI: Select Color Scheme"
+			],
+			[
+				"colors",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"ar",
+				"Arithmetic"
+			],
+			[
 				"ari",
 				"Arithmetic"
 			],
 			[
 				"",
 				"BracketHighlighter: Enable Debug Mode"
-			],
-			[
-				"colors",
-				"UI: Select Color Scheme"
-			],
-			[
-				"theme",
-				"UI: Select Theme"
-			],
-			[
-				"color",
-				"Colorsublime: Browse Themes Online"
 			],
 			[
 				"permu",
@@ -929,14 +968,6 @@
 			[
 				"tab",
 				"Indentation: Convert to Tabs"
-			],
-			[
-				"a",
-				"Arithmetic"
-			],
-			[
-				"ar",
-				"Arithmetic"
 			],
 			[
 				"SORT",
@@ -987,10 +1018,6 @@
 				"UI: Select Color Scheme"
 			],
 			[
-				"colorsc",
-				"UI: Select Color Scheme"
-			],
-			[
 				"snipp",
 				"Snippet: Namespace"
 			],
@@ -1008,10 +1035,6 @@
 			],
 			[
 				"colorsch",
-				"UI: Select Color Scheme"
-			],
-			[
-				"ui",
 				"UI: Select Color Scheme"
 			],
 			[
@@ -1197,19 +1220,57 @@
 	"expanded_folders":
 	[
 		"/C/Projects/Thane",
-		"/C/Projects/Thane/src"
+		"/C/Projects/Thane/res",
+		"/C/Projects/Thane/src",
+		"/C/Projects/Thane/src/board",
+		"/C/Projects/Thane/src/core",
+		"/C/Projects/Thane/src/core/imgui",
+		"/C/Projects/Thane/src/environment"
 	],
 	"file_history":
 	[
+		"/C/Users/William/Desktop/Finals.txt",
+		"/C/Projects/Thane/src/joiner.cpp",
+		"/C/Projects/Thane/main.cpp",
+		"/C/Projects/Thane/project.sublime-project",
+		"/C/Libraries/SDL2_ttf-2.0.14/i686-w64-mingw32/include/SDL2/SDL_ttf.h",
+		"/C/Libraries/SDL2_ttf-2.0.14/README.txt",
+		"/C/Libraries/SDL2_ttf-2.0.14/external/freetype-2.4.12/README",
+		"/C/Libraries/SDL2_ttf-2.0.14/external/freetype-2.4.12/modules.cfg",
+		"/C/Libraries/SDL2_ttf-2.0.14/external/freetype-2.4.12/Makefile",
+		"/C/Libraries/SDL2_ttf-2.0.14/external/freetype-2.4.12/objs/README",
+		"/C/Users/William/AppData/Local/Temp/Temp1_SDL2_ttf-2.0.14-win32-x86.zip/README.txt",
+		"/C/Users/William/Downloads/23_freetype_fonts/LFont.cpp",
+		"/C/Users/William/Downloads/23_freetype_fonts/LFont.h",
+		"/C/Users/William/Downloads/23_freetype_fonts/LSpriteSheet.h",
+		"/C/Users/William/Downloads/23_freetype_fonts/LTexture.h",
+		"/C/Users/William/Downloads/23_freetype_fonts/LVertexData2D.h",
 		"/C/Projects/Thane/src/board/board.cpp",
+		"/C/Users/William/Downloads/23_freetype_fonts/readme.txt",
+		"/C/Projects/Thane/src/core/shader.h",
+		"/C/Libraries/freetype-2.9.1/docs/INSTALL.UNIX",
+		"/C/Users/William/Downloads/make-4.2/README.W32",
+		"/C/Users/William/Downloads/freetype-2.9.1/docs/INSTALL.UNIX",
+		"/C/Users/William/Downloads/make-4.2/README",
+		"/C/Projects/Thane/src/board/board.h",
+		"/C/Projects/Thane/src/bmp_polygon.h",
+		"/C/Projects/Thane/src/core/drawing.h",
+		"/C/Projects/Thane/src/joiner.h",
+		"/C/Users/William/Downloads/freetype-2.9.1/docs/INSTALL",
+		"/C/Users/William/Downloads/freetype-2.9.1/builds/windows/w32-mingw32.mk",
+		"/C/Users/William/Downloads/freetype-2.9.1/Makefile",
+		"/C/Projects/Thane/src/effects/particle_manager.h",
+		"/C/Projects/Thane/src/effects/particle_manager.cpp",
+		"/C/Projects/Thane/src/effects/puck_particle.cpp",
+		"/C/Projects/Thane/src/effects/puck_particle.h",
+		"/C/Projects/Thane/src/effects/thane_particle.h",
+		"/C/Projects/Thane/src/effects/thane_particle.cpp",
 		"/C/Projects/Thane/src/camera.cpp",
 		"/C/Projects/Thane/README.md",
-		"/C/Projects/Thane/src/board/board.h",
 		"/C/Projects/Thane/src/core/audio.h",
 		"/C/Projects/Thane/src/core/audio.cpp",
 		"/C/Projects/Thane/src/network/n_joiner.cpp",
 		"/C/Projects/Thane/src/network/n_board.cpp",
-		"/C/Projects/Thane/src/joiner.cpp",
 		"/C/Projects/Thane/src/network/n_joiner.h",
 		"/C/Users/William/Desktop/src/Main.java",
 		"/C/Users/William/Desktop/src/GUI.java",
@@ -1220,7 +1281,6 @@
 		"/C/Projects/Thane/server/src/network_oop.cpp",
 		"/C/Projects/Thane/src/network/n_board.h",
 		"/C/Users/William/AppData/Local/Temp/VideoPoker.java",
-		"/C/Projects/Thane/src/joiner.h",
 		"/C/Projects/Thane/server/src/network.cpp",
 		"/C/Projects/Thane/server/src/client.cpp",
 		"/C/Projects/Thane/server/src/client.h",
@@ -1233,11 +1293,9 @@
 		"/C/Projects/Thane/src/core/timer.cpp",
 		"/C/Projects/Thane/src/core/timer.h",
 		"/C/Projects/Thane/src/network/network.h",
-		"/C/Projects/Thane/src/core/drawing.h",
 		"/C/Projects/Thane/src/core/drawing.cpp",
 		"/C/Users/William/Desktop/README.txt",
 		"/C/Projects/Thane/src/network/network.cpp",
-		"/C/Projects/Thane/project.sublime-project",
 		"/C/Users/William/AppData/Local/Temp/Temp1_Excessive Poker.zip/README.txt",
 		"/C/Projects/Thane/src/network/n_environment.cpp",
 		"/C/Projects/Thane/src/network/n_environment.h",
@@ -1267,7 +1325,6 @@
 		"/C/Projects/Thane/server/src/connection.h",
 		"/C/Projects/Thane/server/connection.h",
 		"/C/Users/William/Desktop/player.cpp",
-		"/C/Projects/Thane/src/bmp_polygon.h",
 		"/C/Projects/Thane/src/board/ghosted_board.h",
 		"/C/Projects/Thane/src/board/ghosted_board.cpp",
 		"/C/Projects/Thane/src/environment/rain.h",
@@ -1276,8 +1333,6 @@
 		"/C/Projects/Thane/src/world.cpp",
 		"/C/Projects/Thane/src/environment/environment.h",
 		"/C/Projects/Thane/src/effects/pinecone_giblets_particle.h",
-		"/C/Projects/Thane/src/effects/particle_manager.cpp",
-		"/C/Projects/Thane/src/effects/particle_manager.h",
 		"/C/Projects/Thane/src/environment/boulder.h",
 		"/C/Projects/Thane/src/effects/screen_filter.cpp",
 		"/C/Projects/Thane/src/effects/bike_giblets_particle.cpp",
@@ -1301,34 +1356,7 @@
 		"/C/Projects/Thane/src/track.cpp",
 		"/C/Projects/Thane/src/board/deck_presets.h",
 		"/C/Projects/Thane/src/environment/road.h",
-		"/C/Projects/Thane/src/track.h",
-		"/C/Projects/Thane/src/board/profile.cpp",
-		"/C/Projects/Thane/board.data",
-		"/C/Projects/Thane/src/core/file.h",
-		"/C/Projects/Thane/src/core/file.cpp",
-		"/C/Projects/Thane/src/environment/car.h",
-		"/C/Projects/Thane/src/hud/splits_display.h",
-		"/C/Projects/Thane/src/hud/splits_display.cpp",
-		"/C/Projects/Thane/src/environment/car.cpp",
-		"/C/Users/William/Downloads/MixedNumber (1).java",
-		"/C/Users/William/Downloads/MixedNumber.java",
-		"/C/Users/William/Downloads/MixedNumberInterface.java",
-		"/C/Projects/Help/CSC220_A1/PJ1/MixedNumber.java",
-		"/C/Projects/Thane/src/hud/hud.h",
-		"/C/Projects/Thane/src/hud/key_display.h",
-		"/C/Projects/Thane/src/hud/key_display.cpp",
-		"/C/Projects/Thane/src/hud/hud.cpp",
-		"/C/Projects/Thane/src/.bmp_polygon.h.swp",
-		"/C/Projects/Thane/src/core/imgui/imgui.h",
-		"/C/Projects/Thane/src/board/wheel_presets.h",
-		"/C/Projects/Thane/src/core/imgui/imgui.cpp",
-		"/C/Projects/Thane/src/core/configuration.cpp",
-		"/C/Projects/Thane/src/environment/gravel.cpp",
-		"/C/Users/William/AppData/Roaming/Sublime Text 3/Packages/User/Colorsublime.sublime-settings",
-		"/C/Users/William/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
-		"/C/Users/William/AppData/Roaming/Sublime Text 3/Packages/BracketHighlighter/Example.sublime-keymap",
-		"/C/Projects/Thane/src/environment/gravel.h",
-		"/C/Projects/Thane/src/environment/squirrel.h"
+		"/C/Projects/Thane/src/track.h"
 	],
 	"find":
 	{
@@ -1339,6 +1367,8 @@
 		"height": 106.0,
 		"where_history":
 		[
+			"C:\\Projects\\Thane\\",
+			"C:\\Projects\\Thane\\src\\core\\imgui\\",
 			"C:\\Projects\\Thane",
 			"",
 			"C:\\Projects\\Thane\\",
@@ -1370,6 +1400,30 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			", drawing.getFont(0)",
+			"24",
+			"));",
+			"255",
+			"Blend",
+			"int",
+			"height",
+			"width",
+			"GL_DEPTH_TEST",
+			"displayWindow",
+			"window",
+			"sdl_In",
+			"displayWindow",
+			"render",
+			"handleHandDown",
+			"puck",
+			"generateThan",
+			"thane",
+			"Thane",
+			"thane",
+			"Thane",
+			"thane",
+			"Thane",
+			"^(.*)$",
 			"latestAngleM",
 			"latestAngleV",
 			"20",
@@ -1473,31 +1527,7 @@
 			"rainsee",
 			"netconnecte",
 			"netConnected",
-			"net",
-			"client",
-			"newestMessage",
-			"sendStr",
-			"client_a",
-			"advertList",
-			"newestMessage",
-			"start",
-			"return",
-			"snedStr",
-			"str",
-			"sendMessage",
-			"replyList",
-			"advertList",
-			"seed",
-			"network",
-			"initialNetworkMessage",
-			"network",
-			"netStart",
-			"Joiner",
-			"showNetworkMenu",
-			"network",
-			"netwo",
-			"handleNetw",
-			"rain"
+			"net"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1515,24 +1545,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/board/board.cpp",
+					"file": "src/core/drawing.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16958,
+						"buffer_size": 2835,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5810,
-								5810
+								484,
+								484
 							]
 						],
 						"settings":
@@ -1545,8 +1575,8 @@
 								{
 									"1":
 									[
-										11251,
-										11252
+										2797,
+										2798
 									]
 								},
 								"icon":
@@ -1561,8 +1591,8 @@
 								{
 									"1":
 									[
-										11080,
-										11081
+										149,
+										150
 									]
 								},
 								"unmatched":
@@ -1571,61 +1601,61 @@
 							},
 							"bracket_highlighter.clone_regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
 							],
 							"bracket_highlighter.locations":
 							{
@@ -1633,8 +1663,8 @@
 								{
 									"1":
 									[
-										5809,
-										5810
+										2808,
+										2809
 									]
 								},
 								"icon":
@@ -1649,8 +1679,8 @@
 								{
 									"1":
 									[
-										5606,
-										5607
+										149,
+										150
 									]
 								},
 								"unmatched":
@@ -1659,31 +1689,145 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "engine.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2585,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								48,
+								48
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -1703,31 +1847,300 @@
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
+								"bh_square_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										734,
+										735
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										47,
+										48
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
 								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
 							],
-							"history_list_is_closing": true,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2165.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
+					"file": "engine.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 967,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								873,
+								877
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										965,
+										966
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										367,
+										368
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "src/joiner.h",
 					"semi_transient": false,
 					"settings":
@@ -1739,8 +2152,8 @@
 						"selection":
 						[
 							[
-								910,
-								910
+								513,
+								513
 							]
 						],
 						"settings":
@@ -1751,27 +2164,12 @@
 							{
 								"close":
 								{
-									"1":
-									[
-										1787,
-										1788
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"region.purplish"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										367,
-										368
-									]
 								},
 								"unmatched":
 								{
@@ -1779,46 +2177,41 @@
 							},
 							"bracket_highlighter.clone_regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -1829,11 +2222,16 @@
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
 							"bracket_highlighter.locations":
 							{
@@ -1867,61 +2265,61 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
 							],
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
@@ -1930,22 +2328,214 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/joiner.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 21260,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6563,
+								6563
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										7129,
+										7130
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										6271,
+										6272
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2775.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
-					"buffer": 2,
-					"file": "src/core/drawing.h",
+					"buffer": 5,
+					"file": "README.md",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2703,
+						"buffer_size": 6325,
 						"regions":
 						{
 						},
@@ -1959,7 +2549,7 @@
 						"settings":
 						{
 							"bracket_highlighter.busy": false,
-							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone": 29,
 							"bracket_highlighter.clone_locations":
 							{
 								"close":
@@ -1977,61 +2567,61 @@
 							},
 							"bracket_highlighter.clone_regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
 							],
 							"bracket_highlighter.locations":
 							{
@@ -2050,64 +2640,65 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
 							],
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -2117,20 +2708,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "src/bmp_polygon.h",
+					"buffer": 6,
+					"file": "src/core/drawing.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3135,
+						"buffer_size": 19954,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1345,
-								1345
+								671,
+								676
 							]
 						],
 						"settings":
@@ -2143,8 +2734,8 @@
 								{
 									"1":
 									[
-										1346,
-										1347
+										1413,
+										1414
 									]
 								},
 								"icon":
@@ -2159,8 +2750,8 @@
 								{
 									"1":
 									[
-										1323,
-										1324
+										295,
+										296
 									]
 								},
 								"unmatched":
@@ -2169,61 +2760,61 @@
 							},
 							"bracket_highlighter.clone_regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
 							],
 							"bracket_highlighter.locations":
 							{
@@ -2231,8 +2822,8 @@
 								{
 									"1":
 									[
-										1346,
-										1347
+										1413,
+										1414
 									]
 								},
 								"icon":
@@ -2247,8 +2838,8 @@
 								{
 									"1":
 									[
-										1323,
-										1324
+										295,
+										296
 									]
 								},
 								"unmatched":
@@ -2257,87 +2848,87 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
 							],
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 104.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/board/board.h",
+					"buffer": 0,
+					"file": "src/core/drawing.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2703,
+						"buffer_size": 2835,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								871,
-								871
+								197,
+								197
 							]
 						],
 						"settings":
@@ -2350,8 +2941,8 @@
 								{
 									"1":
 									[
-										2745,
-										2746
+										2797,
+										2798
 									]
 								},
 								"icon":
@@ -2366,8 +2957,8 @@
 								{
 									"1":
 									[
-										293,
-										294
+										149,
+										150
 									]
 								},
 								"unmatched":
@@ -2376,61 +2967,61 @@
 							},
 							"bracket_highlighter.clone_regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
 							],
 							"bracket_highlighter.locations":
 							{
@@ -2438,8 +3029,8 @@
 								{
 									"1":
 									[
-										2701,
-										2702
+										2808,
+										2809
 									]
 								},
 								"icon":
@@ -2454,8 +3045,8 @@
 								{
 									"1":
 									[
-										293,
-										294
+										149,
+										150
 									]
 								},
 								"unmatched":
@@ -2464,63 +3055,62 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
 							],
-							"history_list_is_closing": true,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -2528,7 +3118,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -2536,7 +3126,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 24.0
+		"height": 29.0
 	},
 	"input":
 	{
@@ -2588,7 +3178,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 44.0
+		"height": 54.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -2597,6 +3187,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"joi",
+				"src\\joiner.cpp"
+			],
 			[
 				"jo",
 				"src\\joiner.cpp"

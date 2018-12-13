@@ -1,16 +1,23 @@
 #pragma once
 #include <vector>
 #include <SDL2\SDL_opengl.h>
+#include <SDL2\SDL_ttf.h>
 #include "vector2.h"
 #include "configuration.h"
 
 class Drawing {
 private:
+	SDL_Window* window;
+	TTF_Font* font;
+
 	double convertColorFloatToRGB(int rgbValue);
 	double convertColorFloatToRGB(double rgbValue);
 public:
 	const double PI = 3.14159265359;
 
+	void drawText(const char* message, Vector2 position, int size);
+	void drawText(const char* message, Vector2 position, int size, SDL_Color color);
+	
 	void drawPoint(Vector2 position);
 	void drawPoint(Vector2 position, int alpha);
 	void drawPoint(Vector2 position, int color[3]);

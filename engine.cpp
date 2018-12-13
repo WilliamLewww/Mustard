@@ -14,6 +14,8 @@ void Engine::initialize() {
 
 	gui.bindWindow();
 
+	TTF_Init();
+
 	initializeWindowHandle();
 	initializeAudio();
 
