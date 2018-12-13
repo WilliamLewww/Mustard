@@ -267,13 +267,13 @@ void Joiner::handleDevMode() {
 }
 
 void Joiner::handleStartInput() {
-	if (!input.checkKeyDown(SDLK_ESCAPE) && allowKeyStart && input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
+	if (!input.checkKeyDown(SDLK_ESCAPE) && !input.checkKeyDown(SDLK_1) && !input.checkKeyDown(SDLK_2) && allowKeyStart && input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
 		isKeyStart = true;
 	}
 
 	if (!isKeyStart) {
 		if (allowKeyStart) {
-			if (!input.checkKeyDown(SDLK_ESCAPE) && input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
+			if (!input.checkKeyDown(SDLK_ESCAPE) && !input.checkKeyDown(SDLK_1) && !input.checkKeyDown(SDLK_2) && input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
 				isKeyStart = true;
 				allowKeyStart = false;
 			}
@@ -285,7 +285,7 @@ void Joiner::handleStartInput() {
 
 	if (isCrashed) {
 		if (allowRestartAfterCrash) {
-			if (!input.checkKeyDown(SDLK_ESCAPE) && input.getKeyListSize() > 0) {
+			if (!input.checkKeyDown(SDLK_ESCAPE) && !input.checkKeyDown(SDLK_1) && !input.checkKeyDown(SDLK_2) && input.getKeyListSize() > 0) {
 				isCrashed = false;
 				allowRestartAfterCrash = false;
 				reset(false);
