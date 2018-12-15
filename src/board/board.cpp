@@ -336,7 +336,7 @@ void Board::handleHandDown(double difference) {
 
 				if (velocity > 25) {
 					if (rand() % 3 == 0) {
-						particleManager.generatePuckParticles(1, bitmapPolygon.getBottomRight(), 127);
+						particleManager.generatePuckParticles(1, bitmapPolygon.getBottomRight(), 150);
 					}
 
 					wheel->decayWheel(elapsedTimeSeconds, difference, velocity * 0.75, false);
@@ -355,17 +355,14 @@ void Board::handleHandDown(double difference) {
 
 				if (velocity > 25) {
 					if (rand() % 3 == 0) {
-						particleManager.generatePuckParticles(1, bitmapPolygon.getTopRight(), 127);
+						particleManager.generatePuckParticles(1, bitmapPolygon.getTopRight(), 150);
 					}
 
 					wheel->decayWheel(elapsedTimeSeconds, difference, velocity * 0.75, false);
 				}
 			}
 
-			if (velocity > 25) {
-				if (shutdownSlide) { generateThane(255); }
-				else { generateThane(100); }
-			}
+			generateThane(255);
 
 			if (velocity - (difference * 0.65) < 0) { velocity = 0; }
 			else { velocity -= (difference * 0.65); }
