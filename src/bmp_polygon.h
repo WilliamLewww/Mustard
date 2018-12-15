@@ -31,6 +31,7 @@ public:
 	inline void addY(float y) { this->position.y += y; };
 
 	inline void setPosition(Vector2 position) { this->position = position; };
+	inline void setPositionCentered(Vector2 position) { this->position = position - Vector2(width / 2, height / 2); };
 	inline void setAngle(double angle) { this->angle = angle; };
 	inline void addAngle(double angle) { this->angle += angle; };
 
@@ -39,12 +40,24 @@ public:
 	inline double getWidth() { return width; };
 	inline double getHeight() { return height; };
 	inline double getAngle() { return angle; };
+	inline double* getAngleAddress() { return &angle; };
 
 	inline int getColor(int index) { return color[index]; };
 
 	inline Vector2 getCenter() {
 		return Vector2(position.x + (width / 2), position.y + (height / 2));
 	};
+
+	inline Vector2 getMiddleLeft(double offset) {
+		return Vector2((-offset / 2) * cos((angle * drawing.PI) / 180) + position.x + (width / 2),
+				   (offset / 2) * sin((angle * drawing.PI) / 180) + position.y + (height / 2));
+	};
+
+	inline Vector2 getMiddleRight(double offset) {
+		return Vector2((offset / 2) * cos((angle * drawing.PI) / 180) + position.x + (width / 2),
+				   (-offset / 2) * sin((angle * drawing.PI) / 180) + position.y + (height / 2));
+	};
+
 	inline Vector2 getTopLeft() {
 		return Vector2((-width / 2) * cos((angle * drawing.PI) / 180) - (height / 2) * sin((angle * drawing.PI) / 180) + position.x + (width / 2),
 				   (width / 2) * sin((angle * drawing.PI) / 180) - (height / 2) * cos((angle * drawing.PI) / 180) + position.y + (height / 2));
@@ -73,5 +86,6 @@ public:
 	void setVertices(const char* filename);
 	void setVertices(std::vector<Vector2> vertexList);
 
+	void draw();
 	void drawOutline();
 };

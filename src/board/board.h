@@ -9,9 +9,12 @@
 #include "..\bmp_polygon.h"
 #include "..\camera.h"
 #include "profile.h"
+#include "truck.h"
 
 class Board {
 private:
+	Truck truck;
+	
 	int puckColor[3] = { 0, 179, 0 };
 	int thaneColor[3];
 

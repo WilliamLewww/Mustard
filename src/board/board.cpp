@@ -5,6 +5,7 @@ void Board::initialize() {
 	initializeWheel();
 	linkPolygonWithConfigurations();
 	bitmapPolygon.setPosition(Vector2(0, 0));
+	truck.updatePosition(bitmapPolygon.getMiddleLeft(bitmapPolygon.getWidth() - 6), bitmapPolygon.getMiddleRight(bitmapPolygon.getWidth() - 7));
 
 	particleManager.initialize();
 }
@@ -32,7 +33,10 @@ void Board::linkPolygonWithConfigurations() {
 	
 	bitmapPolygon.setColor(deck->getColor()[0], deck->getColor()[1], deck->getColor()[2], 255);
 	bitmapPolygon.setSize(deck->getLength(), deck->getWidth());
+	truck.setWidth(deck->getWidth());
+	truck.setAngle(bitmapPolygon.getAngleAddress());
 	bitmapPolygon.setVertices(profile.getDeckModel(deck->getID()));
+
 }
 
 void Board::update(int speedZone, int trackDirection) {
@@ -59,9 +63,17 @@ void Board::update(int speedZone, int trackDirection) {
 	Vector2 direction = getDirection();
 	moveInDirection(direction);
 	refreshSlide();
+
+	if ((!ridingSwitch && turnLeft) || (ridingSwitch && turnRight)) { truck.setTurnLeft(true); }
+	else { truck.setTurnLeft(false); }
+	if ((!ridingSwitch && turnRight) || (ridingSwitch && turnLeft)) { truck.setTurnRight(true); }
+	else { truck.setTurnRight(false); }
+
+	truck.updatePosition(bitmapPolygon.getMiddleLeft(bitmapPolygon.getWidth() - 6), bitmapPolygon.getMiddleRight(bitmapPolygon.getWidth() - 7));
 }
 
 void Board::draw() {
+	truck.draw();
 	bitmapPolygon.drawOutline();
 
 	if (handDown) {
@@ -501,6 +513,7 @@ void Board::clearLines() {
 void Board::reset() {
 	bitmapPolygon.setPosition(Vector2(0, 0));
 	bitmapPolygon.setAngle(0);
+	truck.updatePosition(bitmapPolygon.getMiddleLeft(bitmapPolygon.getWidth() - 6), bitmapPolygon.getMiddleRight(bitmapPolygon.getWidth() - 7));
 	movementAngle = 0;
 	velocity = 0;
 	ridingSwitch = false;
