@@ -24,6 +24,8 @@ void Board::initializeWheel() {
 	configuration.setConfiguration("ThaneColorR", wheel->getColor()[0]);
 	configuration.setConfiguration("ThaneColorG", wheel->getColor()[1]);
 	configuration.setConfiguration("ThaneColorB", wheel->getColor()[2]);
+
+	truck.setWheelColor(wheel->getColor()[0], wheel->getColor()[1], wheel->getColor()[2]);
 }
 
 void Board::linkPolygonWithConfigurations() {

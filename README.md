@@ -51,6 +51,7 @@ Thane (short for polyurethane) lines are the skid marks produced when a skateboa
 - 10.0.0 (Network and Pendy Update)
   - added multiplayer with dedicated server hosting
   - added new pendy slide
+  - added truck model
 - 1.9.6
   - added pinecone giblets
   - added wave effect to ocean
