@@ -5,7 +5,11 @@
 #include "track.h"
 
 class World {
-private:	
+private:
+	SDL_Color tutorialColor1 = { 30, 87, 100 };
+	SDL_Color tutorialColor2 = { 115, 55, 80 };
+	SDL_Color tutorialColor3 = { 76, 59, 42 };
+
 	int mountainColor[3] = { 118, 92, 67 };
 	int mountainOutlineColor[3] = { 78, 52, 27 };
 
@@ -16,7 +20,7 @@ private:
 	void drawMountainOutline();
 
 	void generateSpeedZones();
-	void generateTrack();
+	void generateTrack(int tutorialState);
 
 	void randomSpeedZone(int difficulty, int initialSpeed, int initialNode, int spacing);
 	void randomGradualSpeedZone(int difficulty, int min, int max, int initialSpeed, int initialNode, int spacing);
@@ -28,13 +32,17 @@ private:
 	void randomUpPar(int difficulty, int points, int pointSpacing);
 	void randomDownPar(int difficulty, int points, int pointSpacing);
 	void randomPar(int difficulty, int points, int pointSpacing);
+
+	int tutorialEnd = 0, endNode = 0;
+	void generateTutorial(int state);
+	void drawTutorial(int state);
 public:
 	Environment environment;
 	Track track;
 	
-	void generateWorld();
+	int generateWorld(int tutorialState);
 	void update();
-	void draw();
+	void draw(int tutorialState);
 	void drawStatic();
 	void drawStaticBackground();
 	void reset();

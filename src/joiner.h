@@ -52,6 +52,9 @@ private:
 	int selectedDeck = 0, selectedWheel = 0;
 	int trackGenerationStyle;
 
+	int tutorialState = -1;
+	int forceEnd = 0;
+
 	void handleConfig();
 
 	void pushConfigurations();

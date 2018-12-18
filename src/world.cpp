@@ -5,6 +5,178 @@ double fDerivative(double x, double a, double b) { return (a * b * cos(b * x)); 
 double g(double x, double a, double b) { return x; }
 double gDerivative(double x, double a, double b) { return b; }
 
+void World::generateTutorial(int state) {
+	if (state == 0) {
+		track.addVertex(Vector2(-10, -20), 0);
+		track.addVertex(Vector2(-10, -20), 45);
+		track.addVertexRelative(-25, 100, 25);
+		track.addVertexRelative(0, 150, 0);
+		track.addVertexRelative(0, 250, 0);
+		track.addVertexRelative(0, 250, 0);
+		track.addVertexRelative(0, 250, 0);
+		track.addVertexRelative(0, 250, 0);
+		track.addVertexRelative(0, 250, 0);
+
+		endNode = track.railList[0].size() - 1;
+		tutorialEnd = track.railList[0][endNode].x;
+
+		track.addVertexRelative(0, 150, 0);
+		randomLongTrackPar(50, 100, 20, 20);
+	}
+
+	if (state == 1) {
+		track.addVertex(Vector2(-10, -20), 0);
+		track.addVertex(Vector2(-10, -20), 45);
+		track.addVertexRelative(-25, 100, 25);
+		track.addVertexRelative(0, 150, 0);
+		track.addVertexRelative(0, 300, 0);
+		track.addVertexRelative(-50, 150, 50);
+		randomUpPar(50, 10, 50);
+		randomDownPar(50, 10, 50);
+
+		endNode = track.railList[0].size() - 1;
+		tutorialEnd = track.railList[0][endNode].x;
+
+		track.addVertexRelative(0, 250, 0);
+		randomLongTrackPar(50, 100, 20, 20);
+	}
+
+	if (state == 2) {
+		track.addVertex(Vector2(-10, -20), 0);
+		track.addVertex(Vector2(-10, -20), 45);
+		track.addVertexRelative(-25, 100, 25);
+		track.addVertexRelative(0, 150, 0);
+		track.addVertexRelative(0, 300, 0);
+		track.addVertexRelative(-35, 150, 35);
+		randomUpPar(60, 15, 50);
+		randomDownPar(60, 15, 50);
+		randomUpPar(60, 15, 50);
+		randomDownPar(60, 15, 50);
+
+		endNode = track.railList[0].size() - 1;
+		tutorialEnd = track.railList[0][endNode].x;
+
+		track.addVertexRelative(0, 250, 0);
+		randomLongTrackPar(50, 100, 20, 20);
+	}
+
+	if (state == 3) {
+		track.addVertex(Vector2(-10, -20), 0);
+		track.addVertex(Vector2(-10, -20), 45);
+		track.addVertexRelative(-25, 100, 25);
+		track.addVertexRelative(0, 150, 0);
+		track.addVertexRelative(0, 250, 0);
+		track.addVertexRelative(0, 250, 0);
+		track.addVertexRelative(0, 250, 0);
+		track.addVertexRelative(0, 250, 0);
+		track.addVertexRelative(0, 250, 0);
+		track.addVertexRelative(0, 250, 0);
+		track.addVertexRelative(0, 250, 0);
+		track.addVertexRelative(0, 250, 0);
+
+		endNode = track.railList[0].size() - 1;
+		tutorialEnd = track.railList[0][endNode].x;
+
+		track.addVertexRelative(0, 150, 0);
+		randomLongTrackPar(50, 100, 20, 20);
+	}
+
+	if (state == 4) {
+		track.addVertex(Vector2(-10, -20), 0);
+		track.addVertex(Vector2(-10, -20), 45);
+		track.addVertexRelative(-25, 100, 25);
+		track.addVertexRelative(0, 150, 0);
+		track.addVertexRelative(0, 300, 0);
+		track.addVertexRelative(-50, 150, 50);
+		randomUpPar(50, 10, 50);
+		randomDownPar(50, 10, 50);
+		randomUpPar(50, 10, 50);
+		randomDownPar(50, 10, 50);
+		randomUpPar(50, 10, 50);
+		randomDownPar(50, 10, 50);
+
+		endNode = track.railList[0].size() - 1;
+		tutorialEnd = track.railList[0][endNode].x;
+
+		track.addVertexRelative(0, 250, 0);
+		randomLongTrackPar(50, 100, 20, 20);
+	}
+
+	if (state == 5) {
+		track.addVertex(Vector2(-10, -20), 0);
+		track.addVertex(Vector2(-10, -20), 45);
+		track.addVertexRelative(-25, 100, 25);
+		track.addVertexRelative(0, 150, 0);
+		track.addVertexRelative(0, 250, 0);
+		track.addVertexRelative(0, 250, 0);
+		track.addVertexRelative(0, 250, 0);
+		track.addVertexRelative(-75, 150, 75);
+		randomUpPar(50, 25, 50);
+		randomDownPar(50, 25, 50);
+		randomUpPar(50, 25, 50);
+		randomDownPar(50, 25, 50);
+
+		endNode = track.railList[0].size() - 1;
+		tutorialEnd = track.railList[0][endNode].x;
+
+		track.addVertexRelative(0, 250, 0);
+		randomLongTrackPar(50, 100, 20, 20);
+	}
+
+	if (state == 6) {
+		track.addVertex(Vector2(-10, -20), 0);
+		track.addVertex(Vector2(-10, -20), 45);
+		track.addVertexRelative(-25, 100, 25);
+		track.addVertexRelative(0, 150, 0);
+		track.addVertexRelative(0, 250, 0);
+		track.addVertexRelative(0, 250, 0);
+
+		endNode = track.railList[0].size() - 1;
+		tutorialEnd = track.railList[0][endNode].x;
+
+		track.addVertexRelative(0, 150, 0);
+		randomLongTrackPar(50, 100, 20, 20);
+	}
+}
+
+void World::drawTutorial(int state) {
+	if (state == 0) {
+		drawing.drawText("Welcome to Thane!!!", track.railList[0][0] - Vector2(100, 150), 24, tutorialColor1);
+		drawing.drawText("(Press any key to start)", track.railList[0][0] - Vector2(100, 120), 24, tutorialColor2);
+		drawing.drawText("You are at the peak of a very very very very very very very very very large hill", track.railList[0][4] - Vector2(100, 120), 24, tutorialColor2);
+	}
+
+	if (state == 1) {
+		drawing.drawText("Use the left and right arrow keys to navigate through the hills", track.railList[0][0] - Vector2(100, 150), 24, tutorialColor3);
+	}
+
+	if (state == 2) {
+		drawing.drawText("Uh oh, the corners just got tighter", track.railList[0][0] - Vector2(100, 150), 24, tutorialColor1);
+		drawing.drawText("Hold \"A\" when turning to preform a slide/drift", track.railList[0][0] - Vector2(125, 120), 24, tutorialColor2);
+	}
+
+	if (state == 3) {
+		drawing.drawText("As your speed increases, you might get speedwobbles if your form is stinky", track.railList[0][0] - Vector2(200, 150), 24, tutorialColor1);
+		drawing.drawText("Hold \"SPACEBAR\" to preform a tuck", track.railList[0][0] - Vector2(125, 120), 24, tutorialColor2);
+		drawing.drawText("You will gain speed and increase your stability in a tuck", track.railList[0][5] - Vector2(50, 120), 24, tutorialColor2);
+	}
+
+	if (state == 4) {
+		drawing.drawText("Technical slides are fast, flashy, and stylish", track.railList[0][0] - Vector2(200, 150), 24, tutorialColor1);
+		drawing.drawText("Hold \"S\" when turning to preform a technical slide", track.railList[0][0] - Vector2(125, 120), 24, tutorialColor2);
+	}
+
+	if (state == 5) {
+		drawing.drawText("Going too fast?", track.railList[0][0] - Vector2(200, 150), 24, tutorialColor1);
+		drawing.drawText("Hold \"D\" when turning to preform a shutdown slide", track.railList[0][0] - Vector2(125, 120), 24, tutorialColor2);
+	}
+
+	if (state == 6) {
+		drawing.drawText("Be careful of cars, cyclists, gravel pits, road squirrels, ect... on the road!", track.railList[0][0] - Vector2(200, 150), 24, tutorialColor1);
+		drawing.drawText("You can open the main menu by pressing \"1\"", track.railList[0][0] - Vector2(125, 120), 24, tutorialColor2);
+	}
+}
+
 void World::reset() {
 	track.resetVisibleRange();
 	mountainPolygons.clear();
@@ -15,7 +187,7 @@ void World::update() {
 	environment.update(track.railList);
 }
 
-void World::draw() {
+void World::draw(int tutorialState) {
 	track.updateVisibleRange();
 	generateMountainPolygons();
 
@@ -30,6 +202,11 @@ void World::draw() {
 	drawMountainOutline();
 
 	environment.draw();
+
+	if (tutorialState != -1) {
+		drawTutorial(tutorialState);
+		drawing.drawLine(track.railList[0][endNode], track.railList[1][endNode]);
+	}
 }
 
 void World::drawStatic() {
@@ -91,9 +268,9 @@ void World::generateMountainPolygons() {
 	}
 }
 
-void World::generateWorld() {
+int World::generateWorld(int tutorialState) {
 	track.initialize();
-	generateTrack();
+	generateTrack(tutorialState);
 	track.generateTrackDirection();
 	generateSpeedZones();
 	environment.generateGuardRails(track.railList[0], 2, 5, 15, 25);
@@ -107,34 +284,43 @@ void World::generateWorld() {
 	if (configuration.getConfigurations()["IsRaining"]) { environment.generateRain(track.railList[1], 25); }
 	environment.generateBoulders(track.railList[1], 10);
 	environment.generateWaves();
+
+	return tutorialEnd;
 }
 
 void World::generateSpeedZones() {
 	randomGradualSpeedZone(5, 0, 50, 5, 0, configuration.getConfigurations()["TrackSpeedSpacing"]);
 }
 
-void World::generateTrack() {
-	track.addVertex(Vector2(-10, -20), 0);
-	track.addVertex(Vector2(-10, -20), 45);
-	track.addVertexRelative(-25, 100, 25);
-	track.addVertexRelative(0, 150, 0);
-	switch (configuration.getConfigurations()["TrackGenerationStyle"]) {
-		case 0:
-			track.addVertexRelative(-75, 50, 75);
-			track.addVertexRelative(-76, 50, 76);
-			randomLongTrackPar(50, 100, 20, 20);
-			break;
-		case 1:
-			randomInputFunction(50, 5, 500, -0.3, Vector2(-10, 10), Vector2(0, 20), Vector2(1000, 1000));
-			for (int x = 0; x < track.railList[0].size(); x++) {
-				mountainOffsetValue.push_back(rand() % 25 - 12);
-			}
-			break;
-		case 2:
-			track.addVertexRelative(-25, 50, 25);
-			track.addVertexRelative(-25, 50, 25);
-			randomLongTrackPar(50, 100, 20, 20);
-			break;
+void World::generateTrack(int tutorialState) {
+	if (tutorialState == -1) {
+		track.addVertex(Vector2(-10, -20), 0);
+		track.addVertex(Vector2(-10, -20), 45);
+		track.addVertexRelative(-25, 100, 25);
+		track.addVertexRelative(0, 150, 0);
+		switch (configuration.getConfigurations()["TrackGenerationStyle"]) {
+			case 0:
+				track.addVertexRelative(-75, 50, 75);
+				track.addVertexRelative(-76, 50, 76);
+				randomLongTrackPar(50, 100, 20, 20);
+				break;
+			case 1:
+				randomInputFunction(50, 5, 500, -0.3, Vector2(-10, 10), Vector2(0, 20), Vector2(1000, 1000));
+				for (int x = 0; x < track.railList[0].size(); x++) {
+					mountainOffsetValue.push_back(rand() % 25 - 12);
+				}
+				break;
+			case 2:
+				track.addVertexRelative(-25, 50, 25);
+				track.addVertexRelative(-25, 50, 25);
+				randomLongTrackPar(50, 100, 20, 20);
+				break;
+		}
+
+		tutorialEnd = 0;
+	}
+	else {
+		generateTutorial(tutorialState);
 	}
 }
 

@@ -26,6 +26,7 @@ void Joiner::initialize() {
 	profile.initialize();
 	handleConfig();
 
+	if (configuration.getConfigurations()["ShowTutorial"] == 1) { tutorialState = 0; }
 	trackGenerationStyle = configuration.getConfigurations()["TrackGenerationStyle"];
 
 	deckID = configuration.getConfigurations()["DeckID"];
@@ -103,8 +104,13 @@ void Joiner::resetFull() {
 	if (netConnected) { srand(rainSeed); }
 	else { srand(time(NULL)); }
 	
-	if (toggleRain || rand() % 4 == 0) { isRaining = true; }
-	else { isRaining = false; }
+	if (forceEnd != 0) {
+		isRaining = false;
+	}
+	else {
+		if (toggleRain || rand() % 4 == 0) { isRaining = true; }
+		else { isRaining = false; }
+	}
 
 	if (randomTrackSeed == true) { joiner.seed = time(NULL); }
 	srand(seed);
@@ -157,7 +163,7 @@ void Joiner::initializeWorld() {
 	board.initialize();
 	camera.linkPosition(board.bitmapPolygon.getPositionAddress());
 	
-	world.generateWorld();
+	forceEnd = world.generateWorld(tutorialState);
 
 	hud.initializeMinimap(world.track.railList, Vector2(0, 0), Vector2(0, 0), configuration.getScreenWidth() / 5, configuration.getScreenHeight() / 3);
 	hud.initializeSplitsDisplay(checkpointCount, world.track.railList[0][0], world.track.railList[0][world.track.railList[0].size() - 1]);
@@ -171,6 +177,17 @@ void Joiner::update() {
 	handleStartInput();
 	nJoiner.update();
 	if (nJoiner.handleNetwork(&seed, &rainSeed)) { resetFull(); }
+
+	if (forceEnd != 0 && board.bitmapPolygon.getCenter().x > forceEnd) {
+		if (tutorialState == 6) {
+			tutorialState = -1;
+			forceEnd = 0;
+		}
+		else {
+			tutorialState += 1;
+		}
+		resetFull();
+	}
 
 	if ((!isPaused && isKeyStart && !netConnected) || (netConnected && nJoiner.netStart)) {
 
@@ -227,7 +244,7 @@ void Joiner::draw() {
 	
 	glPushMatrix();
 	glTranslatef(-camera.getPosition().x + (configuration.getScreenWidth() / 2) - (board.bitmapPolygon.getWidth() / 2), -camera.getPosition().y + (configuration.getScreenHeight() / 2) - (board.bitmapPolygon.getHeight() / 2), 0);
-	world.draw();
+	world.draw(tutorialState);
 	board.drawThaneLines();
 	nJoiner.draw();
 	if (!isCrashed || stillShowBoard) { board.draw(); }
@@ -238,27 +255,29 @@ void Joiner::draw() {
 	screenFilter.draw();
 
 	hud.draw(showSplitsHUD, showKeyPressHUD, showMinimap);
-	if (!isKeyStart) {
-		SDL_Color color1 = { 30, 87, 100 };
-		SDL_Color color2 = { 102, 62, 178 };
-		SDL_Color color3 = { 76, 59, 42 };
 
-		drawing.drawText("Thane 10.0.0", Vector2(0, 0), 25, color1);
-		drawing.drawText("Menu Controls:", Vector2(0, 50), 25, color2);
-		drawing.drawText("1 - Show Main Menu", Vector2(25, 75), 25, color3);
-		drawing.drawText("2 - Hide Main Menu", Vector2(25, 100), 25, color3);
-		drawing.drawText("Enter - Reset Environment", Vector2(25, 125), 25, color3);
+	// //Old Tutorial
+	// if (!isKeyStart) {
+	// 	SDL_Color color1 = { 30, 87, 100 };
+	// 	SDL_Color color2 = { 102, 62, 178 };
+	// 	SDL_Color color3 = { 76, 59, 42 };
 
-		drawing.drawText("Basic Movement Controls:", Vector2(0, 175), 25, color2);
-		drawing.drawText("Spacebar - Push/Tuck", Vector2(25, 200), 25, color3);
-		drawing.drawText("Left Arrow & Right Arrow - Carve", Vector2(25, 225), 25, color3);
+	// 	drawing.drawText("Thane 10.0.0", Vector2(0, 0), 25, color1);
+	// 	drawing.drawText("Menu Controls:", Vector2(0, 50), 25, color2);
+	// 	drawing.drawText("1 - Show Main Menu", Vector2(25, 75), 25, color3);
+	// 	drawing.drawText("2 - Hide Main Menu", Vector2(25, 100), 25, color3);
+	// 	drawing.drawText("Enter - Reset Environment", Vector2(25, 125), 25, color3);
 
-		drawing.drawText("Slide Controls", Vector2(0, 275), 25, color2);
-		drawing.drawText("Turn Keys + A - Regular Slide", Vector2(25, 300), 25, color3);
-		drawing.drawText("Turn Keys + S - Technical Slide", Vector2(25, 325), 25, color3);
-		drawing.drawText("Turn Keys + D - Shutdown Slide", Vector2(25, 350), 25, color3);
-		drawing.drawText("Any Slide + Down Array - Pendy Slide", Vector2(25, 375), 25, color3);
-	}
+	// 	drawing.drawText("Basic Movement Controls:", Vector2(0, 175), 25, color2);
+	// 	drawing.drawText("Spacebar - Push/Tuck", Vector2(25, 200), 25, color3);
+	// 	drawing.drawText("Left Arrow & Right Arrow - Carve", Vector2(25, 225), 25, color3);
+
+	// 	drawing.drawText("Slide Controls", Vector2(0, 275), 25, color2);
+	// 	drawing.drawText("Turn Keys + A - Regular Slide", Vector2(25, 300), 25, color3);
+	// 	drawing.drawText("Turn Keys + S - Technical Slide", Vector2(25, 325), 25, color3);
+	// 	drawing.drawText("Turn Keys + D - Shutdown Slide", Vector2(25, 350), 25, color3);
+	// 	drawing.drawText("Any Slide + Down Array - Pendy Slide", Vector2(25, 375), 25, color3);
+	// }
 }
 
 void Joiner::handleDevMode() {
