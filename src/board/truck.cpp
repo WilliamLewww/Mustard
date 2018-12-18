@@ -65,12 +65,20 @@ void Truck::updatePosition(Vector2 left, Vector2 right) {
 	rightTruck.addAngle(-additionalAngle);
 };
 
-void Truck::draw() {
+void Truck::draw(bool ridingSwitch) {
 	leftTruck.draw();
 	rightTruck.draw();
 
-	drawing.drawRect(leftTruck.getTopRight() - Vector2(1, 1), 3, 3, leftTruck.getAngle(), wheelColor);
-	drawing.drawRect(leftTruck.getBottomRight() - Vector2(1, 1), 3, 3, leftTruck.getAngle(), wheelColor);
-	drawing.drawRect(rightTruck.getTopRight() - Vector2(1, 1), 3, 3, rightTruck.getAngle(), wheelColor);
-	drawing.drawRect(rightTruck.getBottomRight() - Vector2(1, 1), 3, 3, rightTruck.getAngle(), wheelColor);
+	if (!ridingSwitch) {
+		drawing.drawRect(leftTruck.getTopRight() - Vector2(1, 1), 3, 3, leftTruck.getAngle(), wheelColor);
+		drawing.drawRect(leftTruck.getBottomRight() - Vector2(1, 1), 3, 3, leftTruck.getAngle(), wheelColor);
+		drawing.drawRect(rightTruck.getTopRight() - Vector2(1, 1), 3, 3, rightTruck.getAngle(), wheelColor);
+		drawing.drawRect(rightTruck.getBottomRight() - Vector2(1, 1), 3, 3, rightTruck.getAngle(), wheelColor);
+	}
+	else {
+		drawing.drawRect(leftTruck.getTopRight(), 3, 3, leftTruck.getAngle(), wheelColor);
+		drawing.drawRect(leftTruck.getBottomRight(), 3, 3, leftTruck.getAngle(), wheelColor);
+		drawing.drawRect(rightTruck.getTopRight(), 3, 3, rightTruck.getAngle(), wheelColor);
+		drawing.drawRect(rightTruck.getBottomRight(), 3, 3, rightTruck.getAngle(), wheelColor);
+	}
 };

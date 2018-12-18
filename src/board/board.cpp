@@ -75,7 +75,7 @@ void Board::update(int speedZone, int trackDirection) {
 }
 
 void Board::draw() {
-	truck.draw();
+	truck.draw(ridingSwitch);
 	bitmapPolygon.drawOutline();
 
 	if (handDown) {

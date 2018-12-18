@@ -23,5 +23,5 @@ public:
 	void setWidth(int width);
 	void setAngle(double* angle);
 	void updatePosition(Vector2 left, Vector2 right);
-	void draw();
+	void draw(bool ridingSwitch);
 };
