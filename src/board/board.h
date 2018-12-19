@@ -68,8 +68,8 @@ private:
 
 	void handlePushTuck();
 	
-	void handleLeftTurn();
-	void handleRightTurn();
+	void handleLeftTurn(double difference);
+	void handleRightTurn(double difference);
 
 	double getAngleDifference();
 	void handleHandDown(double difference);

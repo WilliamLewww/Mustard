@@ -27,3 +27,4 @@ DrawTrackDetails 1
 @TrackStyle0 Mountain Road
 @TrackStyle1 Smooth Track (W.I.P.)
 @TrackStyle2 Narrow Mountain Road
+@TrackStyle3 Wide Mountain Road

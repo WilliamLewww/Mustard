@@ -42,12 +42,13 @@ void Board::linkPolygonWithConfigurations() {
 }
 
 void Board::update(int speedZone, int trackDirection) {
+	double difference = getAngleDifference();
 	elapsedTimeSeconds = timer.getTimeSeconds();
 
 	addSpeedFromHill(speedZone, trackDirection);
 	if (!inPendy) { 
-		handleLeftTurn();
-		handleRightTurn();
+		handleLeftTurn(difference);
+		handleRightTurn(difference);
 	}
 	handlePushTuck();
 	handleWobble();
@@ -55,7 +56,6 @@ void Board::update(int speedZone, int trackDirection) {
 	if (input.checkKeyDown(SDLK_DOWN)) { if (canPendy && velocity > 200) { handDown = true; } }
 	else { if (!inPendy) { handDown = false; canPendy = true; } }
 
-	double difference = getAngleDifference();
 	handleHandDown(difference);
 	if (!inPendy) {
 		handleSlideRight(difference);
@@ -168,14 +168,16 @@ void Board::handleWobble() {
 }
 
 void Board::handlePushTuck() {
-	if ((input.checkKeyDown(SDLK_SPACE) || input.checkButtonDown(5) || input.checkButtonDown(4)) && slide == false) {
-		if (velocity > pushMax) {
-			velocity += tuckSpeed * elapsedTimeSeconds;
-		}
-		else {
-			if (pushTimer >= pushInterval) {
-				velocity += pushSpeed;
-				pushTimer = 0;
+	if (bitmapPolygon.getAngle() == movementAngle) {
+		if ((input.checkKeyDown(SDLK_SPACE) || input.checkButtonDown(5) || input.checkButtonDown(4)) && slide == false) {
+			if (velocity > pushMax) {
+				velocity += tuckSpeed * elapsedTimeSeconds;
+			}
+			else {
+				if (pushTimer >= pushInterval) {
+					velocity += pushSpeed;
+					pushTimer = 0;
+				}
 			}
 		}
 	}
@@ -185,7 +187,7 @@ void Board::handlePushTuck() {
 	}
 }
 
-void Board::handleLeftTurn() {
+void Board::handleLeftTurn(double difference) {
 	if ((input.checkKeyDown(SDLK_LEFT) && !input.checkKeyDown(SDLK_RIGHT)) || input.getControllerPadInput() == 7) {
 		turnLeft = true;
 
@@ -230,8 +232,22 @@ void Board::handleLeftTurn() {
 					}
 				}
 				else {
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnRadius() * elapsedTimeSeconds));
-					movementAngle += getTurnRadius() * elapsedTimeSeconds;
+					if (movementAngle < bitmapPolygon.getAngle()) {
+						if (movementAngle + getTurnRadius() * elapsedTimeSeconds * 0.85 > bitmapPolygon.getAngle()) {
+							movementAngle = bitmapPolygon.getAngle();
+						}
+						else {
+							bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnSpeed() * elapsedTimeSeconds * 0.35));
+							movementAngle += getTurnRadius() * elapsedTimeSeconds * 0.85;
+						}
+
+						if (velocity - difference < 0) { velocity = 0; }
+						else { velocity -= difference; }
+					}
+					else {
+						bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnRadius() * elapsedTimeSeconds));
+						movementAngle += getTurnRadius() * elapsedTimeSeconds;
+					}
 				}	
 			}
 		}
@@ -241,7 +257,7 @@ void Board::handleLeftTurn() {
 	}
 }
 
-void Board::handleRightTurn() {
+void Board::handleRightTurn(double difference) {
 	if ((input.checkKeyDown(SDLK_RIGHT) && !input.checkKeyDown(SDLK_LEFT)) || input.getControllerPadInput() == 3) {
 		turnRight = true;
 
@@ -286,8 +302,22 @@ void Board::handleRightTurn() {
 					}
 				}
 				else {
-					bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnRadius() * elapsedTimeSeconds));
-					movementAngle -= getTurnRadius() * elapsedTimeSeconds;
+					if (movementAngle > bitmapPolygon.getAngle()) {
+						if (movementAngle - getTurnRadius() * elapsedTimeSeconds * 0.85 < bitmapPolygon.getAngle()) {
+							movementAngle = bitmapPolygon.getAngle();
+						}
+						else {
+							bitmapPolygon.setAngle(bitmapPolygon.getAngle() + (getTurnSpeed() * elapsedTimeSeconds * 0.35));
+							movementAngle -= getTurnRadius() * elapsedTimeSeconds * 0.85;
+						}
+
+						if (velocity - difference < 0) { velocity = 0; }
+						else { velocity -= difference; }
+					}
+					else {
+						bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (getTurnRadius() * elapsedTimeSeconds));
+						movementAngle -= getTurnRadius() * elapsedTimeSeconds;
+					}
 				}
 			}
 		}
@@ -427,6 +457,7 @@ void Board::handleSlideLeft(double difference) {
 			}
 			bitmapPolygon.setAngle(bitmapPolygon.getAngle() - (150 * elapsedTimeSeconds));  
 		}
+
 		if (bitmapPolygon.getAngle() - movementAngle > 5) {
 			if (velocity - difference < 0) { velocity = 0; }
 			else { velocity -= difference; }
