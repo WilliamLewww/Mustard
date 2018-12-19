@@ -410,38 +410,50 @@ void Joiner::handleMainMenu() {
 	if (input.checkKeyDown(SDLK_1)) { showMainMenu = true; }
 
 	if (showMainMenu) {
-		ImGui::SetNextWindowSizeConstraints(ImVec2(230, 165), ImVec2(230, 165));
-		ImGui::Begin("Main Menu");
+		if (tutorialState == -1) {
+			ImGui::SetNextWindowSizeConstraints(ImVec2(230, 165), ImVec2(230, 165));
+			ImGui::Begin("Main Menu");
 
-		ImGui::Columns(3);
-		ImGui::SetColumnWidth(0, 90);
-		if (ImGui::Button("Edit Track")) { showTrackEdit = !showTrackEdit; }
-		ImGui::NextColumn();
-		ImGui::SetColumnWidth(1, 50);
-		if (ImGui::Button("Shop")) { showBoardEdit = !showBoardEdit; }
-		ImGui::NextColumn();
-		if (ImGui::Button("Inventory")) {
-			if (!showInventory) { 
-				profile.setAllWheelNames(); 
-				profile.setAllDeckNames(); 
+			ImGui::Columns(3);
+			ImGui::SetColumnWidth(0, 90);
+			if (ImGui::Button("Edit Track")) { showTrackEdit = !showTrackEdit; }
+			ImGui::NextColumn();
+			ImGui::SetColumnWidth(1, 50);
+			if (ImGui::Button("Shop")) { showBoardEdit = !showBoardEdit; }
+			ImGui::NextColumn();
+			if (ImGui::Button("Inventory")) {
+				if (!showInventory) { 
+					profile.setAllWheelNames(); 
+					profile.setAllDeckNames(); 
+				}
+				showInventory = !showInventory;
 			}
-			showInventory = !showInventory;
+
+			ImGui::Columns(1);
+
+			ImGui::Columns(2);
+			if (ImGui::Button("Leaderboards")) { showLeaderboards = !showLeaderboards; }
+			ImGui::NextColumn();
+			if (ImGui::Button("Edit HUD")) { showHUDEdit = !showHUDEdit; }
+			ImGui::Columns(1);
+			
+			if (ImGui::Button("Apply Changes / Re-Initialize")) { resetFull(); }
+
+			ImGui::Checkbox("Display Session Stats", &showSessionStats);
+			ImGui::Checkbox("Display Wheel Stats", &showWheelStats);
+			ImGui::Text("%.1f FPS", ImGui::GetIO().Framerate);
+			ImGui::End();
 		}
-
-		ImGui::Columns(1);
-
-		ImGui::Columns(2);
-		if (ImGui::Button("Leaderboards")) { showLeaderboards = !showLeaderboards; }
-		ImGui::NextColumn();
-		if (ImGui::Button("Edit HUD")) { showHUDEdit = !showHUDEdit; }
-		ImGui::Columns(1);
-		
-		if (ImGui::Button("Apply Changes / Re-Initialize")) { resetFull(); }
-
-		ImGui::Checkbox("Display Session Stats", &showSessionStats);
-		ImGui::Checkbox("Display Wheel Stats", &showWheelStats);
-		ImGui::Text("%.1f FPS", ImGui::GetIO().Framerate);
-		ImGui::End();
+		else {
+			ImGui::SetNextWindowSizeConstraints(ImVec2(115, 60), ImVec2(115, 60));
+			ImGui::Begin("Main Menu");
+			if (ImGui::Button("End Tutorial")) { 
+				tutorialState = -1;
+				forceEnd = 0;
+				resetFull();
+			}
+			ImGui::End();
+		}
 	}
 }
 

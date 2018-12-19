@@ -5,7 +5,7 @@
 class Truck {
 private:
 	int wheelColor[3];
-	int truckColor[3] = { 51, 26, 0 };
+	int truckColor[3] = { 41, 16, 0 };
 	
 	BitmapPolygon leftTruck, rightTruck;
 	double* boardAngle;

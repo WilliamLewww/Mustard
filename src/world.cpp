@@ -172,8 +172,9 @@ void World::drawTutorial(int state) {
 	}
 
 	if (state == 6) {
-		drawing.drawText("Be careful of cars, cyclists, gravel pits, road squirrels, ect... on the road!", track.railList[0][0] - Vector2(200, 150), 24, tutorialColor1);
-		drawing.drawText("You can open the main menu by pressing \"1\"", track.railList[0][0] - Vector2(125, 120), 24, tutorialColor2);
+		drawing.drawText("Beware of cars, cyclists, gravel pits, road squirrels, steep hills, speedwobbles, potholes, pinecones, trees, rain, puddles, oh god please help me, I think I just failed my stats final", track.railList[0][0] - Vector2(200, 200), 24, tutorialColor1);
+		drawing.drawText("Smash pinecones to gain money", track.railList[0][0] - Vector2(200, 150), 24, tutorialColor2);
+		drawing.drawText("You can show the main menu by pressing \"1\"", track.railList[0][0] - Vector2(125, 120), 24, tutorialColor2);
 	}
 }
 

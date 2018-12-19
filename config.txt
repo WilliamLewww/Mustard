@@ -5,7 +5,7 @@ ShowTutorial 1
 StartMinimal 1
 
 # 0 or 1
-UnlockEverything 1
+UnlockEverything 0
 
 #Window Resolution (Default = 1000x600)
 ScreenWidth 1000
