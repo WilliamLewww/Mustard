@@ -170,60 +170,68 @@ void Joiner::initializeWorld() {
 }
 
 void Joiner::update() {
-	if (input.checkKeyDown(SDLK_ESCAPE)) { hideEditWindows();}
+	if (input.checkKeyDown(SDLK_ESCAPE)) { hideEditWindows(); }
+	if (input.checkKeyDown(SDLK_5)) { trackEditor.setEnabled(true, board.bitmapPolygon.getPositionAddress(), board.bitmapPolygon.getWidth(), board.bitmapPolygon.getHeight()); }
 	if (input.checkKeyDown(SDLK_7) && input.checkKeyDown(SDLK_8) && input.checkKeyDown(SDLK_9)) { devMode = true; }
 	if (devMode) { handleDevMode(); }
 
-	handleStartInput();
-	nJoiner.update();
-	if (nJoiner.handleNetwork(&seed, &rainSeed)) { resetFull(); }
+	if (!trackEditor.getEnabled()) {
+		handleStartInput();
+		nJoiner.update();
+		if (nJoiner.handleNetwork(&seed, &rainSeed)) { resetFull(); }
 
-	if (forceEnd != 0 && board.bitmapPolygon.getCenter().x > forceEnd) {
-		if (tutorialState == 6) {
-			tutorialState = -1;
-			forceEnd = 0;
-		}
-		else {
-			tutorialState += 1;
-		}
-		resetFull();
-	}
-
-	if ((!isPaused && isKeyStart && !netConnected) || (netConnected && nJoiner.netStart)) {
-
-		if (!isCrashed) {
-			if (netTimer > 0.1) {
-				nJoiner.sendPosition();
-				netTimer = 0;
+		if (forceEnd != 0 && board.bitmapPolygon.getCenter().x > forceEnd) {
+			if (tutorialState == 6) {
+				tutorialState = -1;
+				forceEnd = 0;
 			}
-			else { netTimer += timer.getTimeSeconds(); }
+			else {
+				tutorialState += 1;
+			}
+			resetFull();
 		}
 
-		if (!isCrashed) { board.update(speedZone, trackDirection); }
-		screenFilter.update();
-		particleManager.update();
-		world.update();
+		if ((!isPaused && isKeyStart && !netConnected) || (netConnected && nJoiner.netStart)) {
 
-		if (showMinimap) { hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle()); }
-		if (!isCrashed) { hud.updateSplitsDisplay(board.bitmapPolygon.getPosition()); }
+			if (!isCrashed) {
+				if (netTimer > 0.1) {
+					nJoiner.sendPosition();
+					netTimer = 0;
+				}
+				else { netTimer += timer.getTimeSeconds(); }
+			}
 
-		for (Vector2 speed : world.track.speedZones) {
-			if (board.bitmapPolygon.getPosition().x > world.track.railList[0][speed.x].x) { speedZone = speed.y; }
+			if (!isCrashed) { board.update(speedZone, trackDirection); }
+			screenFilter.update();
+			particleManager.update();
+			world.update();
+
+			if (showMinimap) { hud.updateMinimap(board.bitmapPolygon.getPosition(), board.bitmapPolygon.getAngle()); }
+			if (!isCrashed) { hud.updateSplitsDisplay(board.bitmapPolygon.getPosition()); }
+
+			for (Vector2 speed : world.track.speedZones) {
+				if (board.bitmapPolygon.getPosition().x > world.track.railList[0][speed.x].x) { speedZone = speed.y; }
+			}
+
+			for (Vector2 direction : world.track.trackDirection) {
+				if (board.bitmapPolygon.getPosition().x > direction.x) { trackDirection = direction.y; }
+			}
+
+			handleBoardCollision();
+
+			if (board.bitmapPolygon.getPosition().x > hud.splitsDisplay.checkpointList[hud.splitsDisplay.checkpointList.size() - 1]) {
+				hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());
+				particleManager.generateFinishParticles(2, board.bitmapPolygon.getCenter());
+				reset(true, false);
+			}
+
+			if (input.checkKeyDown(SDLK_r) && !isCrashed) { profile.getDeckFromList(selectedDeck)->damage(1); reset(true); }
 		}
-
-		for (Vector2 direction : world.track.trackDirection) {
-			if (board.bitmapPolygon.getPosition().x > direction.x) { trackDirection = direction.y; }
-		}
-
-		handleBoardCollision();
-
-		if (board.bitmapPolygon.getPosition().x > hud.splitsDisplay.checkpointList[hud.splitsDisplay.checkpointList.size() - 1]) {
-			hud.updateSplitsDisplay(board.bitmapPolygon.getPosition());
-			particleManager.generateFinishParticles(2, board.bitmapPolygon.getCenter());
-			reset(true, false);
-		}
-
-		if (input.checkKeyDown(SDLK_r) && !isCrashed) { profile.getDeckFromList(selectedDeck)->damage(1); reset(true); }
+	}
+	else {
+		handleDevMode();
+		trackEditor.update();
+		board.updateSpec(trackEditor.getSpec());
 	}
 
 	isPaused = false;
@@ -236,23 +244,34 @@ void Joiner::update() {
 	handleInventory();
 	handleNetworkMenu();
 
-	if (input.checkKeyDown(SDLK_RETURN) && allowKeyStart) { resetFull(); }
+	if (input.checkKeyDown(SDLK_RETURN) && (allowKeyStart || trackEditor.getEnabled())) { resetFull(); }
 }
 
 void Joiner::draw() {
-	world.drawStaticBackground();
-	
-	glPushMatrix();
-	glTranslatef(-camera.getPosition().x + (configuration.getScreenWidth() / 2) - (board.bitmapPolygon.getWidth() / 2), -camera.getPosition().y + (configuration.getScreenHeight() / 2) - (board.bitmapPolygon.getHeight() / 2), 0);
-	world.draw(tutorialState);
-	board.drawThaneLines();
-	nJoiner.draw();
-	if (!isCrashed || stillShowBoard) { board.draw(); }
-	particleManager.draw();
-	glPopMatrix();
+	if (!trackEditor.getEnabled()) {
+		world.drawStaticBackground();
+		
+		glPushMatrix();
+		glTranslatef(-camera.getPosition().x + (configuration.getScreenWidth() / 2) - (board.bitmapPolygon.getWidth() / 2), -camera.getPosition().y + (configuration.getScreenHeight() / 2) - (board.bitmapPolygon.getHeight() / 2), 0);
+		world.draw(tutorialState);
+		board.drawThaneLines();
+		nJoiner.draw();
+		if (!isCrashed || stillShowBoard) { board.draw(); }
+		particleManager.draw();
+		glPopMatrix();
 
-	world.drawStatic();
-	screenFilter.draw();
+		world.drawStatic();
+		screenFilter.draw();
+	}
+	else {
+		glPushMatrix();
+		glTranslatef(-camera.getPosition().x + (configuration.getScreenWidth() / 2) - (board.bitmapPolygon.getWidth() / 2), -camera.getPosition().y + (configuration.getScreenHeight() / 2) - (board.bitmapPolygon.getHeight() / 2), 0);
+		trackEditor.draw();
+		board.drawThaneLines();
+		if (!isCrashed || stillShowBoard) { board.draw(); }
+		particleManager.draw();
+		glPopMatrix();
+	}
 
 	hud.draw(showSplitsHUD, showKeyPressHUD, showMinimap);
 
@@ -406,8 +425,8 @@ void Joiner::hideEditWindows() {
 }
 
 void Joiner::handleMainMenu() {
-	if (input.checkKeyDown(SDLK_2)) { showMainMenu = false; }
-	if (input.checkKeyDown(SDLK_1)) { showMainMenu = true; }
+	if (input.getKeyListSize() == 0) { canShowMainMenu = true; };
+	if (canShowMainMenu && input.checkKeyDown(SDLK_1)) { showMainMenu = !showMainMenu; canShowMainMenu = false; }
 
 	if (showMainMenu) {
 		if (tutorialState == -1) {
@@ -458,7 +477,7 @@ void Joiner::handleMainMenu() {
 }
 
 void Joiner::handleNetworkMenu() {
-	if (input.checkKeyDown(SDLK_5)) { showNetworkMenu = true; }
+	if (input.checkKeyDown(SDLK_4)) { showNetworkMenu = true; }
 	if (showNetworkMenu) {
 		isPaused = true;
 		ImGui::SetNextWindowSizeConstraints(ImVec2(250, 155), ImVec2(250, 155));
@@ -584,7 +603,7 @@ void Joiner::handleTrackEdit() {
 }
 
 void Joiner::handleBoardEdit() {
-	if (input.checkKeyDown(SDLK_3)) { showBoardEdit = true; }
+	if (input.checkKeyDown(SDLK_2)) { showBoardEdit = true; }
 	if (showBoardEdit) {
 		isPaused = true;
 		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 280), ImVec2(380, 280));
@@ -661,7 +680,7 @@ void Joiner::handleBoardEdit() {
 }
 
 void Joiner::handleInventory() {
-	if (input.checkKeyDown(SDLK_4)) { 
+	if (input.checkKeyDown(SDLK_3)) { 
 		profile.setAllWheelNames(); 
 		profile.setAllDeckNames(); 
 		showInventory = true; 

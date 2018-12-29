@@ -1,9 +1,9 @@
 #pragma once
 #include <vector>
-#include "core\vector2.h"
-#include "core\drawing.h"
-#include "environment\road.h"
-#include "camera.h"
+#include "..\core\vector2.h"
+#include "..\core\drawing.h"
+#include "..\environment\road.h"
+#include "..\camera.h"
 
 class Track {
 private:

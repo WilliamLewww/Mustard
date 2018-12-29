@@ -10,6 +10,7 @@
 #include "effects\screen_filter.h"
 #include "environment\squirrel.h"
 #include "board\board.h"
+#include "track\track_editor.h"
 #include "world.h"
 #include "camera.h"
 
@@ -18,6 +19,8 @@ private:
 	World world;
 	Board board;
 	HUD hud;
+
+	TrackEditor trackEditor;
 
 	NJoiner nJoiner;
 	float netTimer = 0;
@@ -36,6 +39,7 @@ private:
 	bool stillShowBoard = false;
 	
 	bool showNetworkMenu = false;
+	bool canShowMainMenu = false;
 	bool showMainMenu = true;
 	bool showHUDEdit, showTrackEdit, showBoardEdit;
 	bool showSplitsHUD = true, showKeyPressHUD = false, showMinimap = true;

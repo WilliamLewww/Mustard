@@ -74,6 +74,54 @@ void Board::update(int speedZone, int trackDirection) {
 	truck.updatePosition(bitmapPolygon.getMiddleLeft(bitmapPolygon.getWidth() - 6), bitmapPolygon.getMiddleRight(bitmapPolygon.getWidth() - 7));
 }
 
+void Board::updateSpec(bool spec) {
+	if (!spec) {
+		double difference = getAngleDifference();
+		elapsedTimeSeconds = timer.getTimeSeconds();
+
+		addSpeedFromHill(0, 0);
+		if (!inPendy) { 
+			handleLeftTurn(difference);
+			handleRightTurn(difference);
+		}
+		handlePushTuck();
+		handleWobble();
+
+		if (input.checkKeyDown(SDLK_DOWN)) { if (canPendy && velocity > 200) { handDown = true; } }
+		else { if (!inPendy) { handDown = false; canPendy = true; } }
+
+		handleHandDown(difference);
+		if (!inPendy) {
+			handleSlideRight(difference);
+			handleSlideLeft(difference);
+		}
+
+		Vector2 direction = getDirection();
+		moveInDirection(direction);
+		refreshSlide();
+
+		if ((!ridingSwitch && turnLeft) || (ridingSwitch && turnRight)) { truck.setTurnLeft(true); }
+		else { truck.setTurnLeft(false); }
+		if ((!ridingSwitch && turnRight) || (ridingSwitch && turnLeft)) { truck.setTurnRight(true); }
+		else { truck.setTurnRight(false); }
+
+		truck.updatePosition(bitmapPolygon.getMiddleLeft(bitmapPolygon.getWidth() - 6), bitmapPolygon.getMiddleRight(bitmapPolygon.getWidth() - 7));
+	}
+	else {
+		if (velocity != 0) { velocity = 0; };
+		if (bitmapPolygon.getAngle() != 0 || movementAngle != 0) { bitmapPolygon.setAngle(0); movementAngle = 0; }
+
+		int movementSpeed = 3;
+		if (input.checkKeyDown(SDLK_LSHIFT) || input.checkKeyDown(SDLK_RSHIFT)) { movementSpeed = 7; }
+
+		if (input.checkKeyDown(SDLK_RIGHT)) { bitmapPolygon.addX(movementSpeed); }
+		if (input.checkKeyDown(SDLK_LEFT)) { bitmapPolygon.addX(-movementSpeed); }
+		if (input.checkKeyDown(SDLK_DOWN)) { bitmapPolygon.addY(movementSpeed); }
+		if (input.checkKeyDown(SDLK_UP)) { bitmapPolygon.addY(-movementSpeed); }
+		truck.updatePosition(bitmapPolygon.getMiddleLeft(bitmapPolygon.getWidth() - 6), bitmapPolygon.getMiddleRight(bitmapPolygon.getWidth() - 7));
+	}
+}
+
 void Board::draw() {
 	truck.draw(ridingSwitch);
 	bitmapPolygon.drawOutline();

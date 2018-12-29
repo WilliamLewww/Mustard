@@ -94,6 +94,7 @@ public:
 	
 	void initialize();
 	void update(int speedZone, int trackDirection);
+	void updateSpec(bool spec);
 	void reset();
 	void draw();
 	void drawThaneLines();
