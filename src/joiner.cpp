@@ -112,6 +112,8 @@ void Joiner::resetFull() {
 		else { isRaining = false; }
 	}
 
+	pushConfigurationsRain();
+
 	if (randomTrackSeed == true) { joiner.seed = time(NULL); }
 	srand(seed);
 
@@ -140,8 +142,11 @@ void Joiner::pushConfigurations() {
 	configuration.setConfiguration("WheelID", wheelID);
 	configuration.setConfiguration("SelectedDeck", selectedDeck);
 	configuration.setConfiguration("SelectedWheel", selectedWheel);
-	configuration.setConfiguration("IsRaining", isRaining);
 
+	board.initialize();
+}
+
+void Joiner::pushConfigurationsRain() {
 	if (isRaining) {
 		screenFilter.setFlashing(true);
 		screenFilter.setAlpha(75);
@@ -152,10 +157,10 @@ void Joiner::pushConfigurations() {
 		screenFilter.setFlashing(false);
 		screenFilter.setAlpha(50);
 		screenFilter.setColor(66, 91, 131);
-		screenFilter.setShow(true);
+		screenFilter.setShow(false);
 	}
 
-	board.initialize();
+	configuration.setConfiguration("IsRaining", isRaining);
 	screenFilter.initialize();
 }
 

@@ -62,6 +62,7 @@ private:
 	void handleConfig();
 
 	void pushConfigurations();
+	void pushConfigurationsRain();
 
 	void hideEditWindows();
 
