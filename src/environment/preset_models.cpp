@@ -3,10 +3,19 @@
 SDL_Color tutorialColor1 = { 30, 87, 100 };
 SDL_Color tutorialColor2 = { 115, 55, 80 };
 SDL_Color tutorialColor3 = { 76, 59, 42 };
-int tutorialColor4[3] = { 209, 185, 175 };
+int tutorialColor4[3] = { 114, 80, 66 };
+int tutorialColor5[3] = { 35, 35, 35 };
 
 void drawModelWelcome() {
 	drawing.drawRect(Vector2(-175, -275), 375, 125, tutorialColor4);
+	drawing.drawCircle(Vector2(-170, -270), 4, tutorialColor5);
+	drawing.drawCircle(Vector2(195, -270), 4, tutorialColor5);
+	drawing.drawCircle(Vector2(195, -155), 4, tutorialColor5);
+	drawing.drawCircle(Vector2(-170, -155), 4, tutorialColor5);
+	drawing.drawCircle(Vector2(-170, -270), 3, tutorialColor5);
+	drawing.drawCircle(Vector2(195, -270), 3, tutorialColor5);
+	drawing.drawCircle(Vector2(195, -155), 3, tutorialColor5);
+	drawing.drawCircle(Vector2(-170, -155), 3, tutorialColor5);
 	drawing.drawText("Welcome to Thane!!!", Vector2(-100, -250), 24, tutorialColor1);
 	drawing.drawText("(Press any key to start rolling)", Vector2(-150, -220), 24, tutorialColor2);
 	drawing.drawText("You are at the peak of a very very very very very very very very very large hill", Vector2(600, 75), 24, tutorialColor2);
