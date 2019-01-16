@@ -176,6 +176,8 @@ void Joiner::initializeWorld() {
 
 void Joiner::update() {
 	if (input.checkKeyDown(SDLK_ESCAPE)) { hideEditWindows(); }
+	handleMainMenu();
+	handleTrackEdit();
 	handleTrackMode();
 	if (input.checkKeyDown(SDLK_7) && input.checkKeyDown(SDLK_8) && input.checkKeyDown(SDLK_9)) { devMode = true; }
 	if (devMode) { handleDevMode(); }
@@ -240,16 +242,14 @@ void Joiner::update() {
 	}
 
 	isPaused = false;
-	handleMainMenu();
 	handleLeaderboards();
 	handleStats();
 	handleHUDEdit();
-	handleTrackEdit();
 	handleBoardEdit();
 	handleInventory();
 	handleNetworkMenu();
 
-	if (input.checkKeyDown(SDLK_RETURN) && (allowKeyStart || trackEditor.getEnabled())) { resetFull(); }
+	if (input.checkKeyDown(SDLK_RETURN)) { resetFull(); }
 }
 
 void Joiner::draw() {
@@ -304,15 +304,19 @@ void Joiner::draw() {
 	// }
 }
 
+void Joiner::changeMode() {
+	if (!trackEditor.getEnabled()) {
+		trackEditor.setEnabled(true, board.bitmapPolygon.getPositionAddress(), board.bitmapPolygon.getWidth(), board.bitmapPolygon.getHeight());
+	}
+	else { trackEditor.disable(); }
+	resetFull();
+	canChangeMode = false; 
+}
+
 void Joiner::handleTrackMode() {
 	if (input.getKeyListSize() == 0) { canChangeMode = true; };
 	if (canChangeMode && input.checkKeyDown(SDLK_5)) {
-		if (!trackEditor.getEnabled()) {
-			trackEditor.setEnabled(true, board.bitmapPolygon.getPositionAddress(), board.bitmapPolygon.getWidth(), board.bitmapPolygon.getHeight());
-		}
-		else { trackEditor.disable(); }
-		resetFull();
-		canChangeMode = false; 
+		changeMode();
 	}
 }
 
@@ -448,38 +452,45 @@ void Joiner::handleMainMenu() {
 
 	if (showMainMenu) {
 		if (tutorialState == -1) {
-			ImGui::SetNextWindowSizeConstraints(ImVec2(230, 165), ImVec2(230, 165));
-			ImGui::Begin("Main Menu");
-
-			ImGui::Columns(3);
-			ImGui::SetColumnWidth(0, 90);
-			if (ImGui::Button("Edit Track")) { showTrackEdit = !showTrackEdit; }
-			ImGui::NextColumn();
-			ImGui::SetColumnWidth(1, 50);
-			if (ImGui::Button("Shop")) { showBoardEdit = !showBoardEdit; }
-			ImGui::NextColumn();
-			if (ImGui::Button("Inventory")) {
-				if (!showInventory) { 
-					profile.setAllWheelNames(); 
-					profile.setAllDeckNames(); 
-				}
-				showInventory = !showInventory;
+			if (trackEditor.getEnabled()) {
+				ImGui::SetNextWindowSizeConstraints(ImVec2(115, 60), ImVec2(115, 60));
+				ImGui::Begin("Main Menu");
+				ImGui::End();
 			}
+			else {
+				ImGui::SetNextWindowSizeConstraints(ImVec2(230, 165), ImVec2(230, 165));
+				ImGui::Begin("Main Menu");
 
-			ImGui::Columns(1);
+				ImGui::Columns(3);
+				ImGui::SetColumnWidth(0, 90);
+				if (ImGui::Button("Edit Track")) { showTrackEdit = !showTrackEdit; }
+				ImGui::NextColumn();
+				ImGui::SetColumnWidth(1, 50);
+				if (ImGui::Button("Shop")) { showBoardEdit = !showBoardEdit; }
+				ImGui::NextColumn();
+				if (ImGui::Button("Inventory")) {
+					if (!showInventory) { 
+						profile.setAllWheelNames(); 
+						profile.setAllDeckNames(); 
+					}
+					showInventory = !showInventory;
+				}
 
-			ImGui::Columns(2);
-			if (ImGui::Button("Leaderboards")) { showLeaderboards = !showLeaderboards; }
-			ImGui::NextColumn();
-			if (ImGui::Button("Edit HUD")) { showHUDEdit = !showHUDEdit; }
-			ImGui::Columns(1);
-			
-			if (ImGui::Button("Apply Changes / Re-Initialize")) { resetFull(); }
+				ImGui::Columns(1);
 
-			ImGui::Checkbox("Display Session Stats", &showSessionStats);
-			ImGui::Checkbox("Display Wheel Stats", &showWheelStats);
-			ImGui::Text("%.1f FPS", ImGui::GetIO().Framerate);
-			ImGui::End();
+				ImGui::Columns(2);
+				if (ImGui::Button("Leaderboards")) { showLeaderboards = !showLeaderboards; }
+				ImGui::NextColumn();
+				if (ImGui::Button("Edit HUD")) { showHUDEdit = !showHUDEdit; }
+				ImGui::Columns(1);
+				
+				if (ImGui::Button("Apply Changes / Re-Initialize")) { resetFull(); }
+
+				ImGui::Checkbox("Display Session Stats", &showSessionStats);
+				ImGui::Checkbox("Display Wheel Stats", &showWheelStats);
+				ImGui::Text("%.1f FPS", ImGui::GetIO().Framerate);
+				ImGui::End();
+			}
 		}
 		else {
 			ImGui::SetNextWindowSizeConstraints(ImVec2(115, 60), ImVec2(115, 60));
@@ -600,7 +611,7 @@ void Joiner::handleHUDEdit() {
 void Joiner::handleTrackEdit() {
 	if (showTrackEdit) {
 		isPaused = true;
-		ImGui::SetNextWindowSizeConstraints(ImVec2(200, 155), ImVec2(200, 155));
+		ImGui::SetNextWindowSizeConstraints(ImVec2(210, 180), ImVec2(210, 180));
 		ImGui::Begin("Edit Track", &showTrackEdit, ImGuiWindowFlags_NoResize);
 		ImGui::PushItemWidth(-250);
 		ImGui::InputInt("Style", &trackGenerationStyle);
@@ -610,6 +621,8 @@ void Joiner::handleTrackEdit() {
 		ImGui::TextColored(ImVec4(0,1,1,1), configuration.getNameConfigurations()[("TrackStyle" + std::to_string(trackGenerationStyle)).c_str()].c_str());
 		ImGui::PushItemWidth((ImGui::GetWindowWidth() / 2) - 15);
 		ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
+
+		if (ImGui::Button("Enter Track Editor")) { changeMode(); }
 
 		ImGui::Checkbox("Toggle Rain", &toggleRain);
 		ImGui::Checkbox("Random Seed", &randomTrackSeed);

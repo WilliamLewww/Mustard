@@ -83,6 +83,7 @@ private:
 	void handleNetworkMenu();
 
 	bool canChangeMode = false;
+	void changeMode();
 	void handleTrackMode();
 public:
 	int seed, rainSeed;
