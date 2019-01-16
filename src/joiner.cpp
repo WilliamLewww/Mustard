@@ -176,7 +176,7 @@ void Joiner::initializeWorld() {
 
 void Joiner::update() {
 	if (input.checkKeyDown(SDLK_ESCAPE)) { hideEditWindows(); }
-	if (input.checkKeyDown(SDLK_5)) { trackEditor.setEnabled(true, board.bitmapPolygon.getPositionAddress(), board.bitmapPolygon.getWidth(), board.bitmapPolygon.getHeight()); }
+	handleTrackMode();
 	if (input.checkKeyDown(SDLK_7) && input.checkKeyDown(SDLK_8) && input.checkKeyDown(SDLK_9)) { devMode = true; }
 	if (devMode) { handleDevMode(); }
 
@@ -302,6 +302,18 @@ void Joiner::draw() {
 	// 	drawing.drawText("Turn Keys + D - Shutdown Slide", Vector2(25, 350), 25, color3);
 	// 	drawing.drawText("Any Slide + Down Array - Pendy Slide", Vector2(25, 375), 25, color3);
 	// }
+}
+
+void Joiner::handleTrackMode() {
+	if (input.getKeyListSize() == 0) { canChangeMode = true; };
+	if (canChangeMode && input.checkKeyDown(SDLK_5)) {
+		if (!trackEditor.getEnabled()) {
+			trackEditor.setEnabled(true, board.bitmapPolygon.getPositionAddress(), board.bitmapPolygon.getWidth(), board.bitmapPolygon.getHeight());
+		}
+		else { trackEditor.disable(); }
+		resetFull();
+		canChangeMode = false; 
+	}
 }
 
 void Joiner::handleDevMode() {

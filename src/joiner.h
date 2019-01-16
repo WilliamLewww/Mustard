@@ -81,6 +81,9 @@ private:
 	void handleBoardEdit();
 	void handleInventory();
 	void handleNetworkMenu();
+
+	bool canChangeMode = false;
+	void handleTrackMode();
 public:
 	int seed, rainSeed;
 

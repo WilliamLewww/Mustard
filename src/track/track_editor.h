@@ -35,6 +35,10 @@ public:
 		this->boardHeight = boardHeight;
 	};
 
+	inline void disable() { 
+		this->enabled = false;
+	};
+
 	inline std::vector<std::vector<Vector2>> getRailList() { return railList; };
 	inline void clearRailList() { railList.clear(); }; 
 
