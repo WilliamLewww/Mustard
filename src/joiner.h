@@ -30,6 +30,8 @@ private:
 
 	int speedZone = 0, trackDirection = 0;
 
+	bool initialOpen = true;
+
 	bool isPaused = false;
 	bool isCrashed = false;
 	bool allowRestartAfterCrash = false;

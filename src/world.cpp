@@ -410,40 +410,11 @@ void World::generateTutorial(int state) {
 }
 
 void World::drawTutorial(int state) {
-	if (state == 0) {
-		drawing.drawText("Welcome to Thane!!!", track.railList[0][0] - Vector2(100, 150), 24, tutorialColor1);
-		drawing.drawText("(Press any key to start)", track.railList[0][0] - Vector2(100, 120), 24, tutorialColor2);
-		drawing.drawText("You are at the peak of a very very very very very very very very very large hill", track.railList[0][4] - Vector2(100, 120), 24, tutorialColor2);
-	}
-
-	if (state == 1) {
-		drawing.drawText("Use the left and right arrow keys to navigate through the hills", track.railList[0][0] - Vector2(100, 150), 24, tutorialColor3);
-	}
-
-	if (state == 2) {
-		drawing.drawText("Uh oh, the corners just got tighter", track.railList[0][0] - Vector2(100, 150), 24, tutorialColor1);
-		drawing.drawText("Hold \"A\" when turning to preform a slide/drift", track.railList[0][0] - Vector2(125, 120), 24, tutorialColor2);
-	}
-
-	if (state == 3) {
-		drawing.drawText("As your speed increases, you might get speedwobbles if your form is stinky", track.railList[0][0] - Vector2(200, 150), 24, tutorialColor1);
-		drawing.drawText("Hold \"SPACEBAR\" to preform a tuck", track.railList[0][0] - Vector2(125, 120), 24, tutorialColor2);
-		drawing.drawText("You will gain speed and increase your stability in a tuck", track.railList[0][5] - Vector2(50, 120), 24, tutorialColor2);
-	}
-
-	if (state == 4) {
-		drawing.drawText("Technical slides are fast, flashy, and stylish", track.railList[0][0] - Vector2(200, 150), 24, tutorialColor1);
-		drawing.drawText("Hold \"S\" when turning to preform a technical slide", track.railList[0][0] - Vector2(125, 120), 24, tutorialColor2);
-	}
-
-	if (state == 5) {
-		drawing.drawText("Going too fast?", track.railList[0][0] - Vector2(200, 150), 24, tutorialColor1);
-		drawing.drawText("Hold \"D\" when turning to preform a shutdown slide", track.railList[0][0] - Vector2(125, 120), 24, tutorialColor2);
-	}
-
-	if (state == 6) {
-		drawing.drawText("Beware of cars, cyclists, gravel pits, road squirrels, steep hills, speedwobbles, potholes, pinecones, trees, rain, puddles, oh god please help me, I think I just failed my stats final", track.railList[0][0] - Vector2(200, 200), 24, tutorialColor1);
-		drawing.drawText("Smash pinecones to gain money", track.railList[0][0] - Vector2(125, 150), 24, tutorialColor2);
-		drawing.drawText("You can show the main menu by pressing \"1\"", track.railList[0][0] - Vector2(125, 120), 24, tutorialColor2);
-	}
+	if (state == 0) { drawModelWelcome(); }
+	if (state == 1) { drawModelTurn(); }
+	if (state == 2) { drawModelSlide(); }
+	if (state == 3) { drawModelTuck(); }
+	if (state == 4) { drawModelTech(); }
+	if (state == 5) { drawModelShutdown(); }
+	if (state == 6) { drawModelMenu(); }
 }

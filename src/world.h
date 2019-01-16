@@ -2,14 +2,11 @@
 #include "core\configuration.h"
 #include "core\drawing.h"
 #include "environment\environment.h"
+#include "environment\preset_models.h"
 #include "track\track.h"
 
 class World {
 private:
-	SDL_Color tutorialColor1 = { 30, 87, 100 };
-	SDL_Color tutorialColor2 = { 115, 55, 80 };
-	SDL_Color tutorialColor3 = { 76, 59, 42 };
-
 	int mountainColor[3] = { 118, 92, 67 };
 	int mountainOutlineColor[3] = { 78, 52, 27 };
 
