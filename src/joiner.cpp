@@ -450,9 +450,13 @@ void Joiner::handleMainMenu() {
 	if (showMainMenu) {
 		if (tutorialState == -1) {
 			if (trackEditor.getEnabled()) {
-				ImGui::SetNextWindowSizeConstraints(ImVec2(200, 185), ImVec2(200, 185));
+				ImGui::SetNextWindowSizeConstraints(ImVec2(300, 195), ImVec2(300, 195));
 				ImGui::Begin("Main Menu");
 				ImGui::Checkbox("Toggle Spec Mode", &trackEditor.spec);
+
+				ImGui::Text("Right Click to place a track");
+				ImGui::Text("Left Click to modify existing track");
+				ImGui::Text("Scroll Wheel to set the spacing size");
 
 				ImGui::Columns(2);
 				if (ImGui::Button("Place Track")) { trackEditor.placeTrack(); }
