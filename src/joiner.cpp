@@ -323,13 +323,13 @@ void Joiner::handleDevMode() {
 }
 
 void Joiner::handleStartInput() {
-	if ((initialOpen && input.getKeyListSize() > 0) || (!input.checkKeyDown(SDLK_ESCAPE) && !input.checkKeyDown(SDLK_1) && !input.checkKeyDown(SDLK_2) && allowKeyStart && input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false)) {
+	if ((initialOpen && input.getKeyListSize() > 0) || (!input.checkKeyDown(SDLK_ESCAPE) && !input.checkKeyDown(SDLK_1) && allowKeyStart && input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false)) {
 		isKeyStart = true;
 	}
 
 	if (!isKeyStart) {
 		if (allowKeyStart) {
-			if ((initialOpen && input.getKeyListSize() > 0) || (!input.checkKeyDown(SDLK_ESCAPE) && !input.checkKeyDown(SDLK_1) && !input.checkKeyDown(SDLK_2) && input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false)) {
+			if ((initialOpen && input.getKeyListSize() > 0) || (!input.checkKeyDown(SDLK_ESCAPE) && !input.checkKeyDown(SDLK_1) && input.getKeyListSize() > 0 && ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false)) {
 				isKeyStart = true;
 				allowKeyStart = false;
 				initialOpen = false;
@@ -342,7 +342,7 @@ void Joiner::handleStartInput() {
 
 	if (isCrashed) {
 		if (allowRestartAfterCrash) {
-			if (!input.checkKeyDown(SDLK_ESCAPE) && !input.checkKeyDown(SDLK_1) && !input.checkKeyDown(SDLK_2) && input.getKeyListSize() > 0) {
+			if (!input.checkKeyDown(SDLK_ESCAPE) && !input.checkKeyDown(SDLK_1) && input.getKeyListSize() > 0) {
 				isCrashed = false;
 				allowRestartAfterCrash = false;
 				reset(false);
@@ -657,7 +657,6 @@ void Joiner::handleTrackEdit() {
 }
 
 void Joiner::handleBoardEdit() {
-	if (input.checkKeyDown(SDLK_2)) { showBoardEdit = true; }
 	if (showBoardEdit) {
 		isPaused = true;
 		ImGui::SetNextWindowSizeConstraints(ImVec2(380, 280), ImVec2(380, 280));
@@ -734,11 +733,6 @@ void Joiner::handleBoardEdit() {
 }
 
 void Joiner::handleInventory() {
-	if (input.checkKeyDown(SDLK_3)) { 
-		profile.setAllWheelNames(); 
-		profile.setAllDeckNames(); 
-		showInventory = true; 
-	}
 	if (showInventory) {
 		isPaused = true;
 		ImGui::SetNextWindowSizeConstraints(ImVec2(350, 245), ImVec2(350, 245));
