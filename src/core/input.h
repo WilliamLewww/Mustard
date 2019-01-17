@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <SDL2\SDL.h>
 #include "vector2.h"
+#include "configuration.h"
 
 class Input {
 private:
@@ -10,6 +11,7 @@ private:
 	std::vector<SDL_Keycode> pressKeyList;
 
 	bool leftButtonDown, leftButtonPress;
+	bool rightButtonDown, rightButtonPress;
 	bool middleMouseDown, middleMousePress;
 	bool scrollUp, scrollDown;
 	int mouseX, mouseY;
@@ -20,6 +22,17 @@ private:
 
 public:
 	std::vector<SDL_Keycode> returnKeyList();
+
+	inline int getMouseX() { return mouseX; };
+	inline int getMouseY() { return mouseY; };
+
+	inline Vector2 getMousePosition() { return Vector2(mouseX - (configuration.getScreenWidth() / 2), mouseY - (configuration.getScreenHeight() / 2)); };
+
+	inline bool getLeftButtonPress() { return leftButtonPress; };
+	inline bool getRightButtonPress() { return rightButtonPress; };
+
+	inline bool getScrollUp() { return scrollUp; };
+	inline bool getScrollDown() { return scrollDown; };
 	
 	bool checkKeyDown(SDL_Keycode Keycode);
 	bool checkButtonDown(int buttonCode);

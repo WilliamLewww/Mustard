@@ -6,23 +6,20 @@ void TrackEditor::update() {
 		railList.push_back(std::vector<Vector2>());
 	}
 
-	if (input.checkKeyDown(SDLK_z) && railSpacingY > 5) { railSpacingY -= 1; }
-	if (input.checkKeyDown(SDLK_x)) { railSpacingY += 1; }
+	if (input.checkKeyDown(SDLK_z)) { decreaseSpacing(); }
+	if (input.checkKeyDown(SDLK_x)) { increaseSpacing(); }
 
 	if (input.getKeyListSize() == 0) { canChangeMode = true; }
 	if (!input.checkKeyDown(SDLK_c)) { canPlaceTrack = true; }
 	if (!input.checkKeyDown(SDLK_v)) { canRemove = true; }
 
 	if (canPlaceTrack && input.checkKeyDown(SDLK_c)) {
-		railList[0].push_back(getBoardCenter() - Vector2(0, railSpacingY / 2));
-		railList[1].push_back(getBoardCenter() + Vector2(0, railSpacingY / 2));
-
+		placeTrack();
 		canPlaceTrack = false;
 	}
 
-	if (canRemove && railList[0].size() > 0 && input.checkKeyDown(SDLK_v)) {
-		railList[0].pop_back();
-		railList[1].pop_back();
+	if (canRemove && input.checkKeyDown(SDLK_v)) {
+		removeTrack();
 		canRemove = false;
 	}
 
@@ -32,6 +29,38 @@ void TrackEditor::update() {
 		visibleRange.x = 0;
 		if (railList[0][x].x < camera.getBoundaryLeft()) { visibleRange.x = x; }
 		if (railList[0][x].x < camera.getBoundaryRight()) { visibleRange.y = x; }
+	}
+}
+
+void TrackEditor::increaseSpacing() {
+	railSpacingY += 3;
+}
+
+void TrackEditor::decreaseSpacing() {
+	if (railSpacingY > 10) {
+		railSpacingY -= 3;
+	}
+}
+
+void TrackEditor::resetSpacing() {
+	railSpacingY = 25;
+}
+
+void TrackEditor::placeTrack() {
+	if (!overridePlacement) {
+		railList[0].push_back(getBoardCenter() - Vector2(0, railSpacingY / 2));
+		railList[1].push_back(getBoardCenter() + Vector2(0, railSpacingY / 2));
+	}
+	else {
+		railList[0].push_back(input.getMousePosition() + halfBoardSize() + camera.getPosition() - Vector2(0, railSpacingY / 2));
+		railList[1].push_back(input.getMousePosition() + halfBoardSize() + camera.getPosition() + Vector2(0, railSpacingY / 2));
+	}
+}
+
+void TrackEditor::removeTrack() {
+	if (railList[0].size() > 0) {
+		railList[0].pop_back();
+		railList[1].pop_back();
 	}
 }
 
@@ -50,5 +79,12 @@ void TrackEditor::draw() {
 		drawing.drawLine(railList[0][railList[0].size() - 2], railList[0][railList[0].size() - 1], currentRailColor); 
 		drawing.drawLine(railList[1][railList[1].size() - 2], railList[1][railList[1].size() - 1], currentRailColor); 
 	}
-	drawing.drawLine(getBoardCenter() - Vector2(0, railSpacingY / 2), getBoardCenter() + Vector2(0, railSpacingY / 2));
+
+	if (!overridePlacement) {
+		drawing.drawLine(getBoardCenter() - Vector2(0, railSpacingY / 2), getBoardCenter() + Vector2(0, railSpacingY / 2));
+	}
+	else {
+		drawing.drawCircle(input.getMousePosition() + halfBoardSize() + camera.getPosition(), 2);
+		drawing.drawLine(input.getMousePosition() + halfBoardSize() + camera.getPosition() - Vector2(0, railSpacingY / 2), input.getMousePosition() + halfBoardSize() + camera.getPosition() + Vector2(0, railSpacingY / 2));
+	}
 }

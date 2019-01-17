@@ -80,7 +80,10 @@ void Input::clearExpiredInput() {
 	controllerPressList.clear();
 
 	leftButtonPress = false;
+	rightButtonPress = false;
 	middleMousePress = false;
+	scrollUp = false;
+	scrollDown = false;
 }
 
 void Input::getMouseTrigger(SDL_Event event) {
@@ -88,6 +91,11 @@ void Input::getMouseTrigger(SDL_Event event) {
 		if (event.button.button == SDL_BUTTON_LEFT) {
 			leftButtonDown = true;
 			leftButtonPress = true;
+		}
+
+		if (event.button.button == SDL_BUTTON_RIGHT) {
+			rightButtonDown = true;
+			rightButtonPress = true;
 		}
 
 		if (event.button.button == SDL_BUTTON_MIDDLE) {
@@ -108,6 +116,10 @@ void Input::getMouseTrigger(SDL_Event event) {
 	if (event.type == SDL_MOUSEBUTTONUP) {
 		if (event.button.button == SDL_BUTTON_LEFT) {
 			leftButtonDown = false;
+		}
+
+		if (event.button.button == SDL_BUTTON_RIGHT) {
+			rightButtonDown = false;
 		}
 
 		if (event.button.button == SDL_BUTTON_MIDDLE) {

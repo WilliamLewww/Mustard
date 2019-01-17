@@ -315,9 +315,6 @@ void Joiner::changeMode() {
 
 void Joiner::handleTrackMode() {
 	if (input.getKeyListSize() == 0) { canChangeMode = true; };
-	if (canChangeMode && input.checkKeyDown(SDLK_5)) {
-		changeMode();
-	}
 }
 
 void Joiner::handleDevMode() {
@@ -453,12 +450,34 @@ void Joiner::handleMainMenu() {
 	if (showMainMenu) {
 		if (tutorialState == -1) {
 			if (trackEditor.getEnabled()) {
-				ImGui::SetNextWindowSizeConstraints(ImVec2(115, 60), ImVec2(115, 60));
+				ImGui::SetNextWindowSizeConstraints(ImVec2(200, 185), ImVec2(200, 185));
 				ImGui::Begin("Main Menu");
+				ImGui::Checkbox("Toggle Spec Mode", &trackEditor.spec);
+
+				ImGui::Columns(2);
+				if (ImGui::Button("Place Track")) { trackEditor.placeTrack(); }
+				ImGui::NextColumn();
+				if (ImGui::Button("Remove Track")) { trackEditor.removeTrack(); }
+				ImGui::Columns(1);
+
+				if (ImGui::Button("Reset Position")) { resetFull(); }
+
+				ImGui::Spacing();ImGui::Spacing();ImGui::Spacing();
+				if (ImGui::Button("Exit Track Editor")) { changeMode(); }
 				ImGui::End();
+
+				if (ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow) == false) {
+					trackEditor.enableOverride();
+					if (input.getScrollUp()) { trackEditor.increaseSpacing(); }
+					if (input.getScrollDown()) { trackEditor.decreaseSpacing(); }
+					if (input.getRightButtonPress()) { trackEditor.placeTrack(); };
+				}
+				else {
+					trackEditor.disableOverride();
+				}
 			}
 			else {
-				ImGui::SetNextWindowSizeConstraints(ImVec2(230, 165), ImVec2(230, 165));
+				ImGui::SetNextWindowSizeConstraints(ImVec2(230, 190), ImVec2(230, 190));
 				ImGui::Begin("Main Menu");
 
 				ImGui::Columns(3);
@@ -484,6 +503,7 @@ void Joiner::handleMainMenu() {
 				if (ImGui::Button("Edit HUD")) { showHUDEdit = !showHUDEdit; }
 				ImGui::Columns(1);
 				
+				if (ImGui::Button("Open Network Menu")) { showNetworkMenu = !showNetworkMenu; }
 				if (ImGui::Button("Apply Changes / Re-Initialize")) { resetFull(); }
 
 				ImGui::Checkbox("Display Session Stats", &showSessionStats);
@@ -506,11 +526,10 @@ void Joiner::handleMainMenu() {
 }
 
 void Joiner::handleNetworkMenu() {
-	if (input.checkKeyDown(SDLK_4)) { showNetworkMenu = true; }
 	if (showNetworkMenu) {
 		isPaused = true;
 		ImGui::SetNextWindowSizeConstraints(ImVec2(250, 155), ImVec2(250, 155));
-		ImGui::Begin("Network", &showTrackEdit, ImGuiWindowFlags_NoResize);
+		ImGui::Begin("Network", &showNetworkMenu, ImGuiWindowFlags_NoResize);
 		ImGui::InputText("IP Address", nJoiner.ipAddress, IM_ARRAYSIZE(nJoiner.ipAddress));
 		if (netConnected) { ImGui::TextColored(ImVec4(0,1,0,1), "Connected"); }
 		else { ImGui::TextColored(ImVec4(1,0,0,1), "Disconnected"); }
